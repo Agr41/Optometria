@@ -7,7 +7,11 @@
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bootstrap": "^5.2.3",
+=======
+    "bootstrap": "^5.3.0-alpha1",
+>>>>>>> b011c4c61e95a27c3b136145ad49953712b25628
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.18.2",
