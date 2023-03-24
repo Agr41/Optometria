@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 /* GET home page. */
-router.get('/LoginInicio', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('LoginInicio', { title: 'Login' });
 });
 

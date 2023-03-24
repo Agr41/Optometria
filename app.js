@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.get('/LoginInicio', LoginInicioRouter);
+app.use('/LoginInicio', LoginInicioRouter);
 app.use('/users', usersRouter);
 app.use('/form', formRouter);
 
