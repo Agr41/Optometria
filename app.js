@@ -6,9 +6,14 @@ var logger = require('morgan');
 var hbs = require('hbs');
 // const bootstrap = require('bootstrap');
 
-
+var LoginInicioRouter = require('./routes/LoginInicio');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+/////Logins
+
+
+
 
 var app = express();
 
@@ -18,6 +23,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -27,6 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.get('/LoginInicio', LoginInicioRouter);
 app.use('/users', usersRouter);
 
 
