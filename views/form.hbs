@@ -1,33 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{navbar}}
-    <title>Document</title>
-</head>
-<body>
+{{> navbar}}
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+  
+  </header>
+
+
+  <main>
+    <div class="modal-content rounded-4 shadow">
+
+
+      <div class="modal-body p-5 border border-2 border-dark rounded">
+       
+<div class="container">
     <form action="">
-        <label >Nombre:</label>
-        <input type="text" name="" id="">
-        <label>Apellido Paterno:</label>
-        <input type="text" name="" id="">
-        <label>Apellido materno:</label>
-        <input type="text" name="" id="">
-        <label>Ciudad:</label>
-        <input type="text" name="" id="">
-        <label>Ocupacion</label>
-        <input type="checkbox" name="" id="">
-        <label for="">agricultura</label>
-        <input type="checkbox" name="" id="">
-        <label for="">estudiante</label>
-        <input type="checkbox" name="" id="">
-        <label for="">oficinista</label>
-        <input type="checkbox" name="" id="">
-        <label for="">otro</label>
+        <div class="row g-3">
+            <div class="col-sm-4">
+                <label class="form-label">Nombre:</label>
+                    <input type="text" name="" id="" class="form-control">
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">Apellido Paterno:</label>
+                    <input type="text" name="" id="" class="form-control">
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">Apellido materno:</label>
+                        <input type="text" name="" id="" class="form-control">
+            </div>
+            <div class="col-sm-12">
+                <label class="form-label">Ciudad:</label>
+                    <input type="text" name="" id="" class="form-control">
+            </div>
+            
+            <label>Ocupacion:</label>
+
+                <div class="form-check">
+                        <label for="" class="form-check-label">Agricultura</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">
+                </div>
+                <div class="form-check">
+                        <label for="" class="form-check-label">Estudiante</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">
+                </div>
+                <div class="form-check">
+                        <label for="" class="form-check-label">Oficinista</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">  
+                </div>
+                <div class="form-check">
+                        <label for="" class="form-check-label">Otro</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">
+                </div>
+                <div class="form-check">
+                        <label for="" class="form-check-label">Industria</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">
+                </div>
+                <div class="form-check">
+                        <label for="" class="form-check-label">Conductor</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">
+                </div>
+                <div class="form-check">
+                        <label for="" class="form-check-label">Administrativo</label>
+                        <input type="radio" name="ocupacion" id="" class="form-check-input">
+                </div>
+            <label for="date" class="form-label">Nacimiento:</label>
+            <input type="date" name="" id="date" class="form-control">
+</div>
 
 
-    </form>
-</body>
-</html>
+    </form> 
+  
+</div>
+        </ul>
+      </div>
+    </div>
+
+
+   
+  </main>
+{{> footer}}
+</div>
+
+
+   
