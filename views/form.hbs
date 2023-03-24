@@ -1,33 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{navbar}}
-    <title>Document</title>
-</head>
-<body>
+{{> navbar}}
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+  
+  </header>
+
+
+  <main>
+    <div class="modal-content rounded-4 shadow">
+
+
+      <div class="modal-body p-5 border border-2 border-dark rounded">
+       
+<div class="container text-center">
     <form action="">
         <label >Nombre:</label>
-        <input type="text" name="" id="">
+        <input type="text" name="" id=""><br>
         <label>Apellido Paterno:</label>
-        <input type="text" name="" id="">
+        <input type="text" name="" id=""><br>
         <label>Apellido materno:</label>
-        <input type="text" name="" id="">
+        <input type="text" name="" id=""><br>
         <label>Ciudad:</label>
-        <input type="text" name="" id="">
-        <label>Ocupacion</label>
-        <input type="checkbox" name="" id="">
+        <input type="text" name="" id=""><br>
+        <label>Ocupacion :</label>
         <label for="">agricultura</label>
         <input type="checkbox" name="" id="">
         <label for="">estudiante</label>
         <input type="checkbox" name="" id="">
         <label for="">oficinista</label>
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">  
         <label for="">otro</label>
+         <input type="checkbox" name="" id="">
+        <label for="">industria</label>
+         <input type="checkbox" name="" id="">
+        <label for="">conductor</label>
+         <input type="checkbox" name="" id="">
+        <label for="">administrativo</label><br>
+        <label for="">nacimiento:</label>
+        <input type="date" name="" id="">
 
 
-    </form>
-</body>
-</html>
+
+    </form> 
+  
+</div>
+        </ul>
+      </div>
+    </div>
+
+
+   
+  </main>
+{{> footer}}
+</div>
+
+
+   
