@@ -10,6 +10,7 @@ var LoginInicioRouter = require('./routes/LoginInicio');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var formRouter = require('./routes/form');
+var HomeRouter = require('./routes/HomeSessions');
 
 /////Logins
 
@@ -37,6 +38,8 @@ app.use('/', indexRouter);
 app.use('/LoginInicio', LoginInicioRouter);
 app.use('/users', usersRouter);
 app.use('/form', formRouter);
+app.use('/HomeSessions', HomeRouter);
+
 
 
 // catch 404 and forward to error handler
