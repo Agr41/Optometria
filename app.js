@@ -10,7 +10,7 @@ var LoginInicioRouter = require('./routes/LoginInicio');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var formRouter = require('./routes/form');
-var formtestRouter = require('./routes/formtest');
+var formtestRouter = require('./routes/test');
 
 /////Logins
 
@@ -38,7 +38,7 @@ app.use('/', indexRouter);
 app.use('/LoginInicio', LoginInicioRouter);
 app.use('/users', usersRouter);
 app.use('/form', formRouter);
-app.use('/formtest', formtestRouter);
+app.use('/test', formtestRouter);
 
 
 // catch 404 and forward to error handler
