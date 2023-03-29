@@ -44,12 +44,34 @@
                   <option for="" class="form-check-label" value="Conductor">Conductor</option>
                   <option for="" class="form-check-label" value="Administrativo">Administrativo</option>
                 </select>
-                <label for="date" class="form-label">Nacimiento:</label>
-                <input type="date" name="" id="date" class="form-control">
-                <button type="submit" class="btn btn-primary">Registrar paciente</button>
+                <div class="input-group">
+                  <span class="input-group-text">¿Cuántos años han pasado desde su último examen de la vista?</span>
+                  <input type="number" aria-label="First name" class="form-control">
+                  <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value=""
+                      aria-label="Checkbox for following text input"> Nunca ha tenido
+                  </div>
+                </div>
+                <label>Sexo:</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Masculino
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Femenino
+                  </label>
+                </div>
+                <div class="col-sm-12">
+                  <label class="form-label">Fecha de nacimiento</label>
+                  <input type="date" name="" id="" class="form-control">
+                </div>
               </div>
 
-              
+
 
             </form>
 
