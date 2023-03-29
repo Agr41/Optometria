@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 // const bootstrap = require('bootstrap');
-
+const mongoose = require("mongoose");
+const fileUpload = require("express-fileupload");
 var LoginInicioRouter = require('./routes/LoginInicio');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,12 +14,17 @@ var formRouter = require('./routes/form');
 var HomeRouter = require('./routes/HomeSessions');
 var formtestRouter = require('./routes/test');
 var ListaRouter = require('./routes/ListaClientes.js');
+const bodyParser = require("body-parser");
+const Registrar = require('./routes/Registrar')
+const RegistrarPost = require('./routes/RegistrarPost')
 /////Logins
 
 
 
-
 var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(fileUpload());
 
 
 // bootstrap.registerPartials(__dirname + "/views/partials")
@@ -35,6 +41,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+mongoose.set("strictQuery", true);
+mongoose.connect(
+    "mongodb+srv://Aaron:tamales@aaronproyecto.sfdk1.mongodb.net/Optometria",
+    { useNewUrlParser: true }
+);
+
+
+app.use('/Registrar', Registrar);
+app.post('/RegistrarPost', RegistrarPost);
 app.use('/', indexRouter);
 app.use('/LoginInicio', LoginInicioRouter);
 app.use('/users', usersRouter);
