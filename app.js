@@ -41,11 +41,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.set("strictQuery", true);
-mongoose.connect(
-    "mongodb+srv://Aaron:tamales@aaronproyecto.sfdk1.mongodb.net/Optometria",
-    { useNewUrlParser: true }
-);
+// mongoose.set("strictQuery", true);
+// mongoose.connect(
+//     "mongodb+srv://Aaron:tamales@aaronproyecto.sfdk1.mongodb.net/Optometria",
+//     { useNewUrlParser: true }
+// );
 
 
 app.use('/Registrar', Registrar);
