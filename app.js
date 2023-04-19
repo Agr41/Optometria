@@ -14,6 +14,8 @@ var formRouter = require('./routes/form');
 var HomeRouter = require('./routes/HomeSessions');
 var formtestRouter = require('./routes/test');
 var ListaRouter = require('./routes/ListaClientes.js');
+var configuracionRouter = require('./routes/configuracion.js');
+
 const bodyParser = require("body-parser");
 const Registrar = require('./routes/Registrar')
 const RegistrarPost = require('./routes/RegistrarPost')
@@ -57,6 +59,7 @@ app.use('/form', formRouter);
 app.use('/HomeSessions', HomeRouter);
 app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
+app.use('/configuracion', configuracionRouter);
 
 
 // catch 404 and forward to error handler
