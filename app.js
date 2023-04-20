@@ -71,7 +71,7 @@ app.use((req, res, next) => {
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
-    "mongodb://localhost:27017/Optometria",
+    "mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test",
     { useNewUrlParser: true }
 );
 
