@@ -1,0 +1,148 @@
+{{>navbar}}
+
+    <section id="PanelUsuarios">
+
+        <h1 class="text-center hola">Panel de clientes</h1>
+
+  <body class="text-center">
+            <br>
+        <div class="center">
+            Filtrar por rol:
+            <form method="POST"  action="/FiltrosUsuarios">
+            <select name="role" id="FiltroHistorial" class="custom-select2" >
+                <option value="admin"> Admin</option>
+                <option value="cliente" >Cliente</option>
+
+              </select>
+              <button type="submit" class="btn btn-info btn-sm">Filtrar</button>
+              <br>
+            </form>
+        </div>             
+        <br>
+
+        <form method="post" action="/FiltrosUsuarios2" >
+            <select name="Tipo" id="FiltroHistorial2" class="BusquedaSelect">
+                <option value="Nombre" >Nombre de usuario</option>
+                <option value="Id" >Id del usuario</option>
+
+            </select>
+            <input type="text" name="busqueda" class="busquedaInput" placeholder="Inserte los datos que desea filtrar">
+            <button class="btn btn-outline-danger" type="reset">Limpiar</button>
+            <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
+<div>
+<table class="user-table">
+  <thead>
+    <tr>
+      <th>Correo</th>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
+      <th>Rol</th>
+      <th>Borrar</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each usuarios.docs}}
+      <tr>
+        <td>{{this.username}}</td>
+        <td>{{this.Nombre}}</td>
+        <td>{{this.ApellidoPaterno}}</td>
+        <td>{{this.ApellidoMaterno}}</td>
+        <td>{{this.role}}</td>
+        <td><a href="/Borrar?Usuario={{this.username}}">Borrar</a></td>
+<!--Agregar alertas-->
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+</div>
+</section>
+{{#times totalPages}}
+  hola
+{{/times}}
+
+
+{{#each usuarios.limit}}
+  <a href="/PanelUsuarios?page={{usuarios.page}}" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark">{{usuarios.page}} hola</a>
+{{/each}}
+
+<style>
+    .custom-select {
+      appearance: none;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      color: #555555;
+      font-size: 16px;
+      padding: 10px;
+      width: 25%;
+    }
+    
+    .custom-select:focus {
+      outline: none;
+      border-color: #2196F3;
+      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    }
+    
+    .custom-select option {
+      background-color: #ffffff;
+      color: #555555;
+    }
+    .custom-select2 {
+      appearance: none;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      color: #555555;
+      font-size: 16px;
+      padding: 10px;
+      width: 5%;
+    }
+    
+    .custom-select2:focus {
+      outline: none;
+      border-color: #2196F3;
+      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    }
+    
+    .custom-select2 option {
+      background-color: #ffffff;
+      color: #555555;
+    }
+     .user-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .user-table th, .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .user-table th {
+    background-color: #8ED1C5;
+    color: #fff;
+  }
+
+  .user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+      </style>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{{>footer}}

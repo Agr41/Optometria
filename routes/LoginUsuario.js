@@ -3,6 +3,7 @@ const User = require('../models/Usuarios')
 const path = require('path')
 
 module.exports = async (req, res) => {
+    console.log(req.body)
   const { username, password } = req.body;
 
   try {

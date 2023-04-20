@@ -15,15 +15,14 @@ var HomeRouter = require('./routes/HomeSessions');
 var formtestRouter = require('./routes/test');
 var ListaRouter = require('./routes/ListaClientes.js');
 var configuracionRouter = require('./routes/configuracion.js');
-
+const PanelUsuarios = require('./routes/PanelUsuarios');
 const bodyParser = require("body-parser");
-const Registrar = require('./routes/Registrar')
-const RegistrarPost = require('./routes/RegistrarPost')
 const Formulario = require ('./routes/Formulario')
 const LoginUsuario = require('./routes/LoginUsuario')
 const expressSession = require('express-session');
 const logout = require('./routes/logout');
-
+const FiltrosUsuarios = require('./routes/FiltroUsuarios')
+const Borrar = require ('./routes/Borrar')
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,6 +36,14 @@ hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
 });
 
+hbs.registerHelper('times', function(n, block) {
+  let accum = '';
+  for (let i = 0; i < n; ++i) {
+    accum += block.fn(i);
+  }
+  return accum;
+});
+
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'hbs');
@@ -47,12 +54,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-<<<<<<< HEAD
 global.Logeado = null;
 global.role = null;
 
 app.use(expressSession({
-  secret: 'keyboard cat'
+  secret: 'AaronGuapo'
   }))
   
 app.use((req, res, next) => {
@@ -69,17 +75,9 @@ mongoose.connect(
     "mongodb://localhost:27017/Optometria",
     { useNewUrlParser: true }
 );
-=======
-// mongoose.set("strictQuery", true);
-// mongoose.connect(
-//     "mongodb+srv://Aaron:tamales@aaronproyecto.sfdk1.mongodb.net/Optometria",
-//     { useNewUrlParser: true }
-// );
->>>>>>> 6d60d4f227ffcbf50f1e8ee4c39cda5bf58b837b
 
 
-app.use('/Registrar', Registrar);
-app.post('/RegistrarPost', RegistrarPost);
+
 app.post('/Formulario', Formulario);
 app.use('/', indexRouter);
 app.use('/LoginInicio', LoginInicioRouter);
@@ -89,12 +87,15 @@ app.use('/form', formRouter);
 app.use('/HomeSessions', HomeRouter);
 app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
-<<<<<<< HEAD
 app.get('/logout',logout)
-=======
 app.use('/configuracion', configuracionRouter);
+app.get('/PanelUsuarios',PanelUsuarios)
+app.use('/FiltrosUsuarios',FiltrosUsuarios)
+app.use('/Borrar',Borrar)
 
->>>>>>> 6d60d4f227ffcbf50f1e8ee4c39cda5bf58b837b
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
