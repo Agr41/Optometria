@@ -14,6 +14,8 @@ var formRouter = require('./routes/form');
 var HomeRouter = require('./routes/HomeSessions');
 var formtestRouter = require('./routes/test');
 var ListaRouter = require('./routes/ListaClientes.js');
+var configuracionRouter = require('./routes/configuracion.js');
+
 const bodyParser = require("body-parser");
 const Registrar = require('./routes/Registrar')
 const RegistrarPost = require('./routes/RegistrarPost')
@@ -45,6 +47,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 global.Logeado = null;
 global.role = null;
 
@@ -66,6 +69,13 @@ mongoose.connect(
     "mongodb://localhost:27017/Optometria",
     { useNewUrlParser: true }
 );
+=======
+// mongoose.set("strictQuery", true);
+// mongoose.connect(
+//     "mongodb+srv://Aaron:tamales@aaronproyecto.sfdk1.mongodb.net/Optometria",
+//     { useNewUrlParser: true }
+// );
+>>>>>>> 6d60d4f227ffcbf50f1e8ee4c39cda5bf58b837b
 
 
 app.use('/Registrar', Registrar);
@@ -79,7 +89,12 @@ app.use('/form', formRouter);
 app.use('/HomeSessions', HomeRouter);
 app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
+<<<<<<< HEAD
 app.get('/logout',logout)
+=======
+app.use('/configuracion', configuracionRouter);
+
+>>>>>>> 6d60d4f227ffcbf50f1e8ee4c39cda5bf58b837b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
