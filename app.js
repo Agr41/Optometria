@@ -23,6 +23,9 @@ const expressSession = require('express-session');
 const logout = require('./routes/logout');
 const FiltrosUsuarios = require('./routes/FiltroUsuarios')
 const Borrar = require ('./routes/Borrar')
+const Registrarse = require ('./routes/Registrarse')
+const RegistrarsePost = require ('./routes/RegistrarsePost')
+const FiltrosUsuarios2 = require('./routes/FiltrosUsuarios2')
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,13 +39,10 @@ hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
 });
 
-hbs.registerHelper('times', function(n, block) {
-  let accum = '';
-  for (let i = 0; i < n; ++i) {
-    accum += block.fn(i);
-  }
-  return accum;
+hbs.registerHelper('FiltroPaginado', function(value) {
+  return value !== true;
 });
+
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -57,10 +57,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 global.Logeado = null;
 global.role = null;
 
-app.use(expressSession({
-  secret: 'AaronGuapo'
-  }))
-  
+
+app.use(require('express-session')({ secret: 'AaronGuapo', resave: true, saveUninitialized: true }));
+
 app.use((req, res, next) => {
   Logeado = req.session.userId;
   role= req.session.role;
@@ -92,6 +91,9 @@ app.use('/configuracion', configuracionRouter);
 app.get('/PanelUsuarios',PanelUsuarios)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
+app.get('/Registrarse',Registrarse)
+app.post('/RegistrarsePost',RegistrarsePost)
+app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
 
 
 

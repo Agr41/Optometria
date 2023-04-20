@@ -2,7 +2,7 @@
 
     <section id="PanelUsuarios">
 
-        <h1 class="text-center hola">Panel de clientes</h1>
+        <h1 class="text-center hola">Panel de pacientes</h1>
 
   <body class="text-center">
             <br>
@@ -23,7 +23,6 @@
         <form method="post" action="/FiltrosUsuarios2" >
             <select name="Tipo" id="FiltroHistorial2" class="BusquedaSelect">
                 <option value="Nombre" >Nombre de usuario</option>
-                <option value="Id" >Id del usuario</option>
 
             </select>
             <input type="text" name="busqueda" class="busquedaInput" placeholder="Inserte los datos que desea filtrar">
@@ -41,6 +40,9 @@
       <th>Apellido Materno</th>
       <th>Rol</th>
       <th>Borrar</th>
+      <th>Diagnostico</th>
+      <th>Lentes</th>
+      <th></th>
 
     </tr>
   </thead>
@@ -53,7 +55,11 @@
         <td>{{this.ApellidoMaterno}}</td>
         <td>{{this.role}}</td>
         <td><a href="/Borrar?Usuario={{this.username}}">Borrar</a></td>
-<!--Agregar alertas-->
+        <td></td>
+        <td></td>
+        <td>Ver Diagnostico / Nuevo Diagnostico</td>
+
+<!--Agregar alerta-->
       </tr>
     {{/each}}
   </tbody>
@@ -62,14 +68,13 @@
 
 </div>
 </section>
-{{#times totalPages}}
-  hola
-{{/times}}
 
-
-{{#each usuarios.limit}}
-  <a href="/PanelUsuarios?page={{usuarios.page}}" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark">{{usuarios.page}} hola</a>
+{{#if FiltroPaginado}}
+{{#each TotalPaginas}}
+  <a href="/PanelUsuarios?page={{this}}" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark">{{this}}</a>
 {{/each}}
+{{/if}}
+
 
 <style>
     .custom-select {
@@ -85,7 +90,7 @@
     
     .custom-select:focus {
       outline: none;
-      border-color: #2196F3;
+      border-color: #21f32c;
       box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
     }
     
@@ -106,7 +111,7 @@
     
     .custom-select2:focus {
       outline: none;
-      border-color: #2196F3;
+      border-color: #36f321;
       box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
     }
     
