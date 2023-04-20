@@ -1,15 +1,65 @@
+
 {{> navbar}}
 
-Ingresa los Datos del usuario
-
+<h2>Ingresa los Datos del usuario</h2>
 <form method="POST" action="/RegistrarPost">
+  <label>Nombre de usuario:</label>
+  <input type="text" name="username" required>
+<label>Contraseña:</label>
+<input type="password" name="password" required>
 
-<input type="text" name="username">
-<input type="text" name="password">
-<input type="text" name="Nombre">
-<input type="text" name="SegundoNombre">
-<input type="text" name="ApellidoMaterno">
-<input type="text" name="ApellidoPaterno">
+<label>Nombre:</label>
+<input type="text" name="Nombre" required>
 
-<button type="submit">Registrar usuario</button>
+<label>Apellido materno:</label>
+<input type="text" name="ApellidoMaterno" required>
+
+<label>Apellido paterno:</label>
+<input type="text" name="ApellidoPaterno" required>
+<label>Role:</label>
+            <select name="role" id="role"class="role">
+                <option value="admin" >Admin</option>
+                <option value="cliente" >Cliente</option>
+            </select>
+            <button type="submit">Registrar usuario</button>
+
 </form>
+
+<style>
+  body {
+    background-color: #f2f2f2;
+  }
+  form {
+    margin: 20px;
+    padding: 20px;
+    background-color: #d3f3cb;
+    border-radius: 10px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  input[type=text], input[type=password] {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+</style>

@@ -4,6 +4,6 @@ const mongoosePaginate= require('mongoose-paginate-v2')
 module.exports = (req, res) =>{
 
 
-    res.render('Registrar')
+    res.render('Registrar',{Logeado,role})
 }
     

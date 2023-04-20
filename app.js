@@ -17,8 +17,10 @@ var ListaRouter = require('./routes/ListaClientes.js');
 const bodyParser = require("body-parser");
 const Registrar = require('./routes/Registrar')
 const RegistrarPost = require('./routes/RegistrarPost')
-/////Logins
-
+const Formulario = require ('./routes/Formulario')
+const LoginUsuario = require('./routes/LoginUsuario')
+const expressSession = require('express-session');
+const logout = require('./routes/logout');
 
 
 var app = express();
@@ -27,10 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 
-// bootstrap.registerPartials(__dirname + "/views/partials")
 hbs.registerPartials(__dirname + "/views/partials");
 
-// view engine setup
+hbs.registerHelper('admin', function(value) {
+  return value !== 'admin';
+});
+
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'hbs');
@@ -41,23 +45,41 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+global.Logeado = null;
+global.role = null;
+
+app.use(expressSession({
+  secret: 'keyboard cat'
+  }))
+  
+app.use((req, res, next) => {
+  Logeado = req.session.userId;
+  role= req.session.role;
+  usuario= req.session.username;
+  next()
+  });
+
+
+
 mongoose.set("strictQuery", true);
 mongoose.connect(
-    "mongodb+srv://Aaron:tamales@aaronproyecto.sfdk1.mongodb.net/Optometria",
+    "mongodb://localhost:27017/Optometria",
     { useNewUrlParser: true }
 );
 
 
 app.use('/Registrar', Registrar);
 app.post('/RegistrarPost', RegistrarPost);
+app.post('/Formulario', Formulario);
 app.use('/', indexRouter);
 app.use('/LoginInicio', LoginInicioRouter);
+app.post('/LoginUsuario',LoginUsuario)
 app.use('/users', usersRouter);
 app.use('/form', formRouter);
 app.use('/HomeSessions', HomeRouter);
 app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
-
+app.get('/logout',logout)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
