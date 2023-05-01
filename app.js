@@ -19,7 +19,6 @@ const PanelUsuarios = require('./routes/PanelUsuarios');
 const bodyParser = require("body-parser");
 const Formulario = require ('./routes/Formulario')
 const LoginUsuario = require('./routes/LoginUsuario')
-const expressSession = require('express-session');
 const logout = require('./routes/logout');
 const FiltrosUsuarios = require('./routes/FiltroUsuarios')
 const Borrar = require ('./routes/Borrar')
