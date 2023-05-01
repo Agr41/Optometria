@@ -79,36 +79,28 @@
                         <div class="input-group mb-3">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input"> Embarazo/lactancia
+                              aria-label="Checkbox for following text input" name="EmbarazoOlactancia"> Embarazo/lactancia
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input"> Problemas del corazón
+                              aria-label="Checkbox for following text input" name="ProblemasDelCorazón"> Problemas del corazón
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input"> Galucoma
+                              aria-label="Checkbox for following text input" name="Galucoma"> Galucoma
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input"> Caratatas
-                          </div>
-
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input"> Dolor de cabeza
+                              aria-label="Checkbox for following text input" name="Caratatas"> Caratatas
                           </div>
 
                         </div>
@@ -116,7 +108,15 @@
                         <div class="input-group mb-3">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input">
+                              aria-label="Checkbox for following text input" name="DolorDeCabeza"> Dolor de cabeza
+                          </div>
+
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" value=""
+                              aria-label="Checkbox for following text input" name="Alergias">
                             Alergia a medicamentos
                           </div>
                           <input type="text" class="form-control" aria-label="Text input with checkbox"
@@ -125,18 +125,17 @@
                         <div class="input-group mb-3">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input">
+                              aria-label="Checkbox for following text input" name="Otro">
                             Otro
                           </div>
                           <input type="text" class="form-control" aria-label="Text input with checkbox"
                             placeholder="Especifíque">
                         </div>
-
                       </div>
 
 
                       <label for="medicamentos">MEDICAMENTOS ACTUALES</label><br>
-                      <input type="text" class="form-control" id="medicamentos">
+                      <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales">
                       <br>
                       <label for="">AGUDEZA VISUAL</label>
                       <table class="table table-striped-columns">
@@ -146,12 +145,12 @@
                           <th>Cerca</th>
                         </tr>
                         <td>Con lentes</td>
-                        <td>20/ <input type="text" name="" id="" class="form-control"></td>
-                        <td>20/ <input type="text" name="" id="" class="form-control"></td>
+                        <td>20/ <input type="text" name="ConLentesDistancia" id="" class="form-control"></td>
+                        <td>20/ <input type="text" name="ConLentesCerca" id="" class="form-control"></td>
                         <tr></tr>
                         <td>Sin lentes</td>
-                        <td>20/ <input type="text" class="form-control"></td>
-                        <td>20/ <input type="text" class="form-control" name="" id=""></td>
+                        <td>20/ <input type="text" class="form-control" name="SinLentesDistancia"></td>
+                        <td>20/ <input type="text" class="form-control" name="SinLentesCerca" id=""></td>
                       </table>
                       <label for="">PUPILAS</label><br>
 
@@ -159,13 +158,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">Izquierdo</label>
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="Izquierdo">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">Derecho</label><input type="text" class="form-control" name="" id="">
+                              <label for="">Derecho</label><input type="text" class="form-control" name="Derecha" id="">
                             </td>
                           </div>
                         </div>
@@ -224,13 +223,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">OI</label>
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="OIReni">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">OD</label><input type="text" class="form-control" name="" id="">
+                              <label for="">OD</label><input type="text" class="form-control" name="ODReni" id="">
                             </td>
                           </div>
                         </div>
@@ -240,13 +239,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">AV</label>
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="AVReni">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">AV</label><input type="text" class="form-control" name="" id="">
+                              <label for="">AV</label><input type="text" class="form-control" name="AVReni2" id="">
                             </td>
                           </div>
                         </div>
@@ -258,13 +257,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">OI</label>
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="OIExam">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">AD</label><input type="text" class="form-control" name="" id="">
+                              <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="">
                             </td>
                           </div>
                         </div>
@@ -274,19 +273,19 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">AV</label>
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="AVExam">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">AV</label><input type="text" class="form-control" name="" id="">
+                              <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id="">
                             </td>
                           </div>
                         </div>
                       </div>
                       <label for="">Observaciones</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="Observaciones">
                     </div>
                   </div>
                 </div>
@@ -300,29 +299,29 @@
                   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Myopia</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Hyperopia</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Asigmatism</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Presbyopia</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Anisometropia</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Amblyopia</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Strabismus</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Diabetic Ret</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Htn Ret</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Dry Eye</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Pinguecula</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Pterygium</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Conjuntivitis</label><br>
-                     <input type="checkbox" name="" id="" class="form-check-input mt-0"> <label class="form-label" for="">Galucoma</label><br>
+                     <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0"> <label class="form-label" for="">Myopia</label><br>
+                     <input type="checkbox" name="Hyperopia" id="" class="form-check-input mt-0"> <label class="form-label" for="">Hyperopia</label><br>
+                     <input type="checkbox" name="Asigmatism" id="" class="form-check-input mt-0"> <label class="form-label" for="">Asigmatism</label><br>
+                     <input type="checkbox" name="Presbyopia" id="" class="form-check-input mt-0"> <label class="form-label" for="">Presbyopia</label><br>
+                     <input type="checkbox" name="Anisometropia" id="" class="form-check-input mt-0"> <label class="form-label" for="">Anisometropia</label><br>
+                     <input type="checkbox" name="Amblyopia" id="" class="form-check-input mt-0"> <label class="form-label" for="">Amblyopia</label><br>
+                     <input type="checkbox" name="Strabismus" id="" class="form-check-input mt-0"> <label class="form-label" for="">Strabismus</label><br>
+                     <input type="checkbox" name="DiabeticRet" id="" class="form-check-input mt-0"> <label class="form-label" for="">Diabetic Ret</label><br>
+                     <input type="checkbox" name="HtnRet" id="" class="form-check-input mt-0"> <label class="form-label" for="">Htn Ret</label><br>
+                     <input type="checkbox" name="DryEye" id="" class="form-check-input mt-0"> <label class="form-label" for="">Dry Eye</label><br>
+                     <input type="checkbox" name="Pinguecula" id="" class="form-check-input mt-0"> <label class="form-label" for="">Pinguecula</label><br>
+                     <input type="checkbox" name="Pterygium" id="" class="form-check-input mt-0"> <label class="form-label" for="">Pterygium</label><br>
+                     <input type="checkbox" name="Conjuntivitis" id="" class="form-check-input mt-0"> <label class="form-label" for="">Conjuntivitis</label><br>
+                     <input type="checkbox" name="Galucoma" id="" class="form-check-input mt-0"> <label class="form-label" for="">Galucoma</label><br>
 
                      <label for="">Cataracts</label>
-                     <input type="checkbox" name="" id=""class="form-check-input mt-0"><label for="">OD</label>
-                     <input type="checkbox" name="" id=""class="form-check-input mt-0"><label for="">OS</label><br>
+                     <input type="checkbox" name="ODExamination" id=""class="form-check-input mt-0"><label for="">OD</label>
+                     <input type="checkbox" name="OSExamination" id=""class="form-check-input mt-0"><label for="">OS</label><br>
                      <label for="">Prior Surg</label>
-                     <input type="checkbox" name="" id=""class="form-check-input mt-0"><label for="">OD</label>
-                     <input type="checkbox" name="" id=""class="form-check-input mt-0"><label for="">OS</label><br>
+                     <input type="checkbox" name="ODExamination2" id=""class="form-check-input mt-0"><label for="">OD</label>
+                     <input type="checkbox" name="OSExamination2" id=""class="form-check-input mt-0"><label for="">OS</label><br>
 
-                    <textarea name="" id="" cols="30" rows="5" placeholder="Other" class="form-control"></textarea>
+                    <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other" class="form-control"></textarea>
 
                     
                     </div>
@@ -338,9 +337,9 @@
                   <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <label>Primary Pair Recommended Eyeglass Rx</label> <br>
-                     <label for="">OD:</label> <input type="text" class="form-control" name="" id=""><br>
-                      <label for="">OS:</label> <input type="text" class="form-control" name="" id="">
+                      <label>Primary Pair Recommended Eyeglass Rx</label><br>
+                      <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" id=""><br>
+                      <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" id="">
                     </div>
                   </div>
                 </div>
