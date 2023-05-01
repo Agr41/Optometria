@@ -3,12 +3,10 @@ const User = require('../models/Usuarios')
 const path = require('path')
 
 module.exports = async (req, res) => {
-    console.log(req.body)
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username: username });
-
+    const user = await User.findOne({ username: username + req.body.correo });
     if (user) {
       const same = await bcrypt.compare(password, user.password);
 

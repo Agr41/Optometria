@@ -21,8 +21,45 @@
         <div class="container">
           
           <form action="/Formulario" method="POST">
-  
-              <div class="accordion" id="accordionExample">
+
+
+                        <div class="accordion" id="accordionExample">
+
+                  <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                      Paciente
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+<button type="button" onclick="openPopup()">Nombre del paciente:</button>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <input type="text" id="searchInput" placeholder="Search...">
+    {{#each usuarios}}
+      <p>{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} <input type="hidden" value="{{this.username}}" id="username"><button type="button" onclick="displayUsername(this)">Agregar</button></p>
+      <br>
+    {{/each}}
+  </div>
+</div>
+<br>
+<p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
+<input type="hidden" id="usernameValueDisplay" style="display:none;" name="Username">
+
+<button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">Cancelar</button>
+
+
+                    </div>
+                  </div>
+                </div>
+
+
+
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -37,18 +74,13 @@
                         <label class="form-label">CONDICIONES:</label><br>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input"> Diabetes
+                            <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="Diabetes"> Diabetes
                           </div>
-
-
-
-
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value=""
+                            <input class="form-check-input mt-0" type="checkbox" value="true"
                               aria-label="Checkbox for following text input"> Presión alta
                           </div>
 
@@ -184,9 +216,6 @@
                     </div>
                   </div>
                 </div>
-
-
-
 
 
                 <div class="accordion-item">
@@ -358,6 +387,43 @@
 </div>
 
 <style>
+
+  .popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+    max-height:500px;
+  overflow-y: auto;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
   body {
     background-color: #f2f2f2;
   }
@@ -395,5 +461,63 @@
     background-color: #45a049;
   }
 </style>
+
+<script>
+  function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+  function filterResults() {
+    // Get input value
+    let inputValue = document.getElementById("searchInput").value.toLowerCase();
+    // Get all the p tags inside the popup-content div
+    let results = document.querySelectorAll(".popup-content p");
+    // Loop through each result and hide/show based on the input value
+    results.forEach(result => {
+      if (result.textContent.toLowerCase().includes(inputValue)) {
+        result.style.display = "block";
+      } else {
+        result.style.display = "none";
+      }
+    });
+  }
+  
+  // Attach an event listener to the search input
+  document.getElementById("searchInput").addEventListener("input", filterResults);
+  
+function displayUsername(button) {
+  // Get the value of the hidden input related to the clicked button
+  let usernameValue = button.previousSibling.value;
+  // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
+  let nombreValue = button.parentNode.childNodes[0].textContent.split(" ")[0];
+  let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+  let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+  // Display the values inside the popup div
+  let usernameDisplayElement = document.getElementById("usernameDisplay");
+  let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+  usernameDisplayElement.value = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`;
+  usernameDisplayElement.textContent = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`
+  usernameValueDisplayElement.value = usernameValue;
+  usernameDisplayElement.style.display = "block";
+  usernameValueDisplayElement.style.display = "block";
+  // Show the hide button
+  let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+  hideUsernameButtonElement.style.display = "block";
+}
+
+function hideUsernameDisplay() {
+  // Hide the username display
+  let usernameDisplayElement = document.getElementById("usernameDisplay");
+  let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+  usernameDisplayElement.style.display = "none";
+  usernameValueDisplayElement.style.display = "none";
+  // Hide the hide button
+  let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+  hideUsernameButtonElement.style.display = "none";
+}
+</script>
 
 {{> footer}}

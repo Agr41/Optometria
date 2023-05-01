@@ -69,11 +69,33 @@
 </div>
 </section>
 
-{{#if FiltroPaginado}}
+{{#unless (Falso FiltroPaginado)}}
 {{#each TotalPaginas}}
   <a href="/PanelUsuarios?page={{this}}" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark">{{this}}</a>
 {{/each}}
-{{/if}}
+{{/unless}}
+
+{{#unless (Verdad FiltroPaginado)}}
+  {{#each TotalPaginas}}
+    {{#if (not (eq ../Filtro "Id"))}}
+      {{#if (not (eq ../Filtro "Nombre"))}}
+        <a href="/FiltrosUsuarios?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark">{{this}}</a>
+      {{/if}}
+    {{/if}}
+  {{/each}}
+{{/unless}}
+
+
+{{#unless (Verdad FiltroPaginado)}}
+  {{#each TotalPaginas}}
+{{#if (eq ../Filtro "Nombre")}}
+
+<a href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark">{{this}}</a>
+    {{/if}}
+  {{/each}}
+{{/unless}}
+
+
 
 
 <style>
@@ -84,7 +106,7 @@
       border-radius: 5px;
       color: #555555;
       font-size: 16px;
-      padding: 10px;
+      padding: 10px;  
       width: 25%;
     }
     

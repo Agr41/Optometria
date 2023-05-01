@@ -1,38 +1,12 @@
-            <form method="POST" action="/RegistrarPost">
-<div class="row g-3">
-    <div class="col-sm-12">
-                  <label class="form-label">Correo institucional:</label>
-                  <input type="email" class="form-control" name="username">
-                </div>
-                <div class="col-sm-12">
-                  <label class="form-label">Contraseña:</label>
-                  <input type="password" class="form-control" name="password">
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">Nombre(s):</label>
-                  <input type="text" class="form-control" name="Nombre">
-                </div>
-
-                <div class="col-sm-4">
-                  <label class="form-label">Apellido paterno:</label>
-                  <input type="text" class="form-control" name="ApellidoPaterno">
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">Apellido materno:</label>
-                  <input type="text" class="form-control" name="ApellidoMaterno">
-                </div>
-
-<label>Role:</label>
-            <select name="role" id="role"class="role">
-                <option value="admin" >Admin</option>
-                <option value="cliente" >Cliente</option>
-            </select>
 
 
+  <% if(FiltroPaginado === true && Filtro !=="Nombre" && Filtro !== "Id"  ){ %>
 
-<button type="submit" class="btn btn-primary">Registrar usuario</button>
-</div>
+      <% for (var a = 1; a < usuarios.totalPages+1; a++) { %> <a href="/FiltrosUsuarios?page=<%=[a]%>&amp;Filtro=<%=Filtro%>" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark"><%=[a]%></a><% } %>
+      
+      <% } %> 
 
-
-
-</form>
+      <% if(FiltroPaginado === true  && Filtro ==="Nombre" || Filtro === "Id"){ %>
+          <% for (var a = 1; a < usuarios.totalPages+1; a++) { %> <a href="/FiltrosUsuarios2?page=<%=[a]%>&amp;Filtro=<%=Filtro%>&amp;consulta=<%=consulta%>" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark"><%=[a]%></a><% } %>
+      
+          <% } %> 

@@ -10,7 +10,12 @@ module.exports = async (req, res) => {
             const usuarios = await User.paginate({username:{$regex:req.body.busqueda}},{page:1,limit:50}) 
             const FiltroPaginado = true;
             const consulta = req.body.busqueda;
-            res.render('PanelUsuarios',{usuarios,Logeado, role, FiltroPaginado,Filtro,consulta})
+            var TotalPaginas = [];
+            for (i = 0; i < usuarios.totalPages; i++) {
+              TotalPaginas.push(i + 1);
+            }
+      
+            res.render('PanelUsuarios',{usuarios,Logeado, role, FiltroPaginado,Filtro,consulta,TotalPaginas})
 
         }
 
@@ -22,7 +27,12 @@ module.exports = async (req, res) => {
         if(Filtro ==="Nombre"){
             const usuarios = await User.paginate({username:{$regex:consulta}},{page,limit:50}) 
             const FiltroPaginado = true;
-            res.render('PanelUsuarios',{usuarios,Logeado, role,FiltroPaginado,Filtro,consulta})
+            var TotalPaginas = [];
+            for (i = 0; i < usuarios.totalPages; i++) {
+              TotalPaginas.push(i + 1);
+            }
+      
+            res.render('PanelUsuarios',{usuarios,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
 
         }
 

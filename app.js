@@ -32,15 +32,39 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(fileUpload());
 
-
+// HBS helpers
 hbs.registerPartials(__dirname + "/views/partials");
 
 hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
 });
+hbs.registerHelper('cliente', function(value) {
+  return value !== 'cliente';
+});
 
-hbs.registerHelper('FiltroPaginado', function(value) {
-  return value !== true;
+
+hbs.registerHelper('Falso', function(value2) {
+  return value2 !== false;
+});
+
+
+hbs.registerHelper('Verdad', function(value3) {
+  return value3 !== true;
+});
+hbs.registerHelper('eq', function(a, b) {
+  return a === b;
+});
+hbs.registerHelper('or', function() {
+  for (var i=0; i<arguments.length-1; i++) {
+    if (arguments[i]) {
+      return true;
+    }
+  }
+  return arguments[arguments.length-1];
+});
+
+hbs.registerHelper('not', function(value) {
+  return !value;
 });
 
 
@@ -56,7 +80,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 global.Logeado = null;
 global.role = null;
-
+global.Id= 'Id';
 
 app.use(require('express-session')({ secret: 'AaronGuapo', resave: true, saveUninitialized: true }));
 
@@ -71,10 +95,11 @@ app.use((req, res, next) => {
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
-    "mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test",
+  "mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test",
     { useNewUrlParser: true }
 );
 
+//mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test
 
 
 app.post('/Formulario', Formulario);
