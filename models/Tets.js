@@ -32,8 +32,6 @@ const TestSchema = new Schema({
     //Pupilas
     Izquierdo:String,
     Derecha:String,
-    Distancia:String,
-    Cerca:String,
         //<---Refraccion--->
     //Retinoscopía
     OIReni:String,
@@ -63,17 +61,16 @@ const TestSchema = new Schema({
     Pterygium:Boolean,
     Conjuntivitis:Boolean,
     Galucoma:Boolean,
-    Cataracts:Boolean,
+   
     ODExamination:Boolean,
     OSExamination:Boolean,
-    PriorSurg:Boolean,
+
     ODExamination2:Boolean,
     OSExamination2:Boolean,
     OtherExamination:String,
     //<---Optical--->
     ODOptical:String,
     OSOptical:String,
-    Notas:String
 
 
 
