@@ -15,7 +15,7 @@ const TestSchema = new Schema({
     //<---Pre-test--->
     //Condiciones
     Diabetes:Boolean,
-    PresiónAlta:Boolean,
+    PresionAlta:Boolean,
     EmbarazoOlactancia:Boolean,
     ProblemasDelCorazón:Boolean,
     Galucoma:Boolean,

@@ -1,0 +1,63 @@
+
+
+<input type ="hidden" value ="<%= title %>" name="Busqueda">
+
+<div class="popup">
+    <div class="popup-content">
+        <span class="close-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+              <path fill="#000" fill-rule="evenodd" d="M15.15 1.525a.5.5 0 01.708.708L9.707 8l6.15 6.15a.5.5 0 01-.708.708L8 8.707l-6.15 6.15a.5.5 0 01-.708-.708L7.293 8 .143 1.85a.5.5 0 01.708-.708L8 7.293l6.15-6.15z"/>
+            </svg>
+          </span>
+
+
+<br>
+
+
+
+{{#each usuarios}}
+{{this.username}}
+{{/each}}
+
+
+
+
+    </div>
+  </div>
+
+  
+
+  <!--
+       <h2><%= title %></h2>
+      <p><%= content %></p>
+  -->
+  <style>
+    .form-label{
+      width:300px;
+    }
+.custom-select {
+  appearance: none;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  color: #555555;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}
+
+.custom-select:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.custom-select option {
+  background-color: #ffffff;
+  color: #555555;
+}
+
+  </style>
+
+
+

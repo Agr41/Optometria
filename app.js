@@ -26,6 +26,7 @@ const Registrarse = require ('./routes/Registrarse')
 const RegistrarsePost = require ('./routes/RegistrarsePost')
 const FiltrosUsuarios2 = require('./routes/FiltrosUsuarios2')
 
+
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -116,13 +117,25 @@ app.get('/PanelUsuarios',PanelUsuarios)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
 app.get('/Registrarse',Registrarse)
+
 app.post('/RegistrarsePost',RegistrarsePost)
 app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
 
 
+app.get('/popup/:id',async (req, res) => {
+      const User = require('./models/Usuarios')
+      const id = req.params.id;
+      const usuarios = User.find({username:id})
 
-
-
+      const title = `${id}`;
+      const content = `This is popup ${id}`;
+      res.render('popup', { title, content,usuarios});
+  
+  
+  
+    });
+  
+   
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
