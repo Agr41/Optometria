@@ -28,7 +28,7 @@ const FiltrosUsuarios2 = require('./routes/FiltrosUsuarios2')
 const TestCliente = require('./routes/TestCliente')
 const TestActualizar = require('./routes/TestActualizar')
 const TestBorrar = require('./routes/TestBorrar')
-
+const SoloAdmin = require('./middlewares/SoloAdmin')
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -123,7 +123,7 @@ app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
 app.get('/logout',logout)
 app.use('/configuracion', configuracionRouter);
-app.get('/PanelUsuarios',PanelUsuarios)
+app.get('/PanelUsuarios',SoloAdmin,PanelUsuarios)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
 app.get('/Registrarse',Registrarse)
