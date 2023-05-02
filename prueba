@@ -1,12 +1,56 @@
+{{#each tests}}
+    Usuario: {{this.username}}<br>
+    Fecha: {{this.FechaDelTest}}<br>
+    Diabetes: {{this.Diabetes}}<br>
+    PResión alta: {{this.PresionAlta}}<br>
+    Embarazo o Lactancia: {{this.EmbarazoOlactancia}}<br>
+    Problemas del cotrazon: {{this.ProblemasDelCorazon}}
+    Galucoma: {{this.Galucoma}}<br>
+    Caratatas: {{this.Caratatas}}<br>
+    Dolor de cabeza: {{this.DolorDeCabeza}}<br>
+    Alergias: {{this.Alergias}}<br>
+    Otro: {{this.Otro}}<br>
+    Medicamentos Actuales: {{this.MedicamentosActuales}}<br>
+    AgudezaVizual<br>
+    Con lentes a distancia: {{this.ConLentesDistancia}}<br>
+    Con lentes cerca: {{this.ConLentesCerca}}<br>
+    Sin lentas a distancia: {{this.SinLentesDistancia}}<br>
+    Sin lentes cerca: {{this.SinLentesCerca}}<br>
+    Pupilas
+    Izquierdo: {{this.Izquierdo}}<br>
+    Derecho: {{this.Derecha}}<br>
+    <!--Refraccion-->
 
-
-  <% if(FiltroPaginado === true && Filtro !=="Nombre" && Filtro !== "Id"  ){ %>
-
-      <% for (var a = 1; a < usuarios.totalPages+1; a++) { %> <a href="/FiltrosUsuarios?page=<%=[a]%>&amp;Filtro=<%=Filtro%>" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark"><%=[a]%></a><% } %>
-      
-      <% } %> 
-
-      <% if(FiltroPaginado === true  && Filtro ==="Nombre" || Filtro === "Id"){ %>
-          <% for (var a = 1; a < usuarios.totalPages+1; a++) { %> <a href="/FiltrosUsuarios2?page=<%=[a]%>&amp;Filtro=<%=Filtro%>&amp;consulta=<%=consulta%>" type="submit" id="sendMessageButton" class="botonPaginacion btn-dark"><%=[a]%></a><% } %>
-      
-          <% } %> 
+    {{this.OIReni}}<br>
+    {{this.ODReni}}<br>
+    {{this.AVReni}}<br>
+    {{this.AVReni2}}<br>
+    {{this.OIExam}}<br>
+    {{this.ADExam}}<br>
+    {{this.AVExam}}<br>
+    {{this.AVExam2}}<br>
+    {{this.Observaciones}}<br>
+    {{this.Myopia}}<br>
+    {{this.Hyperopia}}<br>
+    {{this.Asigmatism}}<br>
+    {{this.Presbyopia}}<br>
+    {{this.Anisometropia}}<br>
+    {{this.Amblyopia}}<br>
+    {{this.Strabismus}}<br>
+    {{this.DiabeticRet}}<br>
+    {{this.HtnRet}}<br>
+    {{this.DryEye}}<br>
+    {{this.Pinguecula}}<br>
+    {{this.Pterygium}}<br>
+    {{this.Conjuntivitis}}<br>
+    {{this.Galucoma2}}<br>
+    {{this.Cataracts}}<br>
+    {{this.ODExamination}}<br>
+    {{this.OSExamination}}<br>
+    {{this.PriorSurg}}<br>
+    {{this.ODExamination2}}<br>
+    {{this.OSExamination2}}<br>
+    {{this.OtherExamination}}<br>
+    {{this.ODOptical}}<br>
+    {{this.OSOptical}}<br>
+{{/each}}

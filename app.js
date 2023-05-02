@@ -25,6 +25,9 @@ const Borrar = require ('./routes/Borrar')
 const Registrarse = require ('./routes/Registrarse')
 const RegistrarsePost = require ('./routes/RegistrarsePost')
 const FiltrosUsuarios2 = require('./routes/FiltrosUsuarios2')
+const TestCliente = require('./routes/TestCliente')
+const TestActualizar = require('./routes/TestActualizar')
+const TestBorrar = require('./routes/TestBorrar')
 
 
 var app = express();
@@ -66,7 +69,14 @@ hbs.registerHelper('or', function() {
 hbs.registerHelper('not', function(value) {
   return !value;
 });
+hbs.registerHelper('dateFormat', function(date) {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(date).toLocaleDateString('en-US', options);
+});
 
+hbs.registerHelper('isChecked', function(value) {
+  return value ? 'checked' : '';
+});
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -117,19 +127,28 @@ app.get('/PanelUsuarios',PanelUsuarios)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
 app.get('/Registrarse',Registrarse)
-
+app.get('/TestCliente/:id',TestCliente)
 app.post('/RegistrarsePost',RegistrarsePost)
 app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
-
+app.post('/TestActualizar',TestActualizar)
+app.use('/TestBorrar', TestBorrar)
 
 app.get('/popup/:id',async (req, res) => {
       const User = require('./models/Usuarios')
-      const id = req.params.id;
-      const usuarios = User.find({username:id})
+      const Tests= require('./models/Tets')
 
+      const id = req.params.id;
+      const usuarios = await User.find({username:id})
+      const tests= await Tests.find({username:id})
+      //console.log(tests)
+      var Numero = [];
+      for (i = 0; i < tests.length; i++) {
+        Numero.push(i + 1);
+      }
+      //console.log(Numero)
       const title = `${id}`;
       const content = `This is popup ${id}`;
-      res.render('popup', { title, content,usuarios});
+      res.render('popup', { title, content,usuarios,tests,Numero});
   
   
   

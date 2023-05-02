@@ -12,12 +12,13 @@ const TestSchema = new Schema({
     Ocupación:String,
     FechaNacimiento:String,
     País:String,
+    FechaDelTest:Date,
     //<---Pre-test--->
     //Condiciones
     Diabetes:Boolean,
     PresionAlta:Boolean,
     EmbarazoOlactancia:Boolean,
-    ProblemasDelCorazón:Boolean,
+    ProblemasDelCorazon:Boolean,
     Galucoma:Boolean,
     Caratatas:Boolean,
     DolorDeCabeza:Boolean,
@@ -60,11 +61,11 @@ const TestSchema = new Schema({
     Pinguecula:Boolean,
     Pterygium:Boolean,
     Conjuntivitis:Boolean,
-    Galucoma:Boolean,
-   
+    Galucoma2:Boolean,
+    Cataracts:Boolean,
     ODExamination:Boolean,
     OSExamination:Boolean,
-
+    PriorSurg:Boolean,
     ODExamination2:Boolean,
     OSExamination2:Boolean,
     OtherExamination:String,
@@ -76,7 +77,7 @@ const TestSchema = new Schema({
 
 });
 
-userSchema.plugin(mongoosePaginate);
+TestSchema.plugin(mongoosePaginate);
 
 // -------------- MODEL -------------- //
 const Test = mongoose.model("Test", TestSchema);

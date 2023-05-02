@@ -1,4 +1,6 @@
-{{> navbar}}
+{{>navbar}}
+
+
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
@@ -9,8 +11,9 @@
     <div class="modal-content rounded-4 shadow">
       <div class="modal-body p-5 border border-2 border-dark rounded">
         <div class="container">
-          <form action="/Formulario" method="POST">
-
+          <form action="/TestActualizar" method="POST">
+<input type="hidden" value="{{Fecha}}" name="ValorBusqueda">
+<input type="hidden" value="{{id}}" name="UsuarioBusqueda">
 
                         <div class="accordion" id="accordionExample">
 
@@ -24,30 +27,19 @@
                   <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-<button type="button" onclick="openPopup()">Nombre del paciente:</button>
 
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <input type="text" id="searchInput" placeholder="Search...">
-    {{#each usuarios}}
-      <p>{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} <input type="hidden" value="{{this.username}}" id="username"><button type="button" onclick="displayUsername(this)">Agregar</button></p>
-      <br>
-    {{/each}}
-  </div>
-</div>
-<br>
-<p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-<input type="hidden" id="usernameValueDisplay" style="display:none;" name="username">
+{{#each usuarios}}
+Correo: {{this.username}}<br>
+Nombre: {{this.Nombre}}  {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} 
 
-<button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">Cancelar</button>
-
+{{/each}}
 
                     </div>
                   </div>
                 </div>
 
 
+{{#each tests}}
 
             <div class="row g-3">
               <div class="accordion" id="accordionExample">
@@ -65,50 +57,53 @@
                         <label class="form-label">CONDICIONES:</label><br>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="Diabetes"> Diabetes
+                            <!--<input class="form-check-input mt-0" type="checkbox" value="{{this.Diabetes}}" aria-label="Checkbox for following text input" name="Diabetes" id="myCheckbox"> Diabetes-->
+<input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="Diabetes" id="myCheckbox" {{isChecked this.Diabetes}}> Diabetes
+
+
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="PresionAlta"> Presión alta
+                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value=true
+                              aria-label="Checkbox for following text input" name="PresionAlta" {{isChecked this.PresionAlta}}> Presión alta
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="EmbarazoOlactancia"> Embarazo/lactancia
+                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                              aria-label="Checkbox for following text input" name="EmbarazoOlactancia" {{isChecked this.EmbarazoOlactancia}}> Embarazo/lactancia
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="ProblemasDelCorazon"> Problemas del corazón
+                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                              aria-label="Checkbox for following text input" name="ProblemasDelCorazon" {{isChecked this.ProblemasDelCorazon}}> Problemas del corazón
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Galucoma"> Galucoma
+                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                              aria-label="Checkbox for following text input" name="Galucoma" {{isChecked this.Galucoma}}> Galucoma
                           </div>
 
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Caratatas"> Caratatas
+                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                              aria-label="Checkbox for following text input" name="Caratatas" {{isChecked this.Caratatas}}> Caratatas
                           </div>
 
                         </div>
 
                         <div class="input-group mb-3">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="DolorDeCabeza"> Dolor de cabeza
+                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                              aria-label="Checkbox for following text input" name="DolorDeCabeza" {{isChecked this.DolorDeCabeza}}> Dolor de cabeza
                           </div>
 
                         </div>
@@ -121,8 +116,8 @@
                               -->
                             Alergia a medicamentos
                           </div>
-                          <input type="text" class="form-control" aria-label="Text input with checkbox"
-                            name="Alergias" placeholder="¿Cuáles?">
+                          <input  type="text" class="form-control" aria-label="Text input with checkbox"
+                            name="Alergias" placeholder="¿Cuáles?" value="{{this.Alergias}}">
                         </div>
                         <div class="input-group mb-3">
                           <div class="input-group-text">
@@ -132,14 +127,14 @@
                               -->
                             Otro
                           </div>
-                          <input type="text" class="form-control" aria-label="Text input with checkbox"  name="Otro"
-                            placeholder="Especifíque">
+                          <input type="text" class="form-control" aria-label="Text input with checkbox" value="{{this.Otro}}" name="Otro"
+                            placeholder="Especifíque" >
                         </div>
                       </div>
 
 
                       <label for="medicamentos">MEDICAMENTOS ACTUALES</label><br>
-                      <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales">
+                      <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales" value="{{this.MedicamentosActuales}}">
                       <br>
                       <label for="">AGUDEZA VISUAL</label>
                       <table class="table table-striped-columns">
@@ -149,12 +144,12 @@
                           <th>Cerca</th>
                         </tr>
                         <td>Con lentes</td>
-                        <td>20/ <input type="text" name="ConLentesDistancia" id="" class="form-control"></td>
-                        <td>20/ <input type="text" name="ConLentesCerca" id="" class="form-control"></td>
+                        <td>20/ <input type="text" name="ConLentesDistancia" value="{{this.ConLentesDistancia}}"id="" class="form-control"></td>
+                        <td>20/ <input type="text" name="ConLentesCerca" id="" value="{{this.ConLentesCerca}}"class="form-control"></td>
                         <tr></tr>
                         <td>Sin lentes</td>
-                        <td>20/ <input type="text" class="form-control" name="SinLentesDistancia"></td>
-                        <td>20/ <input type="text" class="form-control" name="SinLentesCerca" id=""></td>
+                        <td>20/ <input type="text" class="form-control" name="SinLentesDistancia" value="{{this.SinLentesDistancia}}"></td>
+                        <td>20/ <input type="text" class="form-control" name="SinLentesCerca" value="{{this.SinLentesCerca}}" id=""></td>
                       </table>
                       <label for="">PUPILAS</label><br>
 
@@ -162,13 +157,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">Izquierdo</label>
-                              <input type="text" class="form-control" name="Izquierdo">
+                              <input type="text" class="form-control" name="Izquierdo" value="{{this.Izquierdo}}">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">Derecho</label><input type="text" class="form-control" name="Derecha" id="">
+                              <label for="">Derecho</label><input type="text" class="form-control" name="Derecha" value="{{this.Derecha}}"id="">
                             </td>
                           </div>
                         </div>
@@ -227,13 +222,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">OI</label>
-                              <input type="text" class="form-control" name="OIReni">
+                              <input type="text" class="form-control" name="OIReni" value="{{this.OIReni}}">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">OD</label><input type="text" class="form-control" name="ODReni" id="">
+                              <label for="">OD</label><input type="text" class="form-control" name="ODReni" value="{{this.ODReni}}" id="">
                             </td>
                           </div>
                         </div>
@@ -243,13 +238,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">AV</label>
-                              <input type="text" class="form-control" name="AVReni">
+                              <input type="text" class="form-control" name="AVReni" value="{{this.AVReni}}">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">AV</label><input type="text" class="form-control" name="AVReni2" id="">
+                              <label for="">AV</label><input type="text" class="form-control" name="AVReni2" value="{{this.AVReni2}}" id="">
                             </td>
                           </div>
                         </div>
@@ -261,13 +256,13 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">OI</label>
-                              <input type="text" class="form-control" name="OIExam">
+                              <input type="text" class="form-control" name="OIExam" value="{{this.OIExam}}">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="">
+                              <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="" value="{{this.ADExam}}">
                             </td>
                           </div>
                         </div>
@@ -277,19 +272,19 @@
                         <div class="row align-items-start">
                           <div class="col col-5">
                             <td><label for="">AV</label>
-                              <input type="text" class="form-control" name="AVExam">
+                              <input type="text" class="form-control" name="AVExam" value="{{this.AVExam}}">
                             </td>
                           </div>
                           <div class="col col-5">
 
                             <td>
-                              <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id="">
+                              <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id=""  value="{{this.AVExam2}}">
                             </td>
                           </div>
                         </div>
                       </div>
                       <label for="">Observaciones</label>
-                      <input type="text" class="form-control" name="Observaciones">
+                      <input type="text" class="form-control" name="Observaciones" value="{{this.Observaciones}}"> 
                     </div>
                   </div>
                 </div>
@@ -303,28 +298,28 @@
                   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                     <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Myopia</label><br>
-                     <input type="checkbox" name="Hyperopia" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Hyperopia</label><br>
-                     <input type="checkbox" name="Asigmatism" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Asigmatism</label><br>
-                     <input type="checkbox" name="Presbyopia" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Presbyopia</label><br>
-                     <input type="checkbox" name="Anisometropia" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Anisometropia</label><br>
-                     <input type="checkbox" name="Amblyopia" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Amblyopia</label><br>
-                     <input type="checkbox" name="Strabismus" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Strabismus</label><br>
-                     <input type="checkbox" name="DiabeticRet" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Diabetic Ret</label><br>
-                     <input type="checkbox" name="HtnRet" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Htn Ret</label><br>
-                     <input type="checkbox" name="DryEye" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Dry Eye</label><br>
-                     <input type="checkbox" name="Pinguecula" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Pinguecula</label><br>
-                     <input type="checkbox" name="Pterygium" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Pterygium</label><br>
-                     <input type="checkbox" name="Conjuntivitis" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Conjuntivitis</label><br>
-                     <input type="checkbox" name="Galucoma2" id="" class="form-check-input mt-0" value="true"> <label class="form-label" for="">Galucoma</label><br>
-                     <input type="checkbox" name="Cataracts" for="" class="form-check-input mt-0"  value="true"><label for="">Cataracts</label><br>
-                     <input type="checkbox" name="ODExamination" id=""class="form-check-input mt-0" value="true"><label for="">OD</label><br>
-                     <input type="checkbox" name="OSExamination" id=""class="form-check-input mt-0" value="true"><label for="">OS</label><br>
-                     <input type="checkbox" for="" name="PriorSurg" value="true" class="form-check-input mt-0"><label for="">Prior Surg</label><br>
-                     <input type="checkbox" name="ODExamination2" id=""class="form-check-input mt-0" value="true"><label for="">OD</label><br>
-                     <input type="checkbox" name="OSExamination2" id=""class="form-check-input mt-0" value="true"><label for="">OS</label><br>
+                     <input type="checkbox" name="Myopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Myopia}}> <label class="form-label" for="">Myopia</label><br>
+                     <input type="checkbox" name="Hyperopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Hyperopia}}> <label class="form-label" for="">Hyperopia</label><br>
+                     <input type="checkbox" name="Asigmatism" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Asigmatism}}> <label class="form-label" for="">Asigmatism</label><br>
+                     <input type="checkbox" name="Presbyopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Presbyopia}}> <label class="form-label" for="">Presbyopia</label><br>
+                     <input type="checkbox" name="Anisometropia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Anisometropia}}> <label class="form-label" for="">Anisometropia</label><br>
+                     <input type="checkbox" name="Amblyopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Amblyopia}}> <label class="form-label" for="">Amblyopia</label><br>
+                     <input type="checkbox" name="Strabismus" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Strabismus}}> <label class="form-label" for="">Strabismus</label><br>
+                     <input type="checkbox" name="DiabeticRet" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.DiabeticRet}}> <label class="form-label" for="">Diabetic Ret</label><br>
+                     <input type="checkbox" name="HtnRet" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.HtnRet}}> <label class="form-label" for="">Htn Ret</label><br>
+                     <input type="checkbox" name="DryEye" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.DryEye}}> <label class="form-label" for="">Dry Eye</label><br>
+                     <input type="checkbox" name="Pinguecula" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Pinguecula}}> <label class="form-label" for="">Pinguecula</label><br>
+                     <input type="checkbox" name="Pterygium" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Pterygium}}> <label class="form-label" for="">Pterygium</label><br>
+                     <input type="checkbox" name="Conjuntivitis" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Conjuntivitis}}> <label class="form-label" for="">Conjuntivitis</label><br>
+                     <input type="checkbox" name="Galucoma2" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Galucoma2}}> <label class="form-label" for="">Galucoma</label><br>
+                     <input type="checkbox" name="Cataracts" for="myCheckbox" class="form-check-input mt-0"  value="true" {{isChecked this.Cataracts}}><label for="">Cataracts</label><br>
+                     <input type="checkbox" name="ODExamination" id="myCheckbox"class="form-check-input mt-0" value="true" {{isChecked this.ODExamination}}><label for="">OD</label><br>
+                     <input type="checkbox" name="OSExamination" id="myCheckbox"class="form-check-input mt-0" value="true"{{isChecked this.OSExamination}}><label for="">OS</label><br>
+                     <input type="checkbox" for="" name="PriorSurg" id="myCheckbox"value="true" class="form-check-input mt-0" {{isChecked this.PriorSurg}}><label for="">Prior Surg</label><br>
+                     <input type="checkbox" name="ODExamination2" id="myCheckbox"class="form-check-input mt-0" value="true" {{isChecked this.ODExamination2}}><label for="">OD</label><br>
+                     <input type="checkbox" name="OSExamination2" id="myCheckbox"class="form-check-input mt-0" value="true"{{isChecked this.OSExamination2}}><label for="">OS</label><br>
 
-                    <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other" class="form-control"></textarea>
+                    <textarea name="OtherExamination" value="{{this.OtherExamination}}" cols="30" rows="5" placeholder="Other" class="form-control">{{this.OtherExamination}}</textarea>
 
                     
                     </div>
@@ -341,13 +336,15 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                       <label>Primary Pair Recommended Eyeglass Rx</label><br>
-                      <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" id=""><br>
-                      <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" id="">
+                      <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" value="{{this.ODOptical}}" id=""><br>
+                      <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" value="{{this.OSOptical}}"id="">
                     </div>
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Guardar datos</button>
+              <button type="submit" class="btn btn-primary">Actualizar</button>
+               <a href="/TestBorrar?Usuario={{../id}}&amp;Fecha={{../Fecha}}">Eliminar</a>
+              
             </div>
 
 
@@ -360,6 +357,7 @@
   </main>
 
 </div>
+{{/each}}
 
 <style>
 
@@ -436,8 +434,11 @@
     background-color: #45a049;
   }
 </style>
-
 <script>
+
+
+
+
   function openPopup() {
   document.getElementById("popup").style.display = "block";
 }
@@ -496,4 +497,4 @@ function hideUsernameDisplay() {
 </script>
 
 
-{{> footer}}
+{{>footer}}
