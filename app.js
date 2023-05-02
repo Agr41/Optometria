@@ -41,8 +41,8 @@ hbs.registerPartials(__dirname + "/views/partials");
 hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
 });
-hbs.registerHelper('cliente', function(value) {
-  return value !== 'cliente';
+hbs.registerHelper('alumno', function(value) {
+  return value !== 'alumno';
 });
 
 
@@ -123,10 +123,10 @@ app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
 app.get('/logout',logout)
 app.use('/configuracion', configuracionRouter);
-app.get('/PanelUsuarios',SoloAdmin,PanelUsuarios)
+app.get('/PanelUsuarios',PanelUsuarios)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
-app.get('/Registrarse',Registrarse)
+app.get('/Registrarse',SoloAdmin,Registrarse)
 app.get('/TestCliente/:id',TestCliente)
 app.post('/RegistrarsePost',RegistrarsePost)
 app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
