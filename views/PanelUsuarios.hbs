@@ -6,30 +6,36 @@
 
   <body class="text-center">
     <br>
-    <div class="center">
+    
       Filtrar por rol:
       <form method="POST" action="/FiltrosUsuarios">
-        <select name="role" id="FiltroHistorial" class="custom-select2">
-          <option value="admin"> Admin</option>
-          <option value="cliente">Cliente</option>
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <select name="role" id="FiltroHistorial" class="form-select">
+            <option value="admin"> Administrador</option>
+            <option value="cliente">Cliente</option>
 
-        </select>
-        <button type="submit" class="btn btn-info btn-sm">Filtrar</button>
-        <br>
+          </select>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-info">Filtrar</button>
+        </div>
+        </div>
+        
       </form>
-    </div>
+    
     <br>
 
     <form method="post" action="/FiltrosUsuarios2">
       <div class="row justify-content-center">
-        <div class="col-2">
+        <div class="col-3">
           <select name="Tipo" id="FiltroHistorial2" class="form-select">
             <option value="Nombre">Nombre de usuario</option>
 
           </select>
         </div>
 
-        <div class="col-2">
+        <div class="col-4">
           <input type="text" name="busqueda" class="form-control" placeholder="Inserte los datos que desea filtrar">
         </div>
       </div>

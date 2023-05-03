@@ -12,340 +12,393 @@
       <div class="modal-body p-5 border border-2 border-dark rounded">
         <div class="container">
           <form action="/TestActualizar" method="POST">
-<input type="hidden" value="{{Fecha}}" name="ValorBusqueda">
-<input type="hidden" value="{{id}}" name="UsuarioBusqueda">
+            <input type="hidden" value="{{Fecha}}" name="ValorBusqueda">
+            <input type="hidden" value="{{id}}" name="UsuarioBusqueda">
 
-                        <div class="accordion" id="accordionExample">
+            <div class="accordion" id="accordionExample">
 
-                  <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingSix">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                      Paciente
-                    </button>
-                  </h2>
-                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                    aria-expanded="true" aria-controls="collapseSix">
+                    Paciente
+                  </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
 
-{{#each usuarios}}
-Correo: {{this.username}}<br>
-Nombre: {{this.Nombre}}  {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} 
+                    {{#each usuarios}}
+                    Correo: {{this.username}}<br>
+                    Nombre: {{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}
 
-{{/each}}
+                    {{/each}}
 
-                    </div>
-                  </div>
-                </div>
-
-
-{{#each tests}}
-
-            <div class="row g-3">
-              <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Pre-test
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <div class="col-sm-8">
-                        <label class="form-label">CONDICIONES:</label><br>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <!--<input class="form-check-input mt-0" type="checkbox" value="{{this.Diabetes}}" aria-label="Checkbox for following text input" name="Diabetes" id="myCheckbox"> Diabetes-->
-<input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="Diabetes" id="myCheckbox" {{isChecked this.Diabetes}}> Diabetes
-
-
-                          </div>
-
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value=true
-                              aria-label="Checkbox for following text input" name="PresionAlta" {{isChecked this.PresionAlta}}> Presión alta
-                          </div>
-
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="EmbarazoOlactancia" {{isChecked this.EmbarazoOlactancia}}> Embarazo/lactancia
-                          </div>
-
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="ProblemasDelCorazon" {{isChecked this.ProblemasDelCorazon}}> Problemas del corazón
-                          </div>
-
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Galucoma" {{isChecked this.Galucoma}}> Galucoma
-                          </div>
-
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Caratatas" {{isChecked this.Caratatas}}> Caratatas
-                          </div>
-
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="DolorDeCabeza" {{isChecked this.DolorDeCabeza}}> Dolor de cabeza
-                          </div>
-
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <!--
-                            <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input" name="Alergias">
-                              -->
-                            Alergia a medicamentos
-                          </div>
-                          <input  type="text" class="form-control" aria-label="Text input with checkbox"
-                            name="Alergias" placeholder="¿Cuáles?" value="{{this.Alergias}}">
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-text">
-                            <!--
-                            <input class="form-check-input mt-0" type="checkbox" value=""
-                              aria-label="Checkbox for following text input">
-                              -->
-                            Otro
-                          </div>
-                          <input type="text" class="form-control" aria-label="Text input with checkbox" value="{{this.Otro}}" name="Otro"
-                            placeholder="Especifíque" >
-                        </div>
-                      </div>
-
-
-                      <label for="medicamentos">MEDICAMENTOS ACTUALES</label><br>
-                      <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales" value="{{this.MedicamentosActuales}}">
-                      <br>
-                      <label for="">AGUDEZA VISUAL</label>
-                      <table class="table table-striped-columns">
-                        <tr>
-                          <th></th>
-                          <th>Distancia</th>
-                          <th>Cerca</th>
-                        </tr>
-                        <td>Con lentes</td>
-                        <td>20/ <input type="text" name="ConLentesDistancia" value="{{this.ConLentesDistancia}}"id="" class="form-control"></td>
-                        <td>20/ <input type="text" name="ConLentesCerca" id="" value="{{this.ConLentesCerca}}"class="form-control"></td>
-                        <tr></tr>
-                        <td>Sin lentes</td>
-                        <td>20/ <input type="text" class="form-control" name="SinLentesDistancia" value="{{this.SinLentesDistancia}}"></td>
-                        <td>20/ <input type="text" class="form-control" name="SinLentesCerca" value="{{this.SinLentesCerca}}" id=""></td>
-                      </table>
-                      <label for="">PUPILAS</label><br>
-
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-                            <td><label for="">Izquierdo</label>
-                              <input type="text" class="form-control" name="Izquierdo" value="{{this.Izquierdo}}">
-                            </td>
-                          </div>
-                          <div class="col col-5">
-
-                            <td>
-                              <label for="">Derecho</label><input type="text" class="form-control" name="Derecha" value="{{this.Derecha}}"id="">
-                            </td>
-                          </div>
-                        </div>
-                      </div>
-
-                      <br>
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col">
-                            <label for="">Distancia</label>
-                          </div>
-                          <div class="w-100 d-none d-md-block"></div>
-                          <div class="col-sm-2">
-                            <input type="radio" name="" id=""> <label for="">Ortho</label>
-                          </div>
-                          <div class="col-sm-2">
-                            <input type="radio" name="" id=""> <label for="">Eso</label>
-                          </div>
-                          <div class="col-sm-2">
-                            <input type="radio" name="" id=""> <label for="">Exo</label>
-                          </div>
-                          <br> <br>
-                          <div class="w-100 d-none d-md-block"></div>
-                          <div class="col">
-                            <label for="">Cerca</label>
-                          </div>
-                          <div class="w-100 d-none d-md-block"></div>
-                          <div class="col-sm-2">
-                            <input type="radio"> <label for="">Ortho</label>
-                          </div>
-                          <div class="col-sm-2">
-                            <input type="radio"> <label for="">Eso</label>
-                          </div>
-                          <div class="col-sm-2">
-                            <input type="radio"> <label for="">Exo</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Refracción
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <label for=""> RETINOSCOPÍA</label><BR></BR>
-                      <label for=""></label>
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-                            <td><label for="">OI</label>
-                              <input type="text" class="form-control" name="OIReni" value="{{this.OIReni}}">
-                            </td>
-                          </div>
-                          <div class="col col-5">
-
-                            <td>
-                              <label for="">OD</label><input type="text" class="form-control" name="ODReni" value="{{this.ODReni}}" id="">
-                            </td>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-                            <td><label for="">AV</label>
-                              <input type="text" class="form-control" name="AVReni" value="{{this.AVReni}}">
-                            </td>
-                          </div>
-                          <div class="col col-5">
-
-                            <td>
-                              <label for="">AV</label><input type="text" class="form-control" name="AVReni2" value="{{this.AVReni2}}" id="">
-                            </td>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <label for="">EXAMEN SUBJETIVO</label>
-                      <br>
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-                            <td><label for="">OI</label>
-                              <input type="text" class="form-control" name="OIExam" value="{{this.OIExam}}">
-                            </td>
-                          </div>
-                          <div class="col col-5">
-
-                            <td>
-                              <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="" value="{{this.ADExam}}">
-                            </td>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-                            <td><label for="">AV</label>
-                              <input type="text" class="form-control" name="AVExam" value="{{this.AVExam}}">
-                            </td>
-                          </div>
-                          <div class="col col-5">
-
-                            <td>
-                              <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id=""  value="{{this.AVExam2}}">
-                            </td>
-                          </div>
-                        </div>
-                      </div>
-                      <label for="">Observaciones</label>
-                      <input type="text" class="form-control" name="Observaciones" value="{{this.Observaciones}}"> 
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Examination
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                     <input type="checkbox" name="Myopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Myopia}}> <label class="form-label" for="">Myopia</label><br>
-                     <input type="checkbox" name="Hyperopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Hyperopia}}> <label class="form-label" for="">Hyperopia</label><br>
-                     <input type="checkbox" name="Asigmatism" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Asigmatism}}> <label class="form-label" for="">Asigmatism</label><br>
-                     <input type="checkbox" name="Presbyopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Presbyopia}}> <label class="form-label" for="">Presbyopia</label><br>
-                     <input type="checkbox" name="Anisometropia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Anisometropia}}> <label class="form-label" for="">Anisometropia</label><br>
-                     <input type="checkbox" name="Amblyopia" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Amblyopia}}> <label class="form-label" for="">Amblyopia</label><br>
-                     <input type="checkbox" name="Strabismus" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Strabismus}}> <label class="form-label" for="">Strabismus</label><br>
-                     <input type="checkbox" name="DiabeticRet" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.DiabeticRet}}> <label class="form-label" for="">Diabetic Ret</label><br>
-                     <input type="checkbox" name="HtnRet" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.HtnRet}}> <label class="form-label" for="">Htn Ret</label><br>
-                     <input type="checkbox" name="DryEye" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.DryEye}}> <label class="form-label" for="">Dry Eye</label><br>
-                     <input type="checkbox" name="Pinguecula" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Pinguecula}}> <label class="form-label" for="">Pinguecula</label><br>
-                     <input type="checkbox" name="Pterygium" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Pterygium}}> <label class="form-label" for="">Pterygium</label><br>
-                     <input type="checkbox" name="Conjuntivitis" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Conjuntivitis}}> <label class="form-label" for="">Conjuntivitis</label><br>
-                     <input type="checkbox" name="Galucoma2" id="myCheckbox" class="form-check-input mt-0" value="true" {{isChecked this.Galucoma2}}> <label class="form-label" for="">Galucoma</label><br>
-                     <input type="checkbox" name="Cataracts" for="myCheckbox" class="form-check-input mt-0"  value="true" {{isChecked this.Cataracts}}><label for="">Cataracts</label><br>
-                     <input type="checkbox" name="ODExamination" id="myCheckbox"class="form-check-input mt-0" value="true" {{isChecked this.ODExamination}}><label for="">OD</label><br>
-                     <input type="checkbox" name="OSExamination" id="myCheckbox"class="form-check-input mt-0" value="true"{{isChecked this.OSExamination}}><label for="">OS</label><br>
-                     <input type="checkbox" for="" name="PriorSurg" id="myCheckbox"value="true" class="form-check-input mt-0" {{isChecked this.PriorSurg}}><label for="">Prior Surg</label><br>
-                     <input type="checkbox" name="ODExamination2" id="myCheckbox"class="form-check-input mt-0" value="true" {{isChecked this.ODExamination2}}><label for="">OD</label><br>
-                     <input type="checkbox" name="OSExamination2" id="myCheckbox"class="form-check-input mt-0" value="true"{{isChecked this.OSExamination2}}><label for="">OS</label><br>
-
-                    <textarea name="OtherExamination" value="{{this.OtherExamination}}" cols="30" rows="5" placeholder="Other" class="form-control">{{this.OtherExamination}}</textarea>
-
-                    
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                      Optical
-                    </button>
-                  </h2>
-                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <label>Primary Pair Recommended Eyeglass Rx</label><br>
-                      <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" value="{{this.ODOptical}}" id=""><br>
-                      <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" value="{{this.OSOptical}}"id="">
-                    </div>
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Actualizar</button>
-               <a href="/TestBorrar?Usuario={{../id}}&amp;Fecha={{../Fecha}}">Eliminar</a>
-              
-            </div>
+
+
+              {{#each tests}}
+
+              <div class="row g-3">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Pre-test
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <div class="col-sm-8">
+                          <label class="form-label">CONDICIONES:</label><br>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <!--<input class="form-check-input mt-0" type="checkbox" value="{{this.Diabetes}}" aria-label="Checkbox for following text input" name="Diabetes" id="myCheckbox"> Diabetes-->
+                              <input class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="Diabetes" id="myCheckbox"
+                                {{isChecked this.Diabetes}}> Diabetes
+
+
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value=true
+                                aria-label="Checkbox for following text input" name="PresionAlta" {{isChecked
+                                this.PresionAlta}}> Presión alta
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="EmbarazoOlactancia" {{isChecked
+                                this.EmbarazoOlactancia}}> Embarazo/lactancia
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="ProblemasDelCorazon" {{isChecked
+                                this.ProblemasDelCorazon}}> Problemas del corazón
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="Galucoma" {{isChecked
+                                this.Galucoma}}> Galucoma
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="Caratatas" {{isChecked
+                                this.Caratatas}}> Caratatas
+                            </div>
+
+                          </div>
+
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="DolorDeCabeza" {{isChecked
+                                this.DolorDeCabeza}}> Dolor de cabeza
+                            </div>
+
+                          </div>
+
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <!--
+                            <input class="form-check-input mt-0" type="checkbox" value=""
+                              aria-label="Checkbox for following text input" name="Alergias">
+                              -->
+                              Alergia a medicamentos
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with checkbox"
+                              name="Alergias" placeholder="¿Cuáles?" value="{{this.Alergias}}">
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <!--
+                            <input class="form-check-input mt-0" type="checkbox" value=""
+                              aria-label="Checkbox for following text input">
+                              -->
+                              Otro
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with checkbox"
+                              value="{{this.Otro}}" name="Otro" placeholder="Especifíque">
+                          </div>
+                        </div>
+
+
+                        <label for="medicamentos">MEDICAMENTOS ACTUALES</label><br>
+                        <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales"
+                          value="{{this.MedicamentosActuales}}">
+                        <br>
+                        <label for="">AGUDEZA VISUAL</label>
+                        <table class="table table-striped-columns">
+                          <tr>
+                            <th></th>
+                            <th>Distancia</th>
+                            <th>Cerca</th>
+                          </tr>
+                          <td>Con lentes</td>
+                          <td>20/ <input type="text" name="ConLentesDistancia" value="{{this.ConLentesDistancia}}" id=""
+                              class="form-control"></td>
+                          <td>20/ <input type="text" name="ConLentesCerca" id="" value="{{this.ConLentesCerca}}"
+                              class="form-control"></td>
+                          <tr></tr>
+                          <td>Sin lentes</td>
+                          <td>20/ <input type="text" class="form-control" name="SinLentesDistancia"
+                              value="{{this.SinLentesDistancia}}"></td>
+                          <td>20/ <input type="text" class="form-control" name="SinLentesCerca"
+                              value="{{this.SinLentesCerca}}" id=""></td>
+                        </table>
+                        <label for="">PUPILAS</label><br>
+
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">Izquierdo</label>
+                                <input type="text" class="form-control" name="Izquierdo" value="{{this.Izquierdo}}">
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">Derecho</label><input type="text" class="form-control" name="Derecha"
+                                  value="{{this.Derecha}}" id="">
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col">
+                              <label for="">Distancia</label>
+                            </div>
+                            <div class="w-100 d-none d-md-block"></div>
+                            <div class="col-sm-2">
+                              <input type="radio" name="" id=""> <label for="">Ortho</label>
+                            </div>
+                            <div class="col-sm-2">
+                              <input type="radio" name="" id=""> <label for="">Eso</label>
+                            </div>
+                            <div class="col-sm-2">
+                              <input type="radio" name="" id=""> <label for="">Exo</label>
+                            </div>
+                            <br> <br>
+                            <div class="w-100 d-none d-md-block"></div>
+                            <div class="col">
+                              <label for="">Cerca</label>
+                            </div>
+                            <div class="w-100 d-none d-md-block"></div>
+                            <div class="col-sm-2">
+                              <input type="radio"> <label for="">Ortho</label>
+                            </div>
+                            <div class="col-sm-2">
+                              <input type="radio"> <label for="">Eso</label>
+                            </div>
+                            <div class="col-sm-2">
+                              <input type="radio"> <label for="">Exo</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Refracción
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <label for=""> RETINOSCOPÍA</label><BR></BR>
+                        <label for=""></label>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">OI</label>
+                                <input type="text" class="form-control" name="OIReni" value="{{this.OIReni}}">
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">OD</label><input type="text" class="form-control" name="ODReni"
+                                  value="{{this.ODReni}}" id="">
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">AV</label>
+                                <input type="text" class="form-control" name="AVReni" value="{{this.AVReni}}">
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">AV</label><input type="text" class="form-control" name="AVReni2"
+                                  value="{{this.AVReni2}}" id="">
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <label for="">EXAMEN SUBJETIVO</label>
+                        <br>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">OI</label>
+                                <input type="text" class="form-control" name="OIExam" value="{{this.OIExam}}">
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">AD</label><input type="text" class="form-control" name="ADExam" id=""
+                                  value="{{this.ADExam}}">
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">AV</label>
+                                <input type="text" class="form-control" name="AVExam" value="{{this.AVExam}}">
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id=""
+                                  value="{{this.AVExam2}}">
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+                        <label for="">Observaciones</label>
+                        <input type="text" class="form-control" name="Observaciones" value="{{this.Observaciones}}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Examination
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <input type="checkbox" name="Myopia" id="myCheckbox" class="form-check-input mt-0" value="true"
+                          {{isChecked this.Myopia}}> <label class="form-label" for="">Myopia</label><br>
+                        <input type="checkbox" name="Hyperopia" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Hyperopia}}> <label class="form-label"
+                          for="">Hyperopia</label><br>
+                        <input type="checkbox" name="Asigmatism" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Asigmatism}}> <label class="form-label"
+                          for="">Asigmatism</label><br>
+                        <input type="checkbox" name="Presbyopia" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Presbyopia}}> <label class="form-label"
+                          for="">Presbyopia</label><br>
+                        <input type="checkbox" name="Anisometropia" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Anisometropia}}> <label class="form-label"
+                          for="">Anisometropia</label><br>
+                        <input type="checkbox" name="Amblyopia" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Amblyopia}}> <label class="form-label"
+                          for="">Amblyopia</label><br>
+                        <input type="checkbox" name="Strabismus" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Strabismus}}> <label class="form-label"
+                          for="">Strabismus</label><br>
+                        <input type="checkbox" name="DiabeticRet" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.DiabeticRet}}> <label class="form-label" for="">Diabetic
+                          Ret</label><br>
+                        <input type="checkbox" name="HtnRet" id="myCheckbox" class="form-check-input mt-0" value="true"
+                          {{isChecked this.HtnRet}}> <label class="form-label" for="">Htn Ret</label><br>
+                        <input type="checkbox" name="DryEye" id="myCheckbox" class="form-check-input mt-0" value="true"
+                          {{isChecked this.DryEye}}> <label class="form-label" for="">Dry Eye</label><br>
+                        <input type="checkbox" name="Pinguecula" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Pinguecula}}> <label class="form-label"
+                          for="">Pinguecula</label><br>
+                        <input type="checkbox" name="Pterygium" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Pterygium}}> <label class="form-label"
+                          for="">Pterygium</label><br>
+                        <input type="checkbox" name="Conjuntivitis" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Conjuntivitis}}> <label class="form-label"
+                          for="">Conjuntivitis</label><br>
+                        <input type="checkbox" name="Galucoma2" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Galucoma2}}> <label class="form-label"
+                          for="">Galucoma</label><br>
+                        <input type="checkbox" name="Cataracts" for="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.Cataracts}}><label for="">Cataracts</label><br>
+                        <input type="checkbox" name="ODExamination" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.ODExamination}}><label for="">OD</label><br>
+                        <input type="checkbox" name="OSExamination" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.OSExamination}}><label for="">OS</label><br>
+                        <input type="checkbox" for="" name="PriorSurg" id="myCheckbox" value="true"
+                          class="form-check-input mt-0" {{isChecked this.PriorSurg}}><label for="">Prior
+                          Surg</label><br>
+                        <input type="checkbox" name="ODExamination2" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.ODExamination2}}><label for="">OD</label><br>
+                        <input type="checkbox" name="OSExamination2" id="myCheckbox" class="form-check-input mt-0"
+                          value="true" {{isChecked this.OSExamination2}}><label for="">OS</label><br>
+
+                        <textarea name="OtherExamination" value="{{this.OtherExamination}}" cols="30" rows="5"
+                          placeholder="Other" class="form-control">{{this.OtherExamination}}</textarea>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Optical
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <label>Primary Pair Recommended Eyeglass Rx</label><br>
+                        <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical"
+                          value="{{this.ODOptical}}" id=""><br>
+                        <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical"
+                          value="{{this.OSOptical}}" id="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="/TestBorrar?Usuario={{../id}}&amp;Fecha={{../Fecha}}">Eliminar</a>
+
+              </div>
 
 
           </form>
@@ -360,59 +413,63 @@ Nombre: {{this.Nombre}}  {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}
 {{/each}}
 
 <style>
-
   .popup {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
-.popup-content {
-  background-color: white;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
-    max-height:500px;
-  overflow-y: auto;
-}
+  .popup-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   body {
     background-color: #f2f2f2;
   }
+
   form {
     margin: 20px;
     padding: 20px;
     background-color: #d3f3cb;
     border-radius: 10px;
   }
+
   label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
   }
-  input[type=text], input[type=password] {
+
+  input[type=text],
+  input[type=password] {
     padding: 8px;
     margin-bottom: 10px;
     width: 100%;
@@ -420,6 +477,7 @@ Nombre: {{this.Nombre}}  {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}
     border-radius: 4px;
     box-sizing: border-box;
   }
+
   button[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -430,6 +488,7 @@ Nombre: {{this.Nombre}}  {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}
     font-size: 16px;
     margin-top: 10px;
   }
+
   button[type=submit]:hover {
     background-color: #45a049;
   }
@@ -440,12 +499,12 @@ Nombre: {{this.Nombre}}  {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}
 
 
   function openPopup() {
-  document.getElementById("popup").style.display = "block";
-}
+    document.getElementById("popup").style.display = "block";
+  }
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
   function filterResults() {
     // Get input value
     let inputValue = document.getElementById("searchInput").value.toLowerCase();
@@ -460,40 +519,40 @@ function closePopup() {
       }
     });
   }
-  
+
   // Attach an event listener to the search input
   document.getElementById("searchInput").addEventListener("input", filterResults);
-  
-function displayUsername(button) {
-  // Get the value of the hidden input related to the clicked button
-  let usernameValue = button.previousSibling.value;
-  // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
-  let nombreValue = button.parentNode.childNodes[0].textContent.split(" ")[0];
-  let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
-  let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
-  // Display the values inside the popup div
-  let usernameDisplayElement = document.getElementById("usernameDisplay");
-  let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
-  usernameDisplayElement.value = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`;
-  usernameDisplayElement.textContent = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`
-  usernameValueDisplayElement.value = usernameValue;
-  usernameDisplayElement.style.display = "block";
-  usernameValueDisplayElement.style.display = "block";
-  // Show the hide button
-  let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
-  hideUsernameButtonElement.style.display = "block";
-}
 
-function hideUsernameDisplay() {
-  // Hide the username display
-  let usernameDisplayElement = document.getElementById("usernameDisplay");
-  let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
-  usernameDisplayElement.style.display = "none";
-  usernameValueDisplayElement.style.display = "none";
-  // Hide the hide button
-  let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
-  hideUsernameButtonElement.style.display = "none";
-}
+  function displayUsername(button) {
+    // Get the value of the hidden input related to the clicked button
+    let usernameValue = button.previousSibling.value;
+    // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
+    let nombreValue = button.parentNode.childNodes[0].textContent.split(" ")[0];
+    let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+    let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+    // Display the values inside the popup div
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.value = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`;
+    usernameDisplayElement.textContent = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`
+    usernameValueDisplayElement.value = usernameValue;
+    usernameDisplayElement.style.display = "block";
+    usernameValueDisplayElement.style.display = "block";
+    // Show the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "block";
+  }
+
+  function hideUsernameDisplay() {
+    // Hide the username display
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.style.display = "none";
+    usernameValueDisplayElement.style.display = "none";
+    // Hide the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "none";
+  }
 </script>
 
 
