@@ -16,15 +16,15 @@ module.exports = async (req, res) => {
         req.session.role= user.role
         req.session.username = user.username
 
-        res.redirect('/')
+        res.redirect('/HomeSessions')
       } else {
-        res.redirect('/LoginInicio')
+        res.redirect('/LoginInicio?error=true')
       }
     } else {
-      res.redirect('/LoginInicio')
+      res.redirect('/LoginInicio?error=true')
     }
   } catch (error) {
     console.error(error);
-    res.redirect('/LoginInicio')
+    res.redirect(`/LoginInicio?error=true&message=${error}`)
   }
 }
