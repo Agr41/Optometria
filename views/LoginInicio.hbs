@@ -5,51 +5,56 @@
 
     </header>
 
-<body class="d-flex flex-column min-vh-100">
-  <main>
-        <div class="modal-content rounded-4 shadow">
+    <body class="d-flex flex-column min-vh-100">
+        <main>
+            <div class="modal-content rounded-4 shadow">
 
 
-            <div class="modal-body p-5 border border-2 border-dark rounded">
+                <div class="modal-body p-5 border border-2 border-dark rounded">
 
-                <div class="container text-center">
-                    <div class="row">
-                 <form action="/LoginUsuario" method="POST">
-                            <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Matrícula" name ="username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <select class="form-select" id="inputGroupSelect01" name="correo">
-    <option selected value="@halcones.ual.mx">@halcones.ual.mx</option>
-    <option value="@ual.mx">@ual.mx</option>
-  </select>
-
-
-</div>
-
-                        <div class="w-100 d-none d-md-block"></div>
-
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">* &nbsp</span>
-                                <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username"
-                                    aria-describedby="basic-addon1" name="password" >
+                    <div class="container text-center">
+                        <div class="row">
+                            <form action="/LoginUsuario" method="POST">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Matrícula" name="username"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <select class="form-select" id="inputGroupSelect01" name="correo">
+                                        <option selected value="@halcones.ual.mx">@halcones.ual.mx</option>
+                                        <option value="@ual.mx">@ual.mx</option>
+                                    </select>
 
 
-                            </div>
-                        <div class="w-100 d-none d-md-block"></div>
-                        <br>
-                        <div class="col ">
+                                </div>
 
-                            <button type="submit" class="btn "  style="background-color: #2fd45b;">
-                             Iniciar Sesion
-                            </button>
+                                <div class="w-100 d-none d-md-block"></div>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">* &nbsp</span>
+                                    <input type="password" class="form-control" placeholder="Contraseña"
+                                        aria-label="Username" aria-describedby="basic-addon1" name="password">
+
+
+                                </div>
+                                <div class="w-100 d-none d-md-block"></div>
+
+                                <div class="col ">
+
+                                    <button type="submit" class="btn " style="background-color: #2fd45b;">
+                                        Iniciar Sesion
+                                    </button>
+                                    {{#if error}}
+                                    <p class="text-danger">Usuario o contraseña incorrectos</p>
+                                    
+                                    {{/if}}
+                                </div>
                         </div>
                     </div>
-                </div>
-</form>
-    </main>
+                    </form>
+        </main>
 
-  
-</body>
-  
+
+    </body>
+
 
 </div>
 {{> footer}}
