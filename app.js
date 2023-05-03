@@ -28,7 +28,7 @@ const FiltrosUsuarios2 = require('./routes/FiltrosUsuarios2')
 const TestCliente = require('./routes/TestCliente')
 const TestActualizar = require('./routes/TestActualizar')
 const TestBorrar = require('./routes/TestBorrar')
-
+const SoloAdmin = require('./middlewares/SoloAdmin')
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,8 +41,8 @@ hbs.registerPartials(__dirname + "/views/partials");
 hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
 });
-hbs.registerHelper('cliente', function(value) {
-  return value !== 'cliente';
+hbs.registerHelper('alumno', function(value) {
+  return value !== 'alumno';
 });
 
 
@@ -126,7 +126,7 @@ app.use('/configuracion', configuracionRouter);
 app.get('/PanelUsuarios',PanelUsuarios)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
-app.get('/Registrarse',Registrarse)
+app.get('/Registrarse',SoloAdmin,Registrarse)
 app.get('/TestCliente/:id',TestCliente)
 app.post('/RegistrarsePost',RegistrarsePost)
 app.use('/FiltrosUsuarios2',FiltrosUsuarios2)

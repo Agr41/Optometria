@@ -15,16 +15,20 @@
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav">
       </ul>
+
+
+
          {{#if Logeado }}
 
-{{#unless (admin role)}}
-         
-          <ul class="navbar-nav">
+{{#if (eq role "admin")}}
+
+        <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/test">Test</a>
 
         </li>
       </ul>
+
           <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/PanelUsuarios">Panel usuarios</a>
@@ -37,11 +41,29 @@
 
         </li>
       </ul>
-{{/unless}}
+    {{/if}}
+    {{/if}}
+
+   {{#if Logeado }}
+
+
+{{#if (eq role "alumno")}}
+
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active fs-4 text-light" aria-current="page" href="/test">Test</a>
+
+        </li>
+      </ul>
+                <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active fs-4 text-light" aria-current="page" href="/PanelUsuarios">Panel Usuarios</a>
+
+        </li>
+      </ul>
     {{/if}}
 
 
-   {{#if Logeado }}
        <ul class="navbar-nav">
         <li class="nav-item">        
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/logout">Cerrar sesión</a>
