@@ -6,9 +6,9 @@
 
   <body class="text-center">
     <br>
-    
-      Filtrar por rol:
-      <form method="POST" action="/FiltrosUsuarios">
+
+    Filtrar por rol:
+    <form method="POST" action="/FiltrosUsuarios">
       <div class="row justify-content-center">
         <div class="col-2">
           <select name="role" id="FiltroHistorial" class="form-select">
@@ -20,10 +20,10 @@
         <div class="col-2">
           <button type="submit" class="btn btn-info">Filtrar</button>
         </div>
-        </div>
-        
-      </form>
-    
+      </div>
+
+    </form>
+
     <br>
 
     <form method="post" action="/FiltrosUsuarios2">
@@ -82,32 +82,50 @@
 </section>
 
 {{#unless (Falso FiltroPaginado)}}
-{{#each TotalPaginas}}
-<a href="/PanelUsuarios?page={{this}}" type="submit" id="sendMessageButton"
-  class="botonPaginacion btn-dark">{{this}}</a>
-{{/each}}
+<nav aria-label="Page navigation example">
+
+  <ul class="pagination justify-content-center">
+    {{#each TotalPaginas}}
+    <li class="page-item"><a href="/PanelUsuarios?page={{this}}" type="submit" id="sendMessageButton"
+        class="page-link">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</nav>
 {{/unless}}
 
 {{#unless (Verdad FiltroPaginado)}}
-{{#each TotalPaginas}}
-{{#if (not (eq ../Filtro "Id"))}}
-{{#if (not (eq ../Filtro "Nombre"))}}
-<a href="/FiltrosUsuarios?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
-  class="botonPaginacion btn-dark">{{this}}</a>
-{{/if}}
-{{/if}}
-{{/each}}
+<nav aria-label="Page navigation example">
+
+  <ul class="pagination justify-content-center">
+    {{#each TotalPaginas}}
+    {{#if (not (eq ../Filtro "Id"))}}
+    {{#if (not (eq ../Filtro "Nombre"))}}
+    <li class="page-item">
+      <a href="/FiltrosUsuarios?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
+        class="page-link">{{this}}</a>
+    </li>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+  </ul>
+</nav>
 {{/unless}}
 
 
 {{#unless (Verdad FiltroPaginado)}}
-{{#each TotalPaginas}}
-{{#if (eq ../Filtro "Nombre")}}
+<nav aria-label="Page navigation example">
 
-<a href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-  id="sendMessageButton" class="botonPaginacion btn-dark">{{this}}</a>
-{{/if}}
-{{/each}}
+  <ul class="pagination justify-content-center">
+    {{#each TotalPaginas}}
+    {{#if (eq ../Filtro "Nombre")}}
+
+    <li class="page-item"><a
+        href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        id="sendMessageButton" class="page-link">{{this}}</a></li>
+    {{/if}}
+    {{/each}}
+  </ul>
+</nav>
 {{/unless}}
 <script>
   function openPopup(id) {
