@@ -29,6 +29,17 @@ module.exports = async (req, res) => {
 
       res.render('PanelUsuarios', { Logeado, role, usuarios, FiltroPaginado, Filtro,TotalPaginas });
     }
+    if (Filtro === "alumno") {
+      // Muestra la primera página de usuarios con el rol "cliente"
+      const usuarios = await User.paginate({ role: "alumno" }, { page: 1, limit: 50 });
+      const FiltroPaginado = true;
+      var TotalPaginas = [];
+      for (i = 0; i < usuarios.totalPages; i++) {
+        TotalPaginas.push(i + 1);
+      }
+
+      res.render('PanelUsuarios', { Logeado, role, usuarios, FiltroPaginado, Filtro,TotalPaginas });
+    }
   } else if (page != undefined) {
     var Filtro = req.query.Filtro;
     var page = req.query.page;
@@ -47,6 +58,17 @@ module.exports = async (req, res) => {
       // Muestra la página especificada de usuarios con el rol "cliente"
       const FiltroPaginado = true;
       const usuarios = await User.paginate({ role: "cliente" }, { page, limit: 50 });
+      console.log(usuarios);
+      var TotalPaginas = [];
+      for (i = 0; i < usuarios.totalPages; i++) {
+        TotalPaginas.push(i + 1);
+      }
+      res.render('PanelUsuarios', { Logeado, role, usuarios, FiltroPaginado, Filtro,TotalPaginas });
+    }
+    if (Filtro === "alumno") {
+      // Muestra la página especificada de usuarios con el rol "cliente"
+      const FiltroPaginado = true;
+      const usuarios = await User.paginate({ role: "alumno" }, { page, limit: 50 });
       console.log(usuarios);
       var TotalPaginas = [];
       for (i = 0; i < usuarios.totalPages; i++) {
