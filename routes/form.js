@@ -1,18 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('form', { title: 'Form' ,Logeado,role});
+router.get('/',(req, res, next) => {
+  
+  if (req.session.userId!=null) {
+    res.render('form', { title: 'Form' ,Logeado,role});
+  } else {
+      res.redirect('/LoginInicio')
+  }
 });
+
 const paciente = require('../models/pacientes')
 router.post('/registrarpaciente',async function (req,res, next){
     console.log("entró a post")
-
-      await paciente.create(req.body)
-      console.log("Creó paciente")
-      //await User.updateOne({username:req.body.username},{username:req.body.username+req.body.correo})
+if (req.session.userID!=null){
+  await paciente.create(req.body)
+  console.log("Creó paciente")
+}
+else{
+  console.log("No tiene permisos")
+}
+      
       res.redirect('/')
 
 }
