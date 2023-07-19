@@ -15,14 +15,25 @@ const paciente = require('../models/pacientes')
 router.post('/registrarpaciente',async function (req,res, next){
     console.log("entró a post")
 if (req.session.userId!=null){
-  await paciente.create(req.body)
-  console.log("Creó paciente")
+  try{
+    await paciente.create(req.body)
+  res.send(`<script>alert("Se ha registrado al paciente")
+        window.location.href='/HomeSessions';
+        </script>`);
+        console.log("Registro correcto");}
+        catch{
+          res.send(`<script>alert("Hubo un error")
+        window.location.href='/HomeSessions';
+        </script>`);
+        }
 }
 else{
-  console.log("No tiene permisos")
+  res.send(`<script>alert("Hubo un error")
+        window.location.href='/';
+        </script>`);
 }
       
-      res.redirect('/')
+      res.redirect('/HomeSessions')
 
 }
 )
