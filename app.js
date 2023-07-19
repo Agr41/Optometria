@@ -16,6 +16,7 @@ var formtestRouter = require('./routes/test');
 var ListaRouter = require('./routes/ListaClientes.js');
 var configuracionRouter = require('./routes/configuracion.js');
 const PanelUsuarios = require('./routes/PanelUsuarios');
+var PanelPacientesRouter = require('./routes/PanelPacientes');
 const bodyParser = require("body-parser");
 const Formulario = require ('./routes/Formulario')
 const LoginUsuario = require('./routes/LoginUsuario')
@@ -124,6 +125,7 @@ app.use('/ListaClientes', ListaRouter);
 app.get('/logout',logout)
 app.use('/configuracion', configuracionRouter);
 app.get('/PanelUsuarios',PanelUsuarios)
+app.get('/PanelPacientes',PanelPacientesRouter)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
 app.get('/Registrarse',SoloAdmin,Registrarse)

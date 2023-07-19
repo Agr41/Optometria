@@ -14,7 +14,7 @@ router.get('/',(req, res, next) => {
 const paciente = require('../models/pacientes')
 router.post('/registrarpaciente',async function (req,res, next){
     console.log("entró a post")
-if (req.session.userID!=null){
+if (req.session.userId!=null){
   await paciente.create(req.body)
   console.log("Creó paciente")
 }
