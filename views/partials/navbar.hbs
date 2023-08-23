@@ -1,15 +1,16 @@
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<nav class="navbar navbar-expand-lg  navbar-light " style="background-color: #2fd45b;" >
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<nav class="navbar navbar-expand-lg  navbar-light " style="background-color: #2fd45b;">
   <div class="container-fluid">
     <a class="navbar-brand" href="/HomeSessions">
-    <div class="has-bg-img bg-light bg-blend-multiply  rounded-4">
-<img  src="../images/logoUAL-removebg-preview.png" alt="Logo" width="208" height="102">
+      <div class="has-bg-img bg-light bg-blend-multiply  rounded-4">
+        <img src="../images/logoUAL-removebg-preview.png" alt="Logo" width="208" height="102">
 
-    </div>
-      
+      </div>
+
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon "></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarNav">
@@ -18,58 +19,58 @@
 
 
 
-         {{#if Logeado }}
+      {{#if Logeado }}
 
-{{#if (eq role "admin")}}
+      {{#if (eq role "admin")}}
 
-        <ul class="navbar-nav">
+      {{!-- <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/test">Test</a>
 
         </li>
       </ul>
 
-          <ul class="navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/PanelUsuarios">Panel usuarios</a>
 
         </li>
       </ul>
-          <ul class="navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/Registrarse">Registrar</a>
 
         </li>
-      </ul>
-    {{/if}}
-    {{/if}}
+      </ul> --}}
+      {{/if}}
+      {{/if}}
 
-   {{#if Logeado }}
+      {{#if Logeado }}
 
 
-{{#if (eq role "alumno")}}
+      {{#if (eq role "alumno")}}
 
-        <ul class="navbar-nav">
+      {{!-- <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/test">Test</a>
 
         </li>
       </ul>
-                <ul class="navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/PanelUsuarios">Panel Usuarios</a>
 
         </li>
-      </ul>
-    {{/if}}
+      </ul> --}}
+      {{/if}}
 
 
-       <ul class="navbar-nav">
-        <li class="nav-item">        
+      <ul class="navbar-nav">
+        <li class="nav-item">
           <a class="nav-link active fs-4 text-light" aria-current="page" href="/logout">Cerrar sesión</a>
-      </li>
-      </ul>      
-    {{/if}}
+        </li>
+      </ul>
+      {{/if}}
 
 
 
