@@ -18,15 +18,15 @@ router.post('/registrarpaciente', async function (req, res, next) {
     try {
       await paciente.create(req.body);
       // Mostrar una alerta de éxito y redirigir a
-      res.send('<script>alert("Se ha registrado al paciente"); window.location.href="https://www.tiktok.com/@pubear_cdc/video/7229458395072351493";</script>');
+      res.send('<script>alert("Se ha registrado al paciente"); window.location.href="/form";</script>');
       console.log("Hiciste el registro correctamente");
     } catch (error) {
       // Mostrar una alerta de error y redirigir a
-      res.send('<script>alert("Hubo un error al registrar al paciente"); window.location.href="https://www.tiktok.com/@pubear_cdc/video/7229458395072351493";</script>');
+      res.send('<script>alert("Hubo un error al registrar al paciente"); window.location.href="/form";</script>');
     }
   } else {
     // Mostrar una alerta de error y redirigir a
-    res.send('<script>alert("Hubo un error al registrar al paciente"); window.location.href="https://www.tiktok.com/@pubear_cdc/video/7229458395072351493";</script>');
+    res.send('<script>alert("Hubo un error al registrar al paciente"); window.location.href="/form";</script>');
   }
 });
 
