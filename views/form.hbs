@@ -19,23 +19,23 @@
               <div class="row g-3">
                 <div class="col-sm-4">
                   <label class="form-label">Nombre:</label>
-                  <input type="text" name="Nombre" id="" class="form-control">
+                  <input type="text" name="Nombre" id="" class="form-control" required>
                 </div>
                 <div class="col-sm-4">
                   <label class="form-label">Apellido Paterno:</label>
-                  <input type="text" name="ApellidoPaterno" id="" class="form-control">
+                  <input type="text" name="ApellidoPaterno" id="" class="form-control" required>
                 </div>
                 <div class="col-sm-4">
                   <label class="form-label">Apellido materno:</label>
-                  <input type="text" name="ApellidoMaterno" id="" class="form-control">
+                  <input type="text" name="ApellidoMaterno" id="" class="form-control" required>
                 </div>
                 <div class="col-sm-12">
                   <label class="form-label">Ciudad:</label>
-                  <input type="text" name="ciudad" id="" class="form-control">
+                  <input type="text" name="ciudad" id="" class="form-control" required>
                 </div>
 
                 <label>Ocupacion:</label>
-                <select name="ocupacion" id="" class="form-select">
+                <select name="ocupacion" id="" class="form-select" required>
                   <option for="" class="form-check-label" value="Agricultura">Agricultura</option>
                   <option for="" class="form-check-label" value="Estudiante">Estudiante</option>
                   <option for="" class="form-check-label" value="Oficinista">Oficinista</option>
@@ -46,10 +46,10 @@
                 </select>
                 <div class="input-group">
                   <span class="input-group-text">¿Cuántos años han pasado desde su último examen de la vista?</span>
-                  <input type="number" aria-label="First name" class="form-control" name="ultimoexamen">
+                  <input type="number" aria-label="First name" class="form-control" name="ultimoexamen"  id="ExmVista" >
                   <div class="input-group-text">
                     <input class="form-check-input mt-0" type="checkbox" value="Nunca"
-                      aria-label="Checkbox for following text input"> Nunca ha tenido
+                      aria-label="Checkbox for following text input" checked> Nunca ha tenido
                   </div>
                 </div>
                 <label>Sexo:</label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-sm-12">
                   <label class="form-label">Fecha de nacimiento</label>
-                  <input type="date" name="fnacimiento" id="" class="form-control">
+                  <input type="date" name="fnacimiento" id="" class="form-control" required> 
                 </div>
                 {{!-- ESTO SE DEBE VOLVER A AGREGAR CUANDO SOLUCIONEMOS TODO
                 <div class="col-sm-12">
@@ -98,5 +98,15 @@
 
 </div>
 </body>
+ <script>
+    // Obtener una referencia al input ExmVista y al checkbox
+    const inputExmVista = document.getElementById('ExmVista');
+    const checkbox = document.querySelector('.form-check-input');
 
+    // Agregar un evento para escuchar cuando se escriba en el input ExmVista
+    inputExmVista.addEventListener('input', function () {
+      // Desmarcar el checkbox cuando se escriba algo en el input
+      checkbox.checked = false;
+    });
+  </script>
 {{> footer}}
