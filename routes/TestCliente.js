@@ -1,4 +1,4 @@
-const User = require('../models/Usuarios')
+const User = require('../models/pacientes')
 const Tests= require('../models/Tets')
 
 module.exports = async (req,res)=>{

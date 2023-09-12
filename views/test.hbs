@@ -32,7 +32,7 @@
                         <input type="text" id="searchInput" placeholder="Search...">
                         {{#each usuarios}}
                         <p>{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} <input type="hidden"
-                            value="{{this.username}}" id="username"><button type="button" class="btn btn-dark"
+                            value="{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}" id="username"><button type="button" class="btn btn-dark"
                             onclick="displayUsername(this)">Agregar</button></p>
                         <br>
                         {{/each}}

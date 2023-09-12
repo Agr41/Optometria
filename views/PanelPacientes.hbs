@@ -1,6 +1,6 @@
 {{>navbar}}
 
-<section id="PanelUsuarios">
+<section id="PanelPacientes">
 
   <h1 class="text-center hola">Panel de pacientes</h1>
 
@@ -8,7 +8,7 @@
     <br>
 
     Filtrar por rol:
-    <form method="POST" action="/FiltrosUsuarios">
+    <form method="POST" action="/FiltrosPacientes">
       <div class="row justify-content-center">
         <div class="col-2">
           <select name="role" id="FiltroHistorial" class="form-select">
@@ -27,7 +27,7 @@
 
     <br>
 
-    <form method="post" action="/FiltrosUsuarios2">
+    <form method="post" action="/FiltrosPacientes2">
       <div class="row justify-content-center">
         <div class="col-3">
           <select name="Tipo" id="FiltroHistorial2" class="form-select">
@@ -70,7 +70,7 @@
             <td>{{this.ApellidoMaterno}}</td>
             <td>{{this.role}}</td>
             <td><a href="/Borrar?Usuario={{this.username}}">Borrar</a></td>
-            <td><button class="form-control" onclick="openPopup(`{{this.username}}`)">Diagnostico</button></td>
+            <td><button class="form-control" onclick="openPopup(`{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}`)">Diagnostico</button></td>
 
             <!--Agregar alerta-->
           </tr>
@@ -87,7 +87,7 @@
 
   <ul class="pagination justify-content-center">
     {{#each TotalPaginas}}
-    <li class="page-item"><a href="/PanelUsuarios?page={{this}}" type="submit" id="sendMessageButton"
+    <li class="page-item"><a href="/PanelPacientes?page={{this}}" type="submit" id="sendMessageButton"
         class="page-link">{{this}}</a></li>
     {{/each}}
   </ul>
@@ -102,7 +102,7 @@
     {{#if (not (eq ../Filtro "Id"))}}
     {{#if (not (eq ../Filtro "Nombre"))}}
     <li class="page-item">
-      <a href="/FiltrosUsuarios?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
+      <a href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
         class="page-link">{{this}}</a>
     </li>
     {{/if}}
@@ -121,7 +121,7 @@
     {{#if (eq ../Filtro "Nombre")}}
 
     <li class="page-item"><a
-        href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        href="/FiltrosPacientes2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
         id="sendMessageButton" class="page-link">{{this}}</a></li>
     {{/if}}
     {{/each}}
