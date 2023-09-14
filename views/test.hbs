@@ -213,7 +213,7 @@
                             <div class="col-sm-2">
                               <input type="radio" name="grupoRadio2" > <label for="">Exo</label>
                             </div>
-                            <button id="cerrarAcordeonBtn" type="button" class="btn btn-outline-primary">Cerrar Acordeón</button>
+                            <button id="cerrarAcordeonBtn" type="button" class="btn btn-outline-primary">Colapsar Ventana</button>
                           </div>
                         </div>
                       </div>
@@ -299,6 +299,7 @@
                         </div>
                         <label for="">Observaciones</label>
                         <input type="text" class="form-control" name="Observaciones">
+                           <button id="cerrarAcordeonBtn1" type="button" class="btn btn-outline-primary">Colapsar Ventana</button>
                       </div>
                     </div>
                   </div>
@@ -355,7 +356,8 @@
 
                         <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other"
                           class="form-control"></textarea>
-
+<br>  
+                           <button id="cerrarAcordeonBtn2" type="button" class="btn btn-outline-primary">Colapsar Ventana</button>
 
                       </div>
                     </div>
@@ -540,6 +542,25 @@
       botonAcordeon.click();
     }
   });
+   document.getElementById('cerrarAcordeonBtn1').addEventListener('click', function() {
+    // Obtén una referencia al botón del acordeón que deseas cerrar
+    var botonAcordeon = document.querySelector('[data-bs-target="#collapseSix"]');
+    
+    // Simula un clic en el botón del acordeón para cerrarlo
+    if (botonAcordeon) {
+      botonAcordeon.click();
+    }
+  });
+  document.getElementById('cerrarAcordeonBtn2').addEventListener('click', function() {
+    // Obtén una referencia al botón del acordeón que deseas cerrar
+    var botonAcordeon = document.querySelector('[data-bs-target="#collapseSix"]');
+    
+    // Simula un clic en el botón del acordeón para cerrarlo
+    if (botonAcordeon) {
+      botonAcordeon.click();
+    }
+  });
+
 </script>
 
 
