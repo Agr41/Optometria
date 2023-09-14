@@ -30,6 +30,11 @@ const TestCliente = require('./routes/TestCliente')
 const TestActualizar = require('./routes/TestActualizar')
 const TestBorrar = require('./routes/TestBorrar')
 const SoloAdmin = require('./middlewares/SoloAdmin')
+// Importa moment.js y el idioma español
+const moment = require('moment');
+require('moment/locale/es');
+
+
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -73,6 +78,10 @@ hbs.registerHelper('not', function(value) {
 hbs.registerHelper('dateFormat', function(date) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(date).toLocaleDateString('en-US', options);
+});
+// Define la función dateFormat en tu contexto de Handlebars
+hbs.registerHelper('dateFormat', function (date) {
+  return moment(date).format('DD [de] MMMM [de] YYYY'); // Puedes personalizar el formato como desees
 });
 
 hbs.registerHelper('isChecked', function(value) {
