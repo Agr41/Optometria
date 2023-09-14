@@ -1,3 +1,4 @@
+require('dotenv').config()
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -115,7 +116,7 @@ app.use((req, res, next) => {
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
-  "mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test",
+  process.env.Base,
     { useNewUrlParser: true }
 );
 
