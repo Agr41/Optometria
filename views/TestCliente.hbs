@@ -28,9 +28,10 @@
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
 
-                    {{#each usuarios}}
-                    Correo: {{this.username}}<br>
-                    Nombre: {{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}
+                    {{#each tests}}
+                    {{!-- Correo: {{this.username}}<br> --}}
+                    {{!-- Nombre: {{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} --}}
+                    Nombre: {{this.username}}
 
                     {{/each}}
 
@@ -94,7 +95,7 @@
                             <div class="input-group-text">
                               <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
                                 aria-label="Checkbox for following text input" name="Galucoma" {{isChecked
-                                this.Galucoma}}> Galucoma
+                                this.Galucoma}}> Glaucoma
                             </div>
 
                           </div>
@@ -102,7 +103,7 @@
                             <div class="input-group-text">
                               <input id="myCheckbox" class="form-check-input mt-0" type="checkbox" value="true"
                                 aria-label="Checkbox for following text input" name="Caratatas" {{isChecked
-                                this.Caratatas}}> Caratatas
+                                this.Caratatas}}> Cataratas
                             </div>
 
                           </div>
