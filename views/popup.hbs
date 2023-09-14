@@ -19,11 +19,13 @@ Tests realizados por el usuario:
 {{this}}.-
 {{/each}}
 {{#each tests}}
-<a href="/TestCliente/{{this.username}}?Fecha={{dateFormat this.FechaDelTest}}">{{dateFormat this.FechaDelTest}}</a><br>
+<a href="/TestCliente/{{this.username}}?Fecha={{this._id}}">{{dateFormat this.FechaDelTest}}</a><br>
+
 
 {{/each}}
 
-
+<!---<a href="/TestCliente/{{this.username}}?Fecha={{dateFormat this.FechaDelTest}}">{{dateFormat this.FechaDelTest}}</a><br>
+->
 
 
 
