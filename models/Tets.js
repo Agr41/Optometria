@@ -33,6 +33,13 @@ const TestSchema = new Schema({
     //Pupilas
     Izquierdo:String,
     Derecha:String,
+
+    grupoRadioA:String,
+    grupoRadioB:String,
+    grupoRadioC:String,
+    grupoRadio2A:String,
+    grupoRadio2B:String,
+    grupoRadio2C:String,
         //<---Refraccion--->
     //Retinoscopía
     OIReni:String,
