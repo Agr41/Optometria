@@ -18,6 +18,7 @@ var ListaRouter = require('./routes/ListaClientes.js');
 var configuracionRouter = require('./routes/configuracion.js');
 const PanelUsuarios = require('./routes/PanelUsuarios');
 var PanelPacientesRouter = require('./routes/PanelPacientes');
+var graficasRouter = require('./routes/graficas');
 const bodyParser = require("body-parser");
 const Formulario = require ('./routes/Formulario')
 const LoginUsuario = require('./routes/LoginUsuario')
@@ -144,6 +145,7 @@ app.post('/RegistrarsePost',RegistrarsePost)
 app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
 app.post('/TestActualizar',TestActualizar)
 app.use('/TestBorrar', TestBorrar)
+app.use('/graficas', graficasRouter)
 
 app.get('/popup/:id',async (req, res) => {
       const User = require('./models/Usuarios')
