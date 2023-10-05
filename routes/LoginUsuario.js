@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username: username + req.body.correo });
+    const user = await User.findOne({ username: username  });
     if (user) {
       const same = await bcrypt.compare(password, user.password);
 
