@@ -340,7 +340,7 @@
         
       </div>
     </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()" >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           </button>
           
@@ -369,14 +369,23 @@
 </div>
 <style>
   /* Estilos para los botones "Previous" y "Next" */
-  .carousel-control-prev,
+  .carousel-control-prev{
+    background-color: black; /* Cambia el color de fondo a negro */
+    margin: 10px; /* Aumenta el espacio alrededor de los botones */
+    height: 40px;
+    position: relative;
+    bottom: 2em;
+    width: 200px;
+    margin-bottom: -50px;
+  }
   .carousel-control-next {
     background-color: black; /* Cambia el color de fondo a negro */
     margin: 10px; /* Aumenta el espacio alrededor de los botones */
     height: 40px;
-      position:  relative;
-  bottom: 2em;
+    position: relative;
+    bottom: 2em;
     width: 200px;
+    margin-left: 630px;
   }
 
   /* Estilos para los botones de control del carrusel */
@@ -384,7 +393,7 @@
 .carousel-control-next {
   display: flex;
   align-items: center;
-  bottom: 50px;
+  
 }
 
 /* Estilos para las flechas del carrusel */
@@ -393,19 +402,22 @@
   height: 40px;
   color: white;
   position:  relative;
-  bottom: 2em;
+  bottom: -5px
 }
 
 /* Estilos para el texto "Previous" y "Next" */
 .carousel-control-prev .carousel-control-prev-icon::before {
 
   content: "Anterior";
-  margin-right: -150px; /* Ajusta el espacio entre la flecha y el texto */
+  margin-right: -150px;
+  margin-top: 200px; /* Ajusta el espacio entre la flecha y el texto */
 }
 
 .carousel-control-next .carousel-control-next-icon::before {
   content: "Siguiente";
-  margin-left: -150px; /* Ajusta el espacio entre la flecha y el texto */
+  margin-left: -150px;
+  margin-bottom: ;/* Ajusta el espacio entre la flecha y el texto */
+  position: relative;
 }
 
 .carousel-control-prev-icon{
