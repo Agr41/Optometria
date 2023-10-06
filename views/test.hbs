@@ -337,21 +337,16 @@
           </div>
         </div>
 </div>
-         <!-- Botón "Previous" (Anterior) con texto "Previous" -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-           
-          
-          </button>
-          
-          <!-- Botón "Next" (Siguiente) con texto "Next" -->
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            
-          </button>
+        
       </div>
     </div>
-    
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
   </main>
 </div>
 
@@ -379,6 +374,9 @@
     background-color: black; /* Cambia el color de fondo a negro */
     margin: 10px; /* Aumenta el espacio alrededor de los botones */
     height: 40px;
+      position:  relative;
+  bottom: 2em;
+    width: 200px;
   }
 
   /* Estilos para los botones de control del carrusel */
@@ -386,6 +384,7 @@
 .carousel-control-next {
   display: flex;
   align-items: center;
+  bottom: 50px;
 }
 
 /* Estilos para las flechas del carrusel */
@@ -393,17 +392,29 @@
 .carousel-control-next-icon::before {
   height: 40px;
   color: white;
+  position:  relative;
+  bottom: 2em;
 }
 
 /* Estilos para el texto "Previous" y "Next" */
 .carousel-control-prev .carousel-control-prev-icon::before {
+
   content: "Anterior";
-  margin-right: 10px; /* Ajusta el espacio entre la flecha y el texto */
+  margin-right: -150px; /* Ajusta el espacio entre la flecha y el texto */
 }
 
 .carousel-control-next .carousel-control-next-icon::before {
   content: "Siguiente";
-  margin-left: -50px; /* Ajusta el espacio entre la flecha y el texto */
+  margin-left: -150px; /* Ajusta el espacio entre la flecha y el texto */
+}
+
+.carousel-control-prev-icon{
+    margin-left: -150px; /* Ajusta el espacio entre la flecha y el texto */
+
+}
+.carousel-control-next-icon{
+    margin-left: 150px; /* Ajusta el espacio entre la flecha y el texto */
+
 }
 
 
