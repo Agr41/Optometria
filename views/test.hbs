@@ -57,18 +57,20 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="PresionAlta"> Presión alta
+                                aria-label="Checkbox for following text input" name="PresionAlta"> Hipertensión
                             </div>
 
                           </div>
+                          <!--
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
                                 aria-label="Checkbox for following text input" name="EmbarazoOlactancia">
                               Embarazo/lactancia
                             </div>
-
                           </div>
+                          --> 
+
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
@@ -80,10 +82,11 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Galucoma"> Galucoma
+                                aria-label="Checkbox for following text input" name="Galucoma"> Glaucoma
                             </div>
 
                           </div>
+                          <!--
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
@@ -91,7 +94,8 @@
                             </div>
 
                           </div>
-
+                          -->
+<!--
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
@@ -99,13 +103,15 @@
                             </div>
 
                           </div>
+-->
+
+<!--
 
                           <div class="input-group mb-3">
                             <div class="input-group-text">
-                              <!--
                             <input class="form-check-input mt-0" type="checkbox" value=""
                               aria-label="Checkbox for following text input" name="Alergias">
-                              -->
+                              
                               Alergia a medicamentos
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with checkbox"
@@ -113,20 +119,22 @@
                           </div>
                           <div class="input-group mb-3">
                             <div class="input-group-text">
-                              <!--
+                            
                             <input class="form-check-input mt-0" type="checkbox" value=""
                               aria-label="Checkbox for following text input">
-                              -->
                               Otro
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with checkbox" name="Otro"
                               placeholder="Especifíque">
                           </div>
+-->
+
                         </div>
 
-
+<!--
                         <label for="medicamentos">MEDICAMENTOS ACTUALES</label><br>
                         <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales">
+                        -->
                         <br>
                         <label for="">AGUDEZA VISUAL</label>
                         <table class="table table-striped-columns">
@@ -166,19 +174,20 @@
                         <div class="container text-start">
                           <div class="row align-items-start">
                             <div class="col">
-                              <label for="">Distancia</label>
+                              <label for="">Motilidad Ocular</label>
                             </div>
                             <div class="w-100 d-none d-md-block"></div>
                             <div class="col-sm-2">
-                              <input type="radio" name="grupoRadioA" id=""> <label for="">Ortho</label>
+                              <input type="radio" name="grupoRadioA" id=""> <label for="">Orto</label>
                             </div>
                             <div class="col-sm-2">
-                              <input type="radio" name="grupoRadioB" id=""> <label for="">Eso</label>
+                              <input type="radio" name="grupoRadioB" id=""> <label for="">Endo</label>
                             </div>
                             <div class="col-sm-2">
                               <input type="radio" name="grupoRadioC" id=""> <label for="">Exo</label>
                             </div>
                             <br> <br>
+<!--
                             <div class="w-100 d-none d-md-block"></div>
                             <div class="col">
                               <label for="">Cerca</label>
@@ -193,6 +202,9 @@
                             <div class="col-sm-2">
                               <input type="radio" name="grupoRadio2C" > <label for="">Exo</label>
                             </div>
+                            -->
+
+
                           </div>
                         </div>
                     
@@ -201,7 +213,7 @@
 
           <!-- Sección 3: Refracción -->
           <div class="carousel-item">
-            <h2>Refracción</h2>
+            <h2>Protocolo de refracción</h2>
              <label for=""> RETINOSCOPÍA</label><BR></BR>
                         <label for=""></label>
                         <div class="container text-start">
@@ -224,20 +236,50 @@
                           <div class="row align-items-start">
                             <div class="col col-5">
                               <td><label for="">AV</label>
-                                <input type="text" class="form-control" name="AVReni" required>
+                                <select name="AVReni">
+
+                                <option value="20/400">20/400</option>
+                                <option value="20/200">20/200</option>
+                                <option value="20/100">20/100</option>
+                                <option value="20/80">20/80</option>
+                                <option value="20/70">20/70</option>
+                                <option value="20/50">20/50</option>
+                                <option value="20/40">20/40</option>
+                                <option value="20/30">20/30</option>
+                                <option value="20/25">20/25</option>
+                                <option value="20/20">20/20</option>
+
+
+                                </select>
                               </td>
                             </div>
                             <div class="col col-5">
 
                               <td>
-                                <label for="">AV</label><input type="text" class="form-control" name="AVReni2" id="" required>
+                                                               <select name="AVReni2">
+
+                                <option value="20/400">20/400</option>
+                                <option value="20/200">20/200</option>
+                                <option value="20/100">20/100</option>
+                                <option value="20/80">20/80</option>
+                                <option value="20/70">20/70</option>
+                                <option value="20/50">20/50</option>
+                                <option value="20/40">20/40</option>
+                                <option value="20/30">20/30</option>
+                                <option value="20/25">20/25</option>
+                                <option value="20/20">20/20</option>
+
+
+                                </select>
                               </td>
                             </div>
                           </div>
                         </div>
                         <br>
+                         <!--
                         <label for="">EXAMEN SUBJETIVO</label>
                         <br>
+                       
                         <div class="container text-start">
                           <div class="row align-items-start">
                             <div class="col col-5">
@@ -253,6 +295,7 @@
                             </div>
                           </div>
                         </div>
+
                         <br>
                         <div class="container text-start">
                           <div class="row align-items-start">
@@ -269,14 +312,20 @@
                             </div>
                           </div>
                         </div>
+                        -->
+
+                        <!--
                         <label for="">Observaciones</label>
                         <input type="text" class="form-control" name="Observaciones">
+                        -->
                       </div>
             
             <!-- Resto de tu contenido de la sección "Refracción" aquí -->
         
 
           <!-- Sección 4: Examinacion -->
+
+<!--
           <div class="carousel-item">
             <h2>Examinación</h2>
              <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0" value="true"> <label
@@ -322,8 +371,10 @@
 
                         <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other"
                           class="form-control"></textarea>  
-            <!-- Resto de tu contenido de la sección "Examinación" aquí -->
           </div>
+-->
+
+            <!-- Resto de tu contenido de la sección "Examinación" aquí -->
 
           <!-- Sección 5: Optical -->
           <div class="carousel-item">
