@@ -57,7 +57,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="PresionAlta"> Hipertensión
+                                aria-label="Checkbox for following text input" name="Hipertension"> Hipertensión
                             </div>
 
                           </div>
@@ -82,7 +82,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Galucoma"> Glaucoma
+                                aria-label="Checkbox for following text input" name="Glaucoma"> Glaucoma
                             </div>
 
                           </div>
@@ -143,14 +143,76 @@
                             <th>Distancia</th>
                             <th>Cerca</th>
                           </tr>
-                          <td>Con lentes</td>
-                          <td>20/ <input type="text" name="ConLentesDistancia" id="" class="form-control" required></td>
-                          <td>20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required></td>
+                          <td>Lejos</td>
+
+                          <td>                                <select name="ConLentesDistancia">
+
+                                <option value="20/400">20/400</option>
+                                <option value="20/200">20/200</option>
+                                <option value="20/100">20/100</option>
+                                <option value="20/80">20/80</option>
+                                <option value="20/70">20/70</option>
+                                <option value="20/50">20/50</option>
+                                <option value="20/40">20/40</option>
+                                <option value="20/30">20/30</option>
+                                <option value="20/25">20/25</option>
+                                <option value="20/20">20/20</option>
+
+
+                                </select> <!--<input type="text" name="ConLentesDistancia" id="" class="form-control" required>--></td>
+
+
+
+
+                          <td><!--20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required>--><select name="ConLentesCerca">
+
+                                <option value="20/400">20/400</option>
+                                <option value="20/200">20/200</option>
+                                <option value="20/100">20/100</option>
+                                <option value="20/80">20/80</option>
+                                <option value="20/70">20/70</option>
+                                <option value="20/50">20/50</option>
+                                <option value="20/40">20/40</option>
+                                <option value="20/30">20/30</option>
+                                <option value="20/25">20/25</option>
+                                <option value="20/20">20/20</option>
+
+
+                                </select></td>
                           <tr></tr>
-                          <td>Sin lentes</td>
-                          <td>20/ <input type="text" class="form-control" name="SinLentesDistancia" required></td>
-                          <td>20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required></td>
+                          <td>Cerca</td>
+                          <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>--><select name="SinLentesDistancia">
+
+                                <option value="20/400">20/400</option>
+                                <option value="20/200">20/200</option>
+                                <option value="20/100">20/100</option>
+                                <option value="20/80">20/80</option>
+                                <option value="20/70">20/70</option>
+                                <option value="20/50">20/50</option>
+                                <option value="20/40">20/40</option>
+                                <option value="20/30">20/30</option>
+                                <option value="20/25">20/25</option>
+                                <option value="20/20">20/20</option>
+
+
+                                </select></td>
+                          <td><!--20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required>--><select name="SinLentesCerca">
+
+                                <option value="20/400">20/400</option>
+                                <option value="20/200">20/200</option>
+                                <option value="20/100">20/100</option>
+                                <option value="20/80">20/80</option>
+                                <option value="20/70">20/70</option>
+                                <option value="20/50">20/50</option>
+                                <option value="20/40">20/40</option>
+                                <option value="20/30">20/30</option>
+                                <option value="20/25">20/25</option>
+                                <option value="20/20">20/20</option>
+
+
+                                </select></td>
                         </table>
+                      <!--
                         <label for="">PUPILAS</label><br>
 
                         <div class="container text-start">
@@ -169,7 +231,7 @@
                             </div>
                           </div>
                         </div>
-
+-->
                         <br>
                         <div class="container text-start">
                           <div class="row align-items-start">
@@ -213,28 +275,69 @@
 
           <!-- Sección 3: Refracción -->
           <div class="carousel-item">
-            <h2>Protocolo de refracción</h2>
-             <label for=""> RETINOSCOPÍA</label><BR></BR>
-                        <label for=""></label>
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-                            <div class="col col-5">
-                              <td><label for="">OI</label>
-                                <input type="text" class="form-control" name="OIReni" required>
-                              </td>
-                            </div>
-                            <div class="col col-5">
+         <h2>Protocolo de refracción</h2>
+<form id="myForm" action="tu_script.php" method="POST"> <!-- Reemplaza "tu_script.php" con la URL adecuada -->
+  <label for=""> RETINOSCOPÍA </label><BR></BR>
 
-                              <td>
-                                <label for="">OD</label><input type="text" class="form-control" name="ODReni" id="" required>
-                              </td>
-                            </div>
-                          </div>
-                        </div>
+  <!-- Checkbox para la opción +2 -->
+  <input type="checkbox" id="opcionPlus2" name="opcion" value="+2" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +2
+
+  <!-- Checkbox para la opción +1 -->
+  <input type="checkbox" id="opcionPlus1" name="opcion" value="+1" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +1
+
+  <div id="opcionesPlus2" style="display: none;">
+    <label for="">+2</label>
+    <div class="container text-start">
+      <div class="row align-items-start">
+        <div class="col col-5">
+          <label for="">OD 20/80</label>
+          <select name="ODReniPlus2">
+            <option value="HIPERMETROPIA">SI</option>
+            <option value="EMETROPE">NO</option>
+          </select>
+        </div>
+        <div class="col col-5">
+          <label for="">OI 20/80</label>
+          <select name="OIReniPlus2">
+            <option value="HIPERMETROPIA">SI</option>
+            <option value="EMETROPE">NO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="opcionesPlus1" style="display: none;">
+    <label for="">+1</label>
+    <div class="container text-start">
+      <div class="row align-items-start">
+        <div class="col col-5">
+          <label for="">OD 20/30</label>
+          <select name="ODReniPlus1">
+            <option value="HIPERMETROPIA">SI</option>
+            <option value="MIOPIA">NO</option>
+          </select>
+        </div>
+        <div class="col col-5">
+          <label for="">OI 20/30</label>
+          <select name="OIReniPlus1">
+            <option value="HIPERMETROPIA">SI</option>
+            <option value="MIOPIA">NO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="hidden" name="odreni" id="odreniInput" value="">
+
                         <br>
+                       
                         <div class="container text-start">
                           <div class="row align-items-start">
                             <div class="col col-5">
+                                                          <!--
+
                               <td><label for="">AV</label>
                                 <select name="AVReni">
 
@@ -272,6 +375,11 @@
 
                                 </select>
                               </td>
+-->
+
+                            
+                                              <button type="submit" class="btn btn-primary">Guardar datos</button>
+
                             </div>
                           </div>
                         </div>
@@ -377,6 +485,7 @@
             <!-- Resto de tu contenido de la sección "Examinación" aquí -->
 
           <!-- Sección 5: Optical -->
+<!--
           <div class="carousel-item">
             <h2>Optical</h2>
               <label>Primary Pair Recommended Eyeglass Rx</label><br>
@@ -384,8 +493,8 @@
                         <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" id="" required>
                      
                 <button type="submit" class="btn btn-primary">Guardar datos</button>
-            <!-- Resto de tu contenido de la sección "Optical" aquí -->
           </div>
+          -->
         </div>
 </div>
         
@@ -403,6 +512,9 @@
 
       </div>
     </div>
+
+
+    
           </form>
         </div>
         
@@ -631,8 +743,43 @@
 
 
  
- 
+    var odreni = ""; // Variable para almacenar el valor de odreni
 
+  // Función para actualizar el valor de odreni en función de la selección del usuario
+  function actualizarOdreni(checkbox) {
+    if (checkbox.checked) {
+      odreni = checkbox.value; // Asignar el valor del checkbox seleccionado a odreni
+    } else {
+      odreni = ""; // Si el checkbox se desmarca, eliminar el valor de odreni
+    }
+    document.getElementById("odreniInput").value = odreni; // Actualizar el campo oculto
+  }
+
+  // Función para mostrar u ocultar las secciones de opciones en función del checkbox seleccionado
+  function mostrarOpciones(checkbox) {
+    const opcionesPlus2 = document.getElementById("opcionesPlus2");
+    const opcionesPlus1 = document.getElementById("opcionesPlus1");
+
+    if (checkbox === opcionPlus2) {
+      opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus1.style.display = "none";
+      opcionPlus1.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
+      }
+    } else if (checkbox === opcionPlus1) {
+      opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus2.style.display = "none";
+      opcionPlus2.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
+      }
+    }
+  }
 </script>
 
 
