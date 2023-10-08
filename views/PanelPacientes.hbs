@@ -1,12 +1,12 @@
 {{>navbar}}
 
 <section id="PanelPacientes">
-
+<br>
   <h1 class="text-center hola">Panel de pacientes</h1>
 
   <body class="text-center">
     <br>
-
+<!--
     Filtrar por rol:
     <form method="POST" action="/FiltrosPacientes">
       <div class="row justify-content-center">
@@ -24,13 +24,15 @@
       </div>
 
     </form>
+    -->
 
     <br>
 
-    <form method="post" action="/FiltrosPacientes2">
+    <form method="post" action="/FiltrosPacientes">
       <div class="row justify-content-center">
         <div class="col-3">
           <select name="Tipo" id="FiltroHistorial2" class="form-select">
+            <option value="Folio">Folio</option>
             <option value="Nombre">Nombre de usuario</option>
 
           </select>
@@ -51,10 +53,9 @@
       <table class="user-table">
         <thead>
           <tr>
-            <th>Correo</th>
+            <th>Folio</th>
             <th>Nombre</th>
             <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
             <th>Rol</th>
             <th>Borrar</th>
             <th>Diagnostico</th>
@@ -62,15 +63,14 @@
           </tr>
         </thead>
         <tbody>
-          {{#each usuarios.docs}}
+          {{#each pacientes.docs}}
           <tr>
-            <td>{{this.username}}</td>
+            <td>{{this.Folio}}</td>
             <td>{{this.Nombre}}</td>
             <td>{{this.ApellidoPaterno}}</td>
-            <td>{{this.ApellidoMaterno}}</td>
             <td>{{this.role}}</td>
-            <td><a href="/Borrar?Usuario={{this.username}}">Borrar</a></td>
-            <td><button class="form-control" onclick="openPopup(`{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}`)">Diagnostico</button></td>
+            <td><a href="/BorrarPacientes?id={{this._id}}">Borrar</a></td>
+            <td><button class="form-control" onclick="openPopup(`{{this.Nombre}} {{this.ApellidoPaterno}}`)">Diagnostico</button></td>
 
             <!--Agregar alerta-->
           </tr>
@@ -99,7 +99,7 @@
 
   <ul class="pagination justify-content-center">
     {{#each TotalPaginas}}
-    {{#if (not (eq ../Filtro "Id"))}}
+    {{#if (not (eq ../Filtro "Folio"))}}
     {{#if (not (eq ../Filtro "Nombre"))}}
     <li class="page-item">
       <a href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
@@ -121,13 +121,24 @@
     {{#if (eq ../Filtro "Nombre")}}
 
     <li class="page-item"><a
-        href="/FiltrosPacientes2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        id="sendMessageButton" class="page-link">{{this}}</a></li>
+    {{/if}}
+        {{#if (eq ../Filtro "Folio")}}
+
+    <li class="page-item"><a
+        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
         id="sendMessageButton" class="page-link">{{this}}</a></li>
     {{/if}}
     {{/each}}
   </ul>
 </nav>
 {{/unless}}
+
+
+
+
+
 <script>
   function openPopup(id) {
     fetch(`/popup/${id}`)

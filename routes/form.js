@@ -39,6 +39,7 @@ function generarId() {
       // Ejemplo de uso:
       const nuevoId = generarId();
       req.body.Folio = nuevoId
+      req.body.NombreCompleto= req.body.Nombre + ' ' + req.body.ApellidoPaterno
       await paciente.create(req.body);
 
       // Mostrar una alerta de éxito y redirigir a
