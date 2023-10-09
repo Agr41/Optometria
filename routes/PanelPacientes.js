@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
   
 console.log(pacientes.docs)
 */
-    res.render('PanelPacientes', { Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
+    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
   } else if (page != undefined) {
     // Si se especifica una página, muestra esa página
     const pacientes = await Paciente.paginate({}, { page, limit: 10 });

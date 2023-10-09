@@ -7,7 +7,7 @@ const User =require("../models/Usuarios")
 router.get('/', async function (req, res, next) {
 const usuarios = await User.find({})
 console.log(role)
-res.render('index', { title: 'Express',usuarios,Logeado,role });
+res.render('index', { title: 'Sistema de registro de pacientes',usuarios,Logeado,role });
 });
 
 module.exports = router;

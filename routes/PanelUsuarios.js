@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
       TotalPaginas.push(i + 1);
     }
     //console.log(TotalPaginas);
-    res.render('PanelUsuarios', { Logeado, role, usuarios, FiltroPaginado, Filtro, TotalPaginas });
+    res.render('PanelUsuarios', {title:"Usuarios", Logeado, role, usuarios, FiltroPaginado, Filtro, TotalPaginas });
   } else if (page != undefined) {
     // Si se especifica una página, muestra esa página
     const usuarios = await User.paginate({}, { page, limit: 10 });
