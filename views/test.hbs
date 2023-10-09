@@ -2,18 +2,18 @@
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="/stylesheets/Test.css">
 
-<div class="col-lg-8 mx-auto p-4 py-md-5">
+<div class="col-lg-8 mx-auto p-2 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
     VOSH Universal Exam Form
   </header>
 
   <main>
 <div class="modal-content rounded-4 shadow">
-      <div class="modal-body p-5 border border-2 border-dark rounded">
+      <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
         <div class="container">
-          <form action="/Formulario" method="POST">
+          <form action="/Formulario" method="POST" id="formulario" >
 
-<div class="container">
+<div class="container" id="formcont">
       <div id="carouselExample"  class="carousel slide" >
         <div class="carousel-inner">
 
@@ -22,7 +22,7 @@
             <h2>Paciente</h2>
             <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
 
-                    <div id="popup" class="popup">
+                    <div id="popup" class="popup" style="z-index: +1000;">
                       <div class="popup-content">
                         <span class="close" onclick="closePopup()">&times;</span>
                         <input type="text" id="searchInput" placeholder="Search...">
@@ -506,13 +506,18 @@
         
       </div>
     </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()" >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
+          <div class="row " style="z-index: 999;">
+  <div class="col-auto me-auto">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="col-auto ">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
   </main>
 </div>
 
@@ -527,14 +532,8 @@
         
         </ul >
       </div>
-</div>
-
-
-
-
-
-  </main>
-
+   </div>
+</main>
 </div>
 
 

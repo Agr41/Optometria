@@ -6,16 +6,33 @@
     position: relative;
     bottom: 2em;
     width: 200px;
-    margin-bottom: -50px;
+   
   }
   .carousel-control-next {
     background-color: black; /* Cambia el color de fondo a negro */
-    margin: 10px; /* Aumenta el espacio alrededor de los botones */
+    margin-top: 10px; /* Aumenta el espacio alrededor de los botones */
     height: 40px;
     position: relative;
     bottom: 2em;
     width: 200px;
-    margin-left: 630px;
+
+  }
+ 
+
+  #CuadroG{
+    padding: 30px;
+  }
+
+  @media screen and (max-width: 420px) {
+    #CuadroG {
+      padding: 5px; /* Nuevo valor de padding para pantallas más grandes */
+    }
+    #formulario{
+      padding-left: 5px;
+    }
+    #formcont{
+      padding-left: 0px;
+    }
   }
 
   /* Estilos para los botones de control del carrusel */
