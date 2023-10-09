@@ -28,6 +28,6 @@ module.exports = async (req, res) => {
     for (i = 0; i < pacientes.totalPages; i++) {
       TotalPaginas.push(i + 1);
     }
-    res.render('PanelPacientes', { Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
+    res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
   }
 }
