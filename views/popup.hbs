@@ -21,7 +21,25 @@ Tests realizados por el paciente:
 
 
 <br>
-<a href="/TestPaciente/{{this.id}}?Fecha={{this._id}}" class="fecha-link">{{dateFormat this.FechaDelTest}}</a>
+<table class="user-table">
+        <thead>
+          <tr>
+            <th>OD</th>
+            <th>OI</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{this.ODReni}}</td>
+            <td>{{this.OIReni}}</td>
+
+        </tbody>
+      </table>
+      <br>
+      <a href="/TestPaciente/{{this.id}}?Fecha={{this._id}}" class="fecha-link">{{dateFormat this.FechaDelTest}}</a> 
+
 <br>
 
 
