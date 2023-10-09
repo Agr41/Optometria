@@ -48,7 +48,7 @@
       <button class="btn btn-outline-danger" type="reset">Limpiar</button>
       <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">Buscar</i></button>
     </form>
-
+<br>
     <div>
       <table class="user-table">
         <thead>
@@ -57,7 +57,9 @@
             <th>Nombre</th>
             <th>Apellido(s)</th>
             <th>Borrar</th>
-            <th>Diagnostico</th>
+            <th>Tests</th>
+            <th>OD</th>
+            <th>OI</th>
 
           </tr>
         </thead>
@@ -68,8 +70,11 @@
             <td>{{this.Nombre}}</td>
             <td>{{this.ApellidoPaterno}}</td>
 
-            <td><a href="/BorrarPacientes?id={{this._id}}">Borrar</a></td>
+<td><a href="/BorrarPacientes?id={{this._id}}" class="borrar-link">Borrar</a></td>
+
             <td><button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnostico</button></td>
+            <td>{{this.ODReni}}</td>
+            <td>{{this.OIReni}}</td>
 
             <!--Agregar alerta-->
           </tr>
@@ -80,7 +85,7 @@
 
     </div>
 </section>
-
+<br>
 {{#unless (Falso FiltroPaginado)}}
 <nav aria-label="Page navigation example">
 
@@ -279,6 +284,20 @@
   .user-table tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+
+      /* Estilo para el enlace de "Borrar" */
+    .borrar-link {
+        color: white; /* Color del texto */
+        background-color: #e35151; /* Color de fondo rojo */
+        padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
+        border-radius: 5px; /* Borde redondeado */
+        text-decoration: none; /* Eliminar subrayado del enlace */
+    }
+
+    /* Cambiar el color del enlace al pasar el mouse por encima */
+    .borrar-link:hover {
+        background-color: #e35151; /* Cambia el color de fondo en hover (tono más claro) */
+    }
 </style>
 
 <style>

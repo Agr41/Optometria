@@ -17,7 +17,12 @@ module.exports = async (req, res) => {
     for (i = 0; i < pacientes.totalPages; i++) {
       TotalPaginas.push(i + 1);
     }
+
+
     //console.log(TotalPaginas);
+
+
+    
     res.render('PanelPacientes', { Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
   } else if (page != undefined) {
     // Si se especifica una página, muestra esa página

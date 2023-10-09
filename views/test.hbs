@@ -1,5 +1,7 @@
 {{> navbar}}
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/stylesheets/Test.css">
+
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
     VOSH Universal Exam Form
@@ -145,7 +147,7 @@
                           </tr>
                           <td>Lejos</td>
 
-                          <td>                                <select name="ConLentesDistancia">
+                          <td>                                <select name="ConLentesDistancia" class="verde-fosforescente">
 
                                 <option value="20/400">20/400</option>
                                 <option value="20/200">20/200</option>
@@ -164,7 +166,7 @@
 
 
 
-                          <td><!--20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required>--><select name="ConLentesCerca">
+                          <td><!--20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required>--><select name="ConLentesCerca" class="verde-fosforescente">
 
                                 <option value="20/400">20/400</option>
                                 <option value="20/200">20/200</option>
@@ -181,7 +183,7 @@
                                 </select></td>
                           <tr></tr>
                           <td>Cerca</td>
-                          <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>--><select name="SinLentesDistancia">
+                          <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>--><select name="SinLentesDistancia" class="verde-fosforescente">
 
                                 <option value="20/400">20/400</option>
                                 <option value="20/200">20/200</option>
@@ -196,7 +198,7 @@
 
 
                                 </select></td>
-                          <td><!--20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required>--><select name="SinLentesCerca">
+                          <td><!--20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required>--><select name="SinLentesCerca" class="verde-fosforescente">
 
                                 <option value="20/400">20/400</option>
                                 <option value="20/200">20/200</option>
@@ -278,27 +280,31 @@
          <h2>Protocolo de refracción</h2>
 <form id="myForm" action="tu_script.php" method="POST"> <!-- Reemplaza "tu_script.php" con la URL adecuada -->
   <label for=""> RETINOSCOPÍA </label><BR></BR>
-
+    <div class="contenedor">
+        <div class="checkbox-group">
   <!-- Checkbox para la opción +2 -->
   <input type="checkbox" id="opcionPlus2" name="opcion" value="+2" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +2
-
+  </div>
+        <div class="checkbox-group">
   <!-- Checkbox para la opción +1 -->
   <input type="checkbox" id="opcionPlus1" name="opcion" value="+1" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +1
+</div>
+</div>
 
-  <div id="opcionesPlus2" style="display: none;">
+  <div id="opcionesPlus2" style="display: none;" class="contenedor3">
     <label for="">+2</label>
     <div class="container text-start">
       <div class="row align-items-start">
         <div class="col col-5">
           <label for="">OD 20/80</label>
-          <select name="ODReniPlus2">
+          <select name="ODReniPlus2" class="verde-fosforescente">
             <option value="HIPERMETROPIA">SI</option>
             <option value="EMETROPE">NO</option>
           </select>
         </div>
         <div class="col col-5">
           <label for="">OI 20/80</label>
-          <select name="OIReniPlus2">
+          <select name="OIReniPlus2" class="verde-fosforescente">
             <option value="HIPERMETROPIA">SI</option>
             <option value="EMETROPE">NO</option>
           </select>
@@ -307,20 +313,20 @@
     </div>
   </div>
 
-  <div id="opcionesPlus1" style="display: none;">
+  <div id="opcionesPlus1" style="display: none;" class="contenedor3">
     <label for="">+1</label>
     <div class="container text-start">
       <div class="row align-items-start">
         <div class="col col-5">
           <label for="">OD 20/30</label>
-          <select name="ODReniPlus1">
+          <select name="ODReniPlus1" class="verde-fosforescente">
             <option value="HIPERMETROPIA">SI</option>
             <option value="MIOPIA">NO</option>
           </select>
         </div>
         <div class="col col-5">
           <label for="">OI 20/30</label>
-          <select name="OIReniPlus1">
+          <select name="OIReniPlus1" class="verde-fosforescente">
             <option value="HIPERMETROPIA">SI</option>
             <option value="MIOPIA">NO</option>
           </select>
@@ -377,9 +383,9 @@
                               </td>
 -->
 
-                            
+                                                     <div class="contenedor2">
                                               <button type="submit" class="btn btn-primary">Guardar datos</button>
-
+</div>
                             </div>
                           </div>
                         </div>
@@ -530,157 +536,7 @@
   </main>
 
 </div>
-<style>
-  /* Estilos para los botones "Previous" y "Next" */
-  .carousel-control-prev{
-    background-color: black; /* Cambia el color de fondo a negro */
-    margin: 10px; /* Aumenta el espacio alrededor de los botones */
-    height: 40px;
-    position: relative;
-    bottom: 2em;
-    width: 200px;
-    margin-bottom: -50px;
-  }
-  .carousel-control-next {
-    background-color: black; /* Cambia el color de fondo a negro */
-    margin: 10px; /* Aumenta el espacio alrededor de los botones */
-    height: 40px;
-    position: relative;
-    bottom: 2em;
-    width: 200px;
-    margin-left: 630px;
-  }
 
-  /* Estilos para los botones de control del carrusel */
-.carousel-control-prev,
-.carousel-control-next {
-  display: flex;
-  align-items: center;
-  
-}
-
-/* Estilos para las flechas del carrusel */
-.carousel-control-prev-icon::before,
-.carousel-control-next-icon::before {
-  height: 40px;
-  color: white;
-  position:  relative;
-  bottom: -5px
-}
-
-/* Estilos para el texto "Previous" y "Next" */
-.carousel-control-prev .carousel-control-prev-icon::before {
-
-  content: "Anterior";
-  margin-right: -150px;
-  margin-top: 200px; /* Ajusta el espacio entre la flecha y el texto */
-}
-
-.carousel-control-next .carousel-control-next-icon::before {
-  content: "Siguiente";
-  margin-left: -150px;
-  margin-bottom: ;/* Ajusta el espacio entre la flecha y el texto */
-  position: relative;
-}
-
-.carousel-control-prev-icon{
-    margin-left: -150px; /* Ajusta el espacio entre la flecha y el texto */
-
-}
-.carousel-control-next-icon{
-    margin-left: 150px; /* Ajusta el espacio entre la flecha y el texto */
-
-}
-
-
-
-</style>
-<style>
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .popup-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    max-height: 500px;
-    overflow-y: auto;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  body {
-    background-color: #f2f2f2;
-  }
-
-  form {
-    margin: 20px;
-    padding: 20px;
-    background-color: #d3f3cb;
-    border-radius: 10px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  input[type=text],
-  input[type=password] {
-    padding: 8px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-
-  button[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-
-  button[type=submit]:hover {
-    background-color: #45a049;
-  }
-  /* Estilos para el botón "Previous" y "Next" */
-  .custom-carousel-button {
-    align-self: flex-end;
-    height: 8px;
-  }
-</style>
 
 <script>
   
