@@ -54,24 +54,20 @@
           <tr>
             <th>Correo</th>
             <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
+            <th>Apellidos</th>
             <th>Rol</th>
             <th>Borrar</th>
-            <th>Diagnostico</th>
 
           </tr>
         </thead>
         <tbody>
           {{#each usuarios.docs}}
           <tr>
-            <td>{{this.username}}</td>
+            <td class="correos">{{this.username}}</td>
             <td>{{this.Nombre}}</td>
-            <td>{{this.ApellidoPaterno}}</td>
-            <td>{{this.ApellidoMaterno}}</td>
+            <td>{{this.ApellidoPaterno}} {{this.ApellidoMaterno}}</td>
             <td>{{this.role}}</td>
             <td><a href="/Borrar?Usuario={{this.username}}">Borrar</a></td>
-            <td><button class="form-control" onclick="openPopup(`{{this.username}}`)">Diagnostico</button></td>
 
             <!--Agregar alerta-->
           </tr>
@@ -149,7 +145,33 @@
 </script>
 
 
+<style>
+  /* Add this CSS for smaller screens */
+  @media screen and (max-width: 600px) {
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 10px;
+    }
+    .user-table {
+      width: 100%;
+      max-width: none;
+    }
+    .user-table th,
+    .user-table td {
+      padding: 5px;
+      font-size: 14px;
+    }
+    #diag{
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
 
+  /* Existing CSS styles */
+  /* ... */
+
+</style>
 
 
 

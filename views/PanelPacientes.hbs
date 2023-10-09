@@ -55,8 +55,7 @@
           <tr>
             <th>Folio</th>
             <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Rol</th>
+            <th>Apellido(s)</th>
             <th>Borrar</th>
             <th>Diagnostico</th>
 
@@ -68,9 +67,9 @@
             <td>{{this.Folio}}</td>
             <td>{{this.Nombre}}</td>
             <td>{{this.ApellidoPaterno}}</td>
-            <td>{{this.role}}</td>
+
             <td><a href="/BorrarPacientes?id={{this._id}}">Borrar</a></td>
-            <td><button class="form-control" onclick="openPopup(`{{this.Nombre}} {{this.ApellidoPaterno}}`)">Diagnostico</button></td>
+            <td><button id="diag" class="form-control" onclick="openPopup(`{{this.Nombre}} {{this.ApellidoPaterno}}`)">Diagnostico</button></td>
 
             <!--Agregar alerta-->
           </tr>
@@ -282,5 +281,32 @@
   }
 </style>
 
+<style>
+  /* Add this CSS for smaller screens */
+  @media screen and (max-width: 600px) {
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 10px;
+    }
+    .user-table {
+      width: 100%;
+      max-width: none;
+    }
+    .user-table th,
+    .user-table td {
+      padding: 5px;
+      font-size: 14px;
+    }
+    #diag{
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+
+  /* Existing CSS styles */
+  /* ... */
+
+</style>
 
 {{>footer}}
