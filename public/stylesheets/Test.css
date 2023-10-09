@@ -1,0 +1,223 @@
+  /* Estilos para los botones "Previous" y "Next" */
+  .carousel-control-prev{
+    background-color: black; /* Cambia el color de fondo a negro */
+    margin: 10px; /* Aumenta el espacio alrededor de los botones */
+    height: 40px;
+    position: relative;
+    bottom: 2em;
+    width: 200px;
+   
+  }
+  .carousel-control-next {
+    background-color: black; /* Cambia el color de fondo a negro */
+    margin-top: 10px; /* Aumenta el espacio alrededor de los botones */
+    height: 40px;
+    position: relative;
+    bottom: 2em;
+    width: 200px;
+
+  }
+ 
+
+  #CuadroG{
+    padding: 30px;
+  }
+
+  @media screen and (max-width: 420px) {
+    #CuadroG {
+      padding: 5px; /* Nuevo valor de padding para pantallas más grandes */
+    }
+    #formulario{
+      padding-left: 5px;
+    }
+    #formcont{
+      padding-left: 0px;
+    }
+  }
+
+  /* Estilos para los botones de control del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  display: flex;
+  align-items: center;
+  
+}
+
+/* Estilos para las flechas del carrusel */
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+  height: 40px;
+  color: white;
+  position:  relative;
+  bottom: -5px
+}
+
+/* Estilos para el texto "Previous" y "Next" */
+.carousel-control-prev .carousel-control-prev-icon::before {
+
+  content: "Anterior";
+  margin-right: -150px;
+  margin-top: 200px; /* Ajusta el espacio entre la flecha y el texto */
+}
+
+.carousel-control-next .carousel-control-next-icon::before {
+  content: "Siguiente";
+  margin-left: -150px;
+  position: relative;
+}
+
+.carousel-control-prev-icon{
+    margin-left: -150px; /* Ajusta el espacio entre la flecha y el texto */
+
+}
+.carousel-control-next-icon{
+    margin-left: 150px; /* Ajusta el espacio entre la flecha y el texto */
+
+}
+
+
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .popup-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  body {
+    background-color: #f2f2f2;
+  }
+
+  form {
+    margin: 20px;
+    padding: 20px;
+    background-color: #d3f3cb;
+    border-radius: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  input[type=text],
+  input[type=password] {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+  /* Estilos para el botón "Previous" y "Next" */
+  .custom-carousel-button {
+    align-self: flex-end;
+    height: 8px;
+  }
+        /* Estilo para la clase "verde-fosforescente" */
+        .verde-fosforescente {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #D3F3CB; /* Nuevo color de fondo */
+            color: #000; /* Color del texto */
+            border-radius: 5px;
+            outline: none;
+        }
+
+        /* Estilo cuando se enfoca (hover) el select */
+        .verde-fosforescente:hover {
+            background-color: #A8E8A3; /* Cambia el color de fondo en hover (más claro) */
+        }
+
+        /* Estilo cuando se enfoca (focus) el select */
+        .verde-fosforescente:focus {
+            background-color: #D3F3CB; /* Vuelve al color de fondo original en focus */
+        }
+
+        /* Estilo para las opciones del select */
+        .verde-fosforescente option {
+            background-color: #D3F3CB; /* Color de fondo de las opciones */
+            color: #000; /* Color del texto de las opciones */
+        }
+
+        /* Estilo para las opciones del select en hover */
+        .verde-fosforescente option:hover {
+            background-color: #A8E8A3; /* Cambia el color de fondo de las opciones en hover (más claro) */
+        }
+
+        /* Estilo para el div contenedor */
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo para los checkboxes */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-right: 10px; /* Espacio entre los checkboxes (puedes ajustar este valor) */
+
+        }
+
+        /* Estilo para los inputs (en este caso, checkboxes) */
+        input[type="checkbox"] {
+            /* Estilos personalizados para los checkboxes */
+            margin-right: 10px; /* Espacio entre los checkboxes (puedes ajustar este valor) */
+        }
+                /* Estilo para el div contenedor */
+                .contenedor2 {
+                    position: relative; /* Make sure the position is set to relative or absolute */
+                    left: 300px; /* Move it 100px to the right */
+                }
+                .contenedor3{
+                    position: relative; /* Make sure the position is set to relative or absolute */
+                    left: 160px; /* Move it 100px to the right */
+                }

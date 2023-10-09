@@ -13,13 +13,34 @@
 
 <br>
 
-Tests realizados por el usuario:
+Tests realizados por el paciente:
 <br>
-{{#each Numero}}
-{{this}}.-
-{{/each}}
+<br>
+
 {{#each tests}}
-<a href="/TestCliente/{{this.username}}?Fecha={{this._id}}">{{dateFormat this.FechaDelTest}}</a><br>
+
+
+<br>
+<table class="user-table">
+        <thead>
+          <tr>
+            <th>OD</th>
+            <th>OI</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{this.ODReni}}</td>
+            <td>{{this.OIReni}}</td>
+
+        </tbody>
+      </table>
+      <br>
+      <a href="/TestPaciente/{{this.id}}?Fecha={{this._id}}" class="fecha-link">{{dateFormat this.FechaDelTest}}</a> 
+
+<br>
 
 
 {{/each}}
@@ -65,7 +86,20 @@ Tests realizados por el usuario:
   background-color: #ffffff;
   color: #555555;
 }
+    /* Estilo para el enlace de fecha */
+    .fecha-link {
+        padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
+        border: 1px solid #999; /* Borde ligero */
+        background-color: #f5f5f5; /* Fondo gris claro */
+        color: #333; /* Color del texto */
+        text-decoration: none; /* Eliminar subrayado del enlace */
+        border-radius: 3px; /* Borde redondeado */
+    }
 
+    /* Cambiar el color del enlace al pasar el mouse por encima */
+    .fecha-link:hover {
+        background-color: #ddd; /* Cambia el color de fondo en hover (tono más claro) */
+    }
   </style>
 
 

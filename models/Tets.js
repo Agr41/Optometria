@@ -7,7 +7,8 @@ const mongoosePaginate= require('mongoose-paginate-v2')
 // -------------- SCHEMA -------------- //
 const TestSchema = new Schema({
 
-    username: String,
+    id: String,
+    Folio:String,
     Diagnostico:String,
     Ocupación:String,
     FechaNacimiento:String,
@@ -16,45 +17,61 @@ const TestSchema = new Schema({
     //<---Pre-test--->
     //Condiciones
     Diabetes:Boolean,
-    PresionAlta:Boolean,
-    EmbarazoOlactancia:Boolean,
+    Hipertension:Boolean,
+    //EmbarazoOlactancia:Boolean,
     ProblemasDelCorazon:Boolean,
-    Galucoma:Boolean,
-    Caratatas:Boolean,
-    DolorDeCabeza:Boolean,
-    Alergias:String,
-    Otro:String,
-    MedicamentosActuales:String,
+    Glaucoma:Boolean,
+    //Caratatas:Boolean,
+    //DolorDeCabeza:Boolean,
+    //Alergias:String,
+    //Otro:String,
+    //MedicamentosActuales:String,
     //AgudezaVisual
     ConLentesDistancia:String,
     ConLentesCerca:String,
     SinLentesDistancia:String,
     SinLentesCerca:String,
     //Pupilas
-    Izquierdo:String,
-    Derecha:String,
+    //Izquierdo:String,
+    //Derecha:String,
 
     grupoRadioA:String,
     grupoRadioB:String,
     grupoRadioC:String,
-    grupoRadio2A:String,
-    grupoRadio2B:String,
-    grupoRadio2C:String,
+    //grupoRadio2A:String,
+    //grupoRadio2B:String,
+    //grupoRadio2C:String,
         //<---Refraccion--->
     //Retinoscopía
+    /*
+    ODReni2:String,
+    OIReni2:String,
+    ODReni1:String,
+    OIReni1:String,
+    */
+    ODReni:String,
+    OIReni:String,
+    opcion:String,
+
+/*
     OIReni:String,
     ODReni:String,
     AVReni:String,
     AVReni2:String,
+*/
+
     //Examen Subjetivo
+    /*
     OIExam:String,
     ADExam:String,
     AVExam:String,
     AVExam2:String,
     Observaciones:String,
+    */
         //<---Examination--->
 
     //Examination
+    /*
     Myopia:Boolean,
     Hyperopia:Boolean,
     Asigmatism:Boolean,
@@ -76,9 +93,11 @@ const TestSchema = new Schema({
     ODExamination2:Boolean,
     OSExamination2:Boolean,
     OtherExamination:String,
+    */
     //<---Optical--->
-    ODOptical:String,
-    OSOptical:String,
+
+    //ODOptical:String,
+    //OSOptical:String,
 
 
 

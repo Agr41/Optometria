@@ -7,12 +7,18 @@ const mongoosePaginate= require('mongoose-paginate-v2')
 const pacienteSchema = new Schema({
     Nombre: String,
     ApellidoPaterno:String,
-    ApellidoMaterno:String,
+    NombreCompleto:String,
     ciudad:String,
     ocupacion: String,
     ultimoexamen: String,
     sexo: String,
-    fnacimiento: String
+    fnacimiento: String,
+    Folio:String,
+    id:String,
+    /*
+    OD:String,
+    OI:String
+    */
 
 });
 
