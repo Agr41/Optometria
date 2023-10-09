@@ -30,7 +30,9 @@ const Registrarse = require ('./routes/Registrarse')
 const RegistrarsePost = require ('./routes/RegistrarsePost')
 const FiltrosUsuarios2 = require('./routes/FiltrosUsuarios2')
 const TestCliente = require('./routes/TestCliente')
+const TestPaciente= require ('./routes/TestPaciente')
 const TestActualizar = require('./routes/TestActualizar')
+const TestPacientePOST = require('./routes/TestPacientePOST')
 const TestBorrar = require('./routes/TestBorrar')
 const SoloAdmin = require('./middlewares/SoloAdmin')
 const FiltrosPacientes= require('./routes/FiltroPacientes')
@@ -144,20 +146,22 @@ app.use('/Borrar',Borrar)
 app.use('/BorrarPacientes',BorrarPacientes)
 app.get('/Registrarse',SoloAdmin,Registrarse)
 app.get('/TestCliente/:id',TestCliente)
+app.get('/TestPaciente/:id',TestPaciente)
 app.post('/RegistrarsePost',RegistrarsePost)
 app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
 app.use('/FiltrosPacientes',FiltrosPacientes)
 app.post('/TestActualizar',TestActualizar)
+app.post('/TestPacientePOST',TestPacientePOST)
 app.use('/TestBorrar', TestBorrar)
 app.use('/graficas', graficasRouter)
 
 app.get('/popup/:id',async (req, res) => {
-      const User = require('./models/Usuarios')
+      const Paciente = require('./models/pacientes')
       const Tests= require('./models/Tets')
 
       const id = req.params.id;
-      const usuarios = await User.find({username:id})
-      const tests= await Tests.find({username:id})
+      const pacientes = await Paciente.find({_id:id})
+      const tests= await Tests.find({id:id})
       //console.log(tests)
       var Numero = [];
       for (i = 0; i < tests.length; i++) {
@@ -166,7 +170,7 @@ app.get('/popup/:id',async (req, res) => {
       //console.log(Numero)
       const title = `${id}`;
       const content = `This is popup ${id}`;
-      res.render('popup', { title, content,usuarios,tests,Numero});
+      res.render('popup', { title, content,pacientes,tests,Numero});
   
   
   

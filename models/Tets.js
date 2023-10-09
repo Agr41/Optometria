@@ -7,7 +7,7 @@ const mongoosePaginate= require('mongoose-paginate-v2')
 // -------------- SCHEMA -------------- //
 const TestSchema = new Schema({
 
-    username: String,
+    id: String,
     Folio:String,
     Diagnostico:String,
     Ocupación:String,
@@ -51,6 +51,7 @@ const TestSchema = new Schema({
     */
     ODReni:String,
     OIReni:String,
+    opcion:String,
 
 /*
     OIReni:String,

@@ -24,9 +24,9 @@
                       <div class="popup-content">
                         <span class="close" onclick="closePopup()">&times;</span>
                         <input type="text" id="searchInput" placeholder="Search...">
-                        {{#each usuarios}}
-                        <p>{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}} <input type="hidden"
-                            value="{{this.Nombre}} {{this.ApellidoPaterno}} {{this.ApellidoMaterno}}" id="username"><button type="button" class="btn btn-dark"
+                        {{#each pacientes}}
+                        <p>{{this.NombreCompleto}}<input type="hidden"
+                            value="{{this._id}}" id="id" ><button type="button" class="btn btn-dark"
                             onclick="displayUsername(this)">Agregar</button></p>
                         <br>
                         {{/each}}
@@ -34,7 +34,7 @@
                     </div>
                     <br>
                     <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="username">
+                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
 
                     <button type="button" id="hideUsernameButton" style="display:none;"
                       onclick="hideUsernameDisplay()">Cancelar</button>
@@ -240,13 +240,13 @@
                             </div>
                             <div class="w-100 d-none d-md-block"></div>
                             <div class="col-sm-2">
-                              <input type="radio" name="grupoRadioA" id=""> <label for="">Orto</label>
+                              <input type="checkbox" name="grupoRadioA" id=""> <label for="">Orto</label>
                             </div>
                             <div class="col-sm-2">
-                              <input type="radio" name="grupoRadioB" id=""> <label for="">Endo</label>
+                              <input type="checkbox" name="grupoRadioB" id=""> <label for="">Endo</label>
                             </div>
                             <div class="col-sm-2">
-                              <input type="radio" name="grupoRadioC" id=""> <label for="">Exo</label>
+                              <input type="checkbox" name="grupoRadioC" id=""> <label for="">Exo</label>
                             </div>
                             <br> <br>
 <!--

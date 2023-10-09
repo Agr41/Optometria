@@ -1,0 +1,424 @@
+{{> navbar}}
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/stylesheets/TestPaciente.css">
+
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+    VOSH Universal Exam Form
+  </header>
+
+  <main>
+<div class="modal-content rounded-4 shadow">
+      <div class="modal-body p-5 border border-2 border-dark rounded">
+        <div class="container">
+          <form action="/TestPacientePOST" method="POST">
+
+<div class="container">
+      <div id="carouselExample"  class="carousel slide" >
+        <div class="carousel-inner">
+          <!-- Sección 1: Paciente -->
+          <div class="carousel-item active">
+            <h2>Paciente</h2>
+            
+            <!--<button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>-->
+            {{#each pacientes}}
+
+{{this.NombreCompleto}}
+{{/each}}
+
+            {{#each tests}}
+            <input type="hidden" value="{{this._id}}" name="ValorBusqueda">
+            <input type="hidden" value="{{this.id}}" name="UsuarioBusqueda">
+
+                    <div id="popup" class="popup">
+                      <div class="popup-content">
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <input type="text" id="searchInput" placeholder="Search...">
+                        {{#each pacientes}}
+                        <p>{{this.NombreCompleto}}<input type="hidden"
+                            value="{{this._id}}" id="id" ><button type="button" class="btn btn-dark"
+                            onclick="displayUsername(this)">Agregar</button></p>
+                        <br>
+                        {{/each}}
+                      </div>
+                    </div>
+                    <br>
+                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
+                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id"  value="{{this.id}}">
+
+                    <button type="button" id="hideUsernameButton" style="display:none;"
+                      onclick="hideUsernameDisplay()">Cancelar</button>
+
+            <!-- Resto de tu contenido de la sección "Paciente" aquí -->
+          </div>
+
+          <!-- Sección 2: Pre-test -->
+          <div class="carousel-item">
+            <h2>Pre-test</h2>
+            <div class="col-sm-8">
+                          <label class="form-label">CONDICIONES:</label><br>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="Diabetes"  id="myCheckbox"{{isChecked this.Diabetes}}> Diabetes
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="Hipertension" id="myCheckbox"{{isChecked this.Hipertension}}> Hipertensión
+                            </div>
+
+                          </div>
+
+
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="ProblemasDelCorazon" id="myCheckbox"{{isChecked this.ProblemasDelCorazon}}> Problemas del
+                              corazón
+                            </div>
+
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0" type="checkbox" value="true"
+                                aria-label="Checkbox for following text input" name="Glaucoma" id="myCheckbox"{{isChecked this.Glaucoma}}> Glaucoma
+                            </div>
+
+                          </div>
+
+
+                        </div>
+
+
+                        <br>
+                        <label for="">AGUDEZA VISUAL</label>
+                        <table class="table table-striped-columns">
+                          <tr>
+                            <th></th>
+                            <th>Distancia</th>
+                            <th>Cerca</th>
+                          </tr>
+                          <td>Lejos</td>
+
+                          <td>                                <select name="ConLentesDistancia" class="verde-fosforescente">
+
+                                <option value="20/400"  {{#if (eq this.ConLentesDistancia "20/400")}} selected {{/if}} >20/400</option>
+                                <option value="20/200"{{#if (eq this.ConLentesDistancia "20/200")}} selected {{/if}}>20/200</option>
+                                <option value="20/100"{{#if (eq this.ConLentesDistancia "20/100")}} selected {{/if}}>20/100</option>
+                                <option value="20/80"{{#if (eq this.ConLentesDistancia "20/80")}} selected {{/if}}>20/80</option>
+                                <option value="20/70"{{#if (eq this.ConLentesDistancia "20/70")}} selected {{/if}}>20/70</option>
+                                <option value="20/50"{{#if (eq this.ConLentesDistancia "20/50")}} selected {{/if}}>20/50</option>
+                                <option value="20/40"{{#if (eq this.ConLentesDistancia "20/40")}} selected {{/if}}>20/40</option>
+                                <option value="20/30"{{#if (eq this.ConLentesDistancia "20/30")}} selected {{/if}}>20/30</option>
+                                <option value="20/25"{{#if (eq this.ConLentesDistancia "20/25")}} selected {{/if}}>20/25</option>
+                                <option value="20/20"{{#if (eq this.ConLentesDistancia "20/20")}} selected {{/if}}>20/20</option>
+
+
+                                </select> <!--<input type="text" name="ConLentesDistancia" id="" class="form-control" required>--></td>
+
+
+
+
+                          <td><!--20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required>-->
+                          <select name="ConLentesCerca" class="verde-fosforescente">
+
+                                <option value="20/400"{{#if (eq this.ConLentesCerca "20/400")}} selected {{/if}}>20/400</option>
+                                <option value="20/200"{{#if (eq this.ConLentesCerca "20/200")}} selected {{/if}}>20/200</option>
+                                <option value="20/100"{{#if (eq this.ConLentesCerca "20/100")}} selected {{/if}}>20/100</option>
+                                <option value="20/80"{{#if (eq this.ConLentesCerca "20/80")}} selected {{/if}}>20/80</option>
+                                <option value="20/70"{{#if (eq this.ConLentesCerca "20/70")}} selected {{/if}}>20/70</option>
+                                <option value="20/50"{{#if (eq this.ConLentesCerca "20/50")}} selected {{/if}}>20/50</option>
+                                <option value="20/40"{{#if (eq this.ConLentesCerca "20/40")}} selected {{/if}}>20/40</option>
+                                <option value="20/30"{{#if (eq this.ConLentesCerca "20/30")}} selected {{/if}}>20/30</option>
+                                <option value="20/25"{{#if (eq this.ConLentesCerca "20/25")}} selected {{/if}}>20/25</option>
+                                <option value="20/20"{{#if (eq this.ConLentesCerca "20/20")}} selected {{/if}}>20/20</option>
+
+
+                                </select></td>
+                          <tr></tr>
+                          <td>Cerca</td>
+                          <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>--><select name="SinLentesDistancia" class="verde-fosforescente">
+
+                                <option value="20/400"{{#if (eq this.SinLentesDistancia "20/400")}} selected {{/if}}>20/400</option>
+                                <option value="20/200"{{#if (eq this.SinLentesDistancia "20/200")}} selected {{/if}}>20/200</option>
+                                <option value="20/100"{{#if (eq this.SinLentesDistancia "20/100")}} selected {{/if}}>20/100</option>
+                                <option value="20/80"{{#if (eq this.SinLentesDistancia "20/80")}} selected {{/if}}>20/80</option>
+                                <option value="20/70"{{#if (eq this.SinLentesDistancia "20/70")}} selected {{/if}}>20/70</option>
+                                <option value="20/50"{{#if (eq this.SinLentesDistancia "20/50")}} selected {{/if}}>20/50</option>
+                                <option value="20/40"{{#if (eq this.SinLentesDistancia "20/40")}} selected {{/if}}>20/40</option>
+                                <option value="20/30"{{#if (eq this.SinLentesDistancia "20/30")}} selected {{/if}}>20/30</option>
+                                <option value="20/25"{{#if (eq this.SinLentesDistancia "20/25")}} selected {{/if}}>20/25</option>
+                                <option value="20/20"{{#if (eq this.SinLentesDistancia "20/20")}} selected {{/if}}>20/20</option>
+
+
+                                </select></td>
+                          <td><!--20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required>--><select name="SinLentesCerca" class="verde-fosforescente">
+
+                                <option value="20/400"{{#if (eq this.SinLentesCerca "20/400")}} selected {{/if}}>20/400</option>
+                                <option value="20/200"{{#if (eq this.SinLentesCerca "20/200")}} selected {{/if}}>20/200</option>
+                                <option value="20/100"{{#if (eq this.SinLentesCerca "20/100")}} selected {{/if}}>20/100</option>
+                                <option value="20/80"{{#if (eq this.SinLentesCerca "20/80")}} selected {{/if}}>20/80</option>
+                                <option value="20/70"{{#if (eq this.SinLentesCerca "20/70")}} selected {{/if}}>20/70</option>
+                                <option value="20/50"{{#if (eq this.SinLentesCerca "20/50")}} selected {{/if}}>20/50</option>
+                                <option value="20/40"{{#if (eq this.SinLentesCerca "20/40")}} selected {{/if}}>20/40</option>
+                                <option value="20/30"{{#if (eq this.SinLentesCerca "20/30")}} selected {{/if}}>20/30</option>
+                                <option value="20/25"{{#if (eq this.SinLentesCerca "20/25")}} selected {{/if}}>20/25</option>
+                                <option value="20/20"{{#if (eq this.SinLentesCerca "20/20")}} selected {{/if}}>20/20</option>
+
+
+                                </select></td>
+                        </table>
+
+                        <br>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col">
+                              <label for="">Motilidad Ocular</label>
+                            </div>
+                            <div class="w-100 d-none d-md-block"></div>
+                            <div class="col-sm-2">
+                              <input type="checkbox" name="grupoRadioA" value="{{this.grupoRadioA}}"id="" {{#if (eq this.grupoRadioA "on")}} checked {{/if}}> <label for="">Orto</label>
+                            </div>
+                            <div class="col-sm-2">
+                              <input type="checkbox" name="grupoRadioB" value="{{this.grupoRadioB}}"id="" {{#if (eq this.grupoRadioB "on")}} checked {{/if}}> <label for="">Endo</label>
+                            </div>
+                            <div class="col-sm-2">
+                              <input type="checkbox" name="grupoRadioC" value="{{this.grupoRadioC}}"id="" {{#if (eq this.grupoRadioC "on")}} checked {{/if}}> <label for="">Exo</label>
+                            </div>
+                            <br> <br>
+
+
+                          </div>
+                        </div>
+                    
+            <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+          </div>
+
+          <!-- Sección 3: Refracción -->
+          <div class="carousel-item">
+         <h2>Protocolo de refracción</h2>
+<form id="myForm" action="tu_script.php" method="POST"> <!-- Reemplaza "tu_script.php" con la URL adecuada -->
+  <label for=""> RETINOSCOPÍA </label><BR></BR>
+    
+    <div class="contenedor">
+        <div class="checkbox-group">
+
+  <!-- Checkbox para la opción +2 -->
+  <input type="checkbox" id="opcionPlus2" name="opcion" value="+2" onclick="actualizarOdreni(this); mostrarOpciones(this)" {{#if (eq this.opcion "+2")}} checked {{/if}}> +2
+  </div>
+        <div class="checkbox-group">
+
+  <!-- Checkbox para la opción +1 -->
+  <input type="checkbox" id="opcionPlus1" name="opcion" value="+1" onclick="actualizarOdreni(this); mostrarOpciones(this)"{{#if (eq this.opcion "+1")}} checked {{/if}}> +1
+
+</div>
+</div>
+<br>
+
+
+  <div id="opcionesPlus2" style="display: none;" class="contenedor3">
+    <label for="">+2</label>
+    <div class="container text-start">
+      <div class="row align-items-start">
+        <div class="col col-5">
+          <label for="">OD 20/80</label>
+          <select name="ODReniPlus2" class="verde-fosforescente">
+            <option value="HIPERMETROPIA" {{#if (eq this.opcion "+2")}}  {{#if (eq this.ODReni "HIPERMETROPIA")}} selected {{/if}}{{/if}}>SI</option>
+            <option value="EMETROPE" {{#if (eq this.opcion "+2")}}  {{#if (eq this.ODReni "EMETROPE")}} selected {{/if}}{{/if}}>NO</option>
+          </select>
+        </div>
+        <div class="col col-5">
+          <label for="">OI 20/80</label>
+          <select name="OIReniPlus2" class="verde-fosforescente">
+            <option value="HIPERMETROPIA"{{#if (eq this.opcion "+2")}}  {{#if (eq this.OIReni "HIPERMETROPIA")}} selected {{/if}}{{/if}}>SI</option>
+            <option value="EMETROPE"{{#if (eq this.opcion "+2")}}  {{#if (eq this.OIReni "EMETROPE")}} selected {{/if}}{{/if}}>NO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="opcionesPlus1" style="display: none;">
+    <label for="">+1</label>
+    <div class="container text-start">
+      <div class="row align-items-start">
+        <div class="col col-5">
+          <label for="">OD 20/30</label>
+          <select name="ODReniPlus1" class="verde-fosforescente">
+            <option value="HIPERMETROPIA"{{#if (eq this.opcion "+1")}}  {{#if (eq this.ODReni "HIPERMETROPIA")}} selected {{/if}}{{/if}}>SI</option>
+            <option value="MIOPIA"{{#if (eq this.opcion "+1")}}  {{#if (eq this.ODReni "MIOPIA")}} selected {{/if}}{{/if}}>NO</option>
+          </select>
+        </div>
+        <div class="col col-5">
+          <label for="">OI 20/30</label>
+          <select name="OIReniPlus1" class="verde-fosforescente">
+            <option value="HIPERMETROPIA"{{#if (eq this.opcion "+1")}}  {{#if (eq this.OIReni "HIPERMETROPIA")}} selected {{/if}}{{/if}}>SI</option>
+            <option value="MIOPIA"{{#if (eq this.opcion "+1")}}  {{#if (eq this.OIReni "MIOPIA")}} selected {{/if}}{{/if}}>NO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="hidden" name="odreni" id="odreniInput" value="">
+
+                        <br>
+                       
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                         <div class="contenedor2">
+
+                                              <button type="submit" class="btn btn-primary">Actualizar</button>
+</div>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+         
+                      </div>
+            
+     
+        </div>
+</div>
+        
+      </div>
+    </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+  </main>
+</div>
+
+      </div>
+    </div>
+
+
+    
+          </form>
+        </div>
+        
+        
+        </ul >
+      </div>
+</div>
+
+
+
+{{/each}}
+
+
+  </main>
+
+</div>
+
+
+<script>
+  
+  
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+  function filterResults() {
+    // Get input value
+    let inputValue = document.getElementById("searchInput").value.toLowerCase();
+    // Get all the p tags inside the popup-content div
+    let results = document.querySelectorAll(".popup-content p");
+    // Loop through each result and hide/show based on the input value
+    results.forEach(result => {
+      if (result.textContent.toLowerCase().includes(inputValue)) {
+        result.style.display = "block";
+      } else {
+        result.style.display = "none";
+      }
+    });
+  }
+
+  // Attach an event listener to the search input
+  document.getElementById("searchInput").addEventListener("input", filterResults);
+
+  function displayUsername(button) {
+    // Get the value of the hidden input related to the clicked button
+    let usernameValue = button.previousSibling.value;
+    // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
+    let nombreValue = button.parentNode.childNodes[0].textContent.split(" ")[0];
+    let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+    let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+    // Display the values inside the popup div
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.value = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`;
+    usernameDisplayElement.textContent = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`
+    usernameValueDisplayElement.value = usernameValue;
+    usernameDisplayElement.style.display = "block";
+    usernameValueDisplayElement.style.display = "block";
+    // Show the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "block";
+  }
+
+  function hideUsernameDisplay() {
+    // Hide the username display
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.style.display = "none";
+    usernameValueDisplayElement.style.display = "none";
+    // Hide the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "none";
+  }
+
+
+ 
+    var odreni = ""; // Variable para almacenar el valor de odreni
+
+  // Función para actualizar el valor de odreni en función de la selección del usuario
+  function actualizarOdreni(checkbox) {
+    if (checkbox.checked) {
+      odreni = checkbox.value; // Asignar el valor del checkbox seleccionado a odreni
+    } else {
+      odreni = ""; // Si el checkbox se desmarca, eliminar el valor de odreni
+    }
+    document.getElementById("odreniInput").value = odreni; // Actualizar el campo oculto
+  }
+
+  // Función para mostrar u ocultar las secciones de opciones en función del checkbox seleccionado
+  function mostrarOpciones(checkbox) {
+    const opcionesPlus2 = document.getElementById("opcionesPlus2");
+    const opcionesPlus1 = document.getElementById("opcionesPlus1");
+
+    if (checkbox === opcionPlus2) {
+      opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus1.style.display = "none";
+      opcionPlus1.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
+      }
+    } else if (checkbox === opcionPlus1) {
+      opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus2.style.display = "none";
+      opcionPlus2.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
+      }
+    }
+  }
+</script>
+
+
+{{> footer}}

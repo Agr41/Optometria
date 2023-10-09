@@ -13,7 +13,8 @@ const pacienteSchema = new Schema({
     ultimoexamen: String,
     sexo: String,
     fnacimiento: String,
-    Folio:String
+    Folio:String,
+    id:String,
 
 });
 
