@@ -15,6 +15,10 @@ const pacienteSchema = new Schema({
     fnacimiento: String,
     Folio:String,
     id:String,
+    /*
+    OD:String,
+    OI:String
+    */
 
 });
 
