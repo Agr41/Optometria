@@ -15,7 +15,7 @@ Gráficas de datos agregados
     <body class="d-flex flex-column min-vh-100">
         <main>
 
-            <div>
+            <div class="container">
                 <canvas id="myChart"></canvas>
             </div>
 
@@ -24,13 +24,17 @@ Gráficas de datos agregados
             <script>
                 const ctx = document.getElementById('myChart');
 
+var emetropia = {{PersonasEmetropesOD}} + {{PersonasEmetropesOI}}
+var hipermetropia={{PersonasHipermetropesOD}}+{{PersonasHipermetropesOI}}
+var miopia={{PersonasMiopesOD}}+{{PersonasMiopesOI}}
+console.log("Miopia"+miopia)
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: ['Miopía', 'Astigmatismo', 'Emetropía'],
                         datasets: [{
                             label: 'Número de personas',
-                            data: [12, 19, 3],
+                            data: [emetropia, hipermetropia, miopia],
                             borderWidth: 1
                         }]
                     },

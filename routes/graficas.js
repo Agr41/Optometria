@@ -25,7 +25,7 @@ const PersonasEmetropesOD = await Test.find({ODReni:"HIPERMETROPIA"}).countDocum
   //console.log(PersonasEmetropesOD,PersonasMiopesOD,PersonasHipermetropesOD,PersonasEmetropesOI,PersonasEmetropesOI,PersonasMiopesOI,PersonasHipermetropesOI)
   
   if (req.session.userId!=null) {
-    res.render('graficas', { title: 'Gráficas',Logeado,role,PersonasEmetropesOD,PersonasMiopesOD,PersonasHipermetropesOD,PersonasEmetropesOI,PersonasEmetropesOI,PersonasMiopesOI,PersonasHipermetropesOI });
+    res.render('graficas', { title: 'Gráficas',Logeado,role,PersonasEmetropesOD:PersonasEmetropesOD,PersonasMiopesOD:PersonasMiopesOD,PersonasHipermetropesOD:PersonasHipermetropesOD,PersonasEmetropesOI:PersonasEmetropesOI,PersonasEmetropesOI:PersonasEmetropesOI,PersonasMiopesOI:PersonasMiopesOI,PersonasHipermetropesOI:PersonasHipermetropesOI });
   } else {
       res.redirect('/LoginInicio')
   }
