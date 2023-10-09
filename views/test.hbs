@@ -28,7 +28,7 @@
                         <input type="text" id="searchInput" placeholder="Search...">
                         {{#each pacientes}}
                         <p>{{this.NombreCompleto}}<input type="hidden"
-                            value="{{this._id}}" id="id" ><button type="button" class="btn btn-dark"
+                            value="{{this._id}}" id="id" ><button type="button" data-bs-dismiss="modal" class="btn btn-dark"
                             onclick="displayUsername(this)">Agregar</button></p>
                         <br>
                         {{/each}}
