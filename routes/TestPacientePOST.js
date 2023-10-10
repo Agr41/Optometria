@@ -6,7 +6,7 @@ const correo = req.body.UsuarioBusqueda
     var x= [   
         'Diabetes',
     'Hipertension',
-    'ProblemasDelCorazon',
+    'Cataratas,',
     'Glaucoma',
     'ConLentesDistancia',
     'ConLentesCerca',
@@ -18,6 +18,8 @@ const correo = req.body.UsuarioBusqueda
        'ODReni',
     'OIReni',
     'opcion',
+    'ODAsigmatismo',
+    'OIAsigmatismo'
     ] 
        
 for (i=0; i<x.length; i++){
