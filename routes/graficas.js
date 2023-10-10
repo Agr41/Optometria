@@ -36,14 +36,14 @@ module.exports = async (req, res) => {
   const mujeres = await Pacientes.find({ sexo: "femenino" }).countDocuments();
 
   const edadRange6To12 = await Pacientes.find({
-    edad: { $gte: 6, $lte: 12 }
+    Edad: { $gte: 6, $lte: 12 }
   }).countDocuments();
   const edadRange13To17 = await Pacientes.find({
-    edad: { $gte: 13, $lte: 17 }
+    Edad: { $gte: 13, $lte: 17 }
   }).countDocuments();
 
   const edadRange18OrMore = await Pacientes.find({
-    edad: { $gte: 18 }
+    Edad: { $gte: 18 }
   }).countDocuments();
 
   //console.log(PersonasEmetropesOD,PersonasMiopesOD,PersonasHipermetropesOD,PersonasEmetropesOI,PersonasEmetropesOI,PersonasMiopesOI,PersonasHipermetropesOI)
