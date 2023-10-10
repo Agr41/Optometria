@@ -33,7 +33,7 @@
                             value="{{this._id}}" id="id" >
                            </div>
                            <div class="col-auto " id="">
-                              <button type="button" data-bs-dismiss="modal" class="btn btn-dark"
+                              <button type="button" data-bs-dismiss="popup" class="btn btn-dark"
                             onclick="displayUsername(this)">Agregar</button></p>
                            </div>
                        </div>
@@ -285,7 +285,7 @@
           </div>
 
           <!-- Sección 3: Refracción -->
-          <div class="carousel-item">
+          <div class="carousel-item" id="itemsave">
          <h2>Protocolo de refracción</h2>
 <form id="myForm" action="tu_script.php" method="POST"> <!-- Reemplaza "tu_script.php" con la URL adecuada -->
   <label for=""> RETINOSCOPÍA </label><BR></BR>
@@ -299,30 +299,42 @@
   <input type="checkbox" id="opcionPlus1" name="opcion" value="+1" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +1
 </div>
 </div>
-
-  <div id="opcionesPlus2" style="display: none;" class="contenedor3">
+<br>
+<div  class="contenedor3 border border-1 border-dark rounded">
+  <div id="opcionesPlus2" style="display: none;">
     <label for="">+2</label>
     <div class="container text-start">
-      <div class="row align-items-start">
-        <div class="col col-5">
-          <label for="">OD 20/80</label>
-          <select name="ODReniPlus2" class="verde-fosforescente">
+      <div class="container text-center">
+  <div class="row">
+    <div class="col-6 col-sm-4">
+      <label for="">OD 20/80</label>
+    </div>
+    <div class="col-6 col-sm-4">
+      <select name="ODReniPlus2" class="verde-fosforescente">
             <option value="HIPERMETROPIA">SI</option>
             <option value="EMETROPE">NO</option>
           </select>
-        </div>
-        <div class="col col-5">
-          <label for="">OI 20/80</label>
-          <select name="OIReniPlus2" class="verde-fosforescente">
-            <option value="HIPERMETROPIA">SI</option>
-            <option value="EMETROPE">NO</option>
-          </select>
-        </div>
+    </div>
+
+    <!-- Force next columns to break to new line at md breakpoint and up -->
+    <div class="w-100 d-none d-md-block"></div>
+
+    <div class="col-6 col-sm-4">
+      <label for="">OI 20/80</label>
       </div>
+    <div class="col-6 col-sm-4">
+      <select name="OIReniPlus2" class="verde-fosforescente">
+            <option value="HIPERMETROPIA">SI</option>
+            <option value="EMETROPE">NO</option>
+          </select>
+    </div>
+  </div>
+</div>
+      
     </div>
   </div>
 
-  <div id="opcionesPlus1" style="display: none;" class="contenedor3">
+  <div id="opcionesPlus1" style="display: none;">
     <label for="">+1</label>
     <div class="container text-start">
       <div class="row align-items-start">
@@ -344,6 +356,8 @@
     </div>
   </div>
 
+   </div>
+  
   <input type="hidden" name="odreni" id="odreniInput" value="">
 
                         <br>

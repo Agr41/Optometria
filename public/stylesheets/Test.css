@@ -223,11 +223,19 @@
             margin-right: 10px; /* Espacio entre los checkboxes (puedes ajustar este valor) */
         }
                 /* Estilo para el div contenedor */
-                .contenedor2 {
-                    position: relative; /* Make sure the position is set to relative or absolute */
-                    left: 300px; /* Move it 100px to the right */
+                .itemsave .contenedor3 {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100%; /* Ajusta la altura según tus necesidades */
+                  width: fit-content;
+                  text-align: center;
                 }
-                .contenedor3{
-                    position: relative; /* Make sure the position is set to relative or absolute */
-                    left: 160px; /* Move it 100px to the right */
+                .contenedor3 {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100%; /* Ajusta la altura según tus necesidades */
+                  width: fit-content;
+                  text-align: center;
                 }
