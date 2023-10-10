@@ -39,7 +39,7 @@
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Miopía', 'Astigmatismo', 'Emetropía'],
+                        labels: ['Emetropía', 'Hipermetropía', 'Miopía', "Astigmatismo", "AH", "AM"],
                         datasets: [{
                             label: 'Número de personas',
                             data: [emetropia, hipermetropia, miopia],
@@ -63,7 +63,7 @@
                 new Chart(ctx2, {
                     type: 'doughnut',
                     data: {
-                        labels: ['Miopía', 'Astigmatismo', 'Emetropía'],
+                        labels: ['Torreón', 'Gómez', 'Lerdo', "Otros"],
                         datasets: [{
                             label: 'Número de personas',
                             data: [emetropia, hipermetropia, miopia],
@@ -87,10 +87,10 @@
                 new Chart(ctx3, {
                     type: 'doughnut',
                     data: {
-                        labels: ['Miopía', 'Astigmatismo', 'Emetropía'],
+                        labels: ['Masculino', 'Femenino'],
                         datasets: [{
                             label: 'Número de personas',
-                            data: [emetropia, hipermetropia, miopia],
+                            data: [emetropia, hipermetropia],
                             borderWidth: 1
                         }]
                     },
