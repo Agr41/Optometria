@@ -27,9 +27,17 @@
                         <span class="close" onclick="closePopup()">&times;</span>
                         <input type="text" id="searchInput" placeholder="Search...">
                         {{#each pacientes}}
-                        <p>{{this.NombreCompleto}}<input type="hidden"
-                            value="{{this._id}}" id="id" ><button type="button" data-bs-dismiss="modal" class="btn btn-dark"
+                        <div class="row " style="z-index: 999;">
+                           <div class="col-auto me-auto" id="">
+                             <p>{{this.NombreCompleto}}<input type="hidden"
+                            value="{{this._id}}" id="id" >
+                           </div>
+                           <div class="col-auto " id="">
+                              <button type="button" data-bs-dismiss="modal" class="btn btn-dark"
                             onclick="displayUsername(this)">Agregar</button></p>
+                           </div>
+                       </div>
+                    
                         <br>
                         {{/each}}
                       </div>
@@ -504,18 +512,19 @@
           -->
         </div>
 </div>
+    
         
       </div>
     </div>
-          <div class="row " style="z-index: 999;">
-  <div class="col-auto me-auto">
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+     <div class="row " style="z-index: 999;">
+  <div class="col-auto me-auto" id="" style="width: 40%;">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()" id="btnprev" >
+      <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
     </button>
-  </div>
+  </div>  
   <div class="col-auto ">
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()" id="btnnext">
+      <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
     </button>
   </div>
 </div>
@@ -536,157 +545,6 @@
    </div>
 </main>
 </div>
-<style>
-  /* Estilos para los botones "Previous" y "Next" */
-  .carousel-control-prev{
-    background-color: black; /* Cambia el color de fondo a negro */
-    margin: 10px; /* Aumenta el espacio alrededor de los botones */
-    height: 40px;
-    position: relative;
-    bottom: 2em;
-    width: 200px;
-    margin-bottom: -50px;
-  }
-  .carousel-control-next {
-    background-color: black; /* Cambia el color de fondo a negro */
-    margin: 10px; /* Aumenta el espacio alrededor de los botones */
-    height: 40px;
-    position: relative;
-    bottom: 2em;
-    width: 200px;
-    margin-left: 630px;
-  }
-
-  /* Estilos para los botones de control del carrusel */
-.carousel-control-prev,
-.carousel-control-next {
-  display: flex;
-  align-items: center;
-  
-}
-
-/* Estilos para las flechas del carrusel */
-.carousel-control-prev-icon::before,
-.carousel-control-next-icon::before {
-  height: 40px;
-  color: white;
-  position:  relative;
-  bottom: -5px
-}
-
-/* Estilos para el texto "Previous" y "Next" */
-.carousel-control-prev .carousel-control-prev-icon::before {
-
-  content: "Anterior";
-  margin-right: -150px;
-  margin-top: 200px; /* Ajusta el espacio entre la flecha y el texto */
-}
-
-.carousel-control-next .carousel-control-next-icon::before {
-  content: "Siguiente";
-  margin-left: -150px;
-  margin-bottom: ;/* Ajusta el espacio entre la flecha y el texto */
-  position: relative;
-}
-
-.carousel-control-prev-icon{
-    margin-left: -150px; /* Ajusta el espacio entre la flecha y el texto */
-
-}
-.carousel-control-next-icon{
-    margin-left: 150px; /* Ajusta el espacio entre la flecha y el texto */
-
-}
-
-
-
-</style>
-<style>
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .popup-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    max-height: 500px;
-    overflow-y: auto;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  body {
-    background-color: #f2f2f2;
-  }
-
-  form {
-    margin: 20px;
-    padding: 20px;
-    background-color: #d3f3cb;
-    border-radius: 10px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  input[type=text],
-  input[type=password] {
-    padding: 8px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-
-  button[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-
-  button[type=submit]:hover {
-    background-color: #45a049;
-  }
-  /* Estilos para el botón "Previous" y "Next" */
-  .custom-carousel-button {
-    align-self: flex-end;
-    height: 8px;
-  }
-</style>
 
 <script>
   

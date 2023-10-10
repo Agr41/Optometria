@@ -33,6 +33,16 @@
     #formcont{
       padding-left: 0px;
     }
+   
+    #btnnext{
+      width: 65%;
+      
+    }
+    #btnprev{
+     width: 90%
+    }
+  
+
   }
 
   /* Estilos para los botones de control del carrusel */
