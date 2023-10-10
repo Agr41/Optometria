@@ -8,71 +8,98 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <div class="col-lg-10 mx-auto p-4 py-md-5">
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
-        Gráficas de datos agregados
+        Gráficas
     </header>
 
 
     <body class="d-flex flex-column min-vh-100">
         <main>
+            <div class="container text-center">
 
-            <div class="container">
-                <canvas id="myChart"></canvas>
+                <div class="row">
+                    <div class="col-sm">
+                        
+                        <div class="container">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        Padecimientos
+                    </div>
+                    <div class="col-sm">
+                        
+                        <div class="container">
+                            <canvas id="myChartEdades"></canvas>
+                        </div>
+                        Edades
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm">
+                        
+                        <div class="container">
+                            <canvas id="myChartSexo"></canvas>
+                        </div>
+                        Sexo
+                    </div>
+                    <div class="col-sm">
+                        
+                        <div class="container">
+                            <canvas id="myChartCiudad"></canvas>
+                        </div>
+                        Ciudad
+                    </div>
+                </div>
             </div>
-            <div class="container">
-                <canvas id="myChartCiudad"></canvas>
-            </div>
-            <div class="container">
-                <canvas id="myChartSexo"></canvas>
-            </div>
-            <div class="container">
-                <canvas id="myChartEdades"></canvas>
-            </div>
+
+
+
+
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
             <script>
-                console.log([parseInt({{PersonasEmetropes}}), parseInt({{PersonasHipermetropes}}), parseInt({{PersonasMiopes}}), parseInt({{Astigmatismo}}), parseInt({{AH}}), parseInt({{AM}})])
+                console.log([parseInt({{ PersonasEmetropes }}), parseInt({{ PersonasHipermetropes }}), parseInt({{ PersonasMiopes }}), parseInt({{ Astigmatismo }}), parseInt({{ AH }}), parseInt({{ AM }})])
                 const ctx = document.getElementById('myChart');
 
 
-var total = 0; // Initialize total to 0
+                var total = 0; // Initialize total to 0
 
-var personasEmetropes = parseInt({{PersonasEmetropes}});
-var personasHipermetropes = parseInt({{PersonasHipermetropes}});
-var personasMiopes = parseInt({{PersonasMiopes}});
-var astigmatismo = parseInt({{Astigmatismo}});
-var ah = parseInt({{HA}});
-var am = parseInt({{MA}});
+                var personasEmetropes = parseInt({{ PersonasEmetropes }});
+                var personasHipermetropes = parseInt({{ PersonasHipermetropes }});
+                var personasMiopes = parseInt({{ PersonasMiopes }});
+                var astigmatismo = parseInt({{ Astigmatismo }});
+                var ah = parseInt({{ HA }});
+                var am = parseInt({{ MA }});
 
-// Check if each element is not null and add it to the total
-if (!isNaN(personasEmetropes)) {
-  total += personasEmetropes;
-}
+                // Check if each element is not null and add it to the total
+                if (!isNaN(personasEmetropes)) {
+                    total += personasEmetropes;
+                }
 
-if (!isNaN(personasHipermetropes)) {
-  total += personasHipermetropes;
-}
+                if (!isNaN(personasHipermetropes)) {
+                    total += personasHipermetropes;
+                }
 
-if (!isNaN(personasMiopes)) {
-  total += personasMiopes;
-}
+                if (!isNaN(personasMiopes)) {
+                    total += personasMiopes;
+                }
 
-if (!isNaN(astigmatismo)) {
-  total += astigmatismo;
-}
+                if (!isNaN(astigmatismo)) {
+                    total += astigmatismo;
+                }
 
-if (!isNaN(ah)) {
-  total += ah;
-}
+                if (!isNaN(ah)) {
+                    total += ah;
+                }
 
-if (!isNaN(am)) {
-  total += am;
-}
-var eme=(personasEmetropes/total)*100
-var hipermetropes = (personasHipermetropes / total) * 100;
-var miopes = (personasMiopes / total) * 100;
-var astigmatismo = (astigmatismo / total) * 100;
-var ah = (ah/ total) * 100;
-var am = (am / total) * 100;
+                if (!isNaN(am)) {
+                    total += am;
+                }
+                var eme = (personasEmetropes / total) * 100
+                var hipermetropes = (personasHipermetropes / total) * 100;
+                var miopes = (personasMiopes / total) * 100;
+                var astigmatismo = (astigmatismo / total) * 100;
+                var ah = (ah / total) * 100;
+                var am = (am / total) * 100;
 
                 new Chart(ctx, {
                     type: 'bar',
@@ -94,42 +121,111 @@ var am = (am / total) * 100;
                 });
                 const ctx2 = document.getElementById('myChartCiudad');
 
+                var totalCd = 0; // Initialize total to 0
+
+                var torreon = parseInt({{ torreon }});
+                var gomez = parseInt({{ gomez }});
+                var lerdo = parseInt({{ lerdo }});
+                var otros = parseInt({{ otros }});
+
+                // Check if each element is not null and add it to the total
+                if (!isNaN(torreon)) {
+                    totalCd += torreon;
+                }
+
+                if (!isNaN(gomez)) {
+                    totalCd += gomez;
+                }
+
+                if (!isNaN(lerdo)) {
+                    totalCd += lerdo;
+                }
+
+                if (!isNaN(otros)) {
+                    totalCd += otros;
+                }
+                // Calculate the percentages
+                var torreonPercentage = (torreon / totalCd) * 100;
+                var gomezPercentage = (gomez / totalCd) * 100;
+                var lerdoPercentage = (lerdo / totalCd) * 100;
+                var otrosPercentage = (otros / totalCd) * 100;
 
                 new Chart(ctx2, {
                     type: 'doughnut',
                     data: {
                         labels: ['Torreón', 'Gómez', 'Lerdo', "Otros"],
                         datasets: [{
-                            label: 'Número de personas',
-                            data: [{{torreon}}, {{gomez}}, {{lerdo}}, {{otros}}],
+                            label: 'Porcentaje',
+                            data: [torreonPercentage, gomezPercentage, lerdoPercentage, otrosPercentage],
                             borderWidth: 1
                         }]
                     }
                 });
+
+                var totalGender = 0; // Initialize totalGender to 0
+
+                var masculino = parseInt({{ masculino }});
+                var femenino = parseInt({{ femenino }});
+
+                // Check if each element is not null and add it to the totalGender
+                if (!isNaN(masculino)) {
+                    totalGender += masculino;
+                }
+
+                if (!isNaN(femenino)) {
+                    totalGender += femenino;
+                }
+
+                // Calculate the percentages
+                var masculinoPercentage = (masculino / totalGender) * 100;
+                var femeninoPercentage = (femenino / totalGender) * 100;
+
                 const ctx3 = document.getElementById('myChartSexo');
 
 
-   
+
                 new Chart(ctx3, {
                     type: 'doughnut',
                     data: {
                         labels: ['Masculino', 'Femenino'],
                         datasets: [{
-                            label: 'Número de personas',
-                            data: [{{masculino}}, {{femenino}}],
+                            label: 'Porcentaje',
+                            data: [masculinoPercentage, femeninoPercentage],
                             borderWidth: 1
                         }]
                     }
                 });
                 const ctx4 = document.getElementById('myChartEdades');
+                var totalAgeGroups = 0; // Initialize totalAgeGroups to 0
 
+                var kids = parseInt({{ kids }});
+                var teens = parseInt({{ teens }});
+                var adults = parseInt({{ adults }});
+
+                // Check if each element is not null and add it to the totalAgeGroups
+                if (!isNaN(kids)) {
+                    totalAgeGroups += kids;
+                }
+
+                if (!isNaN(teens)) {
+                    totalAgeGroups += teens;
+                }
+
+                if (!isNaN(adults)) {
+                    totalAgeGroups += adults;
+                }
+
+                // Calculate the percentages
+                var kidsPercentage = (kids / totalAgeGroups) * 100;
+                var teensPercentage = (teens / totalAgeGroups) * 100;
+                var adultsPercentage = (adults / totalAgeGroups) * 100;
                 new Chart(ctx4, {
                     type: 'bar',
                     data: {
-                        labels: ['Miopía', 'Astigmatismo', 'Emetropía'],
+                        labels: ['6-12 años', '13-17 años', '18 en adelante'],
                         datasets: [{
-                            label: 'Número de personas',
-                            data: [1, 2, 3],
+                            label: 'Porcentaje',
+                            data: [kidsPercentage, teensPercentage, adultsPercentage],
                             borderWidth: 1
                         }]
                     }
@@ -150,8 +246,3 @@ var am = (am / total) * 100;
         window.print();
     }
 </script>
-
-
-
-
-{{>footer}}
