@@ -30,19 +30,57 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
             <script>
+                console.log([parseInt({{PersonasEmetropes}}), parseInt({{PersonasHipermetropes}}), parseInt({{PersonasMiopes}}), parseInt({{Astigmatismo}}), parseInt({{AH}}), parseInt({{AM}})])
                 const ctx = document.getElementById('myChart');
 
-                var emetropia = ({{ PersonasEmetropesOD }} + {{ PersonasEmetropesOI }} ) /2
-                var hipermetropia = ({{ PersonasHipermetropesOD }}+{{ PersonasHipermetropesOI }}) /2
-                var miopia = ({{ PersonasMiopesOD }}+{{ PersonasMiopesOI }}) /2
-                console.log("Miopia" + miopia)
+
+var total = 0; // Initialize total to 0
+
+var personasEmetropes = parseInt({{PersonasEmetropes}});
+var personasHipermetropes = parseInt({{PersonasHipermetropes}});
+var personasMiopes = parseInt({{PersonasMiopes}});
+var astigmatismo = parseInt({{Astigmatismo}});
+var ah = parseInt({{HA}});
+var am = parseInt({{MA}});
+
+// Check if each element is not null and add it to the total
+if (!isNaN(personasEmetropes)) {
+  total += personasEmetropes;
+}
+
+if (!isNaN(personasHipermetropes)) {
+  total += personasHipermetropes;
+}
+
+if (!isNaN(personasMiopes)) {
+  total += personasMiopes;
+}
+
+if (!isNaN(astigmatismo)) {
+  total += astigmatismo;
+}
+
+if (!isNaN(ah)) {
+  total += ah;
+}
+
+if (!isNaN(am)) {
+  total += am;
+}
+var eme=(personasEmetropes/total)*100
+var hipermetropes = (personasHipermetropes / total) * 100;
+var miopes = (personasMiopes / total) * 100;
+var astigmatismo = (astigmatismo / total) * 100;
+var ah = (ah/ total) * 100;
+var am = (am / total) * 100;
+
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: ['Emetropía', 'Hipermetropía', 'Miopía', "Astigmatismo", "AH", "AM"],
                         datasets: [{
-                            label: 'Número de personas',
-                            data: [emetropia, hipermetropia, miopia],
+                            label: 'Porcentaje',
+                            data: [eme, hipermetropes, miopes, astigmatismo, ah, am],
                             borderWidth: 1
                         }]
                     },
@@ -56,74 +94,44 @@
                 });
                 const ctx2 = document.getElementById('myChartCiudad');
 
-                var emetropia = ({{ PersonasEmetropesOD }} + {{ PersonasEmetropesOI }} ) /2
-                var hipermetropia = ({{ PersonasHipermetropesOD }}+{{ PersonasHipermetropesOI }}) /2
-                var miopia = ({{ PersonasMiopesOD }}+{{ PersonasMiopesOI }}) /2
-                console.log("Miopia" + miopia)
+
                 new Chart(ctx2, {
                     type: 'doughnut',
                     data: {
                         labels: ['Torreón', 'Gómez', 'Lerdo', "Otros"],
                         datasets: [{
                             label: 'Número de personas',
-                            data: [emetropia, hipermetropia, miopia],
+                            data: [{{torreon}}, {{gomez}}, {{lerdo}}, {{otros}}],
                             borderWidth: 1
                         }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
                     }
                 });
                 const ctx3 = document.getElementById('myChartSexo');
 
-                var emetropia = ({{ PersonasEmetropesOD }} + {{ PersonasEmetropesOI }} ) /2
-                var hipermetropia = ({{ PersonasHipermetropesOD }}+{{ PersonasHipermetropesOI }}) /2
-                var miopia = ({{ PersonasMiopesOD }}+{{ PersonasMiopesOI }}) /2
-                console.log("Miopia" + miopia)
+
+   
                 new Chart(ctx3, {
                     type: 'doughnut',
                     data: {
                         labels: ['Masculino', 'Femenino'],
                         datasets: [{
                             label: 'Número de personas',
-                            data: [emetropia, hipermetropia],
+                            data: [{{masculino}}, {{femenino}}],
                             borderWidth: 1
                         }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
                     }
                 });
                 const ctx4 = document.getElementById('myChartEdades');
 
-                var emetropia = ({{ PersonasEmetropesOD }} + {{ PersonasEmetropesOI }} ) /2
-                var hipermetropia = ({{ PersonasHipermetropesOD }}+{{ PersonasHipermetropesOI }}) /2
-                var miopia = ({{ PersonasMiopesOD }}+{{ PersonasMiopesOI }}) /2
-                console.log("Miopia" + miopia)
                 new Chart(ctx4, {
                     type: 'bar',
                     data: {
                         labels: ['Miopía', 'Astigmatismo', 'Emetropía'],
                         datasets: [{
                             label: 'Número de personas',
-                            data: [emetropia, hipermetropia, miopia],
+                            data: [1, 2, 3],
                             borderWidth: 1
                         }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
                     }
                 });
             </script>

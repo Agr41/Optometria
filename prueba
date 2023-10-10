@@ -314,7 +314,7 @@
             <option value="HIPERMETROPIA">SI</option>
             <option value="EMETROPE">NO</option>
           </select>
-              <label for=""><input type="checkbox" name="ODAsigmatismo2">Asigmatismo</label>
+              <label for=""><input type="checkbox" name="ODAsigmatismo2">Astigmatismo</label>
 
     </div>
 
@@ -329,7 +329,7 @@
             <option value="HIPERMETROPIA">SI</option>
             <option value="EMETROPE">NO</option>
           </select>
-                        <label for=""><input type="checkbox"  name="OIAsigmatismo2">Asigmatismo</label>
+                        <label for=""><input type="checkbox"  name="OIAsigmatismo2">Astigmatismo</label>
 
     </div>
   </div>
@@ -348,7 +348,7 @@
             <option value="HIPERMETROPIA">SI</option>
             <option value="MIOPIA">NO</option>
           </select>
-                        <label for=""><input type="checkbox" name="ODAsigmatismo1">Asigmatismo</label>
+                        <label for=""><input type="checkbox" name="ODAsigmatismo1">Astigmatismo</label>
 
         </div>
         <div class="col col-5">
@@ -357,7 +357,7 @@
             <option value="HIPERMETROPIA">SI</option>
             <option value="MIOPIA">NO</option>
           </select>
-                        <label for=""><input type="checkbox" name="OIAsigmatismo1">Asigmatismo</label>
+                        <label for=""><input type="checkbox" name="OIAsigmatismo1">Astigmatismo</label>
 
         </div>
       </div>
