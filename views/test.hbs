@@ -8,19 +8,19 @@
   </header>
 
   <main>
-<div class="modal-content rounded-4 shadow">
+    <div class="modal-content rounded-4 shadow">
       <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
         <div class="container">
-          <form action="/Formulario" method="POST" id="formulario" >
+          <form action="/Formulario" method="POST" id="formulario">
 
-<div class="container" id="formcont">
-      <div id="carouselExample"  class="carousel slide" >
-        <div class="carousel-inner">
+            <div class="container" id="formcont">
+              <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
 
-          <!-- Sección 1: Paciente -->
-          <div class="carousel-item active">
-            <h2>Paciente</h2>
-            <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
+                  <!-- Sección 1: Paciente -->
+                  <div class="carousel-item active">
+                    <h2>Paciente</h2>
+                    <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
 
                     <div id="popup" class="popup" style="z-index: +1000;">
                       <div class="popup-content">
@@ -28,16 +28,13 @@
                         <input type="text" id="searchInput" placeholder="Search...">
                         {{#each pacientes}}
                         <div class="row " style="z-index: 999;">
-                           <div class="col-auto me-auto" id="">
-                             <p>{{this.NombreCompleto}}<input type="hidden"
-                            value="{{this._id}}" id="id" >
-                           </div>
-                           <div class="col-auto " id="">
-                              <button type="button" data-bs-dismiss="popup" class="btn btn-dark"
-                            onclick="displayUsername(this)">Agregar</button></p>
-                           </div>
-                       </div>
-                    
+                          <div class="col-auto me-auto" id="" style="width: 100%;">
+                            <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
+                            <button type="button"
+                              class="btn btn-dark" style="float:right;" onclick="displayUsername(this)" value="{{this._id}}">Agregar</button></p>
+                          </div>
+                        </div>
+
                         <br>
                         {{/each}}
                       </div>
@@ -49,29 +46,29 @@
                     <button type="button" id="hideUsernameButton" style="display:none;"
                       onclick="hideUsernameDisplay()">Cancelar</button>
 
-            <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-          </div>
+                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
+                  </div>
 
-          <!-- Sección 2: Pre-test -->
-          <div class="carousel-item">
-            <h2>Pre-test</h2>
-            <div class="col-sm-8">
-                          <label class="form-label">CONDICIONES:</label><br>
-                          <div class="input-group mb-3">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Diabetes"> Diabetes
-                            </div>
+                  <!-- Sección 2: Pre-test -->
+                  <div class="carousel-item">
+                    <h2>Pre-test</h2>
+                    <div class="col-sm-8">
+                      <label class="form-label">CONDICIONES:</label><br>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="true"
+                            aria-label="Checkbox for following text input" name="Diabetes"> Diabetes
+                        </div>
 
-                          </div>
-                          <div class="input-group mb-3">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Hipertension"> Hipertensión
-                            </div>
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="true"
+                            aria-label="Checkbox for following text input" name="Hipertension"> Hipertensión
+                        </div>
 
-                          </div>
-                          <!--
+                      </div>
+                      <!--
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
@@ -79,24 +76,24 @@
                               Embarazo/lactancia
                             </div>
                           </div>
-                          --> 
+                          -->
 
-                          <div class="input-group mb-3">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="ProblemasDelCorazon"> Problemas del
-                              corazón
-                            </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="true"
+                            aria-label="Checkbox for following text input" name="ProblemasDelCorazon"> Problemas del
+                          corazón
+                        </div>
 
-                          </div>
-                          <div class="input-group mb-3">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Glaucoma"> Glaucoma
-                            </div>
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="true"
+                            aria-label="Checkbox for following text input" name="Glaucoma"> Glaucoma
+                        </div>
 
-                          </div>
-                          <!--
+                      </div>
+                      <!--
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
@@ -105,7 +102,7 @@
 
                           </div>
                           -->
-<!--
+                      <!--
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
@@ -115,7 +112,7 @@
                           </div>
 -->
 
-<!--
+                      <!--
 
                           <div class="input-group mb-3">
                             <div class="input-group-text">
@@ -139,90 +136,96 @@
                           </div>
 -->
 
-                        </div>
+                    </div>
 
-<!--
+                    <!--
                         <label for="medicamentos">MEDICAMENTOS ACTUALES</label><br>
                         <input type="text" class="form-control" id="medicamentos" name="MedicamentosActuales">
                         -->
-                        <br>
-                        <label for="">AGUDEZA VISUAL</label>
-                        <table class="table table-striped-columns">
-                          <tr>
-                            <th></th>
-                            <th>Distancia</th>
-                            <th>Cerca</th>
-                          </tr>
-                          <td>Lejos</td>
+                    <br>
+                    <label for="">AGUDEZA VISUAL</label>
+                    <table class="table table-striped-columns">
+                      <tr>
+                        <th></th>
+                        <th>Distancia</th>
+                        <th>Cerca</th>
+                      </tr>
+                      <td>Lejos</td>
 
-                          <td>                                <select name="ConLentesDistancia" class="verde-fosforescente">
+                      <td> <select name="ConLentesDistancia" class="verde-fosforescente">
 
-                                <option value="20/400">20/400</option>
-                                <option value="20/200">20/200</option>
-                                <option value="20/100">20/100</option>
-                                <option value="20/80">20/80</option>
-                                <option value="20/70">20/70</option>
-                                <option value="20/50">20/50</option>
-                                <option value="20/40">20/40</option>
-                                <option value="20/30">20/30</option>
-                                <option value="20/25">20/25</option>
-                                <option value="20/20">20/20</option>
-
-
-                                </select> <!--<input type="text" name="ConLentesDistancia" id="" class="form-control" required>--></td>
+                          <option value="20/400">20/400</option>
+                          <option value="20/200">20/200</option>
+                          <option value="20/100">20/100</option>
+                          <option value="20/80">20/80</option>
+                          <option value="20/70">20/70</option>
+                          <option value="20/50">20/50</option>
+                          <option value="20/40">20/40</option>
+                          <option value="20/30">20/30</option>
+                          <option value="20/25">20/25</option>
+                          <option value="20/20">20/20</option>
 
 
+                        </select>
+                        <!--<input type="text" name="ConLentesDistancia" id="" class="form-control" required>--></td>
 
 
-                          <td><!--20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required>--><select name="ConLentesCerca" class="verde-fosforescente">
-
-                                <option value="20/400">20/400</option>
-                                <option value="20/200">20/200</option>
-                                <option value="20/100">20/100</option>
-                                <option value="20/80">20/80</option>
-                                <option value="20/70">20/70</option>
-                                <option value="20/50">20/50</option>
-                                <option value="20/40">20/40</option>
-                                <option value="20/30">20/30</option>
-                                <option value="20/25">20/25</option>
-                                <option value="20/20">20/20</option>
 
 
-                                </select></td>
-                          <tr></tr>
-                          <td>Cerca</td>
-                          <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>--><select name="SinLentesDistancia" class="verde-fosforescente">
+                      <td>
+                        <!--20/ <input type="text" name="ConLentesCerca" id="" class="form-control" required>--><select
+                          name="ConLentesCerca" class="verde-fosforescente">
 
-                                <option value="20/400">20/400</option>
-                                <option value="20/200">20/200</option>
-                                <option value="20/100">20/100</option>
-                                <option value="20/80">20/80</option>
-                                <option value="20/70">20/70</option>
-                                <option value="20/50">20/50</option>
-                                <option value="20/40">20/40</option>
-                                <option value="20/30">20/30</option>
-                                <option value="20/25">20/25</option>
-                                <option value="20/20">20/20</option>
-
-
-                                </select></td>
-                          <td><!--20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required>--><select name="SinLentesCerca" class="verde-fosforescente">
-
-                                <option value="20/400">20/400</option>
-                                <option value="20/200">20/200</option>
-                                <option value="20/100">20/100</option>
-                                <option value="20/80">20/80</option>
-                                <option value="20/70">20/70</option>
-                                <option value="20/50">20/50</option>
-                                <option value="20/40">20/40</option>
-                                <option value="20/30">20/30</option>
-                                <option value="20/25">20/25</option>
-                                <option value="20/20">20/20</option>
+                          <option value="20/400">20/400</option>
+                          <option value="20/200">20/200</option>
+                          <option value="20/100">20/100</option>
+                          <option value="20/80">20/80</option>
+                          <option value="20/70">20/70</option>
+                          <option value="20/50">20/50</option>
+                          <option value="20/40">20/40</option>
+                          <option value="20/30">20/30</option>
+                          <option value="20/25">20/25</option>
+                          <option value="20/20">20/20</option>
 
 
-                                </select></td>
-                        </table>
-                      <!--
+                        </select></td>
+                      <tr></tr>
+                      <td>Cerca</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>--><select
+                          name="SinLentesDistancia" class="verde-fosforescente">
+
+                          <option value="20/400">20/400</option>
+                          <option value="20/200">20/200</option>
+                          <option value="20/100">20/100</option>
+                          <option value="20/80">20/80</option>
+                          <option value="20/70">20/70</option>
+                          <option value="20/50">20/50</option>
+                          <option value="20/40">20/40</option>
+                          <option value="20/30">20/30</option>
+                          <option value="20/25">20/25</option>
+                          <option value="20/20">20/20</option>
+
+
+                        </select></td>
+                      <td>
+                        <!--20/ <input type="text" class="form-control" name="SinLentesCerca" id="" required>--><select
+                          name="SinLentesCerca" class="verde-fosforescente">
+
+                          <option value="20/400">20/400</option>
+                          <option value="20/200">20/200</option>
+                          <option value="20/100">20/100</option>
+                          <option value="20/80">20/80</option>
+                          <option value="20/70">20/70</option>
+                          <option value="20/50">20/50</option>
+                          <option value="20/40">20/40</option>
+                          <option value="20/30">20/30</option>
+                          <option value="20/25">20/25</option>
+                          <option value="20/20">20/20</option>
+
+
+                        </select></td>
+                    </table>
+                    <!--
                         <label for="">PUPILAS</label><br>
 
                         <div class="container text-start">
@@ -242,25 +245,25 @@
                           </div>
                         </div>
 -->
-                        <br>
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-<div class="col">
-    <label for="">Motilidad Ocular</label>
-</div>
-<div class="w-100 d-none d-md-block"></div>
-<div class="col-sm-2">
-    <input type="radio" name="grupoRadio" id="orto"> <label for="orto">Orto</label>
-</div>
-<div class="col-sm-2">
-    <input type="radio" name="grupoRadio" id="endo"> <label for="endo">Endo</label>
-</div>
-<div class="col-sm-2">
-    <input type="radio" name="grupoRadio" id="exo"> <label for="exo">Exo</label>
-</div>
+                    <br>
+                    <div class="container text-start">
+                      <div class="row align-items-start">
+                        <div class="col">
+                          <label for="">Motilidad Ocular</label>
+                        </div>
+                        <div class="w-100 d-none d-md-block"></div>
+                        <div class="col-sm-2">
+                          <input type="radio" name="grupoRadio" id="orto"> <label for="orto">Orto</label>
+                        </div>
+                        <div class="col-sm-2">
+                          <input type="radio" name="grupoRadio" id="endo"> <label for="endo">Endo</label>
+                        </div>
+                        <div class="col-sm-2">
+                          <input type="radio" name="grupoRadio" id="exo"> <label for="exo">Exo</label>
+                        </div>
 
-                            <br> <br>
-<!--
+                        <br> <br>
+                        <!--
                             <div class="w-100 d-none d-md-block"></div>
                             <div class="col">
                               <label for="">Cerca</label>
@@ -278,94 +281,97 @@
                             -->
 
 
+                      </div>
+                    </div>
+
+                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+                  </div>
+
+                  <!-- Sección 3: Refracción -->
+                  <div class="carousel-item" id="itemsave">
+                    <h2>Protocolo de refracción</h2>
+                    <form id="myForm" action="tu_script.php" method="POST">
+                      <!-- Reemplaza "tu_script.php" con la URL adecuada -->
+                      <label for=""> RETINOSCOPÍA </label><BR></BR>
+                      <div class="contenedor">
+                        <div class="checkbox-group">
+                          <!-- Checkbox para la opción +2 -->
+                          <input type="checkbox" id="opcionPlus2" name="opcion" value="+2"
+                            onclick="actualizarOdreni(this); mostrarOpciones(this)"> +2
+                        </div>
+                        <div class="checkbox-group">
+                          <!-- Checkbox para la opción +1 -->
+                          <input type="checkbox" id="opcionPlus1" name="opcion" value="+1"
+                            onclick="actualizarOdreni(this); mostrarOpciones(this)"> +1
+                        </div>
+                      </div>
+                      <br>
+                      <div class="contenedor3 border border-1 border-dark rounded">
+                        <div id="opcionesPlus2" style="display: none;">
+                          <label for="">+2</label>
+                          <div class="container text-start">
+                            <div class="container text-center">
+                              <div class="row">
+                                <div class="col-6 col-sm-4">
+                                  <label for="">OD 20/80</label>
+                                </div>
+                                <div class="col-6 col-sm-4">
+                                  <select name="ODReniPlus2" class="verde-fosforescente">
+                                    <option value="HIPERMETROPIA">SI</option>
+                                    <option value="EMETROPE">NO</option>
+                                  </select>
+                                </div>
+
+                                <!-- Force next columns to break to new line at md breakpoint and up -->
+                                <div class="w-100 d-none d-md-block"></div>
+
+                                <div class="col-6 col-sm-4">
+                                  <label for="">OI 20/80</label>
+                                </div>
+                                <div class="col-6 col-sm-4">
+                                  <select name="OIReniPlus2" class="verde-fosforescente">
+                                    <option value="HIPERMETROPIA">SI</option>
+                                    <option value="EMETROPE">NO</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
                           </div>
                         </div>
-                    
-            <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-          </div>
 
-          <!-- Sección 3: Refracción -->
-          <div class="carousel-item" id="itemsave">
-         <h2>Protocolo de refracción</h2>
-<form id="myForm" action="tu_script.php" method="POST"> <!-- Reemplaza "tu_script.php" con la URL adecuada -->
-  <label for=""> RETINOSCOPÍA </label><BR></BR>
-    <div class="contenedor">
-        <div class="checkbox-group">
-  <!-- Checkbox para la opción +2 -->
-  <input type="checkbox" id="opcionPlus2" name="opcion" value="+2" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +2
-  </div>
-        <div class="checkbox-group">
-  <!-- Checkbox para la opción +1 -->
-  <input type="checkbox" id="opcionPlus1" name="opcion" value="+1" onclick="actualizarOdreni(this); mostrarOpciones(this)"> +1
-</div>
-</div>
-<br>
-<div  class="contenedor3 border border-1 border-dark rounded">
-  <div id="opcionesPlus2" style="display: none;">
-    <label for="">+2</label>
-    <div class="container text-start">
-      <div class="container text-center">
-  <div class="row">
-    <div class="col-6 col-sm-4">
-      <label for="">OD 20/80</label>
-    </div>
-    <div class="col-6 col-sm-4">
-      <select name="ODReniPlus2" class="verde-fosforescente">
-            <option value="HIPERMETROPIA">SI</option>
-            <option value="EMETROPE">NO</option>
-          </select>
-    </div>
+                        <div id="opcionesPlus1" style="display: none;">
+                          <label for="">+1</label>
+                          <div class="container text-start">
+                            <div class="row align-items-start">
+                              <div class="col col-5">
+                                <label for="">OD 20/30</label>
+                                <select name="ODReniPlus1" class="verde-fosforescente">
+                                  <option value="HIPERMETROPIA">SI</option>
+                                  <option value="MIOPIA">NO</option>
+                                </select>
+                              </div>
+                              <div class="col col-5">
+                                <label for="">OI 20/30</label>
+                                <select name="OIReniPlus1" class="verde-fosforescente">
+                                  <option value="HIPERMETROPIA">SI</option>
+                                  <option value="MIOPIA">NO</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
-    <!-- Force next columns to break to new line at md breakpoint and up -->
-    <div class="w-100 d-none d-md-block"></div>
+                      </div>
 
-    <div class="col-6 col-sm-4">
-      <label for="">OI 20/80</label>
-      </div>
-    <div class="col-6 col-sm-4">
-      <select name="OIReniPlus2" class="verde-fosforescente">
-            <option value="HIPERMETROPIA">SI</option>
-            <option value="EMETROPE">NO</option>
-          </select>
-    </div>
-  </div>
-</div>
-      
-    </div>
-  </div>
+                      <input type="hidden" name="odreni" id="odreniInput" value="">
 
-  <div id="opcionesPlus1" style="display: none;">
-    <label for="">+1</label>
-    <div class="container text-start">
-      <div class="row align-items-start">
-        <div class="col col-5">
-          <label for="">OD 20/30</label>
-          <select name="ODReniPlus1" class="verde-fosforescente">
-            <option value="HIPERMETROPIA">SI</option>
-            <option value="MIOPIA">NO</option>
-          </select>
-        </div>
-        <div class="col col-5">
-          <label for="">OI 20/30</label>
-          <select name="OIReniPlus1" class="verde-fosforescente">
-            <option value="HIPERMETROPIA">SI</option>
-            <option value="MIOPIA">NO</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
+                      <br>
 
-   </div>
-  
-  <input type="hidden" name="odreni" id="odreniInput" value="">
-
-                        <br>
-                       
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-                            <div class="col col-5">
-                                                          <!--
+                      <div class="container text-start">
+                        <div class="row align-items-start">
+                          <div class="col col-5">
+                            <!--
 
                               <td><label for="">AV</label>
                                 <select name="AVReni">
@@ -406,14 +412,14 @@
                               </td>
 -->
 
-                                                     <div class="contenedor2">
-                                              <button type="submit" class="btn btn-primary">Guardar datos</button>
-</div>
+                            <div class="contenedor2">
+                              <button type="submit" class="btn btn-primary">Guardar datos</button>
                             </div>
                           </div>
                         </div>
-                        <br>
-                         <!--
+                      </div>
+                      <br>
+                      <!--
                         <label for="">EXAMEN SUBJETIVO</label>
                         <br>
                        
@@ -451,18 +457,18 @@
                         </div>
                         -->
 
-                        <!--
+                      <!--
                         <label for="">Observaciones</label>
                         <input type="text" class="form-control" name="Observaciones">
                         -->
-                      </div>
-            
-            <!-- Resto de tu contenido de la sección "Refracción" aquí -->
-        
+                  </div>
 
-          <!-- Sección 4: Examinacion -->
+                  <!-- Resto de tu contenido de la sección "Refracción" aquí -->
 
-<!--
+
+                  <!-- Sección 4: Examinacion -->
+
+                  <!--
           <div class="carousel-item">
             <h2>Examinación</h2>
              <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0" value="true"> <label
@@ -511,10 +517,10 @@
           </div>
 -->
 
-            <!-- Resto de tu contenido de la sección "Examinación" aquí -->
+                  <!-- Resto de tu contenido de la sección "Examinación" aquí -->
 
-          <!-- Sección 5: Optical -->
-<!--
+                  <!-- Sección 5: Optical -->
+                  <!--
           <div class="carousel-item">
             <h2>Optical</h2>
               <label>Primary Pair Recommended Eyeglass Rx</label><br>
@@ -524,45 +530,47 @@
                 <button type="submit" class="btn btn-primary">Guardar datos</button>
           </div>
           -->
+                </div>
+              </div>
+
+
+            </div>
         </div>
-</div>
-    
-        
-      </div>
-    </div>
-     <div class="row " style="z-index: 999;">
-  <div class="col-auto me-auto" id="" style="width: 40%;">
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="prevSection()" id="btnprev" >
-      <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-    </button>
-  </div>  
-  <div class="col-auto ">
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="nextSection()" id="btnnext">
-      <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-    </button>
-  </div>
-</div>
+        <div class="row " style="z-index: 999;">
+          <div class="col-auto me-auto" id="" style="width: 40%;">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+              onclick="prevSection()" id="btnprev">
+              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
+            </button>
+          </div>
+          <div class="col-auto ">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+              onclick="nextSection()" id="btnnext">
+              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
+            </button>
+          </div>
+        </div>
   </main>
 </div>
 
-      </div>
-    </div>
+</div>
+</div>
 
 
-    
-          </form>
-        </div>
-        
-        
-        </ul >
-      </div>
-   </div>
+
+</form>
+</div>
+
+
+</ul>
+</div>
+</div>
 </main>
 </div>
 
 <script>
-  
-  
+
+
   function openPopup() {
     document.getElementById("popup").style.display = "block";
   }
@@ -590,22 +598,24 @@
 
   function displayUsername(button) {
     // Get the value of the hidden input related to the clicked button
-    let usernameValue = button.previousSibling.value;
+    let usernameValue = button.value;
+    console.log(usernameValue)
     // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
-    let nombreValue = button.parentNode.childNodes[0].textContent.split(" ")[0];
+    let nombreValue = button.parentNode.childNodes[0].textContent
     let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
     let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
     // Display the values inside the popup div
     let usernameDisplayElement = document.getElementById("usernameDisplay");
     let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
-    usernameDisplayElement.value = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`;
-    usernameDisplayElement.textContent = `${nombreValue} ${apellidoPaternoValue} ${apellidoMaternoValue}`
+    usernameDisplayElement.value = `${nombreValue}`;
+    usernameDisplayElement.textContent = `${nombreValue}`
     usernameValueDisplayElement.value = usernameValue;
     usernameDisplayElement.style.display = "block";
     usernameValueDisplayElement.style.display = "block";
     // Show the hide button
     let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
     hideUsernameButtonElement.style.display = "block";
+    closePopup()
   }
 
   function hideUsernameDisplay() {
@@ -620,8 +630,8 @@
   }
 
 
- 
-    var odreni = ""; // Variable para almacenar el valor de odreni
+
+  var odreni = ""; // Variable para almacenar el valor de odreni
 
   // Función para actualizar el valor de odreni en función de la selección del usuario
   function actualizarOdreni(checkbox) {
