@@ -224,18 +224,17 @@
         }
                 /* Estilo para el div contenedor */
                 .itemsave .contenedor3 {
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  height: 100%; /* Ajusta la altura según tus necesidades */
-                  width: fit-content;
-                  text-align: center;
+                  display: flex !important;
+                  justify-content: center !important;
+                  align-items: center !important;
+                  height: 100% !important;
+                  width: fit-content !important;
+                  text-align: center !important;
                 }
                 .contenedor3 {
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  height: 100%; /* Ajusta la altura según tus necesidades */
-                  width: fit-content;
+                
                   text-align: center;
                 }
