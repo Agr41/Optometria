@@ -19,7 +19,7 @@ const TestSchema = new Schema({
     Diabetes:Boolean,
     Hipertension:Boolean,
     //EmbarazoOlactancia:Boolean,
-    ProblemasDelCorazon:Boolean,
+    Cataratas:Boolean,
     Glaucoma:Boolean,
     //Caratatas:Boolean,
     //DolorDeCabeza:Boolean,
@@ -52,6 +52,8 @@ const TestSchema = new Schema({
     ODReni:String,
     OIReni:String,
     opcion:String,
+
+
 
 /*
     OIReni:String,
