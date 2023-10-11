@@ -27,16 +27,15 @@
     -->
 
     <br>
-
     <form method="post" action="/FiltrosPacientes">
       <div class="row justify-content-center">
         <div class="col-3">
           <select name="Tipo" id="FiltroHistorial2" class="form-select">
-            <option value="Folio">Folio</option>
-            <option value="Nombre">Nombre de usuario</option>
-            <option value="HIPERMETROPIA">HIPERMETROPIA</option>
-            <option value="EMETROPE">EMETROPE</option>
-            <option value="MIOPIA">MIOPIA</option>
+            <option value="Folio" {{#if (eq Filtro "Folio")}} selected {{/if}}>Folio</option>
+            <option value="Nombre" {{#if (eq Filtro "Nombre")}} selected {{/if}}>Nombre de usuario</option>
+            <option value="HIPERMETROPIA"{{#if (eq Filtro "HIPERMETROPIA")}} selected {{/if}}>HIPERMETROPIA</option>
+            <option value="EMETROPE" {{#if (eq Filtro "EMETROPE")}} selected {{/if}}>EMETROPE</option>
+            <option value="MIOPIA" {{#if (eq Filtro "MIOPIA")}} selected {{/if}}>MIOPIA</option>
           </select>
         </div>
         <div class="col-4">
@@ -45,8 +44,9 @@
       </div>
       <br>
 
-
-      <button class="btn btn-outline-danger" type="reset">Limpiar</button>
+      <a class="btn btn-outline-danger" href="/PanelPacientes" onclick="">Limpiar</a>
+      <!--      <button class="btn btn-outline-danger" type="reset" Limpiar</button>
+-->
       <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">Buscar</i></button>
     </form>
 <br>
