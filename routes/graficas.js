@@ -32,8 +32,8 @@ module.exports = async (req, res) => {
   const excludedCitiesRegex = /(Torre[oóÓóÓnN]*|G[oóÓóÓ]*mez\s*Palacio?|Lerdo)/i;
   const otherCitiesCount = await Pacientes.find({ ciudad: { $not: { $regex: excludedCitiesRegex } } }).countDocuments();
 
-  const hombres = await Pacientes.find({ sexo: "masculino" }).countDocuments();
-  const mujeres = await Pacientes.find({ sexo: "femenino" }).countDocuments();
+  const hombres = await Pacientes.find({ sexo: "M" }).countDocuments();
+  const mujeres = await Pacientes.find({ sexo: "F" }).countDocuments();
 
   const edadRange6To12 = await Pacientes.find({
     Edad: { $gte: 6, $lte: 12 }
