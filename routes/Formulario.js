@@ -29,19 +29,19 @@ module.exports = async (req, res) => {
 
     if (req.body.opcion=== '+1' && req.body.ODAsigmatismo1 === 'on' )
     {
-      req.body.ODReni = 'Asigmatismo' +' '+ req.body.ODReniPlus1
+      req.body.ODReni = 'Astigmatismo' +' '+ req.body.ODReniPlus1
 
     }
     if (req.body.opcion=== '+1' && req.body.OIAsigmatismo1 === 'on' )
     {
-      req.body.OIReni =  'Asigmatismo' +' '+ req.body.OIReniPlus1
+      req.body.OIReni =  'Astigmatismo' +' '+ req.body.OIReniPlus1
 
     }
     if (req.body.opcion=== '+2' && req.body.ODAsigmatismo2 === 'on'){
-      req.body.ODReni =  'Asigmatismo' +' '+ req.body.ODReniPlus2
+      req.body.ODReni =  'Astigmatismo' +' '+ req.body.ODReniPlus2
     }
     if (req.body.opcion=== '+2' && req.body.OIAsigmatismo2 === 'on'){
-      req.body.OIReni =  'Asigmatismo' +' '+ req.body.OIReniPlus2
+      req.body.OIReni =  'Astigmatismo' +' '+ req.body.OIReniPlus2
     }
 
 
