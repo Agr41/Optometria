@@ -14,11 +14,11 @@
           <form action="/Formulario" method="POST" id="formulario">
 
             <div class="container" id="formcont">
-              <div id="carouselExample" class="carousel slide">
+              <div id="carouselExample" class="carousel slide" data-wrap="false">
                 <div class="carousel-inner">
 
                   <!-- Sección 1: Paciente -->
-                  <div class="carousel-item active">
+                  <div class="carousel-item active" id="inicio">
                     <h2>Paciente</h2>
                     <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
 
@@ -577,13 +577,13 @@
         <div class="row " style="z-index: 999;">
           <div class="col-auto me-auto" id="" style="width: 40%;">
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="prevSection()" id="btnprev">
+              onclick="ocultarBoton()" id="btnprev" hidden="true">
               <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
             </button>
           </div>
-          <div class="col-auto ">
+          <div class="col-auto">
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="nextSection()" id="btnnext">
+              onclick="ocultarBoton();" id="btnnext">
               <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
             </button>
           </div>
@@ -607,7 +607,24 @@
 </div>
 
 <script>
-
+function ocultarBoton() {
+  var slideGuardar = document.getElementById("itemsave").className;
+  var btnSiguiente = document.getElementById("btnnext");
+  var slideInicial = document.getElementById("inicio").className;
+  var btnAtras = document.getElementById("btnprev");
+  console.log(slideGuardar)
+  if (slideGuardar === "carousel-item carousel-item-next carousel-item-start") {
+    btnSiguiente.setAttribute("hidden", true);
+  } else {
+    btnSiguiente.removeAttribute("hidden", false);
+  }
+  console.log("Slide inicial "+slideInicial)
+  if(slideInicial === "carousel-item carousel-item-prev carousel-item-end"){
+btnAtras.setAttribute("hidden", true);
+  }else{
+    btnAtras.removeAttribute("hidden", false);
+  }
+}
 
   function openPopup() {
     document.getElementById("popup").style.display = "block";
