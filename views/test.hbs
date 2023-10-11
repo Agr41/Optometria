@@ -316,69 +316,93 @@
                         <div id="opcionesPlus2" style="display: none;">
                           <label for="">+2</label>
                           <div class="container text-start">
-                            <div class="container text-center">
+                            
                               <div class="row">
-                                <div class="col-6 col-sm-4">
+                                   <div class="col col-6">
                                   <label for="">OD 20/80</label>
                                 </div>
-                                <div class="col-6 col-sm-4">
-                                  <select name="ODReniPlus2" class="verde-fosforescente">
-                                    <option value="HIPERMETROPIA">SI</option>
-                                    <option value="EMETROPE">NO</option>
-                                                  <label for=""><input type="checkbox" name="ODAsigmatismo2">Asigmatismo</label>
+                                     <div class="col col-6">
+                                                                    <label for="">OI 20/80</label>
 
-                                  </select>
+                              
                                 </div>
 
                                 <!-- Force next columns to break to new line at md breakpoint and up -->
-                                <div class="w-100 d-none d-md-block"></div>
+                                                                 <div class="w-100 d-none d-md-block"></div>
 
-                                <div class="col-6 col-sm-4">
-                                  <label for="">OI 20/80</label>
-                                </div>
-                                <div class="col-6 col-sm-4">
-                                  <select name="OIReniPlus2" class="verde-fosforescente">
+                                    <div class="col col-6">
+    <select name="ODReniPlus2" class="verde-fosforescente">
                                     <option value="HIPERMETROPIA">SI</option>
                                     <option value="EMETROPE">NO</option>
-                                                            <label for=""><input type="checkbox"  name="OIAsigmatismo2">Asigmatismo</label>
 
                                   </select>
                                 </div>
-                              </div>
-                            </div>
+                                    <div class="col col-6">
+                                  <select name="OIReniPlus2" class="verde-fosforescente">
+                                    <option value="HIPERMETROPIA">SI</option>
+                                    <option value="EMETROPE">NO</option>
 
+                                  </select>
+                                </div>
+                                <div class="w-100 d-none d-md-block"></div>
+                                   <div class="col col-6" style="padding: 0px;">
+                                    <label for=""><input  type="checkbox" name="OIAsigmatismo1" style="margin: 0px 5px 0px 5px;">Asigmatismo</label>
+
+          </div>
+          <div class="col col-6"  style="padding: 0px;">
+                                    <label for=""><input  type="checkbox" name="ODAsigmatismo1" style="margin: 0px; margin-right: 5px">Asigmatismo</label>
+
+          </div>
+                              </div>
+                        
                           </div>
                         </div>
 
   <div id="opcionesPlus1" style="display: none;">
     <label for="">+1</label>
     <div class="container text-start">
-      <div class="row align-items-start">
-        <div class="col col-5">
+      <div class="row ">
+        <div class="col col-6">
           <label for="">OD 20/30</label>
-          <select name="ODReniPlus1" class="verde-fosforescente">
-            <option value="HIPERMETROPIA">SI</option>
-            <option value="MIOPIA">NO</option>
-                        <label for=""><input type="checkbox" name="ODAsigmatismo1">Asigmatismo</label>
-
-          </select>
+       
         </div>
-        <div class="col col-5">
+        <div class="col col-6">
           <label for="">OI 20/30</label>
-          <select name="OIReniPlus1" class="verde-fosforescente">
+         
+        </div>
+        <div class="w-100"></div>
+          <div class="col col-6">
+               <select name="ODReniPlus1" class="verde-fosforescente">
             <option value="HIPERMETROPIA">SI</option>
             <option value="MIOPIA">NO</option>
-                        <label for=""><input type="checkbox" name="OIAsigmatismo1">Asigmatismo</label>
 
           </select>
-        </div>
+          
+          </div>
+          <div class="col col-6">
+             <select name="OIReniPlus1" class="verde-fosforescente">
+            <option value="HIPERMETROPIA">SI</option>
+            <option value="MIOPIA">NO</option>
+
+          </select>
+
+          </div>
+          <div class="w-100"></div>
+          <div class="col col-6" style="padding: 0px;">
+                                    <label for=""><input required type="checkbox" name="OIAsigmatismo1" style="margin: 0px 5px 0px 5px;">Asigmatismo</label>
+
+          </div>
+          <div class="col col-6"  style="padding: 0px;">
+                                    <label for=""><input required type="checkbox" name="ODAsigmatismo1" style="margin: 0px; margin-right: 5px">Asigmatismo</label>
+
+          </div>
       </div>
     </div>
   </div>
 
                       </div>
 
-                      <input type="hidden" name="odreni" id="odreniInput" value="">
+                      <input required type="hidden" name="odreni" id="odreniInput" value="">
 
                       <br>
 
