@@ -37,10 +37,8 @@
             <option value="HIPERMETROPIA">HIPERMETROPIA</option>
             <option value="EMETROPE">EMETROPE</option>
             <option value="MIOPIA">MIOPIA</option>
-
           </select>
         </div>
-
         <div class="col-4">
           <input type="text" name="busqueda" class="form-control" placeholder="Inserte los datos que desea filtrar">
         </div>
@@ -106,12 +104,20 @@
     {{#each TotalPaginas}}
     {{#if (not (eq ../Filtro "Folio"))}}
     {{#if (not (eq ../Filtro "Nombre"))}}
+        {{#if (not (eq ../Filtro "HIPERMETROPIA"))}}
+    {{#if (not (eq ../Filtro "EMETROPE"))}}
+    {{#if (not (eq ../Filtro "MIOPIA"))}}
+
     <li class="page-item">
       <a href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
         class="page-link">{{this}}</a>
     </li>
     {{/if}}
     {{/if}}
+        {{/if}}
+    {{/if}}
+    {{/if}}
+
     {{/each}}
   </ul>
 </nav>
@@ -130,6 +136,24 @@
         id="sendMessageButton" class="page-link">{{this}}</a></li>
     {{/if}}
         {{#if (eq ../Filtro "Folio")}}
+
+    <li class="page-item"><a
+        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        id="sendMessageButton" class="page-link">{{this}}</a></li>
+    {{/if}}
+        {{#if (eq ../Filtro "HIPERMETROPIA")}}
+
+    <li class="page-item"><a
+        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        id="sendMessageButton" class="page-link">{{this}}</a></li>
+    {{/if}}
+            {{#if (eq ../Filtro "EMETROPE")}}
+
+    <li class="page-item"><a
+        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        id="sendMessageButton" class="page-link">{{this}}</a></li>
+    {{/if}}
+            {{#if (eq ../Filtro "MIOPIA")}}
 
     <li class="page-item"><a
         href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"

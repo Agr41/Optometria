@@ -110,6 +110,48 @@ module.exports = async (req, res) => {
             res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
 
         }
+        if(Filtro ==="HIPERMETROPIA"){
+          const tests = await Test.find({$or: [{ ODReni: "HIPERMETROPIA"},{ OIReni: "HIPERMETROPIA"} ]});
+          const testIds = tests.map(test => test.id);
+          
+          const pacientes = await Paciente.paginate( {_id: { $in: testIds } },{page,limit:10}) 
+          const FiltroPaginado = true;
+          var TotalPaginas = [];
+          for (i = 0; i < pacientes.totalPages; i++) {
+            TotalPaginas.push(i + 1);
+          }
+    
+          res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
+
+      }
+      if(Filtro ==="EMETROPE"){
+        const tests = await Test.find({$or: [{ ODReni: "EMETROPE"},{ OIReni: "EMETROPE"} ]});
+        const testIds = tests.map(test => test.id);
+        
+        const pacientes = await Paciente.paginate( {_id: { $in: testIds } },{page,limit:10})         
+        const FiltroPaginado = true;
+        var TotalPaginas = [];
+        for (i = 0; i < pacientes.totalPages; i++) {
+          TotalPaginas.push(i + 1);
+        }
+  
+        res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
+
+    }
+    if(Filtro ==="MIOPIA"){
+      const tests = await Test.find({$or: [{ ODReni: "MIOPIA"},{ OIReni: "MIOPIA"} ]});
+      const testIds = tests.map(test => test.id);
+      
+      const pacientes = await Paciente.paginate( {_id: { $in: testIds } },{page,limit:10})          
+      const FiltroPaginado = true;
+      var TotalPaginas = [];
+      for (i = 0; i < pacientes.totalPages; i++) {
+        TotalPaginas.push(i + 1);
+      }
+
+      res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
+
+  }
 
     }
 
