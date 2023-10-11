@@ -1,5 +1,5 @@
 {{>navbar}}
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <section id="PanelPacientes">
 <br>
   <h1 class="text-center hola">Panel de pacientes</h1>
@@ -136,6 +136,9 @@
         id="sendMessageButton" class="page-link">{{this}}</a></li>
     {{/if}}
     {{/each}}
+    <li class="page-item">
+      <a class="page-link" href="#"  id="nextPage">Next</a>
+    </li>
   </ul>
 </nav>
 {{/unless}}
@@ -159,6 +162,35 @@
       });
   }
 </script>
+<style>
+    .page-item.active {
+        background-color: #007bff; /* Cambia el color de fondo a tu preferencia */
+        color: #fff; /* Cambia el color de texto a tu preferencia */
+    }
+</style>
+{{!-- <script>
+     $(document).ready(function() {
+    // Número de elementos a mostrar por página
+    const itemsPerPage = 3;
+
+    // Función para mostrar los elementos
+    function showItems(startIndex) {
+      const endIndex = startIndex + itemsPerPage;
+      $(".page-item").hide();
+      $(".page-item:lt(" + endIndex + "):gt(" + (startIndex - 1) + ")").show();
+    }
+
+    // Oculta todos los elementos excepto los primeros tres
+    showItems(1);
+
+    // Manejo del botón "Next" para mostrar los siguientes tres elementos
+    $("#nextPage").click(function() {
+      const visibleItems = $(".page-item:visible");
+      const startIndex = visibleItems.index(":first") + itemsPerPage;
+      showItems(startIndex);
+    });
+  });
+</script> --}}
 
 
 
