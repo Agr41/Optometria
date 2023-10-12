@@ -87,7 +87,7 @@ hbs.registerHelper('dateFormat', function(date) {
 });
 // Define la función dateFormat en tu contexto de Handlebars
 hbs.registerHelper('dateFormat', function (date) {
-  return moment(date).format('DD [de] MMMM [de] YYYY'); // Puedes personalizar el formato como desees
+  return moment.utc(date).format('DD [de] MMMM [de] YYYY'); // Puedes personalizar el formato como desees
 });
 
 hbs.registerHelper('isChecked', function(value) {
