@@ -25,6 +25,6 @@ module.exports = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.redirect(`/LoginInicio?error=true&message=${error}`)
+    res.redirect(`/LoginInicio?error=true`)
   }
 }
