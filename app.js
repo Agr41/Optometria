@@ -83,7 +83,7 @@ hbs.registerHelper('not', function(value) {
 });
 hbs.registerHelper('dateFormat', function(date) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(date).toLocaleDateString('en-US', options);
+  return new Date(date).toLocaleDateString('es-MX', options);
 });
 // Define la función dateFormat en tu contexto de Handlebars
 hbs.registerHelper('dateFormat', function (date) {
