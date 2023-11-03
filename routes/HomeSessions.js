@@ -4,7 +4,7 @@ var router = express.Router();
 router.get('/',(req, res, next) => {
   
   if (req.session.userId!=null) {
-    res.render('HomeSessions', { title: 'Menú',Logeado,role });
+    res.render('HomeSessions', { title: 'Menú',Logeado,role, nombre:req.user.Nombre });
   } else {
       res.redirect('/LoginInicio')
   }
