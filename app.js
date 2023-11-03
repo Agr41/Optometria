@@ -114,6 +114,7 @@ app.use((req, res, next) => {
   Logeado = req.session.userId;
   role= req.session.role;
   usuario= req.session.username;
+  nombre=req.session.nombre
   next()
   });
 
