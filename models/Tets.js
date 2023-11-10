@@ -52,7 +52,7 @@ const TestSchema = new Schema({
     ODReni:String,
     OIReni:String,
     opcion:String,
-
+    Optometrista:String,
 
 
 /*
