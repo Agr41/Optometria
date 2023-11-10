@@ -43,7 +43,7 @@ function generarId() {
       await paciente.create(req.body);
 
       // Mostrar una alerta de éxito y redirigir a
-      res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/form";</script>`);
+      res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/HomeSessions";</script>`);
       console.log("Hiciste el registro correctamente");
     } catch (error) {
       // Mostrar una alerta de error y redirigir a

@@ -725,5 +725,17 @@ btnAtras.setAttribute("hidden", true);
  
 </script>
 
+<script>
+    /*document.getElementById('formulario').addEventListener('submit', function(event) {
+      // Prevent form submission
+      event.preventDefault();
+    });*/
 
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+      // Prevent form submission on Enter key press
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+    });
+  </script>
 {{> footer}}
