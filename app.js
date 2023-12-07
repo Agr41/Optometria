@@ -16,6 +16,7 @@ var HomeRouter = require('./routes/HomeSessions');
 var formtestRouter = require('./routes/test');
 var ListaRouter = require('./routes/ListaClientes.js');
 var configuracionRouter = require('./routes/configuracion.js');
+var menu_clinicaRouter = require('./routes/menu_clinica.js');
 const PanelUsuarios = require('./routes/PanelUsuarios');
 var PanelPacientesRouter = require('./routes/PanelPacientes');
 var graficasRouter = require('./routes/graficas');
@@ -140,6 +141,7 @@ app.use('/test', formtestRouter);
 app.use('/ListaClientes', ListaRouter);
 app.get('/logout',logout)
 app.use('/configuracion', configuracionRouter);
+app.use('/menu_clinica', menu_clinicaRouter);
 app.get('/PanelUsuarios',PanelUsuarios)
 app.get('/PanelPacientes',PanelPacientesRouter)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)

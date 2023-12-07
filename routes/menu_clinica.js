@@ -6,9 +6,9 @@ var router = express.Router();
 router.get('/',(req, res, next) => {
   
   if (req.session.userId!=null) {
-    res.render('configuracion', { title: 'Configuracion',Logeado,role, nombre});
+    res.render('menu_clinica', { title: 'Menú clínica'});
   } else {
-      res.redirect('/LoginInicio')
+      res.redirect('/LoginInicio',Logeado,role, nombre)
   }
 });
 
