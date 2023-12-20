@@ -1,3 +1,131 @@
+{{#if ingles}}
+{{>navbar_en}}
+<link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
+
+<section id="PanelUsuarios">
+
+  <h1 class="text-center hola">User panel</h1>
+
+  <body class="text-center">
+    <br>
+
+    Filter by role:
+    <form method="POST" action="/FiltrosUsuarios">
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <select name="role" id="FiltroHistorial" class="form-select">
+            <option value="admin"> Adminstrator</option>
+            <option value="alumno">Regular user</option>
+
+          </select>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-info">Filter</button>
+        </div>
+      </div>
+
+    </form>
+
+    <br>
+
+    <form method="post" action="/FiltrosUsuarios2">
+      <div class="row justify-content-center">
+        <div class="col-3">
+          <select name="Tipo" id="FiltroHistorial2" class="form-select">
+            <option value="Nombre">Email</option>
+
+          </select>
+        </div>
+
+        <div class="col-4">
+          <input type="text" name="busqueda" class="form-control" placeholder="Filter">
+        </div>
+      </div>
+      <br>
+
+
+      <button class="btn btn-outline-danger" type="reset">Clear</button>
+      <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">Search</i></button>
+    </form>
+
+    <div>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Role</th>
+            <th>Delete</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each usuarios.docs}}
+          <tr>
+            <td class="correos">{{this.username}}</td>
+            <td>{{this.Nombre}}</td>
+            <td>{{this.ApellidoPaterno}} {{this.ApellidoMaterno}}</td>
+            <td>{{this.role}}</td>
+            <td><a href="/Borrar?Usuario={{this.username}}">Delete</a></td>
+
+            <!--Agregar alerta-->
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+
+    </div>
+</section>
+
+{{#unless (Falso FiltroPaginado)}}
+<nav aria-label="Page navigation example">
+
+  <ul class="pagination justify-content-center">
+    {{#each TotalPaginas}}
+    <li class="page-item"><a href="/PanelUsuarios?page={{this}}" type="submit" id="sendMessageButton"
+        class="page-link">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</nav>
+{{/unless}}
+
+{{#unless (Verdad FiltroPaginado)}}
+<nav aria-label="Page navigation example">
+
+  <ul class="pagination justify-content-center">
+    {{#each TotalPaginas}}
+    {{#if (not (eq ../Filtro "Id"))}}
+    {{#if (not (eq ../Filtro "Nombre"))}}
+    <li class="page-item">
+      <a href="/FiltrosUsuarios?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
+        class="page-link">{{this}}</a>
+    </li>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+  </ul>
+</nav>
+{{/unless}}
+
+
+{{#unless (Verdad FiltroPaginado)}}
+<nav aria-label="Page navigation example">
+
+  <ul class="pagination justify-content-center">
+    {{#each TotalPaginas}}
+    {{#if (eq ../Filtro "Nombre")}}
+
+    <li class="page-item"><a
+        href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
+        id="sendMessageButton" class="page-link">{{this}}</a></li>
+    {{/if}}
+    {{/each}}
+  </ul>
+</nav>
+{{/unless}}
+{{else}}
 {{>navbar}}
 <link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
 
@@ -126,7 +254,7 @@
 </nav>
 {{/unless}}
 
-
+{{/if}}
 
 <script>
   function openPopup(id) {
