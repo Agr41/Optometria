@@ -114,6 +114,7 @@ app.use(require('express-session')({ secret: 'AaronGuapo', resave: true, saveUni
 
 app.use((req, res, next) => {
   Logeado = req.session.userId;
+  Idioma = req.session.language;
   role= req.session.role;
   usuario=req.session.username;
   nombre=req.session.nombre

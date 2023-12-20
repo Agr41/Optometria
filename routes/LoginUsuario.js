@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
         req.session.role= user.role
         req.session.username = user.username
         req.session.nombre= user.Nombre
+        req.session.language= user.language
 
         res.redirect('/HomeSessions')
       } else {
