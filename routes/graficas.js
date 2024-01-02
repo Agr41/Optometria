@@ -5,46 +5,174 @@ const Pacientes = require('../models/pacientes.js')
 module.exports = async (req, res) => {
   const tests = await Test.find({})
   //OD
+  var hombres = 0
+var mujeres = 0
+var edadRange6To12= 0
+var edadRange13To17= 0
+var edadRange18OrMore=0
+let PersonasEmetropes = 0;
+let PersonasMiopes = 0;
+let PersonasHipermetropes = 0;
+let PersonasMA = 0;
+let PersonasHA = 0;
+let PersonasAstigmatismo = 0;
+
+let trc = 0;
+let gpd = 0;
+let cld = 0;
+let excludedCitiesRegex = /(Torre[oóÓóÓnN]*|G[oóÓóÓ]*mez\s*Palacio?|Lerdo)/i;
+let otherCitiesCount = 0;
+  if(req.query.filtered!="true"){
   // personas emétropes 
-  const PersonasEmetropes = await Test.find({ ODReni: "HIPERMETROPIA", OIReni: "HIPERMETROPIA" }).countDocuments();
+
+   PersonasEmetropes = await Test.find({ ODReni: "HIPERMETROPIA", OIReni: "HIPERMETROPIA" }).countDocuments();
   //personas miopes 
-  const PersonasMiopes = await Test.find({ ODReni: "EMETROPE", OIReni: "EMETROPE" }).countDocuments();
+   PersonasMiopes = await Test.find({ ODReni: "EMETROPE", OIReni: "EMETROPE" }).countDocuments();
   //personas hipermétropes
-  const PersonasHipermetropes = await Test.find({ ODReni: "MIOPIA", OIReni: "MIOPIA" }).countDocuments();
+   PersonasHipermetropes = await Test.find({ ODReni: "MIOPIA", OIReni: "MIOPIA" }).countDocuments();
 
   //personas hipermétropes
-  const PersonasMA = await Test.find({ ODReni: "Astigmatismo MIOPIA", OIReni: "Astigmatismo MIOPIA" }).countDocuments();
+   PersonasMA = await Test.find({ ODReni: "Astigmatismo MIOPIA", OIReni: "Astigmatismo MIOPIA" }).countDocuments();
 
   // personas emétropes 
-  const PersonasHA = await Test.find({ ODReni: "Astigmatismo HIPERMETROPIA", OIReni: "Astigmatismo HIPERMETROPIA" }).countDocuments();
+   PersonasHA = await Test.find({ ODReni: "Astigmatismo HIPERMETROPIA", OIReni: "Astigmatismo HIPERMETROPIA" }).countDocuments();
   //personas miopes 
-  const PersonasAstigmatismo = await Test.find({ ODReni: "Astigmatismo EMETROPE", OIReni: "Astigmatismo EMETROPE" }).countDocuments();
+   PersonasAstigmatismo = await Test.find({ ODReni: "Astigmatismo EMETROPE", OIReni: "Astigmatismo EMETROPE" }).countDocuments();
 
-  const trc = await Pacientes.find({
+   trc = await Pacientes.find({
     ciudad: { $regex: "torre[oóóÓÓnN]*", $options: "i" }
   }).countDocuments();
-  const gpd = await Pacientes.find({
+   gpd = await Pacientes.find({
     ciudad: { $regex: "g[oóÓóÓ]*mez\\s*palacio?", $options: "i" }
   }).countDocuments();
-  const cld = await Pacientes.find({
+   cld = await Pacientes.find({
     ciudad: { $regex: "lerdo", $options: "i" }
   }).countDocuments();
-  const excludedCitiesRegex = /(Torre[oóÓóÓnN]*|G[oóÓóÓ]*mez\s*Palacio?|Lerdo)/i;
-  const otherCitiesCount = await Pacientes.find({ ciudad: { $not: { $regex: excludedCitiesRegex } } }).countDocuments();
+   excludedCitiesRegex = /(Torre[oóÓóÓnN]*|G[oóÓóÓ]*mez\s*Palacio?|Lerdo)/i;
+   otherCitiesCount = await Pacientes.find({ ciudad: { $not: { $regex: excludedCitiesRegex } } }).countDocuments();
 
-  const hombres = await Pacientes.find({ sexo: "M" }).countDocuments();
-  const mujeres = await Pacientes.find({ sexo: "F" }).countDocuments();
+  hombres = await Pacientes.find({ sexo: "M" }).countDocuments();
+  mujeres = await Pacientes.find({ sexo: "F" }).countDocuments();
 
-  const edadRange6To12 = await Pacientes.find({
+   edadRange6To12 = await Pacientes.find({
     Edad: { $gte: 6, $lte: 12 }
   }).countDocuments();
-  const edadRange13To17 = await Pacientes.find({
+   edadRange13To17 = await Pacientes.find({
     Edad: { $gte: 13, $lte: 17 }
   }).countDocuments();
 
-  const edadRange18OrMore = await Pacientes.find({
+  edadRange18OrMore = await Pacientes.find({
     Edad: { $gte: 18 }
   }).countDocuments();
+}
+else{
+
+  var arrayCond = []
+if (req.query.hombres=="true"){
+arrayCond.push({sexo:"M"})
+}
+if(req.query.mujeres=="true"){
+  arrayCond.push({sexo:"F"})
+}
+if(req.query.kids=="true"){
+  arrayCond.push({Edad: { $gte: 6, $lte: 12 }})
+}
+if(req.query.teens=="true"){
+  arrayCond.push({Edad: { $gte: 13, $lte: 17 }})
+}
+if(req.query.adults=="true"){
+  arrayCond.push({Edad: { $gte: 18 }})
+}
+
+var newArray = arrayCond.map(obj => {
+  // Create a new object with updated keys
+  const newObj = {};
+  for (const key in obj) {
+    // Append "patientInfo." to each key
+    newObj['patientInfo.' + key] = obj[key];
+  }
+  return newObj;
+});
+console.log(newArray)
+  var EmetropiaPipeline = [
+  {
+    $lookup: {
+      from: 'pacientes',  // Assuming 'Patients' is the name of your Patients collection
+      localField: 'id',
+      foreignField: '_id',
+      as: 'patientInfo',
+    }
+  },
+  {
+    $unwind: '$patientInfo'  // Unwind the array created by $lookup to access individual patient documents
+  },
+  {
+    $match: { 
+      $and: newArray
+    }
+  },
+  {
+    $project: {
+      PersonasEmetropes: {
+        $sum: {
+          $cond: [
+            { $and: [ { $eq: ['$ODReni', 'HIPERMETROPIA'] }, { $eq: ['$OIReni', 'HIPERMETROPIA'] } ] },
+            1,
+            0
+          ]
+        }
+      }
+    }
+  }
+];
+
+console.log(EmetropiaPipeline)
+
+  // personas emétropes 
+
+   PersonasEmetropes = await Test.aggregate(EmetropiaPipeline).exec();
+  //personas miopes 
+   PersonasMiopes = await Test.find({ ODReni: "EMETROPE", OIReni: "EMETROPE" }).countDocuments();
+  //personas hipermétropes
+   PersonasHipermetropes = await Test.find({ ODReni: "MIOPIA", OIReni: "MIOPIA" }).countDocuments();
+
+  //personas hipermétropes
+   PersonasMA = await Test.find({ ODReni: "Astigmatismo MIOPIA", OIReni: "Astigmatismo MIOPIA" }).countDocuments();
+
+  // personas emétropes 
+   PersonasHA = await Test.find({ ODReni: "Astigmatismo HIPERMETROPIA", OIReni: "Astigmatismo HIPERMETROPIA" }).countDocuments();
+  //personas miopes 
+   PersonasAstigmatismo = await Test.find({ ODReni: "Astigmatismo EMETROPE", OIReni: "Astigmatismo EMETROPE" }).countDocuments();
+
+
+  trc = await Pacientes.find({
+    ciudad: { $regex: "torre[oóóÓÓnN]*", $options: "i" },$and: arrayCond
+  }).countDocuments();
+   gpd = await Pacientes.find({
+    ciudad: { $regex: "g[oóÓóÓ]*mez\\s*palacio?", $options: "i" },$and: arrayCond
+  }).countDocuments();
+   cld = await Pacientes.find({
+    ciudad: { $regex: "lerdo", $options: "i" },$and: arrayCond
+  }).countDocuments();
+   excludedCitiesRegex = /(Torre[oóÓóÓnN]*|G[oóÓóÓ]*mez\s*Palacio?|Lerdo)/i;
+   otherCitiesCount = await Pacientes.find({ ciudad: { $not: { $regex: excludedCitiesRegex } } }).countDocuments();
+     hombres = await Pacientes.find({ sexo: "M", $and: arrayCond }).countDocuments();
+
+   mujeres = await Pacientes.find({ sexo: "F",$and: arrayCond }).countDocuments();
+  
+
+   edadRange6To12 = await Pacientes.find({
+    Edad: { $gte: 6, $lte: 12 },$and: arrayCond
+  }).countDocuments();
+   edadRange13To17 = await Pacientes.find({
+    Edad: { $gte: 13, $lte: 17 },$and: arrayCond
+  }).countDocuments();
+
+   edadRange18OrMore = await Pacientes.find({
+    Edad: { $gte: 18 },$and: arrayCond
+  }).countDocuments();
+}
+  
 
   //console.log(PersonasEmetropesOD,PersonasMiopesOD,PersonasHipermetropesOD,PersonasEmetropesOI,PersonasEmetropesOI,PersonasMiopesOI,PersonasHipermetropesOI)
 

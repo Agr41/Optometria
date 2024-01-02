@@ -10,7 +10,59 @@
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
         Gráficas
     </header>
-
+    <h3>Filtros</h3>
+    <form action="/graficas" method="get">
+    <input type="hidden" name="filtered" value=true>
+     <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Edad</th>
+          <th>Sexo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <div class="input-group mb-3">
+            <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" value="true"
+                    aria-label="Checkbox for following text input" name="kids"> 6-12 años
+            </div>   
+        </div>
+         <div class="input-group mb-3">
+            <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" value="true"
+                    aria-label="Checkbox for following text input" name="teens"> 13-17 años
+            </div>   
+        </div>
+         <div class="input-group mb-3">
+            <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" value="true"
+                    aria-label="Checkbox for following text input" name="adults"> 18 en adelante
+            </div>   
+        </div>
+        </td>
+          <td>
+            <div class="input-group mb-3">
+            <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" value="true"
+                    aria-label="Checkbox for following text input" name="hombres"> Masculino
+            </div>   
+        </div>
+         <div class="input-group mb-3">
+            <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" value="true"
+                    aria-label="Checkbox for following text input" name="mujeres"> Femenino
+            </div>   
+        </div>
+        
+        </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+       
+        <button class="form-control" type="submit">Filtrar</button>
+    </form>
 
     <body class="d-flex flex-column min-vh-100">
         <main>
@@ -39,6 +91,7 @@
                         <div class="container">
                             <canvas id="myChartSexo"></canvas>
                         </div>
+                        <br>
                         Sexo
                     </div>
                     <div class="col-sm">

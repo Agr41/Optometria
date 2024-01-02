@@ -38,6 +38,8 @@ const TestBorrar = require('./routes/TestBorrar')
 const SoloAdmin = require('./middlewares/SoloAdmin')
 const FiltrosPacientes= require('./routes/FiltroPacientes')
 const rx_en_usoRouter= require('./routes/rx_en_uso')
+const idiomaRouter= require('./routes/idioma')
+const cambiarIdiomaRouter= require('./routes/cambiarIdioma')
 // Importa moment.js y el idioma español
 const moment = require('moment');
 require('moment/locale/es');
@@ -160,6 +162,8 @@ app.post('/TestPacientePOST',TestPacientePOST)
 app.use('/TestBorrar', TestBorrar)
 app.use('/graficas', graficasRouter)
 app.use('/rx_en_uso', rx_en_usoRouter)
+app.use('/idioma', idiomaRouter)
+app.use('/cambiarIdioma', cambiarIdiomaRouter)
 
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')
