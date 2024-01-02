@@ -1,4 +1,5 @@
 var express = require('express');
+const { MongoClient } = require('mongodb');
 var router = express.Router();
 const Test = require('../models/Tets.js')
 const Pacientes = require('../models/pacientes.js')
@@ -25,11 +26,11 @@ let otherCitiesCount = 0;
   if(req.query.filtered!="true"){
   // personas emétropes 
 
-   PersonasEmetropes = await Test.find({ ODReni: "HIPERMETROPIA", OIReni: "HIPERMETROPIA" }).countDocuments();
+   PersonasEmetropes = await Test.find({ ODReni: "EMETROPE", OIReni: "EMETROPE" }).countDocuments();
   //personas miopes 
-   PersonasMiopes = await Test.find({ ODReni: "EMETROPE", OIReni: "EMETROPE" }).countDocuments();
+   PersonasMiopes = await Test.find({ ODReni: "MIOPIA", OIReni: "MIOPIA" }).countDocuments();
   //personas hipermétropes
-   PersonasHipermetropes = await Test.find({ ODReni: "MIOPIA", OIReni: "MIOPIA" }).countDocuments();
+   PersonasHipermetropes = await Test.find({ ODReni: "HIPERMETROPIA", OIReni: "HIPERMETROPIA" }).countDocuments();
 
   //personas hipermétropes
    PersonasMA = await Test.find({ ODReni: "Astigmatismo MIOPIA", OIReni: "Astigmatismo MIOPIA" }).countDocuments();
@@ -89,60 +90,50 @@ var newArray = arrayCond.map(obj => {
   const newObj = {};
   for (const key in obj) {
     // Append "patientInfo." to each key
-    newObj['patientInfo.' + key] = obj[key];
+    newObj[key] = obj[key];
   }
   return newObj;
 });
+const uri = 'mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test'; // replace with your MongoDB connection string
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+    await client.connect();
+    console.log('Connected to the database');
+
+
+const database = client.db('test');
+const patientsCollection = database.collection('pacientes');
+const testsCollection = database.collection('tests');
+// Step 1: Get patients above 18 and retrieve their _id
 console.log(newArray)
-  var EmetropiaPipeline = [
-  {
-    $lookup: {
-      from: 'pacientes',  // Assuming 'Patients' is the name of your Patients collection
-      localField: 'id',
-      foreignField: '_id',
-      as: 'patientInfo',
-    }
-  },
-  {
-    $unwind: '$patientInfo'  // Unwind the array created by $lookup to access individual patient documents
-  },
-  {
-    $match: { 
-      $and: newArray
-    }
-  },
-  {
-    $project: {
-      PersonasEmetropes: {
-        $sum: {
-          $cond: [
-            { $and: [ { $eq: ['$ODReni', 'HIPERMETROPIA'] }, { $eq: ['$OIReni', 'HIPERMETROPIA'] } ] },
-            1,
-            0
-          ]
-        }
-      }
-    }
-  }
-];
-
-console.log(EmetropiaPipeline)
-
+const patientsQuery = {
+  $and: newArray
+};
+const patientsResult = await patientsCollection.find(patientsQuery).toArray();
+const patientIds = patientsResult.map(patient => patient._id.toString());
+console.log(patientIds)
+// Step 2: Count matching test documents where results for flu are "positive"
+const testsQuery = { id: { $in: patientIds }, ODReni: "EMETROPE", OIReni: "EMETROPE"  };
+const matchingTestsCount = await testsCollection.countDocuments(testsQuery);
+console.log(matchingTestsCount)
   // personas emétropes 
 
-   PersonasEmetropes = await Test.aggregate(EmetropiaPipeline).exec();
+   //PersonasEmetropes = await Test.aggregate(EmetropiaPipeline).exec();
+   PersonasEmetropes=matchingTestsCount;
   //personas miopes 
-   PersonasMiopes = await Test.find({ ODReni: "EMETROPE", OIReni: "EMETROPE" }).countDocuments();
+   PersonasMiopes = await testsCollection.countDocuments({ id: { $in: patientIds }, ODReni: "MIOPIA", OIReni: "MIOPIA"  });
   //personas hipermétropes
-   PersonasHipermetropes = await Test.find({ ODReni: "MIOPIA", OIReni: "MIOPIA" }).countDocuments();
+   PersonasHipermetropes = await testsCollection.countDocuments({ id: { $in: patientIds }, ODReni: "HIPERMETROPIA", OIReni: "HIPERMETROPIA"  });
 
   //personas hipermétropes
-   PersonasMA = await Test.find({ ODReni: "Astigmatismo MIOPIA", OIReni: "Astigmatismo MIOPIA" }).countDocuments();
+   PersonasMA = await testsCollection.countDocuments({ id: { $in: patientIds }, ODReni: "Astigmatismo MIOPIA", OIReni: "Astigmatismo MIOPIA"  });
 
   // personas emétropes 
-   PersonasHA = await Test.find({ ODReni: "Astigmatismo HIPERMETROPIA", OIReni: "Astigmatismo HIPERMETROPIA" }).countDocuments();
-  //personas miopes 
-   PersonasAstigmatismo = await Test.find({ ODReni: "Astigmatismo EMETROPE", OIReni: "Astigmatismo EMETROPE" }).countDocuments();
+PersonasHA=await testsCollection.countDocuments({ id: { $in: patientIds }, ODReni: "Astigmatismo HIPERMETROPIA", OIReni: "Astigmatismo HIPERMETROPIA"  });
+   //personas miopes 
+   PersonasAstigmatismo = await testsCollection.countDocuments({ id: { $in: patientIds }, ODReni: "Astigmatismo EMETROPE", OIReni: "Astigmatismo EMETROPE"  });
+
 
 
   trc = await Pacientes.find({
