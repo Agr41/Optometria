@@ -111,6 +111,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 global.Logeado = null;
 global.role = null;
 global.Id= 'Id';
+global.Idioma = null
+global.usuario = null
+global.nombre = null
 
 app.use(require('express-session')({ secret: 'AaronGuapo', resave: true, saveUninitialized: true }));
 

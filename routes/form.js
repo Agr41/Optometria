@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var ingles = false
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
+  var ingles = false
   if (Idioma == "en-US") {
     ingles = true;
   }
