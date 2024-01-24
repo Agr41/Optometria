@@ -40,6 +40,7 @@ const FiltrosPacientes= require('./routes/FiltroPacientes')
 const rx_en_usoRouter= require('./routes/rx_en_uso')
 const idiomaRouter= require('./routes/idioma')
 const cambiarIdiomaRouter= require('./routes/cambiarIdioma')
+const preeliminaresRouter= require('./routes/preeliminares')
 // Importa moment.js y el idioma español
 const moment = require('moment');
 require('moment/locale/es');
@@ -167,6 +168,7 @@ app.use('/graficas', graficasRouter)
 app.use('/rx_en_uso', rx_en_usoRouter)
 app.use('/idioma', idiomaRouter)
 app.use('/cambiarIdioma', cambiarIdiomaRouter)
+app.use('/preeliminares', preeliminaresRouter)
 
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')
