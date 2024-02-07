@@ -5,5 +5,5 @@ module.exports = async (req,res) =>{
     if (Idioma == "en-US"){
       ingles = true;
     }
-    res.render('Registrar',{title:"Registrar usuario",Logeado,role, ingles})
+    res.render('idioma',{title:"Idioma",Logeado,role, ingles, user:req.session.username})
 }

@@ -6,7 +6,11 @@ const Paciente = require("../models/pacientes.js");
 const Test = require('../models/Tets.js');
 module.exports = async (req, res) => {
   var page = req.query.page;
-
+  var ingles = false
+  console.log(Idioma)
+  if (Idioma == "en-US"){
+    ingles = true;
+  }
   if (page === undefined) {
     // Si no se especifica la página, muestra la primera página por defecto
     const pacientes = await Paciente.paginate({}, { page: 1, limit: 10 });
@@ -33,7 +37,8 @@ module.exports = async (req, res) => {
   
 console.log(pacientes.docs)
 */
-    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
+
+    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas, ingles });
   } else if (page != undefined) {
     // Si se especifica una página, muestra esa página
     const pacientes = await Paciente.paginate({}, { page, limit: 10 });
@@ -43,6 +48,6 @@ console.log(pacientes.docs)
     for (i = 0; i < pacientes.totalPages; i++) {
       TotalPaginas.push(i + 1);
     }
-    res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas });
+    res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas, ingles });
   }
 }

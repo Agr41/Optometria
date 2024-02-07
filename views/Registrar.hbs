@@ -1,3 +1,71 @@
+{{#if ingles}}
+{{> navbar_en}}
+
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+<h2>Enter user details</h2>
+  </header>
+<main>
+      <div class="modal-content rounded-4 shadow">
+
+
+        <div class="modal-body p-5 border border-2 border-dark rounded">
+
+          <div class="container">
+            <form method="POST" action="/RegistrarsePost">
+<div class="row g-3">
+    <div class="col-sm-12">
+                  <label class="form-label">Email:</label>
+                  <input type="text" class="form-control" name="username">
+                </div>
+<!--
+    {{!-- <div class="col-sm-12">
+  {{!-- <select class="form-select" id="inputGroupSelect01" name="correo">
+    <option selected value="@halcones.ual.mx">@halcones.ual.mx</option>
+    <option value="@ual.mx">@ual.mx</option>
+  </select> --}}
+
+                </div> --}}
+                -->
+                <div class="col-sm-12">
+                  <label class="form-label">Password:</label>
+                  <input type="password" class="form-control" name="password">
+                </div>
+                <div class="col-sm-4">
+                  <label class="form-label">Name</label>
+                  <input type="text" class="form-control" name="Nombre">
+                </div>
+
+                <div class="col-sm-4">
+                  <label class="form-label">Last name:</label>
+                  <input type="text" class="form-control" name="ApellidoPaterno">
+                </div>
+
+
+<label>Role:</label>
+            <select name="role" id="role"class="form-select">
+                <option value="admin" >Administrator</option>
+                 <option value="alumno" >Regular user</option>
+
+            </select>
+
+
+
+<button type="submit" class="btn btn-primary">Register user</button>
+</div>
+
+
+
+</form>
+
+          </div>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+</div>
+{{else}}
 {{> navbar}}
 
 <div class="col-lg-8 mx-auto p-4 py-md-5">
@@ -67,6 +135,7 @@
 
     </main>
 </div>
+{{/if}}
 <style>
   body {
     background-color: #f2f2f2;

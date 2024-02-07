@@ -38,6 +38,11 @@ const TestBorrar = require('./routes/TestBorrar')
 const SoloAdmin = require('./middlewares/SoloAdmin')
 const FiltrosPacientes= require('./routes/FiltroPacientes')
 const rx_en_usoRouter= require('./routes/rx_en_uso')
+const idiomaRouter= require('./routes/idioma')
+const cambiarIdiomaRouter= require('./routes/cambiarIdioma')
+const preeliminaresRouter= require('./routes/preeliminares')
+const pruebas_complementarias =require('./routes/pruebas_complementarias')
+
 // Importa moment.js y el idioma español
 const moment = require('moment');
 require('moment/locale/es');
@@ -109,11 +114,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 global.Logeado = null;
 global.role = null;
 global.Id= 'Id';
+global.Idioma = null
+global.usuario = null
+global.nombre = null
 
 app.use(require('express-session')({ secret: 'AaronGuapo', resave: true, saveUninitialized: true }));
 
 app.use((req, res, next) => {
   Logeado = req.session.userId;
+  Idioma = req.session.language;
   role= req.session.role;
   usuario=req.session.username;
   nombre=req.session.nombre
@@ -159,6 +168,10 @@ app.post('/TestPacientePOST',TestPacientePOST)
 app.use('/TestBorrar', TestBorrar)
 app.use('/graficas', graficasRouter)
 app.use('/rx_en_uso', rx_en_usoRouter)
+app.use('/idioma', idiomaRouter)
+app.use('/cambiarIdioma', cambiarIdiomaRouter)
+app.use('/preeliminares', preeliminaresRouter)
+app.use('/pruebas_complementarias', pruebas_complementarias)
 
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')

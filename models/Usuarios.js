@@ -11,7 +11,8 @@ const userSchema = new Schema({
     role: String,
     Nombre: String,
     ApellidoPaterno:String,
-    ApellidoMaterno:String
+    ApellidoMaterno:String,
+    language:String
 
 });
 userSchema.pre('save', function(next){
