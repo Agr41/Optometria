@@ -62,49 +62,49 @@
                       </tr>
                       <td>Esfera</td>
 
-                      <td> <input type="number" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                      <td> <input type="number" name="esferaOD" class="form-control" min="-1" max="1"
                           step="0.25"></td>
 
 
 
 
                       <td>
-                        <input type="number" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                        <input type="number" name="esferaOI" class="form-control" min="-1" max="1"
                           step="0.25">
                       </td>
                       <tr></tr>
                       <td>Cilindro</td>
                       <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="number" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                        <input type="number" name="cilindroOD" class="form-control" min="-1" max="1"
                           step="0.25">
                       </td>
                       <td>
-                        <input type="number" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                        <input type="number" name="cilindroOI" class="form-control" min="-1" max="1"
                           step="0.25">
                       </td>
                       <tr></tr>
                       <td>Eje</td>
                       <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="number" name="SinLentesDistancia" class="form-control" min="0" step="1">
+                        <input type="number" name="ejeOD" class="form-control" min="0" step="1">
                       </td>
                       <td>
-                        <input type="number" name="SinLentesDistancia" class="form-control" min="0" step="1">
+                        <input type="number" name="ejeOI" class="form-control" min="0" step="1">
                       </td>
                       <tr></tr>
                       <td>Base</td>
                       <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="SinLentesDistancia" class="form-control">
+                        <input type="text" name="baseOD" class="form-control">
                       </td>
                       <td>
-                        <input type="text" name="SinLentesDistancia" class="form-control">
+                        <input type="text" name="baseOI" class="form-control">
                       </td>
                       <tr></tr>
                       <td>DNP</td>
                       <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="SinLentesDistancia" class="form-control">
+                        <input type="text" name="DNPOD" class="form-control">
                       </td>
                       <td>
-                        <input type="text" name="SinLentesDistancia" class="form-control">
+                        <input type="text" name="DNPOI" class="form-control">
                       </td>
                     </table>
 
@@ -130,7 +130,7 @@
                     </div>
                     <br>
                     <label for="">ADICIION </label>
-                    <input type="number" class="form-control" min="1" max="3" step="0.25">
+                    <input type="number" class="form-control" name="adiciion" min="1" max="3" step="0.25">
 
                     <script>
                       // Assuming you have a variable or element with the ID "dip"
@@ -156,10 +156,10 @@
 
                     <br>
                     <label for="">Cómo empezó a presentarse</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="molestiaComo">
 
                     <label for="">Antigüedad de la molestia</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="molestiaAntiguedad">
                     <br>
 
                   </div>
@@ -186,11 +186,11 @@
                           <div class="row">
                             <div class="col">
 
-                              <input type="number" min="0" step="1" class="form-control">
+                              <input type="number" min="0" step="1" class="form-control" name="pa1">
                             </div>
                             /
                             <div class="col">
-                              <input type="number" min="0" step="1" class="form-control">
+                              <input type="number" min="0" step="1" class="form-control" name="pa2">
                             </div>
                           </div>
                         </div>
@@ -198,9 +198,9 @@
                     </div>
 
                     <label for="">Observaciones</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="observaciones">
                     <label for="">Antecedentes familiares</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="antecendentes">
 
 
                     <div class="container">
@@ -211,7 +211,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Hipertension"> Sí/No
+                                aria-label="Checkbox for following text input" name="Glucosa"> Sí/No
                             </div>
 
                           </div>
@@ -219,12 +219,12 @@
 
                         <div class="col-md-9">
                           <label for="">Medición de la glucosa</label>
-                          <input type="number" min="0" step="1" class="form-control">
+                          <input type="number" min="0" step="1" class="form-control" name="medGlucosa">
                         </div>
                       </div>
                     </div>
                     <label for="">Tratamientos optométricos y oftalmológicos</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="tratamientos">
 
                     <br>
 
