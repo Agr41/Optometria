@@ -1,0 +1,487 @@
+{{> navbar}}
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/stylesheets/Test.css">
+
+<div class="col-lg-8 mx-auto p-2 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+    Optometría UAL
+  </header>
+
+  <main>
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+        <div class="container">
+          <form action="/Formulario" method="POST" id="formulario">
+            <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
+            <div class="container" id="formcont">
+              <div id="carouselExample" class="carousel slide" data-wrap="false">
+                <div class="carousel-inner">
+
+                  <!-- Sección 1: Paciente -->
+                  <div class="carousel-item active" id="inicio">
+                    <h2>Paciente</h2>
+                    <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
+
+                    <div id="popup" class="popup" style="z-index: +1000;">
+                      <div class="popup-content">
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <input type="text" id="searchInput" placeholder="Search...">
+                        {{#each pacientes}}
+                        <div class="row " style="z-index: 999;">
+                          <div class="col-auto me-auto" id="" style="width: 100%;">
+                            <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
+                              <button type="button" class="btn btn-dark" style="float:right;"
+                                onclick="displayUsername(this)" value="{{this._id}}">Agregar</button>
+                            </p>
+                          </div>
+                        </div>
+                        {{/each}}
+                      </div>
+                    </div>
+                    <br>
+                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
+                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
+
+                    <button type="button" id="hideUsernameButton" style="display:none;"
+                      onclick="hideUsernameDisplay()">Cancelar</button>
+
+                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
+                  </div>
+
+                  <!-- Sección 2: Pre-test -->
+                  <div class="carousel-item">
+                    <h2></h2>
+
+                    <br>
+                    <label for=""></label>
+                    <table class="table table-striped-columns">
+                      <tr>
+                        <th></th>
+                        <th>Pruebas Complementarias</th>
+                      </tr>
+                      <td>Ishihara</td>
+
+                      <td> <input type="text" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                          step="0.25"></td>
+                      <tr></tr>
+                      <td>Amsler</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                          step="0.25">
+                      </td>
+                   
+                      <tr></tr>
+                      <td>Maddox</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control" min="0" step="1">
+                      </td>
+                 
+                      <tr></tr>
+                      <td>Campos visuales</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+                    
+                    
+                    
+                    </table>
+
+
+
+                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+                  </div>
+                  <div class="carousel-item">
+                    <h2></h2>
+
+                    <br>
+                   <table class="table table-striped-columns">
+                      <tr>
+                        <th></th>
+                        <th>Biomicroscopía</th>
+                      </tr>
+                      <td>Parpados</td>
+
+                      <td> <input type="text" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                          step="0.25"></td>
+                      <tr></tr>
+                      <td>Puntos y vias lagrimales</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control" min="-1" max="1"
+                          step="0.25">
+                      </td>
+                   
+                      <tr></tr>
+                      <td>Fondo de saco</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control" min="0" step="1">
+                      </td>
+                 
+                      <tr></tr>
+                      <td>Conjuntiva</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+
+                       <tr></tr>
+                      <td>Esclera</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+
+                       <tr></tr>
+                      <td>Cornea</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+
+                       <tr></tr>
+                      <td>Limbo</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+
+                       <tr></tr>
+                      <td>C.A.</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+
+                       <tr></tr>
+                      <td>Iris y pupila</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+
+                       <tr></tr>
+                      <td>Cristalina</td>
+                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+                        <input type="text" name="SinLentesDistancia" class="form-control">
+                      </td>
+                    
+                    
+                    
+                    </table>
+                    <script>
+                      // Assuming you have a variable or element with the ID "dip"
+                      var dipInput = document.getElementById("dip");
+
+                      // Function to update #dip-2 whenever #dip changes
+                      function updateDipMinus2() {
+                        var dipValue = parseFloat(dipInput.value);
+                        var dipMinus2 = dipValue - 2;
+                        document.getElementById("dip-2").value = dipMinus2; // Assuming it's an input element
+                      }
+
+                      // Adding an event listener to trigger the updateDipMinus2 function whenever #dip changes
+                      dipInput.addEventListener("input", updateDipMinus2);
+
+                    </script>
+
+
+                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+                  </div>
+                 
+            
+            
+                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+               
+                  <!-- Sección 3: Refracción -->
+                  <div class="carousel-item" id="itemsave">
+                    <h2>Finalizar</h2>
+                    <form id="myForm" action="tu_script.php" method="POST">
+
+                      <div class="container text-start">
+                        <div class="row align-items-start">
+                          <div class="col col-5">
+
+                            <div class="contenedor2">
+                              <button type="submit" class="btn btn-primary">Guardar datos</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <!--
+                        <label for="">EXAMEN SUBJETIVO</label>
+                        <br>
+                       
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">OI</label>
+                                <input type="text" class="form-control" name="OIExam" required>
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="" required>
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="container text-start">
+                          <div class="row align-items-start">
+                            <div class="col col-5">
+                              <td><label for="">AV</label>
+                                <input type="text" class="form-control" name="AVExam" required>
+                              </td>
+                            </div>
+                            <div class="col col-5">
+
+                              <td>
+                                <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id="" required>
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+                        -->
+
+                      <!--
+                        <label for="">Observaciones</label>
+                        <input type="text" class="form-control" name="Observaciones">
+                        -->
+                  </div>
+
+                  <!-- Resto de tu contenido de la sección "Refracción" aquí -->
+
+
+                  <!-- Sección 4: Examinacion -->
+
+                  <!--
+          <div class="carousel-item">
+            <h2>Examinación</h2>
+             <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Myopia</label><br>
+                        <input type="checkbox" name="Hyperopia" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Hyperopia</label><br>
+                        <input type="checkbox" name="Asigmatism" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Asigmatism</label><br>
+                        <input type="checkbox" name="Presbyopia" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Presbyopia</label><br>
+                        <input type="checkbox" name="Anisometropia" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Anisometropia</label><br>
+                        <input type="checkbox" name="Amblyopia" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Amblyopia</label><br>
+                        <input type="checkbox" name="Strabismus" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Strabismus</label><br>
+                        <input type="checkbox" name="DiabeticRet" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Diabetic Ret</label><br>
+                        <input type="checkbox" name="HtnRet" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Htn Ret</label><br>
+                        <input type="checkbox" name="DryEye" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Dry Eye</label><br>
+                        <input type="checkbox" name="Pinguecula" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Pinguecula</label><br>
+                        <input type="checkbox" name="Pterygium" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Pterygium</label><br>
+                        <input type="checkbox" name="Conjuntivitis" id="" class="form-check-input mt-0" value="true">
+                        <label class="form-label" for="">Conjuntivitis</label><br>
+                        <input type="checkbox" name="Galucoma2" id="" class="form-check-input mt-0" value="true"> <label
+                          class="form-label" for="">Galucoma</label><br>
+                        <input type="checkbox" name="Cataracts" for="" class="form-check-input mt-0" value="true"><label
+                          for="">Cataracts</label><br>
+                        <input type="checkbox" name="ODExamination" id="" class="form-check-input mt-0"
+                          value="true"><label for="">OD</label><br>
+                        <input type="checkbox" name="OSExamination" id="" class="form-check-input mt-0"
+                          value="true"><label for="">OS</label><br>
+                        <input type="checkbox" for="" name="PriorSurg" value="true" class="form-check-input mt-0"><label
+                          for="">Prior Surg</label><br>
+                        <input type="checkbox" name="ODExamination2" id="" class="form-check-input mt-0"
+                          value="true"><label for="">OD</label><br>
+                        <input type="checkbox" name="OSExamination2" id="" class="form-check-input mt-0"
+                          value="true"><label for="">OS</label><br>
+
+                        <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other"
+                          class="form-control"></textarea>  
+          </div>
+-->
+
+                  <!-- Resto de tu contenido de la sección "Examinación" aquí -->
+
+                  <!-- Sección 5: Optical -->
+                  <!--
+          <div class="carousel-item">
+            <h2>Optical</h2>
+              <label>Primary Pair Recommended Eyeglass Rx</label><br>
+                        <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" id="" required><br>
+                        <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" id="" required>
+                     
+                <button type="submit" class="btn btn-primary">Guardar datos</button>
+          </div>
+          -->
+                </div>
+              </div>
+
+
+            </div>
+        </div>
+        <div class="row " style="z-index: 999;">
+          <div class="col-auto me-auto" id="" style="width: 40%;">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+              onclick="ocultarBoton()" id="btnprev" hidden="true">
+              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
+            </button>
+          </div>
+          <div class="col-auto">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+              onclick="ocultarBoton();" id="btnnext">
+              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
+            </button>
+          </div>
+        </div>
+  </main>
+</div>
+
+</div>
+</div>
+
+
+
+</form>
+</div>
+
+
+</ul>
+</div>
+</div>
+</main>
+</div>
+
+<script>
+  function ocultarBoton() {
+    var slideGuardar = document.getElementById("itemsave").className;
+    var btnSiguiente = document.getElementById("btnnext");
+    var slideInicial = document.getElementById("inicio").className;
+    var btnAtras = document.getElementById("btnprev");
+    console.log(slideGuardar)
+    if (slideGuardar === "carousel-item carousel-item-next carousel-item-start") {
+      btnSiguiente.setAttribute("hidden", true);
+    } else {
+      btnSiguiente.removeAttribute("hidden", false);
+    }
+    console.log("Slide inicial " + slideInicial)
+    if (slideInicial === "carousel-item carousel-item-prev carousel-item-end") {
+      btnAtras.setAttribute("hidden", true);
+    } else {
+      btnAtras.removeAttribute("hidden", false);
+    }
+  }
+
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+  function filterResults() {
+    // Get input value
+    let inputValue = document.getElementById("searchInput").value.toLowerCase();
+    // Get all the p tags inside the popup-content div
+    let results = document.querySelectorAll(".popup-content p");
+    // Loop through each result and hide/show based on the input value
+    results.forEach(result => {
+      if (result.textContent.toLowerCase().includes(inputValue)) {
+        result.style.display = "block";
+      } else {
+        result.style.display = "none";
+      }
+    });
+  }
+
+  // Attach an event listener to the search input
+  document.getElementById("searchInput").addEventListener("input", filterResults);
+
+  function displayUsername(button) {
+    // Get the value of the hidden input related to the clicked button
+    let usernameValue = button.value;
+    console.log(usernameValue)
+    // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
+    let nombreValue = button.parentNode.childNodes[0].textContent
+    let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+    let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+    // Display the values inside the popup div
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.value = `${nombreValue}`;
+    usernameDisplayElement.textContent = `${nombreValue}`
+    usernameValueDisplayElement.value = usernameValue;
+    usernameDisplayElement.style.display = "block";
+    usernameValueDisplayElement.style.display = "block";
+    // Show the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "block";
+    closePopup()
+  }
+
+  function hideUsernameDisplay() {
+    // Hide the username display
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.style.display = "none";
+    usernameValueDisplayElement.style.display = "none";
+    // Hide the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "none";
+  }
+
+
+
+  var odreni = ""; // Variable para almacenar el valor de odreni
+
+  // Función para actualizar el valor de odreni en función de la selección del usuario
+  function actualizarOdreni(checkbox) {
+    if (checkbox.checked) {
+      odreni = checkbox.value; // Asignar el valor del checkbox seleccionado a odreni
+    } else {
+      odreni = ""; // Si el checkbox se desmarca, eliminar el valor de odreni
+    }
+    document.getElementById("odreniInput").value = odreni; // Actualizar el campo oculto
+  }
+
+  // Función para mostrar u ocultar las secciones de opciones en función del checkbox seleccionado
+  function mostrarOpciones(checkbox) {
+    const opcionesPlus2 = document.getElementById("opcionesPlus2");
+    const opcionesPlus1 = document.getElementById("opcionesPlus1");
+
+    if (checkbox === opcionPlus2) {
+      opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus1.style.display = "none";
+      opcionPlus1.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
+      }
+    } else if (checkbox === opcionPlus1) {
+      opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus2.style.display = "none";
+      opcionPlus2.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
+      }
+    }
+  }
+
+
+</script>
+
+<script>
+  /*document.getElementById('formulario').addEventListener('submit', function(event) {
+    // Prevent form submission
+    event.preventDefault();
+  });*/
+
+  document.getElementById('searchInput').addEventListener('keydown', function (event) {
+    // Prevent form submission on Enter key press
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  });
+</script>
+{{> footer}}

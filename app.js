@@ -43,6 +43,9 @@ const cambiarIdiomaRouter= require('./routes/cambiarIdioma')
 const preeliminaresRouter= require('./routes/preeliminares')
 const pruebas_complementarias =require('./routes/pruebas_complementarias')
 
+const rx_final= require('./routes/rx_final')
+const pruebas_f= require('./routes/pruebas_f')
+
 // Importa moment.js y el idioma español
 const moment = require('moment');
 require('moment/locale/es');
@@ -172,6 +175,9 @@ app.use('/idioma', idiomaRouter)
 app.use('/cambiarIdioma', cambiarIdiomaRouter)
 app.use('/preeliminares', preeliminaresRouter)
 app.use('/pruebas_complementarias', pruebas_complementarias)
+
+app.use('/rx_final', rx_final)
+app.use('/pruebas_f', pruebas_f)
 
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')
