@@ -34,6 +34,7 @@ const TestCliente = require('./routes/TestCliente')
 const TestPaciente= require ('./routes/TestPaciente')
 const TestActualizar = require('./routes/TestActualizar')
 const TestPacientePOST = require('./routes/TestPacientePOST')
+const SaludOcular = require('./routes/SaludOcular')
 const TestBorrar = require('./routes/TestBorrar')
 const SoloAdmin = require('./middlewares/SoloAdmin')
 const FiltrosPacientes= require('./routes/FiltroPacientes')
@@ -42,6 +43,9 @@ const idiomaRouter= require('./routes/idioma')
 const cambiarIdiomaRouter= require('./routes/cambiarIdioma')
 const preeliminaresRouter= require('./routes/preeliminares')
 const pruebas_complementarias =require('./routes/pruebas_complementarias')
+
+const rx_final= require('./routes/rx_final')
+const pruebas_f= require('./routes/pruebas_f')
 
 // Importa moment.js y el idioma español
 const moment = require('moment');
@@ -165,6 +169,7 @@ app.use('/FiltrosUsuarios2',FiltrosUsuarios2)
 app.use('/FiltrosPacientes',FiltrosPacientes)
 app.post('/TestActualizar',TestActualizar)
 app.post('/TestPacientePOST',TestPacientePOST)
+app.use('/SaludOcular',SaludOcular)
 app.use('/TestBorrar', TestBorrar)
 app.use('/graficas', graficasRouter)
 app.use('/rx_en_uso', rx_en_usoRouter)
@@ -172,6 +177,9 @@ app.use('/idioma', idiomaRouter)
 app.use('/cambiarIdioma', cambiarIdiomaRouter)
 app.use('/preeliminares', preeliminaresRouter)
 app.use('/pruebas_complementarias', pruebas_complementarias)
+
+app.use('/rx_final', rx_final)
+app.use('/pruebas_f', pruebas_f)
 
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')
