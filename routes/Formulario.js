@@ -1,7 +1,7 @@
 const User = require("../models/Usuarios");
 const mongoosePaginate = require('mongoose-paginate-v2');
 const Test = require("../models/Tets");
-
+const { MongoClient } = require('mongodb');
 module.exports = async (req, res) => {
 
   console.log(req.body)
@@ -44,15 +44,31 @@ module.exports = async (req, res) => {
       req.body.OIReni =  'Astigmatismo' +' '+ req.body.OIReniPlus2
     }
 
-
+    const uri = 'mongodb+srv://NoLeDeboANadie:rickygei@noledeboanadie.i6p3wc9.mongodb.net/test'; // replace with your MongoDB connection string
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  
+  
+      await client.connect();
+      console.log('Connected to the database');
+  
+  
+  const database = client.db('test');
+  const patientsCollection = database.collection('tests');
+  // Step 1: Get patients above 18 and retrieve their _id
+  const patientsResult = await patientsCollection.insertOne({
+    todo:req.body}
+    );
 
     console.log(req.body);
-    await Test.create(req.body);
+    //await Test.create(req.body);
+    
     // Mostrar una alerta de éxito y redirigir a '/HomeSessions'
     res.send('<script>alert("Se guardaron los datos del paciente correctamente"); window.location.href="/HomeSessions";</script>');
   } catch (error) {
-    console.error(error);
+      console.error(error);
     // Mostrar una alerta de error y redirigir a '/HomeSessions'
     res.send('<script>alert("Hubo un error al guardar los datos del paciente"); window.location.href="/HomeSessions";</script>');
+
+    
   }
 };
