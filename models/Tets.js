@@ -15,6 +15,65 @@ const TestSchema = new Schema({
     País:String,
     FechaDelTest:Date,
     //<---Pre-test--->
+    Diabetes:Boolean,
+    Hipertension:Boolean,
+    Cataratas:Boolean,
+    Glaucoma:Boolean,
+ 
+    ConLentesDistancia:String,
+    ConLentesCerca:String,
+    SinLentesDistancia:String,
+    SinLentesCerca:String,
+
+    grupoRadioA:String,
+    grupoRadioB:String,
+    grupoRadioC:String,
+
+    ODReni:String,
+    OIReni:String,
+    opcion:String,
+    Optometrista:String,
+
+    CamposDeFormulario: {
+        type: Schema.Types.Mixed, // O puedes usar '{}' para un objeto literal
+    },
+
+
+
+
+});
+
+TestSchema.plugin(mongoosePaginate);
+
+// -------------- MODEL -------------- //
+const Test = mongoose.model("Test", TestSchema);
+
+module.exports = Test
+
+
+
+
+
+
+/*
+
+
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const mongoosePaginate= require('mongoose-paginate-v2')
+
+
+// -------------- SCHEMA -------------- //
+const TestSchema = new Schema({
+
+    id: String,
+    Folio:String,
+    Diagnostico:String,
+    Ocupación:String,
+    FechaNacimiento:String,
+    País:String,
+    FechaDelTest:Date,
+    //<---Pre-test--->
     //Condiciones
     Diabetes:Boolean,
     Hipertension:Boolean,
@@ -43,37 +102,42 @@ const TestSchema = new Schema({
     //grupoRadio2C:String,
         //<---Refraccion--->
     //Retinoscopía
-    /*
+     //Comentado
+
     ODReni2:String,
     OIReni2:String,
     ODReni1:String,
     OIReni1:String,
-    */
+       //Comentado
+
     ODReni:String,
     OIReni:String,
     opcion:String,
     Optometrista:String,
 
 
-/*
+    //Comentado
     OIReni:String,
     ODReni:String,
     AVReni:String,
     AVReni2:String,
-*/
+    //Comentado
+
 
     //Examen Subjetivo
-    /*
+        //Comentado
+
     OIExam:String,
     ADExam:String,
     AVExam:String,
     AVExam2:String,
     Observaciones:String,
-    */
+        //Comentado
+
         //<---Examination--->
 
     //Examination
-    /*
+    //Comentado
     Myopia:Boolean,
     Hyperopia:Boolean,
     Asigmatism:Boolean,
@@ -95,7 +159,7 @@ const TestSchema = new Schema({
     ODExamination2:Boolean,
     OSExamination2:Boolean,
     OtherExamination:String,
-    */
+    //comentado
     //<---Optical--->
 
     //ODOptical:String,
@@ -111,3 +175,4 @@ TestSchema.plugin(mongoosePaginate);
 const Test = mongoose.model("Test", TestSchema);
 
 module.exports = Test
+*/
