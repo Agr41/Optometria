@@ -42,7 +42,21 @@ router.post('/registrarpaciente', async function (req, res, next) {
       await paciente.create(req.body);
 
       // Mostrar una alerta de éxito y redirigir a
-      res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/HomeSessions";</script>`);
+      switch(req.body.selectorPagina){
+        case "salir":
+          res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/HomeSessions";</script>`);
+          break;
+          case "tamizaje":
+            res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/test";</script>`);
+            break;
+            case "clinica":
+              res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/menu_clinica";</script>`);
+              break;
+              default:
+                res.send(`<script>alert("Se ha registrado al paciente. Número de fólio: ${nuevoId}"); window.location.href="/HomeSessions";</script>`);
+                break;
+      }
+      
       console.log("Hiciste el registro correctamente");
     } catch (error) {
       // Mostrar una alerta de error y redirigir a
