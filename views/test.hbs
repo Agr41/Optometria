@@ -447,9 +447,10 @@
                                 </select>
                               </td>
 -->
-
+<input type="hidden" value="salir" id="selectorPagina" name="selectorPagina">
                             <div class="contenedor2">
-                              <button type="submit" class="btn btn-primary">Guardar datos</button>
+                              <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
+                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar e ir a Clínica</button>
                             </div>
                           </div>
                         </div>
@@ -603,7 +604,31 @@
 </div>
 </main>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btnSalir = document.getElementById('btnSalir');
+  const btnTamizaje = document.getElementById('btnTamizaje');
+  const btnClinica = document.getElementById('btnClinica');
+  const selectorPagina = document.getElementById('selectorPagina');
 
+  btnSalir.addEventListener('mouseover', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnClinica.addEventListener('mouseover', function() {
+    selectorPagina.value = 'clinica';
+  });
+  btnSalir.addEventListener('touchstart', function() {
+    selectorPagina.value = 'salir';
+  });
+
+
+  btnClinica.addEventListener('touchstart', function() {
+    selectorPagina.value = 'clinica';
+  });
+});
+
+</script>
 <script>
 function ocultarBoton() {
   var slideGuardar = document.getElementById("itemsave").className;

@@ -214,9 +214,22 @@
                 </select>
                 </div>
               </div> --}}
-
-              <button type="submit" class="btn btn-primary">Guardar datos</button>
-
+              <input type="hidden" value="salir" id="selectorPagina" name="selectorPagina">
+<div class="col-sm-12">
+<div class="row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" id="btnSalir">Guardar y salir</button>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" id="btnTamizaje">Guardar e ir a Tamizaje</button>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" id="btnClinica">Guardar e ir a Clínica</button>
+    </div>
+  </div>
+  
+  
+</div>
             </form>
 
           </div>
@@ -228,6 +241,38 @@
 
 </div>
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btnSalir = document.getElementById('btnSalir');
+  const btnTamizaje = document.getElementById('btnTamizaje');
+  const btnClinica = document.getElementById('btnClinica');
+  const selectorPagina = document.getElementById('selectorPagina');
+
+  btnSalir.addEventListener('mouseover', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnTamizaje.addEventListener('mouseover', function() {
+    selectorPagina.value = 'tamizaje';
+  });
+
+  btnClinica.addEventListener('mouseover', function() {
+    selectorPagina.value = 'clinica';
+  });
+  btnSalir.addEventListener('touchstart', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnTamizaje.addEventListener('touchstart', function() {
+    selectorPagina.value = 'tamizaje';
+  });
+
+  btnClinica.addEventListener('touchstart', function() {
+    selectorPagina.value = 'clinica';
+  });
+});
+
+</script>
 {{/if}}
  <script>
     // Obtener una referencia al input ExmVista y al checkbox
