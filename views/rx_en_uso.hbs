@@ -366,7 +366,9 @@
                           <div class="col col-5">
 
                             <div class="contenedor2">
-                              <button type="submit" class="btn btn-primary">Guardar datos</button>
+                              <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
+                              <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
+                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
                             </div>
                           </div>
                         </div>
@@ -520,7 +522,38 @@
 </div>
 </main>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btnSalir = document.getElementById('btnSalir');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const btnClinica = document.getElementById('btnClinica');
+  const selectorPagina = document.getElementById('selectorPagina');
 
+  btnSalir.addEventListener('mouseover', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('mouseover', function() {
+    selectorPagina.value = 'preeliminares';
+  });
+
+  btnClinica.addEventListener('mouseover', function() {
+    selectorPagina.value = 'clinica';
+  });
+  btnSalir.addEventListener('touchstart', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('touchstart', function() {
+    selectorPagina.value = 'preeliminares';
+  });
+
+  btnClinica.addEventListener('touchstart', function() {
+    selectorPagina.value = 'clinica';
+  });
+});
+
+</script>
 <script>
   function ocultarBoton() {
     var slideGuardar = document.getElementById("itemsave").className;
