@@ -18,5 +18,5 @@ def add_name_to_input_tags(html_file):
     with open(html_file, 'w') as file:
         file.write(str(soup))
 
-html_file = 'rx_final.hbs'
+html_file = 'preeliminares.hbs'
 add_name_to_input_tags(html_file)

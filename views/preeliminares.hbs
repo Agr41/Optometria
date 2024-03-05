@@ -1,169 +1,114 @@
-{{> navbar}}
-<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-<link rel="stylesheet" href="/stylesheets/Test.css">
-
+{{&gt; navbar}}
+<link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="/stylesheets/Test.css" rel="stylesheet"/>
 <div class="col-lg-8 mx-auto p-2 py-md-5">
-  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     Optometría UAL
   </header>
-
-  <main>
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
-        <div class="container">
-          <form action="/Formulario" method="POST" id="formulario">
-            <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-            <div class="container" id="formcont">
-              <div id="carouselExample" class="carousel slide" data-wrap="false">
-                <div class="carousel-inner">
-
-                  <!-- Sección 1: Paciente -->
-                  <div class="carousel-item active" id="inicio">
-                    <h2>Paciente</h2>
-                    <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
-
-                    <div id="popup" class="popup" style="z-index: +1000;">
-                      <div class="popup-content">
-                        <span class="close" onclick="closePopup()">&times;</span>
-                        <input type="text" id="searchInput" placeholder="Search...">
+<main>
+<div class="modal-content rounded-4 shadow">
+<div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+<div class="container">
+<form action="/Formulario" id="formulario" method="POST">
+<input id="Optometrista" name="Optometrista" type="hidden" value="{{usuario}}"/>
+<div class="container" id="formcont">
+<div class="carousel slide" data-wrap="false" id="carouselExample">
+<div class="carousel-inner">
+<!-- Sección 1: Paciente -->
+<div class="carousel-item active" id="inicio">
+<h2>Paciente</h2>
+<button class="form-control" onclick="openPopup()" type="button">Nombre del paciente:</button>
+<div class="popup" id="popup" style="z-index: +1000;">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">�</span>
+<input id="searchInput" name="searchInput" placeholder="Search..." type="text"/>
                         {{#each pacientes}}
-                        <div class="row " style="z-index: 999;">
-                          <div class="col-auto me-auto" id="" style="width: 100%;">
-                            <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                              <button type="button" class="btn btn-dark" style="float:right;"
-                                onclick="displayUsername(this)" value="{{this._id}}">Agregar</button>
-                            </p>
-                          </div>
-                        </div>
+                        <div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 100%;">
+<p>{{this.NombreCompleto}}<input id="id" name="id" type="hidden" value="{{this._id}}"/>
+<button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">Agregar</button>
+</p>
+</div>
+</div>
                         {{/each}}
                       </div>
-                    </div>
-                    <br>
-                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
-
-                    <button type="button" id="hideUsernameButton" style="display:none;"
-                      onclick="hideUsernameDisplay()">Cancelar</button>
-
-                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-                  </div>
-
-                  <!-- Sección 2: Pre-test -->
-                  <div class="carousel-item">
-                    <h2>Con RX</h2>
-
-                    <br>
-                    <label for=""></label>
-                    <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>OD</th>
-                        <th></th>
-                        <th></th>
-                        <th>OI</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                      <td>Cerca</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder="" name="">
-
-                      </td>
-                      <td>/</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-                      <td>/</td>
-
-                      <td>
-                        <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder="">
-                      </td>
-                      <tr></tr>
-                      <td>Lejos</td>
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-                      <td>/</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-                      <td>/</td>
-
-                      <td>
-                     <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder="">
-                      </td>
-
-                    </table>
-
-
-                    <h2>Sin RX</h2>
-
-                    <br>
-                    <label for=""></label>
-                    <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>OD</th>
-                        <th></th>
-                        <th></th>
-                        <th>OI</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                      <td>Cerca</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-                      <td>/</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-                      <td>/</td>
-
-                      <td>
-                       <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder="">
-                      </td>
-                      <tr></tr>
-                      <td>Lejos</td>
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-                      <td>/</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-                      <td>/</td>
-
-                      <td>
-                     <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder="">
-                      </td>
-
-                    </table>
-
-                    <script>
+</div>
+<br/>
+<p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
+<input id="usernameValueDisplay" name="usernameValueDisplay" style="display:none;" type="hidden"/>
+<button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">Cancelar</button>
+<!-- Resto de tu contenido de la sección "Paciente" aquí -->
+</div>
+<!-- Sección 2: Pre-test -->
+<div class="carousel-item">
+<h2>Con RX</h2>
+<br/>
+<label for=""></label>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OD</th>
+<th></th>
+<th></th>
+<th>OI</th>
+<th></th>
+<th></th>
+</tr>
+<td>Cerca</td>
+<td> <input class="form-control" id="ODRXCerca1" name="CampoDeFormulario[ODRXCerca1]" placeholder="ODRXCerca1" type="text"/>
+</td>
+<td>/</td>
+<td> <input class="form-control" id="ODRXCerca2" name="CampoDeFormulario[ODRXCerca2]" placeholder="ODRXCerca2" type="text"/></td>
+<td> <input class="form-control" id="OIRXCerca1" name="CampoDeFormulario[OIRXCerca1]" placeholder="OIRXCerca1" type="text"/></td>
+<td>/</td>
+<td>
+<input class="form-control" id="OIRXCerca2" name="CampoDeFormulario[OIRXCerca2]" placeholder="OIRXCerca2" type="text"/>
+</td>
+<tr></tr>
+<td>Lejos</td>
+<td> <input class="form-control" id="ODRXLejos1" name="CampoDeFormulario[ODRXLejos1]" placeholder="ODRXLejos1" type="text"/></td>
+<td>/</td>
+<td> <input class="form-control" id="ODRXLejos2" name="CampoDeFormulario[ODRXLejos2]" placeholder="ODRXLejos2" type="text"/></td>
+<td> <input class="form-control" id="OIRXLejos1" name="CampoDeFormulario[OIRXLejos1]" placeholder="OIRXLejos1" type="text"/></td>
+<td>/</td>
+<td>
+<input class="form-control" id="OIRXLejos2" name="CampoDeFormulario[OIRXLejos2]" placeholder="OIRXLejos2" type="text"/>
+</td>
+</table>
+<h2>Sin RX</h2>
+<br/>
+<label for=""></label>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OD</th>
+<th></th>
+<th></th>
+<th>OI</th>
+<th></th>
+<th></th>
+</tr>
+<td>Cerca</td>
+<td> <input class="form-control" id="ODNoRXCerca1" name="CampoDeFormulario[ODNoRXCerca1]" placeholder="ODNoRXCerca1" type="text"/></td>
+<td>/</td>
+<td> <input class="form-control" id="ODNoRXCerca2" name="CampoDeFormulario[ODNoRXCerca2]" placeholder="ODNoRXCerca2" type="text"/></td>
+<td> <input class="form-control" id="OINoRXCerca1" name="CampoDeFormulario[OINoRXCerca1]" placeholder="OINoRXCerca1" type="text"/></td>
+<td>/</td>
+<td>
+<input class="form-control" id="OINoRXCerca2" name="CampoDeFormulario[OINoRXCerca2]" placeholder="OINoRXCerca2" type="text"/>
+</td>
+<tr></tr>
+<td>Lejos</td>
+<td> <input class="form-control" id="ODNoRXLejos1" name="CampoDeFormulario[ODNoRXLejos1]" placeholder="ODNoRXLejos1" type="text"/></td>
+<td>/</td>
+<td> <input class="form-control" id="ODNoRXLejos2" name="CampoDeFormulario[ODNoRXLejos2]" placeholder="ODNoRXLejos2" type="text"/></td>
+<td> <input class="form-control" id="OINoRXLejos1" name="CampoDeFormulario[OINoRXLejos1]" placeholder="OINoRXLejos1" type="text"/></td>
+<td>/</td>
+<td>
+<input class="form-control" id="ODNoRXLejos2" name="CampoDeFormulario[ODNoRXLejos2]" placeholder="ODNoRXLejos2" type="text"/>
+</td>
+</table>
+<script>
                       document.getElementById("SinLentesDistancia").addEventListener("input", function (event) {
                         let inputValue = event.target.value;
                         let formattedValue = '';
@@ -204,169 +149,123 @@
                       dipInput.addEventListener("input", updateDipMinus2);
 
                     </script>
-
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                    <h2>AV con Etenopeico</h2>
-
-                    <br>
-                    <label for=""></label>
-                    <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>OD</th>
-                        <th>/</th>
-                        <th></th>
-                        <th>OI</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                      <td></td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-                      <td>/</td>
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-
-                      <td> <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder=""></td>
-
-                      <td>/</td>
-
-                      <td>
-                       <input type="text" id="SinLentesDistancia" class="form-control"
-                          placeholder="">
-                      </td>
-
-                    </table>
-
-                  </div>
-
-                  <div class="carousel-item">
-                    <h2>Motilidad Extraocular</h2>
-
-                    <br>
-
-
-                    <div class="container">
-                      <div class="row">
-
-                        <div class="form-group">
-                          <label for="versiones">Versiones:</label>
-                           <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="versiones" id="versionS" value="S">
-        <label class="form-check-label" for="versionS">S</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="versiones" id="versionP" value="P">
-        <label class="form-check-label" for="versionP">P</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="versiones" id="versionE" value="E">
-        <label class="form-check-label" for="versionE">E</label>
-      </div>
-       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="versiones" id="versionE" value="E">
-        <label class="form-check-label" for="versionE">C</label>
-      </div>
-
-                        </div>
-
-                        <div class="form-group">
-                          <label for="versiones">Ducciones:</label>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="ducciones" id="versionS" value="S">
-                            <label class="form-check-label" for="versionS">S</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="ducciones" id="versionP" value="P">
-                            <label class="form-check-label" for="versionP">P</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="ducciones" id="versionE" value="E">
-                            <label class="form-check-label" for="versionE">E</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="ducciones" id="versionC" value="C">
-                            <label class="form-check-label" for="versionE">C</label>
-                          </div>
-                          
-
-                        </div>
-                      </div>
-                    </div>
-
-                    <label for="">Observaciones</label>
-                    <input type="text" class="form-control">
-
-
-
-
-
-
-
-
-
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                  <!-- Sección 3: Refracción -->
-                  <div class="carousel-item" id="itemsave">
-                    <h2>Finalizar</h2>
-                    <form id="myForm" action="tu_script.php" method="POST">
-
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-
-                            <div class="contenedor2">
-                              <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
-                              <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
-                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      
-                </div>
-              </div>
-
-
-            </div>
-        </div>
-        <div class="row " style="z-index: 999;">
-          <div class="col-auto me-auto" id="" style="width: 40%;">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="ocultarBoton()" id="btnprev" hidden="true">
-              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-          <div class="col-auto">
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="ocultarBoton();" id="btnnext">
-              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-        </div>
-  </main>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+<h2>AV con Etenopeico</h2>
+<br/>
+<label for=""></label>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OD</th>
+<th>/</th>
+<th></th>
+<th>OI</th>
+<th></th>
+<th></th>
+</tr>
+<td></td>
+<td> <input class="form-control" id="AVODConEst1" name="CampoDeFormulario[AVODConEst1]" placeholder="AVODConEst1" type="text"/></td>
+<td>/</td>
+<td> <input class="form-control" id="AVODConEst2" name="CampoDeFormulario[AVODConEst2]" placeholder="AVODConEst2" type="text"/></td>
+<td> <input class="form-control" id="AVOIConEst1" name="CampoDeFormulario[AVOIConEst1]" placeholder="AVOIConEst1" type="text"/></td>
+<td>/</td>
+<td>
+<input class="form-control" id="AVOIConEst2" name="CampoDeFormulario[AVOIConEst2]" placeholder="AVOIConEst2" type="text"/>
+</td>
+</table>
 </div>
-
+<div class="carousel-item">
+<h2>Motilidad Extraocular</h2>
+<br/>
+<div class="container">
+<div class="row">
+<div class="form-group">
+<label for="versiones">Versiones:</label>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionS" name="CampoDeFormulario[versionS]" type="radio" value="S"/>
+<label class="form-check-label" for="versionS">S</label>
 </div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionP" name="CampoDeFormulario[versionP]" type="radio" value="P"/>
+<label class="form-check-label" for="versionP">P</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionE" name="CampoDeFormulario[versionE]" type="radio" value="E"/>
+<label class="form-check-label" for="versionE">E</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionE" name="CampoDeFormulario[versionE]" type="radio" value="E"/>
+<label class="form-check-label" for="versionE">C</label>
+</div>
+</div>
+<div class="form-group">
+<label for="versiones">Ducciones:</label>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionS" name="CampoDeFormulario[versionS]" type="radio" value="S"/>
+<label class="form-check-label" for="versionS">S</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionP" name="CampoDeFormulario[versionP]" type="radio" value="P"/>
+<label class="form-check-label" for="versionP">P</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionE" name="CampoDeFormulario[versionE]" type="radio" value="E"/>
+<label class="form-check-label" for="versionE">E</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="versionC" name="CampoDeFormulario[versionC]" type="radio" value="C"/>
+<label class="form-check-label" for="versionE">C</label>
+</div>
+</div>
+</div>
+</div>
+<label for="">Observaciones</label>
+<input class="form-control" id="Observaciones" name="CampoDeFormulario[Observaciones]" type="text"/>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+</div>
+<!-- Sección 3: Refracción -->
+<div class="carousel-item" id="itemsave">
+<h2>Finalizar</h2>
+<form action="tu_script.php" id="myForm" method="POST">
+<div class="container text-start">
+<div class="row align-items-start">
+<div class="col col-5">
+<div class="contenedor2">
+<button class="btn btn-primary" id="btnSalir" type="submit">Guardar y salir</button>
+<button class="btn btn-primary" id="btnSiguiente" type="submit">Guardar e ir al siguiente</button>
+<button class="btn btn-primary" id="btnClinica" type="submit">Guardar y regresar a Clínica</button>
+</div>
+</div>
+</div>
+</div>
+<br/>
+</form></div>
+</div>
+</div>
+</div>
+<div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 40%;">
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" hidden="true" id="btnprev" onclick="ocultarBoton()" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon" id="icono"></span>
+</button>
+</div>
+<div class="col-auto">
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" id="btnnext" onclick="ocultarBoton();" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon" id="icono"></span>
+</button>
+</div>
+</div>
+</form></div></div></div></main>
 </div>
 
 
 
-</form>
-</div>
 
 
-</ul>
-</div>
-</div>
-</main>
-</div>
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const btnSalir = document.getElementById('btnSalir');
@@ -519,7 +418,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 </script>
-
 <script>
   /*document.getElementById('formulario').addEventListener('submit', function(event) {
     // Prevent form submission
@@ -533,4 +431,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 </script>
-{{> footer}}
+{{&gt; footer}}
