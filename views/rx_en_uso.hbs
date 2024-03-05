@@ -62,49 +62,49 @@
                       </tr>
                       <td>Esfera</td>
 
-                      <td> <input type="number" name="esferaOD" class="form-control" min="-1" max="1"
+                      <td> <input type="number" name="CamposDeFormulario[esferaOD]" class="form-control" min="-1" max="1"
                           step="0.25"></td>
 
 
 
 
                       <td>
-                        <input type="number" name="esferaOI" class="form-control" min="-1" max="1"
+                        <input type="number" name="CamposDeFormulario[esferaOI]" class="form-control" min="-1" max="1"
                           step="0.25">
                       </td>
                       <tr></tr>
                       <td>Cilindro</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="number" name="cilindroOD" class="form-control" min="-1" max="1"
+                      <td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
+                        <input type="number" name="CamposDeFormulario[cilindroOD]" class="form-control" min="-1" max="1"
                           step="0.25">
                       </td>
                       <td>
-                        <input type="number" name="cilindroOI" class="form-control" min="-1" max="1"
+                        <input type="number" name="CamposDeFormulario[cilindroOI]" class="form-control" min="-1" max="1"
                           step="0.25">
                       </td>
                       <tr></tr>
                       <td>Eje</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="number" name="ejeOD" class="form-control" min="0" step="1">
+                      <td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
+                        <input type="number" name="CamposDeFormulario[ejeOD]" class="form-control" min="0" step="1">
                       </td>
                       <td>
-                        <input type="number" name="ejeOI" class="form-control" min="0" step="1">
+                        <input type="number" name="CamposDeFormulario[ejeOI]" class="form-control" min="0" step="1">
                       </td>
                       <tr></tr>
                       <td>Base</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="baseOD" class="form-control">
+                      <td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
+                        <input type="text" name="CamposDeFormulario[baseOD]" class="form-control">
                       </td>
                       <td>
-                        <input type="text" name="baseOI" class="form-control">
+                        <input type="text" name="CamposDeFormulario[baseOI]" class="form-control">
                       </td>
                       <tr></tr>
                       <td>DNP</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="DNPOD" class="form-control">
+                      <td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
+                        <input type="text" name="CamposDeFormulario[DNPOD]" class="form-control">
                       </td>
                       <td>
-                        <input type="text" name="DNPOI" class="form-control">
+                        <input type="text" name="CamposDeFormulario[DNPOI]" class="form-control">
                       </td>
                     </table>
 
@@ -120,17 +120,17 @@
                     <div class="container">
                       <div class="row">
                         <div class="col">
-                          <input type="number" min="0" step="1" class="form-control" id="dip">
+                          <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[dip]" id="dip">
                         </div>
                         /
                         <div class="col">
-                          <input type="number" min="0" step="1" class="form-control" readonly id="dip-2">
+                          <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[dip-2]" readonly id="dip-2">
                         </div>
                       </div>
                     </div>
                     <br>
-                    <label for="">ADICIION </label>
-                    <input type="number" class="form-control" name="adiciion" min="1" max="3" step="0.25">
+                    <label for="">ADICION </label>
+                    <input type="number" class="form-control" name="CamposDeFormulario[adicion]" min="1" max="3" step="0.25">
 
                     <script>
                       // Assuming you have a variable or element with the ID "dip"
@@ -156,10 +156,10 @@
 
                     <br>
                     <label for="">Cómo empezó a presentarse</label>
-                    <input type="text" class="form-control" name="molestiaComo">
+                    <input type="text" class="form-control" name="CamposDeFormulario[molestiaComo]">
 
                     <label for="">Antigüedad de la molestia</label>
-                    <input type="text" class="form-control" name="molestiaAntiguedad">
+                    <input type="text" class="form-control" name="CamposDeFormulario[molestiaAntiguedad]">
                     <br>
 
                   </div>
@@ -176,7 +176,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Hipertension"> Sí/No
+                                aria-label="Checkbox for following text input" name="CamposDeFormulario[Hipertension]"> Sí/No
                             </div>
 
                           </div>
@@ -186,11 +186,11 @@
                           <div class="row">
                             <div class="col">
 
-                              <input type="number" min="0" step="1" class="form-control" name="pa1">
+                              <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa1]">
                             </div>
                             /
                             <div class="col">
-                              <input type="number" min="0" step="1" class="form-control" name="pa2">
+                              <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa2]">
                             </div>
                           </div>
                         </div>
@@ -198,9 +198,9 @@
                     </div>
 
                     <label for="">Observaciones</label>
-                    <input type="text" class="form-control" name="observaciones">
+                    <input type="text" class="form-control" name="CamposDeFormulario[observaciones]">
                     <label for="">Antecedentes familiares</label>
-                    <input type="text" class="form-control" name="antecendentes">
+                    <input type="text" class="form-control" name="CamposDeFormulario[antecendentes]">
 
 
                     <div class="container">
@@ -211,7 +211,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Glucosa"> Sí/No
+                                aria-label="Checkbox for following text input" name="CamposDeFormulario[Glucosa]"> Sí/No
                             </div>
 
                           </div>
@@ -219,12 +219,12 @@
 
                         <div class="col-md-9">
                           <label for="">Medición de la glucosa</label>
-                          <input type="number" min="0" step="1" class="form-control" name="medGlucosa">
+                          <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[medGlucosa]">
                         </div>
                       </div>
                     </div>
                     <label for="">Tratamientos optométricos y oftalmológicos</label>
-                    <input type="text" class="form-control" name="tratamientos">
+                    <input type="text" class="form-control" name="CamposDeFormulario[tratamientos]">
 
                     <br>
 
@@ -236,19 +236,19 @@
                         <div class="col">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Ardor"> Ardor
+                              aria-label="Checkbox for following text input" name="CamposDeFormulario[Ardor]"> Ardor
                           </div>
                         </div>
                         <div class="col">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Cansancio"> Cansancio
+                              aria-label="Checkbox for following text input" name="CamposDeFormulario[Cansancio]"> Cansancio
                           </div>
                         </div>
                         <div class="col">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Cefalea"> Cefalea
+                              aria-label="Checkbox for following text input" name="CamposDeFormulario[Cefalea]"> Cefalea
                           </div>
                         </div>
                       </div>
@@ -256,19 +256,19 @@
                         <div class="col">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Confusion"> Confusión al leer
+                              aria-label="Checkbox for following text input" name="CamposDeFormulario[Confusion]"> Confusión al leer
                           </div>
                         </div>
                         <div class="col">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Somnolencia"> Somnolencia
+                              aria-label="Checkbox for following text input" name="CamposDeFormulario[Somnolencia]"> Somnolencia
                           </div>
                         </div>
                         <div class="col">
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Prurito"> Prurito
+                              aria-label="Checkbox for following text input" name="CamposDeFormulario[Prurito]"> Prurito
                           </div>
                         </div>
                       </div>
@@ -276,39 +276,19 @@
                         <div class="col">
                            <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Lagrimeo"> Lagrimeo
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[Lagrimeo]"> Lagrimeo
                       </div>
                         </div>
                         <div class="col">
                           <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Fotofobia"> Fotofobia
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[Fotofobia]"> Fotofobia
                       </div>
                         </div>
                         <div class="col">
                            <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Hiperemia"> Hiperemia
-                      </div>
-                        </div>
-                      </div>
-                      <div class="row align-items-start">
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="VisionDoble"> Visión doble
-                      </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="VisionBorrosa"> Visión Borrosa
-                      </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="DolorOcular"> Dolor ocular
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[Hiperemia]"> Hiperemia
                       </div>
                         </div>
                       </div>
@@ -316,19 +296,39 @@
                         <div class="col">
                            <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Miodesopsias"> Miodesopsias
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionDoble]"> Visión doble
+                      </div>
+                        </div>
+                        <div class="col">
+                           <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" value="true"
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionBorrosa]"> Visión Borrosa
+                      </div>
+                        </div>
+                        <div class="col">
+                           <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" value="true"
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[DolorOcular]"> Dolor ocular
+                      </div>
+                        </div>
+                      </div>
+                      <div class="row align-items-start">
+                        <div class="col">
+                           <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" value="true"
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[Miodesopsias]"> Miodesopsias
                       </div>
                         </div>
                         <div class="col">
                          <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="SaltoLetras"> Salto de letras
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[SaltoLetras]"> Salto de letras
                       </div>
                         </div>
                         <div class="col">
                            <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Secreciones"> Secreciones
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[Secreciones]"> Secreciones
                       </div>
                         </div>
                       </div>
@@ -336,20 +336,20 @@
                         <div class="col">
                             <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="AtencionConcentracion"> Atención y
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[AtencionConcentracion]"> Atención y
                         concentración
                       </div>
                         </div>
                         <div class="col">
                            <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="BajaComprension"> Baja comprensión
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[BajaComprension]"> Baja comprensión
                       </div>
                         </div>
                         <div class="col">
                            <div class="input-group-text">
                         <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Mareo"> Mareo
+                          aria-label="Checkbox for following text input" name="CamposDeFormulario[Mareo]"> Mareo
                       </div>
                         </div>
                       </div>
@@ -374,117 +374,7 @@
                         </div>
                       </div>
                       <br>
-                      <!--
-                        <label for="">EXAMEN SUBJETIVO</label>
-                        <br>
-                       
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-                            <div class="col col-5">
-                              <td><label for="">OI</label>
-                                <input type="text" class="form-control" name="OIExam" required>
-                              </td>
-                            </div>
-                            <div class="col col-5">
 
-                              <td>
-                                <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="" required>
-                              </td>
-                            </div>
-                          </div>
-                        </div>
-
-                        <br>
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-                            <div class="col col-5">
-                              <td><label for="">AV</label>
-                                <input type="text" class="form-control" name="AVExam" required>
-                              </td>
-                            </div>
-                            <div class="col col-5">
-
-                              <td>
-                                <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id="" required>
-                              </td>
-                            </div>
-                          </div>
-                        </div>
-                        -->
-
-                      <!--
-                        <label for="">Observaciones</label>
-                        <input type="text" class="form-control" name="Observaciones">
-                        -->
-                  </div>
-
-                  <!-- Resto de tu contenido de la sección "Refracción" aquí -->
-
-
-                  <!-- Sección 4: Examinacion -->
-
-                  <!--
-          <div class="carousel-item">
-            <h2>Examinación</h2>
-             <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Myopia</label><br>
-                        <input type="checkbox" name="Hyperopia" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Hyperopia</label><br>
-                        <input type="checkbox" name="Asigmatism" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Asigmatism</label><br>
-                        <input type="checkbox" name="Presbyopia" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Presbyopia</label><br>
-                        <input type="checkbox" name="Anisometropia" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Anisometropia</label><br>
-                        <input type="checkbox" name="Amblyopia" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Amblyopia</label><br>
-                        <input type="checkbox" name="Strabismus" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Strabismus</label><br>
-                        <input type="checkbox" name="DiabeticRet" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Diabetic Ret</label><br>
-                        <input type="checkbox" name="HtnRet" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Htn Ret</label><br>
-                        <input type="checkbox" name="DryEye" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Dry Eye</label><br>
-                        <input type="checkbox" name="Pinguecula" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Pinguecula</label><br>
-                        <input type="checkbox" name="Pterygium" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Pterygium</label><br>
-                        <input type="checkbox" name="Conjuntivitis" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Conjuntivitis</label><br>
-                        <input type="checkbox" name="Galucoma2" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Galucoma</label><br>
-                        <input type="checkbox" name="Cataracts" for="" class="form-check-input mt-0" value="true"><label
-                          for="">Cataracts</label><br>
-                        <input type="checkbox" name="ODExamination" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OD</label><br>
-                        <input type="checkbox" name="OSExamination" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OS</label><br>
-                        <input type="checkbox" for="" name="PriorSurg" value="true" class="form-check-input mt-0"><label
-                          for="">Prior Surg</label><br>
-                        <input type="checkbox" name="ODExamination2" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OD</label><br>
-                        <input type="checkbox" name="OSExamination2" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OS</label><br>
-
-                        <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other"
-                          class="form-control"></textarea>  
-          </div>
--->
-
-                  <!-- Resto de tu contenido de la sección "Examinación" aquí -->
-
-                  <!-- Sección 5: Optical -->
-                  <!--
-          <div class="carousel-item">
-            <h2>Optical</h2>
-              <label>Primary Pair Recommended Eyeglass Rx</label><br>
-                        <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" id="" required><br>
-                        <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" id="" required>
-                     
-                <button type="submit" class="btn btn-primary">Guardar datos</button>
-          </div>
-          -->
                 </div>
               </div>
 
