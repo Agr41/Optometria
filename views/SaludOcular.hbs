@@ -1,148 +1,115 @@
-{{> navbar}}
-<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-<link rel="stylesheet" href="/stylesheets/Test.css">
-
+{{&gt; navbar}}
+<link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="/stylesheets/Test.css" rel="stylesheet"/>
 <div class="col-lg-8 mx-auto p-2 py-md-5">
-  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     Optometría UAL
   </header>
-
-  <main>
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
-        <div class="container">
-          <form action="/Formulario" method="POST" id="formulario">
-            <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-            <div class="container" id="formcont">
-              <div id="carouselExample" class="carousel slide" data-wrap="false">
-                <div class="carousel-inner">
-
-                  <!-- Sección 1: Paciente -->
-                  <div class="carousel-item active" id="inicio">
-                    <h2>Paciente</h2>
-                    <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
-
-                    <div id="popup" class="popup" style="z-index: +1000;">
-                      <div class="popup-content">
-                        <span class="close" onclick="closePopup()">&times;</span>
-                        <input type="text" id="searchInput" placeholder="Search...">
+<main>
+<div class="modal-content rounded-4 shadow">
+<div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+<div class="container">
+<form action="/Formulario" id="formulario" method="POST">
+<input id="Optometrista" name="Optometrista" type="hidden" value="{{usuario}}"/>
+<div class="container" id="formcont">
+<div class="carousel slide" data-wrap="false" id="carouselExample">
+<div class="carousel-inner">
+<!-- Sección 1: Paciente -->
+<div class="carousel-item active" id="inicio">
+<h2>Paciente</h2>
+<button class="form-control" onclick="openPopup()" type="button">Nombre del paciente:</button>
+<div class="popup" id="popup" style="z-index: +1000;">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">�</span>
+<input id="searchInput" name="searchInput" placeholder="Search..." type="text"/>
                         {{#each pacientes}}
-                        <div class="row " style="z-index: 999;">
-                          <div class="col-auto me-auto" id="" style="width: 100%;">
-                            <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                              <button type="button" class="btn btn-dark" style="float:right;"
-                                onclick="displayUsername(this)" value="{{this._id}}">Agregar</button>
-                            </p>
-                          </div>
-                        </div>
+                        <div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 100%;">
+<p>{{this.NombreCompleto}}<input id="id" name="id" type="hidden" value="{{this._id}}"/>
+<button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">Agregar</button>
+</p>
+</div>
+</div>
                         {{/each}}
                       </div>
-                    </div>
-                    <br>
-                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
-
-                    <button type="button" id="hideUsernameButton" style="display:none;"
-                      onclick="hideUsernameDisplay()">Cancelar</button>
-
-                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-                  </div>
-
-                  <!-- Sección 2: Pre-test -->
-                 
-                  <div class="carousel-item">
-                    <h2></h2>
-
-                    <br>
-                   <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>OFTALMOSCOPIA  OD</th>
-                      </tr>
-                      <td>COLOR DE RETINA</td>
-
-                      <td> <input type="text" name="SinLentesDistancia" class="form-control" min="-1" max="1"
-                          step="0.25"></td>
-                      <tr></tr>
-                      <td>EXCAVACIÓN</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="EXCAVACIÓN" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                   
-                      <tr></tr>
-                      <td>RELACIÓN A/V</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="RELACIÓN" class="form-control" min="0" step="1">
-                      </td>
-                 
-                      <tr></tr>
-                      <td>ISNT</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="ISNT" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>REFLEJO FOVEAL</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="REFLEJO FOVEAL" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>DIAMETRO</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="DIAMETRO" class="form-control">
-                      </td>
-
-
-                    
-                    
-                    </table>
-                     <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>OFTALMOSCOPIA  OI</th>
-                      </tr>
-                    
-                      <td>COLOR DE RETINA</td>
-
-                      <td> <input type="text" name="COLOR DE RETINA" class="form-control" min="-1" max="1"
-                          step="0.25"></td>
-                      <tr></tr>
-                      <td>EXCAVACIÓN</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="EXCAVACIÓN" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                   
-                      <tr></tr>
-                      <td>RELACIÓN A/V</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="SinLentesDistancia" class="form-control" min="0" step="1">
-                      </td>
-                 
-                      <tr></tr>
-                      <td>ISNT</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="ISNT" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>REFLEJO FOVEAL</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="REFLEJO FOVEAL" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>DIAMETRO</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="DIAMETRO" class="form-control">
-                      </td>
-
-                    
-                    
-                    </table>
-                    <script>
+</div>
+<br/>
+<p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
+<input id="usernameValueDisplay" name="usernameValueDisplay" style="display:none;" type="hidden"/>
+<button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">Cancelar</button>
+<!-- Resto de tu contenido de la sección "Paciente" aquí -->
+</div>
+<!-- Sección 2: Pre-test -->
+<div class="carousel-item">
+<h2></h2>
+<br/>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OFTALMOSCOPIA  OD</th>
+</tr>
+<td>COLOR DE RETINA</td>
+<td> <input class="form-control" max="1" min="-1" name="CampoDeFormulario[ColorDeRetina]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>EXCAVACIÓN</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" max="1" min="-1" name="CampoDeFormulario[EXCAVACIÓN]" step="0.25" type="text"/>
+</td>
+<tr></tr>
+<td>RELACIÓN A/V</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" min="0" name="CampoDeFormulario[RELACIÓN]" step="1" type="text"/>
+</td>
+<tr></tr>
+<td>ISNT</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[ISNT]" type="text"/>
+</td>
+<tr></tr>
+<td>REFLEJO FOVEAL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[REFLEJO FOVEAL]" type="text"/>
+</td>
+<tr></tr>
+<td>DIAMETRO</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[DIAMETRO]" type="text"/>
+</td>
+</table>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OFTALMOSCOPIA  OI</th>
+</tr>
+<td>COLOR DE RETINA</td>
+<td> <input class="form-control" max="1" min="-1" name="CampoDeFormulario[COLOR DE RETINA]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>EXCAVACIÓN</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" max="1" min="-1" name="CampoDeFormulario[EXCAVACIÓN]" step="0.25" type="text"/>
+</td>
+<tr></tr>
+<td>RELACIÓN A/V</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" min="0" name="CampoDeFormulario[SinLentesDistancia]" step="1" type="text"/>
+</td>
+<tr></tr>
+<td>ISNT</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[ISNT]" type="text"/>
+</td>
+<tr></tr>
+<td>REFLEJO FOVEAL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[REFLEJO FOVEAL]" type="text"/>
+</td>
+<tr></tr>
+<td>DIAMETRO</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[DIAMETRO]" type="text"/>
+</td>
+</table>
+<script>
                       // Assuming you have a variable or element with the ID "dip"
                       var dipInput = document.getElementById("dip");
 
@@ -157,198 +124,152 @@
                       dipInput.addEventListener("input", updateDipMinus2);
 
                     </script>
-
-
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                  <div class="carousel-item">
-                    <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>QUERATOMETRIAS</th>
-                      </tr>
-                      <td>OD: </td>
-
-                      <td> <input type="text" name="QUERATOMETRIAS" class="form-control" min="-1" max="1"
-                          step="0.25"></td>
-                      <tr></tr>
-                      <td>OI: </td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="SinLentesDistancia" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                    </table>
-                  </div>
-            
-            
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-               
-                  <!-- Sección 3: Refracción -->
-                  <div class="carousel-item" id="itemsave">
-                    <h2>Finalizar</h2>
-                    <form id="myForm" action="tu_script.php" method="POST">
-
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-
-                            <div class="contenedor2">
-                              <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
-                              <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
-                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <!--
-                        <label for="">EXAMEN SUBJETIVO</label>
-                        <br>
-                       
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-                            <div class="col col-5">
-                              <td><label for="">OI</label>
-                                <input type="text" class="form-control" name="OIExam" required>
-                              </td>
-                            </div>
-                            <div class="col col-5">
-
-                              <td>
-                                <label for="">AD</label><input type="text" class="form-control" name="ADExam" id="" required>
-                              </td>
-                            </div>
-                          </div>
-                        </div>
-
-                        <br>
-                        <div class="container text-start">
-                          <div class="row align-items-start">
-                            <div class="col col-5">
-                              <td><label for="">AV</label>
-                                <input type="text" class="form-control" name="AVExam" required>
-                              </td>
-                            </div>
-                            <div class="col col-5">
-
-                              <td>
-                                <label for="">AV</label><input type="text" class="form-control" name="AVExam2" id="" required>
-                              </td>
-                            </div>
-                          </div>
-                        </div>
-                        -->
-
-                      <!--
-                        <label for="">Observaciones</label>
-                        <input type="text" class="form-control" name="Observaciones">
-                        -->
-                  </div>
-
-                  <!-- Resto de tu contenido de la sección "Refracción" aquí -->
-
-
-                  <!-- Sección 4: Examinacion -->
-
-                  <!--
-          <div class="carousel-item">
-            <h2>Examinación</h2>
-             <input type="checkbox" name="Myopia" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Myopia</label><br>
-                        <input type="checkbox" name="Hyperopia" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Hyperopia</label><br>
-                        <input type="checkbox" name="Asigmatism" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Asigmatism</label><br>
-                        <input type="checkbox" name="Presbyopia" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Presbyopia</label><br>
-                        <input type="checkbox" name="Anisometropia" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Anisometropia</label><br>
-                        <input type="checkbox" name="Amblyopia" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Amblyopia</label><br>
-                        <input type="checkbox" name="Strabismus" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Strabismus</label><br>
-                        <input type="checkbox" name="DiabeticRet" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Diabetic Ret</label><br>
-                        <input type="checkbox" name="HtnRet" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Htn Ret</label><br>
-                        <input type="checkbox" name="DryEye" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Dry Eye</label><br>
-                        <input type="checkbox" name="Pinguecula" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Pinguecula</label><br>
-                        <input type="checkbox" name="Pterygium" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Pterygium</label><br>
-                        <input type="checkbox" name="Conjuntivitis" id="" class="form-check-input mt-0" value="true">
-                        <label class="form-label" for="">Conjuntivitis</label><br>
-                        <input type="checkbox" name="Galucoma2" id="" class="form-check-input mt-0" value="true"> <label
-                          class="form-label" for="">Galucoma</label><br>
-                        <input type="checkbox" name="Cataracts" for="" class="form-check-input mt-0" value="true"><label
-                          for="">Cataracts</label><br>
-                        <input type="checkbox" name="ODExamination" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OD</label><br>
-                        <input type="checkbox" name="OSExamination" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OS</label><br>
-                        <input type="checkbox" for="" name="PriorSurg" value="true" class="form-check-input mt-0"><label
-                          for="">Prior Surg</label><br>
-                        <input type="checkbox" name="ODExamination2" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OD</label><br>
-                        <input type="checkbox" name="OSExamination2" id="" class="form-check-input mt-0"
-                          value="true"><label for="">OS</label><br>
-
-                        <textarea name="OtherExamination" id="" cols="30" rows="5" placeholder="Other"
-                          class="form-control"></textarea>  
-          </div>
--->
-
-                  <!-- Resto de tu contenido de la sección "Examinación" aquí -->
-
-                  <!-- Sección 5: Optical -->
-                  <!--
-          <div class="carousel-item">
-            <h2>Optical</h2>
-              <label>Primary Pair Recommended Eyeglass Rx</label><br>
-                        <label for="">OD:</label> <input type="text" class="form-control" name="ODOptical" id="" required><br>
-                        <label for="">OS:</label> <input type="text" class="form-control" name="OSOptical" id="" required>
-                     
-                <button type="submit" class="btn btn-primary">Guardar datos</button>
-          </div>
-          -->
-                </div>
-              </div>
-
-
-            </div>
-        </div>
-        <div class="row " style="z-index: 999;">
-          <div class="col-auto me-auto" id="" style="width: 40%;">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="ocultarBoton()" id="btnprev" hidden="true">
-              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-          <div class="col-auto">
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="ocultarBoton();" id="btnnext">
-              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-        </div>
-  </main>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
 </div>
-
+<div class="carousel-item">
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>QUERATOMETRIAS</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="QUERATOMETRIASOD" max="1" min="-1" name="CampoDeFormulario[QUERATOMETRIASOD]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="QUERATOMETRIASOI" max="1" min="-1" name="CampoDeFormulario[QUERATOMETRIASOI]" step="0.25" type="text"/>
+</td>
+</table>
 </div>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+<div class="carousel-item">
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>RETINOSCOPIA ESTATICA</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="REOD" name="CampoDeFormulario[REOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="REODAV" name="CampoDeFormulario[REODAV]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="REOI" name="CampoDeFormulario[REOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="REOIAV" name="CampoDeFormulario[REOIAV]" type="text"/></td>
+</table>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>DINAMICA</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="DINAMICAOD" name="CampoDeFormulario[DINAMICAOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="DINAMICAAVOD" name="CampoDeFormulario[DINAMICAAVOD]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="DINAMICAOI" name="CampoDeFormulario[DINAMICAOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="DINAMICAAVOI" name="CampoDeFormulario[DINAMICAAVOI]" type="text"/></td>
+</table>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>MOHINDRA</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="MOHINDRAOD" name="CampoDeFormulario[MOHINDRAOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="MOHINDRAAVOD" name="CampoDeFormulario[MOHINDRAAVOD]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="MOHINDRAOI" name="CampoDeFormulario[MOHINDRAOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="MOHINDRAAVOI" name="CampoDeFormulario[MOHINDRAAVOI]" type="text"/></td>
+</table>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>EXAMEN SUBJETIVO</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="EXAMENSUBJETIVOOD" name="CampoDeFormulario[EXAMENSUBJETIVOOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="EXAMENSUBJETIVOAVOD" name="CampoDeFormulario[EXAMENSUBJETIVOAVOD]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="EXAMENSUBJETIVOOI" name="CampoDeFormulario[EXAMENSUBJETIVOOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="EXAMENSUBJETIVOAVOI" name="CampoDeFormulario[EXAMENSUBJETIVOAVOI]" type="text"/></td>
+</table>
+</div>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+<div class="carousel-item">
+<tr>
+<th>AFINACIONES</th>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="AFINACIONES" name="CampoDeFormulario[AFINACIONES]" type="text"/>
+</td>
+</tr>
+<tr>
+<th>TIPO DE TEST</th>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="TIPODETEST" name="CampoDeFormulario[TIPODETEST]" type="text"/>
+</td>
+</tr>
+</div>
+<!-- Sección 3: Refracción -->
+<div class="carousel-item" id="itemsave">
+<h2>Finalizar</h2>
+<form action="tu_script.php" id="myForm" method="POST">
+<div class="container text-start">
+<div class="row align-items-start">
+<div class="col col-5">
+<div class="contenedor2">
+<button class="btn btn-primary" id="btnSalir" type="submit">Guardar y salir</button>
+<button class="btn btn-primary" id="btnSiguiente" type="submit">Guardar e ir al siguiente</button>
+<button class="btn btn-primary" id="btnClinica" type="submit">Guardar y regresar a Clínica</button>
+</div>
+</div>
+</div>
+</div>
+<br/>
+</form></div>
+</div>
+</div>
+</div>
+<div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 40%;">
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" hidden="true" id="btnprev" onclick="ocultarBoton()" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon" id="icono"></span>
+</button>
+</div>
+<div class="col-auto">
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" id="btnnext" onclick="ocultarBoton();" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon" id="icono"></span>
+</button>
+</div>
+</div>
+</form></div></div></div></main>
 </div>
 
 
 
-</form>
-</div>
 
 
-</ul>
-</div>
-</div>
-</main>
-</div>
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const btnSalir = document.getElementById('btnSalir');
@@ -501,7 +422,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 </script>
-
 <script>
   /*document.getElementById('formulario').addEventListener('submit', function(event) {
     // Prevent form submission
@@ -515,4 +435,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 </script>
-{{> footer}}
+{{&gt; footer}}
