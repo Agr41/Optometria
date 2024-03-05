@@ -9,11 +9,14 @@ def add_name_to_input_tags(html_file):
     input_tags = soup.find_all('input')
     for input_tag in input_tags:
         input_id = input_tag.get('id')
+        input_name = input_tag.get('name')
         if input_id:
             input_tag['name'] = f'CampoDeFormulario[{input_id}]'
+        elif input_name:
+            input_tag['name'] = f'CampoDeFormulario[{input_name}]'
 
     with open(html_file, 'w') as file:
         file.write(str(soup))
 
-html_file = 'preeliminares.hbs'
+html_file = 'rx_final.hbs'
 add_name_to_input_tags(html_file)

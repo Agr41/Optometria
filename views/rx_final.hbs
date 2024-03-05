@@ -1,138 +1,114 @@
-{{> navbar}}
-<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-<link rel="stylesheet" href="/stylesheets/Test.css">
-
+{{&gt; navbar}}
+<link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="/stylesheets/Test.css" rel="stylesheet"/>
 <div class="col-lg-8 mx-auto p-2 py-md-5">
-  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     Optometría UAL
   </header>
-
-  <main>
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
-        <div class="container">
-          <form action="/Formulario" method="POST" id="formulario">
-            <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-            <div class="container" id="formcont">
-              <div id="carouselExample" class="carousel slide" data-wrap="false">
-                <div class="carousel-inner">
-
-                  <!-- Sección 1: Paciente -->
-                  <div class="carousel-item active" id="inicio">
-                    <h2>Paciente</h2>
-                    <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
-
-                    <div id="popup" class="popup" style="z-index: +1000;">
-                      <div class="popup-content">
-                        <span class="close" onclick="closePopup()">&times;</span>
-                        <input type="text" id="searchInput" placeholder="Search...">
+<main>
+<div class="modal-content rounded-4 shadow">
+<div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+<div class="container">
+<form action="/Formulario" id="formulario" method="POST">
+<input id="Optometrista" name="Optometrista" type="hidden" value="{{usuario}}"/>
+<div class="container" id="formcont">
+<div class="carousel slide" data-wrap="false" id="carouselExample">
+<div class="carousel-inner">
+<!-- Sección 1: Paciente -->
+<div class="carousel-item active" id="inicio">
+<h2>Paciente</h2>
+<button class="form-control" onclick="openPopup()" type="button">Nombre del paciente:</button>
+<div class="popup" id="popup" style="z-index: +1000;">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">�</span>
+<input id="searchInput" name="searchInput" placeholder="Search..." type="text"/>
                         {{#each pacientes}}
-                        <div class="row " style="z-index: 999;">
-                          <div class="col-auto me-auto" id="" style="width: 100%;">
-                            <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                              <button type="button" class="btn btn-dark" style="float:right;"
-                                onclick="displayUsername(this)" value="{{this._id}}">Agregar</button>
-                            </p>
-                          </div>
-                        </div>
+                        <div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 100%;">
+<p>{{this.NombreCompleto}}<input id="id" name="id" type="hidden" value="{{this._id}}"/>
+<button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">Agregar</button>
+</p>
+</div>
+</div>
                         {{/each}}
                       </div>
-                    </div>
-                    <br>
-                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
-
-                    <button type="button" id="hideUsernameButton" style="display:none;"
-                      onclick="hideUsernameDisplay()">Cancelar</button>
-
-                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-                  </div>
-
-                  <!-- Sección 2: Pre-test -->
-                  <div class="carousel-item">
-                    <h2></h2>
-
-                    <br>
-                    <label for=""></label>
-                    <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>OD</th>
-                        <th>OI</th>
-                      </tr>
-                      <td>Esfera</td>
-
-                      <td> <input type="number" name="esferaOD" class="form-control" min="-1" max="1"
-                          step="0.25"></td>
-
-
-
-
-                      <td>
-                        <input type="number" name="esferaOI" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                      <tr></tr>
-                      <td>Cilindro</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="number" name="cilindroOD" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                      <td>
-                        <input type="number" name="cilindroOI" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                      <tr></tr>
-                      <td>Eje</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="number" name="ejeOD" class="form-control" min="0" step="1">
-                      </td>
-                      <td>
-                        <input type="number" name="ejeOI" class="form-control" min="0" step="1">
-                      </td>
-                      <tr></tr>
-                      <td>Base</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="baseOD" class="form-control">
-                      </td>
-                      <td>
-                        <input type="text" name="baseOI" class="form-control">
-                      </td>
-                      <tr></tr>
-                      <td>DNP</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" name="DNPOD" class="form-control">
-                      </td>
-                      <td>
-                        <input type="text" name="DNPOI" class="form-control">
-                      </td>
-                    </table>
-
-
-
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                  <div class="carousel-item">
-                    <h2></h2>
-
-                    <br>
-                    <label for="">DIP</label>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col">
-                          <input type="number" min="0" step="1" class="form-control" id="dip">
-                        </div>
+</div>
+<br/>
+<p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
+<input id="usernameValueDisplay" name="usernameValueDisplay" style="display:none;" type="hidden"/>
+<button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">Cancelar</button>
+<!-- Resto de tu contenido de la sección "Paciente" aquí -->
+</div>
+<!-- Sección 2: Pre-test -->
+<div class="carousel-item">
+<h2></h2>
+<br/>
+<label for=""></label>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OD</th>
+<th>OI</th>
+</tr>
+<td>Esfera</td>
+<td> <input class="form-control" max="1" min="-1" name="CampoDeFormulario[esferaOD]" step="0.25" type="number"/></td>
+<td>
+<input class="form-control" max="1" min="-1" name="CampoDeFormulario[esferaOI]" step="0.25" type="number"/>
+</td>
+<tr></tr>
+<td>Cilindro</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" max="1" min="-1" name="CampoDeFormulario[cilindroOD]" step="0.25" type="number"/>
+</td>
+<td>
+<input class="form-control" max="1" min="-1" name="CampoDeFormulario[cilindroOI]" step="0.25" type="number"/>
+</td>
+<tr></tr>
+<td>Eje</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" min="0" name="CampoDeFormulario[ejeOD]" step="1" type="number"/>
+</td>
+<td>
+<input class="form-control" min="0" name="CampoDeFormulario[ejeOI]" step="1" type="number"/>
+</td>
+<tr></tr>
+<td>Base</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[baseOD]" type="text"/>
+</td>
+<td>
+<input class="form-control" name="CampoDeFormulario[baseOI]" type="text"/>
+</td>
+<tr></tr>
+<td>DNP</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CampoDeFormulario[DNPOD]" type="text"/>
+</td>
+<td>
+<input class="form-control" name="CampoDeFormulario[DNPOI]" type="text"/>
+</td>
+</table>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+</div>
+<div class="carousel-item">
+<h2></h2>
+<br/>
+<label for="">DIP</label>
+<div class="container">
+<div class="row">
+<div class="col">
+<input class="form-control" id="dip" min="0" name="CampoDeFormulario[dip]" step="1" type="number"/>
+</div>
                         /
                         <div class="col">
-                          <input type="number" min="0" step="1" class="form-control" readonly id="dip-2">
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <label for="">ADICIION </label>
-                    <input type="number" class="form-control" name="adiciion" min="1" max="3" step="0.25">
-
-                    <script>
+<input class="form-control" id="dip-2" min="0" name="CampoDeFormulario[dip-2]" readonly="" step="1" type="number"/>
+</div>
+</div>
+</div>
+<br/>
+<label for="">ADICIION </label>
+<input class="form-control" max="3" min="1" name="CampoDeFormulario[adiciion]" step="0.25" type="number"/>
+<script>
                       // Assuming you have a variable or element with the ID "dip"
                       var dipInput = document.getElementById("dip");
 
@@ -147,271 +123,219 @@
                       dipInput.addEventListener("input", updateDipMinus2);
 
                     </script>
-
-
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                  <div class="carousel-item">
-                    <h2>Motivo de la consulta</h2>
-
-                    <br>
-                    <label for="">Cómo empezó a presentarse</label>
-                    <input type="text" class="form-control" name="molestiaComo">
-
-                    <label for="">Antigüedad de la molestia</label>
-                    <input type="text" class="form-control" name="molestiaAntiguedad">
-                    <br>
-
-                  </div>
-                  <div class="carousel-item">
-                    <h2>Antecedentes</h2>
-
-                    <br>
-
-
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-3">
-                          <label for="">Presión arterial</label>
-                          <div class="input-group mb-3">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Hipertension"> Sí/No
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+</div>
+<div class="carousel-item">
+<h2>Motivo de la consulta</h2>
+<br/>
+<label for="">Cómo empezó a presentarse</label>
+<input class="form-control" name="CampoDeFormulario[molestiaComo]" type="text"/>
+<label for="">Antigüedad de la molestia</label>
+<input class="form-control" name="CampoDeFormulario[molestiaAntiguedad]" type="text"/>
+<br/>
+</div>
+<div class="carousel-item">
+<h2>Antecedentes</h2>
+<br/>
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<label for="">Presión arterial</label>
+<div class="input-group mb-3">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Hipertension]" type="checkbox" value="true"/> Sí/No
                             </div>
-
-                          </div>
-                        </div>
-                        <div class="col-md-9">
-                          <label for="">Medición de la presión arterial</label>
-                          <div class="row">
-                            <div class="col">
-
-                              <input type="number" min="0" step="1" class="form-control" name="pa1">
-                            </div>
+</div>
+</div>
+<div class="col-md-9">
+<label for="">Medición de la presión arterial</label>
+<div class="row">
+<div class="col">
+<input class="form-control" min="0" name="CampoDeFormulario[pa1]" step="1" type="number"/>
+</div>
                             /
                             <div class="col">
-                              <input type="number" min="0" step="1" class="form-control" name="pa2">
+<input class="form-control" min="0" name="CampoDeFormulario[pa2]" step="1" type="number"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<label for="">Observaciones</label>
+<input class="form-control" name="CampoDeFormulario[observaciones]" type="text"/>
+<label for="">Antecedentes familiares</label>
+<input class="form-control" name="CampoDeFormulario[antecendentes]" type="text"/>
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<label for="">Glucosa</label>
+<div class="input-group mb-3">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Glucosa]" type="checkbox" value="true"/> Sí/No
                             </div>
+</div>
+</div>
+<div class="col-md-9">
+<label for="">Medición de la glucosa</label>
+<input class="form-control" min="0" name="CampoDeFormulario[medGlucosa]" step="1" type="number"/>
+</div>
+</div>
+</div>
+<label for="">Tratamientos optométricos y oftalmológicos</label>
+<input class="form-control" name="CampoDeFormulario[tratamientos]" type="text"/>
+<br/>
+</div>
+<div class="carousel-item">
+<h2>Síntomas</h2>
+<div class="container text-center">
+<div class="row align-items-start">
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Ardor]" type="checkbox" value="true"/> Ardor
                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <label for="">Observaciones</label>
-                    <input type="text" class="form-control" name="observaciones">
-                    <label for="">Antecedentes familiares</label>
-                    <input type="text" class="form-control" name="antecendentes">
-
-
-                    <div class="container">
-                      <div class="row">
-
-                        <div class="col-md-3">
-                          <label for="">Glucosa</label>
-                          <div class="input-group mb-3">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="Glucosa"> Sí/No
-                            </div>
-
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Cansancio]" type="checkbox" value="true"/> Cansancio
                           </div>
-                        </div>
-
-                        <div class="col-md-9">
-                          <label for="">Medición de la glucosa</label>
-                          <input type="number" min="0" step="1" class="form-control" name="medGlucosa">
-                        </div>
-                      </div>
-                    </div>
-                    <label for="">Tratamientos optométricos y oftalmológicos</label>
-                    <input type="text" class="form-control" name="tratamientos">
-
-                    <br>
-
-                  </div>
-                  <div class="carousel-item">
-                    <h2>Síntomas</h2>
-                    <div class="container text-center">
-                      <div class="row align-items-start">
-                        <div class="col">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Ardor"> Ardor
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Cefalea]" type="checkbox" value="true"/> Cefalea
                           </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Cansancio"> Cansancio
+</div>
+</div>
+<div class="row align-items-start">
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Confusion]" type="checkbox" value="true"/> Confusión al leer
                           </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Cefalea"> Cefalea
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Somnolencia]" type="checkbox" value="true"/> Somnolencia
                           </div>
-                        </div>
-                      </div>
-                      <div class="row align-items-start">
-                        <div class="col">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Confusion"> Confusión al leer
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Prurito]" type="checkbox" value="true"/> Prurito
                           </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Somnolencia"> Somnolencia
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value="true"
-                              aria-label="Checkbox for following text input" name="Prurito"> Prurito
-                          </div>
-                        </div>
+</div>
+</div>
+<div class="row align-items-start">
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Lagrimeo]" type="checkbox" value="true"/> Lagrimeo
                       </div>
-                      <div class="row align-items-start">
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Lagrimeo"> Lagrimeo
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Fotofobia]" type="checkbox" value="true"/> Fotofobia
                       </div>
-                        </div>
-                        <div class="col">
-                          <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Fotofobia"> Fotofobia
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Hiperemia]" type="checkbox" value="true"/> Hiperemia
                       </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Hiperemia"> Hiperemia
+</div>
+</div>
+<div class="row align-items-start">
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[VisionDoble]" type="checkbox" value="true"/> Visión doble
                       </div>
-                        </div>
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[VisionBorrosa]" type="checkbox" value="true"/> Visión Borrosa
                       </div>
-                      <div class="row align-items-start">
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="VisionDoble"> Visión doble
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[DolorOcular]" type="checkbox" value="true"/> Dolor ocular
                       </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="VisionBorrosa"> Visión Borrosa
+</div>
+</div>
+<div class="row align-items-start">
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Miodesopsias]" type="checkbox" value="true"/> Miodesopsias
                       </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="DolorOcular"> Dolor ocular
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[SaltoLetras]" type="checkbox" value="true"/> Salto de letras
                       </div>
-                        </div>
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Secreciones]" type="checkbox" value="true"/> Secreciones
                       </div>
-                      <div class="row align-items-start">
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Miodesopsias"> Miodesopsias
-                      </div>
-                        </div>
-                        <div class="col">
-                         <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="SaltoLetras"> Salto de letras
-                      </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Secreciones"> Secreciones
-                      </div>
-                        </div>
-                      </div>
-                      <div class="row align-items-start">
-                        <div class="col">
-                            <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="AtencionConcentracion"> Atención y
+</div>
+</div>
+<div class="row align-items-start">
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[AtencionConcentracion]" type="checkbox" value="true"/> Atención y
                         concentración
                       </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="BajaComprension"> Baja comprensión
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[BajaComprension]" type="checkbox" value="true"/> Baja comprensión
                       </div>
-                        </div>
-                        <div class="col">
-                           <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="true"
-                          aria-label="Checkbox for following text input" name="Mareo"> Mareo
+</div>
+<div class="col">
+<div class="input-group-text">
+<input aria-label="Checkbox for following text input" class="form-check-input mt-0" name="CampoDeFormulario[Mareo]" type="checkbox" value="true"/> Mareo
                       </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                  <!-- Sección 3: Refracción -->
-                  <div class="carousel-item" id="itemsave">
-                    <h2>Finalizar</h2>
-                    <form id="myForm" action="tu_script.php" method="POST">
-
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-
-                            <div class="contenedor2">
-                              <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
-                              
-                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-
-                </div>
-              </div>
-
-
-            </div>
-        </div>
-        <div class="row " style="z-index: 999;">
-          <div class="col-auto me-auto" id="" style="width: 40%;">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="ocultarBoton()" id="btnprev" hidden="true">
-              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-          <div class="col-auto">
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="ocultarBoton();" id="btnnext">
-              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-        </div>
-  </main>
 </div>
-
 </div>
+</div>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+</div>
+<!-- Sección 3: Refracción -->
+<div class="carousel-item" id="itemsave">
+<h2>Finalizar</h2>
+<form action="tu_script.php" id="myForm" method="POST">
+<div class="container text-start">
+<div class="row align-items-start">
+<div class="col col-5">
+<div class="contenedor2">
+<button class="btn btn-primary" id="btnSalir" type="submit">Guardar y salir</button>
+<button class="btn btn-primary" id="btnClinica" type="submit">Guardar y regresar a Clínica</button>
+</div>
+</div>
+</div>
+</div>
+<br/>
+</form></div>
+</div>
+</div>
+</div>
+<div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 40%;">
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" hidden="true" id="btnprev" onclick="ocultarBoton()" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon" id="icono"></span>
+</button>
+</div>
+<div class="col-auto">
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" id="btnnext" onclick="ocultarBoton();" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon" id="icono"></span>
+</button>
+</div>
+</div>
+</form></div></div></div></main>
 </div>
 
 
 
-</form>
-</div>
 
 
-</ul>
-</div>
-</div>
-</main>
-</div>
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const btnSalir = document.getElementById('btnSalir');
@@ -564,7 +488,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 </script>
-
 <script>
   /*document.getElementById('formulario').addEventListener('submit', function(event) {
     // Prevent form submission
@@ -578,4 +501,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 </script>
-{{> footer}}
+{{&gt; footer}}
