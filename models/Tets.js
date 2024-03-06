@@ -33,6 +33,7 @@ const TestSchema = new Schema({
     OIReni:String,
     opcion:String,
     Optometrista:String,
+    TipoTest:String,
 
     CamposDeFormulario: {
         type: Schema.Types.Mixed, // O puedes usar '{}' para un objeto literal

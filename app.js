@@ -46,6 +46,7 @@ const pruebas_complementarias =require('./routes/pruebas_complementarias')
 
 const rx_final= require('./routes/rx_final')
 const pruebas_f= require('./routes/pruebas_f')
+const TestGeneral = require('./routes/TestsGeneral')
 
 // Importa moment.js y el idioma español
 const moment = require('moment');
@@ -180,7 +181,8 @@ app.use('/pruebas_complementarias', pruebas_complementarias)
 
 app.use('/rx_final', rx_final)
 app.use('/pruebas_f', pruebas_f)
-
+app.get('/TestGeneral/:id',TestGeneral)
+/*
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')
       const Tests= require('./models/Tets')
@@ -188,7 +190,8 @@ app.get('/popup/:id',async (req, res) => {
       const id = req.params.id;
       const pacientes = await Paciente.find({_id:id})
       const tests= await Tests.find({id:id})
-      //console.log(tests)
+
+
       var Numero = [];
       for (i = 0; i < tests.length; i++) {
         Numero.push(i + 1);
@@ -201,7 +204,53 @@ app.get('/popup/:id',async (req, res) => {
   
   
     });
-  
+  */
+    app.get('/popup/:id', async (req, res) => {
+      const Paciente = require('./models/pacientes');
+      const Tests = require('./models/Tets'); // Asegúrate de que el nombre del archivo sea correcto.
+    
+      const id = req.params.id;
+      const pacientes = await Paciente.find({_id: id});
+      let tests = await Tests.find({id: id});
+                //console.log(tests)
+
+      tests = tests.map(test => {
+        // Verificar primero si `todo` existe.
+        if (test) {
+    
+          if ('SinLentesDistancia' in test && test.SinLentesDistancia || test.CamposDeFormulario.SinLentesDistancia)  {
+            test.TipoTest = 'Tamizaje';
+
+          } else if('pa1' in test.CamposDeFormulario ){
+            test.TipoTest = 'RX';
+          }else if ('Ishihara' in test.CamposDeFormulario) {
+            test.TipoTest = 'PruebasComplementarias';
+          } else if ('FLL' in test.CamposDeFormulario) {
+            test.TipoTest = 'PruebasFuncionales';
+          } else if ('ColorDeRetina' in test.CamposDeFormulario) {
+            test.TipoTest = 'SaludOcular';
+          } else if ('versionS' in test.CamposDeFormulario) {
+            test.TipoTest = 'Preeliminares';
+          }
+          
+        } else {
+          // Opcional: Manejar casos donde `todo` no existe o es `undefined`.
+          // Por ejemplo, podrías asignar un valor predeterminado a `TipoTest`.
+          test.TipoTest = 'Desconocido'; // Ajusta esto según lo que necesites.
+        }
+
+        return test;
+      });
+    
+      //console.log(tests);
+    
+      var Numero = tests.map((_, index) => index + 1);
+      
+      const title = `${id}`;
+      const content = `This is popup ${id}`;
+      res.render('popup', { title, content, pacientes, tests, Numero });
+    });
+    
    
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

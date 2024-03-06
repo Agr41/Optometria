@@ -1,0 +1,68 @@
+{{>navbar_en}}
+
+<link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
+
+<section id="PanelUsuarios">
+
+  <h1 class="text-center hola"></h1>
+
+  <body class="text-center">
+    <br>
+
+
+    <br>
+    <div>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+            <!--
+          {{#each }}
+          <tr>{{this.}}</td>
+
+
+          </tr>
+          {{/each}}
+          -->
+        </tbody>
+      </table>
+
+
+    </div>
+</section>
+
+<style>
+  /* Add this CSS for smaller screens */
+  @media screen and (max-width: 600px) {
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 10px;
+    }
+    .user-table {
+      width: 100%;
+      max-width: none;
+    }
+    .user-table th,
+    .user-table td {
+      padding: 5px;
+      font-size: 14px;
+    }
+    #diag{
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+
+  /* Existing CSS styles */
+  /* ... */
+
+</style>
+
+
+
+{{>footer}}

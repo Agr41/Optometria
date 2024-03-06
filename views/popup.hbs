@@ -22,6 +22,9 @@ Tests realizados por el paciente:
 
 <br>
 <table class="user-table">
+
+
+<!--
         <thead>
           <tr>
             <th>OD</th>
@@ -37,18 +40,29 @@ Tests realizados por el paciente:
 
         </tbody>
       </table>
+-->
+        <thead>
+          <tr>
+            <th>Tipo de {{this.TipoTest}} </th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>  <a href="/TestGeneral/{{this.id}}?Fecha={{this._id}}?TipoTest={{this.TipoTest}}" class="fecha-link">{{dateFormat this.FechaDelTest}}</a> </td>
+
+        </tbody>
+      </table>
       <br>
-      <a 
-      {{!-- href="/TestPaciente/{{this.id}}?Fecha={{this._id}}"  --}}
-      
-      class="fecha-link">{{dateFormat this.FechaDelTest}}</a>
+    
 <br>
 
 
 {{/each}}
 
 <!---<a href="/TestCliente/{{this.username}}?Fecha={{dateFormat this.FechaDelTest}}">{{dateFormat this.FechaDelTest}}</a><br>
-->
+-->
 
 
 
@@ -64,6 +78,11 @@ Tests realizados por el paciente:
       <p><%= content %></p>
   -->
   <style>
+      .popup-content {
+    max-height: 400px; /* Ajusta la altura máxima según necesites */
+    overflow-y: auto; /* Muestra un scrollbar vertical si es necesario */
+  }
+  
     .form-label{
       width:300px;
     }
@@ -89,19 +108,19 @@ Tests realizados por el paciente:
   color: #555555;
 }
     /* Estilo para el enlace de fecha */
-    .fecha-link {
-        padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
-        border: 1px solid #999; /* Borde ligero */
-        background-color: #f5f5f5; /* Fondo gris claro */
-        color: #333; /* Color del texto */
-        text-decoration: none; /* Eliminar subrayado del enlace */
-        border-radius: 3px; /* Borde redondeado */
-    }
+  .fecha-link {
+    padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
+    border: 1px solid #999; /* Borde ligero */
+    background-color: #f5f5f5; /* Fondo gris claro */
+    color: #333; /* Color del texto */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    border-radius: 3px; /* Borde redondeado */
+  }
 
     /* Cambiar el color del enlace al pasar el mouse por encima */
-    .fecha-link:hover {
-        background-color: #ddd; /* Cambia el color de fondo en hover (tono más claro) */
-    }
+  .fecha-link:hover {
+    background-color: #ddd; /* Cambia el color de fondo en hover (tono más claro) */
+  }
   </style>
 
 
