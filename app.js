@@ -105,7 +105,9 @@ hbs.registerHelper('dateFormat', function (date) {
 hbs.registerHelper('isChecked', function(value) {
   return value ? 'checked' : '';
 });
-
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'hbs');
@@ -212,13 +214,13 @@ app.get('/popup/:id',async (req, res) => {
       const id = req.params.id;
       const pacientes = await Paciente.find({_id: id});
       let tests = await Tests.find({id: id});
-                //console.log(tests)
+                console.log(tests)
 
       tests = tests.map(test => {
         // Verificar primero si `todo` existe.
         if (test) {
     
-          if ('SinLentesDistancia' in test && test.SinLentesDistancia || test.CamposDeFormulario.SinLentesDistancia)  {
+          if ('SinLentesDistancia' in test && test.SinLentesDistancia)  {
             test.TipoTest = 'Tamizaje';
 
           } else if('pa1' in test.CamposDeFormulario ){

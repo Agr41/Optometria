@@ -1,108 +1,68 @@
+{{>navbar}}
+
+<link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
+
+<section id="PanelUsuarios">
+
+  <h1 class="text-center hola"></h1>
+
+  <body class="text-center">
+    <br>
 
 
-<input type ="hidden" value ="<%= title %>" name="Busqueda">
-
-<div class="popup">
-    <div class="popup-content">
-        <span class="close-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-              <path fill="#000" fill-rule="evenodd" d="M15.15 1.525a.5.5 0 01.708.708L9.707 8l6.15 6.15a.5.5 0 01-.708.708L8 8.707l-6.15 6.15a.5.5 0 01-.708-.708L7.293 8 .143 1.85a.5.5 0 01.708-.708L8 7.293l6.15-6.15z"/>
-            </svg>
-          </span>
-
-
-<br>
-
-Tests realizados por el paciente:
-<br>
-<br>
-
-{{#each tests}}
-
-
-<br>
-<table class="user-table">
+    <br>
+    <div>
+      <table class="user-table">
         <thead>
           <tr>
-            <th>OD</th>
-            <th>OI</th>
-
+            <th></th>
 
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{this.ODReni}}</td>
-            <td>{{this.OIReni}}</td>
+            <!--
+          {{#each }}
+          <tr>{{this.}}</td>
 
+
+          </tr>
+          {{/each}}
+          -->
         </tbody>
       </table>
-      <br>
-      <a 
-      {{!-- href="/TestPaciente/{{this.id}}?Fecha={{this._id}}"  --}}
-      
-      class="fecha-link">{{dateFormat this.FechaDelTest}}</a>
-<br>
-
-
-{{/each}}
-
-<!---<a href="/TestCliente/{{this.username}}?Fecha={{dateFormat this.FechaDelTest}}">{{dateFormat this.FechaDelTest}}</a><br>
--->
-
-
-
 
 
     </div>
-  </div>
+</section>
 
-  
-
-  <!--
-       <h2><%= title %></h2>
-      <p><%= content %></p>
-  -->
-  <style>
-    .form-label{
-      width:300px;
+<style>
+  /* Add this CSS for smaller screens */
+  @media screen and (max-width: 600px) {
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 10px;
     }
-.custom-select {
-  appearance: none;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  color: #555555;
-  font-size: 16px;
-  padding: 10px;
-  width: 100%;
-}
-
-.custom-select:focus {
-  outline: none;
-  border-color: #2196F3;
-  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-}
-
-.custom-select option {
-  background-color: #ffffff;
-  color: #555555;
-}
-    /* Estilo para el enlace de fecha */
-    .fecha-link {
-        padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
-        border: 1px solid #999; /* Borde ligero */
-        background-color: #f5f5f5; /* Fondo gris claro */
-        color: #333; /* Color del texto */
-        text-decoration: none; /* Eliminar subrayado del enlace */
-        border-radius: 3px; /* Borde redondeado */
+    .user-table {
+      width: 100%;
+      max-width: none;
     }
-
-    /* Cambiar el color del enlace al pasar el mouse por encima */
-    .fecha-link:hover {
-        background-color: #ddd; /* Cambia el color de fondo en hover (tono más claro) */
+    .user-table th,
+    .user-table td {
+      padding: 5px;
+      font-size: 14px;
     }
-  </style>
+    #diag{
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+
+  /* Existing CSS styles */
+  /* ... */
+
+</style>
 
 
 
+{{>footer}}

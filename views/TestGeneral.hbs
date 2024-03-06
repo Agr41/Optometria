@@ -1,68 +1,160 @@
-{{>navbar_en}}
+{{>navbar}}
 
 <link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
 
 <section id="PanelUsuarios">
-
-  <h1 class="text-center hola"></h1>
+  <h1 class="text-center hola">Resultados de los Tests</h1>
 
   <body class="text-center">
-    <br>
+    <div class="table-container">
 
-
-    <br>
-    <div>
+      {{#ifEquals TipoTest "Preeliminares"}}
+      <h2>Preeliminares</h2>
       <table class="user-table">
-        <thead>
-          <tr>
-            <th></th>
+  <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>OD RX Cerca 1</td><td>FRIJOLES</td></tr>
+      <tr><td>OD RX Cerca 2</td><td>FRIJOLES</td></tr>
+      <!-- Continúa con los demás campos -->
+      <tr><td>OI RX Lejos 2</td><td>FRIJOLES, FRIJOLES</td></tr>
+      <tr><td>AV OD Con Est 1</td><td>FRIJOLES</td></tr>
+      <!-- Asegúrate de incluir todos los campos -->
+      <tr><td>Observaciones</td><td>FRIJOLES</td></tr>
+    </tbody>      </table>
+      {{/ifEquals}}
 
-          </tr>
-        </thead>
-        <tbody>
-            <!--
-          {{#each }}
-          <tr>{{this.}}</td>
+      {{#ifEquals TipoTest "SaludOcular"}}
+      <h2>Salud Ocular</h2>
+      <table class="user-table">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Color de Retina</td><td>frijoles</td></tr>
+      <tr><td>Excavación</td><td>frijoles, frijoles</td></tr>
+      <tr><td>Relación</td><td>frijoles</td></tr>
+      <tr><td>ISNT</td><td>frijoles, frijoles</td></tr>
+      <tr><td>Reflejo Foveal</td><td>frijoles, frijoles</td></tr>
+      <tr><td>Diámetro</td><td>frijoles, frijoles</td></tr>
+      <!-- Continúa con el resto de campos siguiendo este patrón -->
+      <tr><td>Afinaciones</td><td>frijoles</td></tr>
+      <tr><td>Tipo de Test</td><td>frijoles</td></tr>
+    </tbody>      </table>
+      {{/ifEquals}}
 
+      {{#ifEquals TipoTest "PruebasFuncionales"}}
+      <h2>Pruebas Funcionales</h2>
+      <table class="user-table">
+   <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>FLL</td><td>FRIJOLES</td></tr>
+      <tr><td>FVL</td><td>FRIJOLES</td></tr>
+      <!-- Continúa con los demás campos -->
+      <tr><td>Cover Cerca</td><td>FRIJOLES</td></tr>
+      <!-- Asegúrate de incluir todos los campos -->
+    </tbody>      </table>
+      {{/ifEquals}}
 
-          </tr>
-          {{/each}}
-          -->
-        </tbody>
-      </table>
+      {{#ifEquals TipoTest "Tamizaje"}}
+      <h2>Tamizaje</h2>
+      <table class="user-table">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Con Lentes Distancia</td><td>20/40</td></tr>
+      <tr><td>Con Lentes Cerca</td><td>20/70</td></tr>
+      <tr><td>Sin Lentes Distancia</td><td>20/20</td></tr>
+      <tr><td>Sin Lentes Cerca</td><td>20/20</td></tr>
+      <tr><td>OD Reni Plus 2</td><td>HIPERMETROPIA</td></tr>
+      <tr><td>OI Reni Plus 2</td><td>HIPERMETROPIA</td></tr>
+      <tr><td>OD Reni Plus 1</td><td>HIPERMETROPIA</td></tr>
+      <tr><td>OI Reni Plus 1</td><td>HIPERMETROPIA</td></tr>
+    </tbody>      </table>
+      {{/ifEquals}}
 
+      {{#ifEquals TipoTest "PruebasComplementarias"}}
+      <h2>Pruebas Complementarias</h2>
+      <table class="user-table">
+   <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Ishihara</td><td>Frijoles</td></tr>
+      <tr><td>Amsler</td><td>Frijoles</td></tr>
+      <tr><td>Maddox</td><td>Frijoles</td></tr>
+      <tr><td>Camposvisuales</td><td>Frijoles</td></tr>
+      <tr><td>Parpados</td><td>Frijoles</td></tr>
+      <tr><td>PuntosViasLagrimales</td><td>Frijoles</td></tr>
+      <tr><td>FondoDeSaco</td><td>Frijoles</td></tr>
+      <tr><td>Conjuntiva</td><td>Frijoles</td></tr>
+      <tr><td>Esclera</td><td>Frijoles</td></tr>
+      <tr><td>Cornea</td><td>Frijoles</td></tr>
+      <tr><td>Limbo</td><td>Frijoles</td></tr>
+      <tr><td>CA</td><td>Frijoles</td></tr>
+      <tr><td>IrisYPupila</td><td>Frijoles</td></tr>
+      <tr><td>Cristalina</td><td>Frijoles</td></tr>
+    </tbody>      </table>
+      {{/ifEquals}}
 
     </div>
+  </body>
 </section>
 
 <style>
-  /* Add this CSS for smaller screens */
-  @media screen and (max-width: 600px) {
-    .table-container {
-      overflow-x: auto;
-      max-width: 100%;
-      padding: 10px;
-    }
-    .user-table {
-      width: 100%;
-      max-width: none;
-    }
-    .user-table th,
-    .user-table td {
-      padding: 5px;
-      font-size: 14px;
-    }
-    #diag{
-      padding: 5px;
-      font-size: 14px;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f8e9; /* Fondo general más claro */
   }
 
-  /* Existing CSS styles */
-  /* ... */
+  .table-container {
+    max-width: 80%;
+    margin: 20px auto;
+    overflow-x: auto;
+    background-color: #e8f5e9; /* Verde claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #c8e6c9; /* Línea divisoria más suave */
+  }
+
+  th {
+    background-color: #81c784; /* Verde más fuerte para cabecera */
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #a5d6a7; /* Filas alternas para mejor legibilidad */
+  }
 </style>
-
-
-
 {{>footer}}

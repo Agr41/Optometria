@@ -4,7 +4,6 @@ const Test = require("../models/Tets");
 const { MongoClient } = require('mongodb');
 module.exports = async (req, res) => {
 
-  console.log(req.body)
   var today = new Date();
 
   var date =
@@ -40,6 +39,7 @@ module.exports = async (req, res) => {
     if (req.body.opcion === '+2' && req.body.OIAsigmatismo2 === 'on') {
       req.body.OIReni = 'Astigmatismo' + ' ' + req.body.OIReniPlus2
     }
+    console.log(req.body)
 
 
     //console.log(req.body);
