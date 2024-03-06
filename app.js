@@ -209,23 +209,22 @@ app.get('/popup/:id',async (req, res) => {
   */
     app.get('/popup/:id', async (req, res) => {
       const Paciente = require('./models/pacientes');
-      const Tests = require('./models/Tets'); // Asegúrate de que el nombre del archivo sea correcto.
+      const Tests = require('./models/Tets'); // Verifica que el nombre del archivo sea correcto.
     
       const id = req.params.id;
       const pacientes = await Paciente.find({_id: id});
       let tests = await Tests.find({id: id});
-                console.log(tests)
-
-      tests = tests.map(test => {
-        // Verificar primero si `todo` existe.
-        if (test) {
     
-          if ('SinLentesDistancia' in test && test.SinLentesDistancia)  {
-            test.TipoTest = 'Tamizaje';
-
-          } else if('pa1' in test.CamposDeFormulario ){
+      tests = tests.map(test => {
+        // Inicializa TipoTest como 'Desconocido' para manejar casos donde CamposDeFormulario no existe o no coincide con ninguna condición.
+        test.TipoTest = 'Desconocido';
+    
+        if (test.SinLentesDistancia) {
+          test.TipoTest = 'Tamizaje';
+        } else if (test.CamposDeFormulario) {
+          if ('pa1' in test.CamposDeFormulario) {
             test.TipoTest = 'RX';
-          }else if ('Ishihara' in test.CamposDeFormulario) {
+          } else if ('Ishihara' in test.CamposDeFormulario) {
             test.TipoTest = 'PruebasComplementarias';
           } else if ('FLL' in test.CamposDeFormulario) {
             test.TipoTest = 'PruebasFuncionales';
@@ -234,24 +233,18 @@ app.get('/popup/:id',async (req, res) => {
           } else if ('versionS' in test.CamposDeFormulario) {
             test.TipoTest = 'Preeliminares';
           }
-          
-        } else {
-          // Opcional: Manejar casos donde `todo` no existe o es `undefined`.
-          // Por ejemplo, podrías asignar un valor predeterminado a `TipoTest`.
-          test.TipoTest = 'Desconocido'; // Ajusta esto según lo que necesites.
         }
-
+    
         return test;
       });
     
-      //console.log(tests);
-    
       var Numero = tests.map((_, index) => index + 1);
-      
+    
       const title = `${id}`;
       const content = `This is popup ${id}`;
       res.render('popup', { title, content, pacientes, tests, Numero });
     });
+    
     
    
 // catch 404 and forward to error handler
