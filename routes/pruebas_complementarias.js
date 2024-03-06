@@ -7,7 +7,7 @@ router.get('/', async function (req, res, next) {
   if (req.session.userId!=null) {
     const pacientes = await Paciente.find({})
   //console.log(usuarios)
-  res.render('pruebas_complementarias', { title: 'pruebas complementarias',Logeado,role,pacientes, usuario });
+  res.render('pruebas_complementarias', { title: 'Pruebas complementarias',Logeado,role,pacientes, usuario });
   } else {
       res.redirect('/LoginInicio')
   }
