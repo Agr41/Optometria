@@ -25,7 +25,7 @@
                         {{#each pacientes}}
                         <div class="row" style="z-index: 999;">
 <div class="col-auto me-auto" id="" style="width: 100%;">
-<p>{{this.NombreCompleto}}<input id="id" name="id" type="hidden" value="{{this._id}}"/>
+<p>{{this.NombreCompleto}}<input id="id"  type="hidden" value="{{this._id}}"/>
 <button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">Agregar</button>
 </p>
 </div>
@@ -35,7 +35,7 @@
 </div>
 <br/>
 <p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
-<input id="usernameValueDisplay" name="usernameValueDisplay" style="display:none;" type="hidden"/>
+<input id="usernameValueDisplay" name="id" style="display:none;" type="hidden"/>
 <button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">Cancelar</button>
 <!-- Resto de tu contenido de la sección "Paciente" aquí -->
 </div>
