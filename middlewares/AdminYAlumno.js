@@ -1,11 +1,11 @@
 
 module.exports = async (req,res,next)=>{
-    
-    if (role !== 'admin' || role !== 'cliente'){
+    if (role === "admin" || role === "cliente" || role === "alumno"){
 
-        res.redirect('/')
-    }else{
         next()
 
-    }
+    }else{
+        res.redirect('/')
+    }       
+
 }

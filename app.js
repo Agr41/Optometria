@@ -37,6 +37,7 @@ const TestPacientePOST = require('./routes/TestPacientePOST')
 const SaludOcular = require('./routes/SaludOcular')
 const TestBorrar = require('./routes/TestBorrar')
 const SoloAdmin = require('./middlewares/SoloAdmin')
+const AdminYAlumno= require('./middlewares/AdminYAlumno')
 const FiltrosPacientes= require('./routes/FiltroPacientes')
 const rx_en_usoRouter= require('./routes/rx_en_uso')
 const idiomaRouter= require('./routes/idioma')
@@ -47,7 +48,6 @@ const pruebas_complementarias =require('./routes/pruebas_complementarias')
 const rx_final= require('./routes/rx_final')
 const pruebas_f= require('./routes/pruebas_f')
 const TestGeneral = require('./routes/TestsGeneral')
-
 // Importa moment.js y el idioma español
 const moment = require('moment');
 require('moment/locale/es');
@@ -134,9 +134,8 @@ app.use((req, res, next) => {
   usuario=req.session.username;
   nombre=req.session.nombre
   next()
+  
   });
-
-
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
@@ -159,8 +158,8 @@ app.use('/ListaClientes', ListaRouter);
 app.get('/logout',logout)
 app.use('/configuracion', configuracionRouter);
 app.use('/menu_clinica', menu_clinicaRouter);
-app.get('/PanelUsuarios',PanelUsuarios)
-app.get('/PanelPacientes',PanelPacientesRouter)
+app.get('/PanelUsuarios',SoloAdmin,PanelUsuarios)
+app.get('/PanelPacientes',AdminYAlumno,PanelPacientesRouter)
 app.use('/FiltrosUsuarios',FiltrosUsuarios)
 app.use('/Borrar',Borrar)
 app.use('/BorrarPacientes',BorrarPacientes)
