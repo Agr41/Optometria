@@ -1,57 +1,37 @@
-{{>navbar}}
-
-<div class="col-lg-8 mx-auto p-4 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
-
-    </header>
-
-    <body class="d-flex flex-column min-vh-100">
-        <main>
-            <div class="modal-content rounded-4 shadow">
-
-
-                <div class="modal-body p-5 border border-2 border-dark rounded">
-
-                    <div class="container text-center">
-                        <div class="row">
-                            <form action="/LoginUsuario" method="POST">
-                                <div class="input-group mb-3">
-                                    <input type="email" class="form-control" placeholder="Correo" name="username"
-                                        aria-label="Recipient's username" aria-describedby="basic-addon2" required>
-
-
-
-                                </div>
-
-                                <div class="w-100 d-none d-md-block"></div>
-
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">* &nbsp</span>
-                                    <input type="password" class="form-control" placeholder="Contraseña"
-                                        aria-label="Username" aria-describedby="basic-addon1" name="password" required>
-
-
-                                </div>
-                                <div class="w-100 d-none d-md-block"></div>
-
-                                <div class="col ">
-
-                                    <button type="submit" class="btn " style="background-color: #2fd45b; color: white;">
-                                        Iniciar sesión
-                                    </button>
-                                    {{#if error}}
-                                    <p class="text-danger">Usuario o contraseña incorrectos</p>
-                                    
-                                    {{/if}}
-                                </div>
-                        </div>
-                    </div>
-                    </form>
-        </main>
-
-
-    </body>
-
-
+<style>
+    body {
+        background-image: url("../images/LogFondo.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .login-container {
+        border: 2px solid #000;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.5); /* Blanco con 80% de opacidad */
+        width: 50%; /* Ajusta este valor para cambiar el tamaño del contenedor */
+        max-width: 800px; /* Ajusta este valor para establecer un ancho máximo */
+    }
+</style>
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="login-container">
+        <form action="/LoginUsuario" method="POST">
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Correo" name="username"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" placeholder="Contraseña"
+                    aria-label="Username" aria-describedby="basic-addon1" name="password" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn " style="background-color: #2fd45b; color: white;">
+                    Iniciar sesión
+                </button>
+            </div>
+            {{#if error}}
+            <p class="text-danger">Usuario o contraseña incorrectos</p>
+            {{/if}}
+        </form>
+    </div>
 </div>
-{{> footer}}
