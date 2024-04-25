@@ -204,9 +204,9 @@
           <select name="Tipo" id="FiltroHistorial2" class="form-select">
             <option value="Folio" {{#if (eq Filtro "Folio")}} selected {{/if}}>Folio</option>
             <option value="Nombre" {{#if (eq Filtro "Nombre")}} selected {{/if}}>Nombre de usuario</option>
-            <option value="HIPERMETROPIA"{{#if (eq Filtro "HIPERMETROPIA")}} selected {{/if}}>HIPERMETROPIA</option>
-            <option value="EMETROPE" {{#if (eq Filtro "EMETROPE")}} selected {{/if}}>EMETROPE</option>
-            <option value="MIOPIA" {{#if (eq Filtro "MIOPIA")}} selected {{/if}}>MIOPIA</option>
+            <option value="HIPERMETROPIA"{{#if (eq Filtro "HIPERMETROPIA")}} selected {{/if}}>HIPERMETROPÍA</option>
+            <option value="EMETROPE" {{#if (eq Filtro "EMETROPE")}} selected {{/if}}>EMÉTROPE</option>
+            <option value="MIOPIA" {{#if (eq Filtro "MIOPIA")}} selected {{/if}}>MIOPÍA</option>
           </select>
         </div>
         <div class="col-4">
@@ -243,7 +243,7 @@
 
 <td><a href="/BorrarPacientes?id={{this._id}}" class="borrar-link">Borrar</a></td>
 
-            <td><button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnostico</button></td>
+            <td><button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnóstico</button></td>
 
 
             <!--Agregar alerta-->
