@@ -38,7 +38,7 @@
                 </div>
 
                 <label>Job:</label>
-                <select name="ocupacion" id="" class="form-select" required>
+                <select name="ocupacion" id="" class="form-select" style="width: 40%;" required>
                   <option for="" class="form-check-label" value="Ama De Casa">Stay-at-home</option>
                   <option for="" class="form-check-label" value="Estudiante">Student</option>
                   <option for="" class="form-check-label" value="Administrativo">Office job</option>
@@ -68,13 +68,13 @@
                 </div>
                 -->
                 <label>Sex:</label>
-                <div class="form-check">
+                <div class="sexou" class="form-check">
                   <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
                   <label class="form-check-label" for="flexRadioDefault1">
                     Male
                   </label>
                 </div>
-                <div class="form-check">
+                <div class="sexou" class="form-check">
                   <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="F" checked>
                   <label class="form-check-label" for="flexRadioDefault2">
                     Female
@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-sm-12">
                   <label class="form-label">Age:</label>
-                  <input type="number" name="Edad" id="" class="form-control" min="0" max="120" required> 
+                  <input type="number" name="Edad" id="" class="form-control" min="0" max="120" style="width: 20%;" required> 
                 </div>
                 {{!-- ESTO SE DEBE VOLVER A AGREGAR CUANDO SOLUCIONEMOS TODO
                 <div class="col-sm-12">
@@ -138,7 +138,7 @@
                   <input type="text" name="Nombre" id="" class="form-control" required>
                 </div>
                 <div class="col-sm-8">
-                  <label class="form-label">Apellido(s)</label>
+                  <label class="form-label">Apellido(s):</label>
                   <input type="text" name="ApellidoPaterno" id="" class="form-control" required>
                 </div>
                 <!--
@@ -152,8 +152,8 @@
                   <input type="text" name="ciudad" id="" class="form-control" required>
                 </div>
 
-                <label>Ocupacion:</label>
-                <select name="ocupacion" id="" class="form-select" required>
+                <label>Ocupación:</label>
+                <select name="ocupacion" id="" class="form-select" style="width: 40%;" required>
                   <option for="" class="form-check-label" value="Ama De Casa">Ama de casa</option>
                   <option for="" class="form-check-label" value="Estudiante">Estudiante</option>
                   <option for="" class="form-check-label" value="Administrativo">Administrativo</option>
@@ -183,21 +183,20 @@
                 </div>
                 -->
                 <label>Sexo:</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Masculino
-                  </label>
-                </div>
-                <div class="form-check">
+
+                <div class="sexou" class="form-check" class="sexou">
                   <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="F" checked>
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    Femenino
-                  </label>
+                  <label class="form-check-label" for="flexRadioDefault2">Femenino</label>
                 </div>
+                <div class="sexou" class="form-check">
+                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
+                  <label class="form-check-label" for="flexRadioDefault1">Masculino</label>
+                </div>
+                
+
                 <div class="col-sm-12">
-                  <label class="form-label">Edad</label>
-                  <input type="number" name="Edad" id="" class="form-control" min="0" max="120" required> 
+                  <label class="form-label">Edad:</label>
+                  <input type="number" name="Edad" id="" class="form-control" class="edad" min="0" max="120" style="width: 20%;" required> 
                 </div>
                 {{!-- ESTO SE DEBE VOLVER A AGREGAR CUANDO SOLUCIONEMOS TODO
                 <div class="col-sm-12">
@@ -285,5 +284,22 @@ document.addEventListener("DOMContentLoaded", function() {
       checkbox.checked = false;
     });
   </script>
+  <style>
+        .sexou {
+          width: auto;
+        }
+        @media (max-width: 575px) {
+  .col-sm-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .btn-block {
+    margin-bottom: 10px;
+    width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
+  }
+}
+      </style>
   
 {{> footer}}
