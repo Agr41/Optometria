@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<style>
+  .mb-1:hover{
+
+  background-color: #f0f0f0; 
+
+  }
+.btn-toggle-nav li:hover {
+  background-color: #ffffff; /* Cambia el color de fondo al pasar el ratón por encima */
+}
+
+</style>
+<div class="flex-shrink-0 p-3 bg-light" style="width: 280px; border-right: 1px solid #dee2e6;">
+  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+    <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-5 fw-semibold">Collapsible</span>
+  </a>
+  <ul class="list-unstyled ps-0">
+    <li class="mb-1">
+    
+      <button onclick="window.location.href = '/form'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+        
+   <i class="bi bi-1-circle"></i>
+                                            Nuevo Paciente
+      </button>
+    </li>
+     <li class="mb-1">
+    
+      <button onclick="window.location.href = '/PanelPacientes'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+        
+   <i class="bi bi-1-circle"></i>
+                                            Ver Paciente
+      </button>
+    </li>
+    <li class="mb-1">
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+       
+        Clinica
+      </button>
+      <div class="collapse" id="dashboard-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li class="hover"><a href="/rx_en_uso" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">Eyeglasses </span> Rx en uso</a></li>
+          <li><a href="/preeliminares" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">Quiz </span>Preliminares</a></li>
+          <li><a href="/SaludOcular" class="link-body-emphasis d-inline-flex text-decoration-none rounded">   <span class="material-symbols-outlined">Visibility</span>Salud Ocular</a></li>
+          <li><a href="/pruebas_f" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">Mystery</span> Pruebas Funcionales</a></li>
+             <li><a href="/pruebas_complementarias" class="link-body-emphasis d-inline-flex text-decoration-none rounded">     <span class="material-symbols-outlined"> Rule </span>Pruebas Complementarias</a></li>
+               <li><a href="/rx_final" class="link-body-emphasis d-inline-flex text-decoration-none rounded">   <span class="material-symbols-outlined">Prescriptions</span>Rx Final</a></li>
+        </ul>
+      </div>
+    </li>
+       <li class="mb-1">
+    
+      <button onclick="window.location.href = '/graficas'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+        
+   <i class="bi bi-1-circle"></i>
+                                           Graficas
+      </button>
+    </li>
+    <li class="border-top my-3"></li>
+    <li class="mb-1">
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+        <i class="bi bi-person me-2"></i> <!-- Icono de persona -->
+        Administracion
+      </button>
+      <div class="collapse" id="account-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+             <li class="hover"><a href="/registrarse" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">person_add</span>Registrar Usuario</a></li>
+          <li><a href="/panelusuarios" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">
+manage_accounts
+</span>Panel de Usuarios</a></li>
+       
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
