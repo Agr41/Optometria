@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<nav class="navbar navbar-expand-lg  navbar-light " style="background-color: #12372A   ;">
+<nav class="navbar navbar-expand-md  navbar-light " style="background-color: #12372A   ;">
   <div class="container-fluid">
     <a class="navbar-brand" href="/HomeSessions">
       <div class="has-bg-img bg-light bg-blend-multiply  rounded-4">
-        <img src="../images/logoUAL-removebg-preview.png" alt="Logo" width="208" height="102">
+        <img src="../images/logoUAL-removebg-preview.png" alt="Logo" width="100" height="51">
 
       </div>
 
@@ -48,7 +48,7 @@
       {{#if Logeado }}
   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active fs-2 fw-bold text-light" aria-current="page" href="/HomeSessions">
+          <a class="nav-link active fs-3 fw-bold text-light" aria-current="page" href="/HomeSessions">
           <span class="material-symbols-outlined">
                                                 home
                                             </span>
@@ -74,13 +74,27 @@
 
 
     
-            <div class="d-flex align-items-center" id="cerrar"> 
-          <a class="nav-link active fs-2 fw-bold  text-light" aria-current="page" href="/logout"><span class="material-symbols-outlined">
-                                                logout
-                                            </span> Cerrar sesión</a>
-
-            </div>
-       
+      <div class="d-flex align-items-center ms-auto">
+      <!-- Formulario de cambio de idioma -->
+     <form id="languageForm" method="POST" action="/cambiarIdioma" class="d-flex">
+        <div class="row g-3 align-items-center">
+          <input type="hidden" name="username" value="{{user}}">
+          <div class="col-auto">
+            <span class="material-symbols-outlined d-flex text-light">language</span>
+          </div>
+          <div class="col-auto">
+            <select name="language" id="role" class="form-select" onchange="this.form.submit()">
+              <option value="es-MX">Español</option>
+              <option value="en-US">English</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <!-- Botón de cierre de sesión -->
+      <a class="nav-link active fs-3 fw-bold text-light ms-3" aria-current="page" href="/logout">
+        <span class="material-symbols-outlined">logout</span> Cerrar sesión
+      </a>
+    </div>
       {{/if}}
 
 
@@ -88,7 +102,17 @@
     </div>
   </div>
 </nav>
+{{!-- <script>
+  // Obtener el formulario y el selector de idioma
+  const languageForm = document.getElementById('languageForm');
+  const languageSelect = document.getElementById('role');
 
+  // Escuchar el evento change del selector de idioma
+  languageSelect.addEventListener('change', function() {
+    // Enviar el formulario cuando cambia el idioma
+    languageForm.submit();
+  });
+</script> --}}
 {{!-- <style>
   /* Estilo predeterminado de los elementos <li> */
   .nav-item, #cerrar {

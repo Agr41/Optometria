@@ -186,20 +186,24 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-2"  style="padding: 0px;">
-      {{> sidebar}}
+    <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+      <!-- Sidebar -->
+         {{> sidebar}}
     </div>
 
-    <div class="col-lg-10 p-4 py-md-5">
-      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-        Bienvenido/a {{nombre}}
-      </header>
+    <div class="col-sm-12 col-md-9   col-lg-10 px-0">
+      <!-- Contenido de la derecha -->
+      <div class="content p-3">
+        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+          Bienvenido/a {{nombre}}
+        </header>
 
-      <body class="d-flex flex-column min-vh-100">
-        <main>
-          <!-- Contenido del main -->
-        </main>
-      </body>
+        <body class="d-flex flex-column min-vh-100">
+          <main>
+            <!-- Contenido del main -->
+          </main>
+        </body>
+      </div>
     </div>
   </div>
 </div>
