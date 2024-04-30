@@ -14,13 +14,9 @@ const pacienteSchema = new Schema({
     sexo: String,
     //fnacimiento: String,
     Edad:Number,
-    Folio:String,
+    Folio:Number,
     id:String,
 
-    /*
-    OD:String,
-    OI:String
-    */
 
 });
 

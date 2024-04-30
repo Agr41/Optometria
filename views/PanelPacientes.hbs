@@ -1,4 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 {{#if ingles}}
 {{> navbar_en}}
 <section id="PanelPacientes">
@@ -241,7 +243,7 @@
             <td>{{this.Nombre}}</td>
             <td>{{this.ApellidoPaterno}}</td>
 
-<td><a href="/BorrarPacientes?id={{this._id}}" class="borrar-link">Borrar</a></td>
+ <td><a href="#" class="borrar-link" onclick="confirmDeletion('{{this._id}}'); return false;">Borrar</a></td> 
 
             <td><button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnóstico</button></td>
 
@@ -341,7 +343,24 @@
 {{/if}}
 
 
-
+<script>
+function confirmDeletion(id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, borrarlo!',
+        cancelButtonText: 'No, cancelar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "/BorrarPacientes?id=" + id;
+        }
+    });
+}
+</script>
 <script>
   function openPopup(id) {
     fetch(`/popup/${id}`)

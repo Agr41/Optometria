@@ -1,34 +1,76 @@
 const Paciente = require("../models/pacientes.js")
 const Test = require("../models/Tets.js")
+const Joi = require('joi');
+//    res.send(`<script>alert("¡Carácteres introducidos no permitidos!"); window.location.href='/PanelPacientes';</script>`)
+
+
 module.exports = async (req, res) => {
     var page = req.query.page;
     var Filtro = req.body.Tipo;
 
     if (page === undefined  ){
 
+
         if(Filtro ==="Nombre"){
-            const pacientes = await Paciente.paginate({NombreCompleto:{$regex:req.body.busqueda}},{page:1,limit:10}) 
+
+          
+          try{
+            const schema = Joi.object({
+              busqueda: Joi.string().regex(/^[a-zA-Z0-9\s]*$/).required()
+            });
+        
+            // Paso 3: Validar
+            const { error, value } = schema.validate({ busqueda: req.body.busqueda });
+            if (error) {
+              throw new Error('Caracteres no permitidos');
+            }
+
+            
+            const consulta = value.busqueda; // Usar el valor validado
+
+            const pacientes = await Paciente.paginate({ NombreCompleto: { $regex: consulta , $options: 'i' } }, { page: 1, limit: 10 });
             const FiltroPaginado = true;
-            const consulta = req.body.busqueda;
             var TotalPaginas = [];
             for (i = 0; i < pacientes.totalPages; i++) {
               TotalPaginas.push(i + 1);
             }
-      
+          
             res.render('PanelPacientes',{pacientes,Logeado, role, FiltroPaginado,Filtro,consulta,TotalPaginas})
-
+          }catch(e){            
+            res.send(`<script>alert("¡Carácteres introducidos no permitidos!"); window.location.href='/PanelPacientes';</script>`) 
         }
-        if(Filtro ==="Folio"){
-            const pacientes = await Paciente.paginate({Folio:{$regex:req.body.busqueda}},{page:1,limit:10}) 
+        }
+        if (Filtro === "Folio") {
+          try {
+            // Definir el esquema de Joi para un folio numérico
+            const schema = Joi.object({
+              busqueda: Joi.number().required()  // Validates that the input is a number
+            });
+        
+
+            var valor = parseFloat(req.body.busqueda)
+            // Validar
+
+
+            const { error, value } = schema.validate({ busqueda: valor});
+            if (error) {
+              throw new Error('Folio no válido');
+            }
+           
+
+            const consulta = value.busqueda; // Usar el valor validado
+
+            const pacientes = await Paciente.paginate({ Folio: consulta} , { page: 1, limit: 10 });
             const FiltroPaginado = true;
-            const consulta = req.body.busqueda;
             var TotalPaginas = [];
-            for (i = 0; i < pacientes.totalPages; i++) {
+            for (let i = 0; i < pacientes.totalPages; i++) {
               TotalPaginas.push(i + 1);
             }
-      
-            res.render('PanelPacientes',{pacientes,Logeado, role, FiltroPaginado,Filtro,consulta,TotalPaginas})
-
+        
+            res.render('PanelPacientes', { pacientes, Logeado, role, FiltroPaginado, Filtro, consulta, TotalPaginas });
+          } catch (e) {
+            res.send(`<script>alert("¡Folio no válido!"); window.location.href='/PanelPacientes';</script>`)
+          }
         }
         if(Filtro ==="HIPERMETROPIA"){
           const tests = await Test.find({$or: [{ ODReni: "HIPERMETROPIA"},{ OIReni: "HIPERMETROPIA"} ]});
@@ -89,25 +131,37 @@ module.exports = async (req, res) => {
         var consulta = req.query.consulta;
 
         if(Filtro ==="Nombre"){
-            const pacientes = await Paciente.paginate({NombreCompleto:{$regex:consulta}},{page,limit:10}) 
+          try {
+
+            const pacientes = await Paciente.paginate({NombreCompleto:{$regex:consulta, $options: 'i' }},{page,limit:10}) 
             const FiltroPaginado = true;
             var TotalPaginas = [];
             for (i = 0; i < pacientes.totalPages; i++) {
               TotalPaginas.push(i + 1);
             }
-      
             res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
+
+          }catch(err){
+            res.send(`<script>window.location.href='/PanelPacientes';</script>`)
+
+          }
 
         }
         if(Filtro ==="Folio"){
+          try {
+
             const pacientes = await Paciente.paginate({Folio:{$regex:consulta}},{page,limit:10}) 
             const FiltroPaginado = true;
             var TotalPaginas = [];
             for (i = 0; i < pacientes.totalPages; i++) {
               TotalPaginas.push(i + 1);
             }
-      
             res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
+
+          }catch(err){
+            res.send(`<script>window.location.href='/PanelPacientes';</script>`)
+
+          }
 
         }
         if(Filtro ==="HIPERMETROPIA"){
