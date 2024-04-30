@@ -172,32 +172,14 @@
 
 {{else}}
 {{>navbar}}
-
+<div class="container-fluid">
 <section id="PanelPacientes">
 <br>
   <h1 class="text-center hola">Panel de pacientes</h1>
 
   <body class="text-center">
     <br>
-<!--
-    Filtrar por rol:
-    <form method="POST" action="/FiltrosPacientes">
-      <div class="row justify-content-center">
-        <div class="col-2">
-          <select name="role" id="FiltroHistorial" class="form-select">
-            <option value="admin"> Administrador</option>
-            <option value="cliente">Cliente</option>
-            <option value="alumno">Alumno</option>
 
-          </select>
-        </div>
-        <div class="col-2">
-          <button type="submit" class="btn btn-info">Filtrar</button>
-        </div>
-      </div>
-
-    </form>
-    -->
 
     <br>
     <form method="post" action="/FiltrosPacientes">
@@ -223,7 +205,53 @@
       <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">Buscar</i></button>
     </form>
 <br>
-    <div>
+<div class="container-xl text-center">
+  <div class="row  text-light align-items-start mb-2 rounded-top" style="background-color: #12372A  ;">
+    <div class="col-1">
+     Folio
+    </div>
+    <div class="col-2">
+     Nombre
+    </div>
+    <div class="col-3">
+     Apellido(s)
+    </div>
+     <div class="col-2">
+      Borrar
+    </div>
+     <div class="col-3 ">
+     Tests
+    </div>
+    </div>
+    
+    <div class="row align-items-start p-1 mb-1">
+ {{#each pacientes.docs}}
+<div class="col-1">
+    {{this.Folio}}
+    </div>
+    <div class="col-2">
+    {{this.Nombre}}
+    </div>
+    <div class="col-3">
+   {{this.ApellidoPaterno}}
+    </div>
+     <div class="col-2">
+   <a href="/BorrarPacientes?id={{this._id}}" class="borrar-link">Borrar</a>
+    </div>
+     <div class="col-3">
+  <button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnóstico</button>
+
+    </div>
+       <div class="w-100"></div>
+        {{/each}}
+        
+  </div>
+</div>
+    </div>
+    
+     
+
+    {{!-- <div>
       <table class="user-table">
         <thead>
           <tr>
@@ -255,16 +283,19 @@
       </table>
 
 
-    </div>
+    </div> --}}
+          </body>
 </section>
+</div>
+
 <br>
 {{#unless (Falso FiltroPaginado)}}
 <nav aria-label="Page navigation example">
-
   <ul class="pagination justify-content-center">
     {{#each TotalPaginas}}
-    <li class="page-item"><a href="/PanelPacientes?page={{this}}" type="submit" id="sendMessageButton"
-        class="page-link">{{this}}</a></li>
+    <li class="page-item">
+      <a href="/PanelPacientes?page={{this}}" type="submit" id="sendMessageButton" class="page-link">{{this}}</a>
+    </li>
     {{/each}}
   </ul>
 </nav>
@@ -413,6 +444,8 @@ function confirmDeletion(id) {
     position: fixed;
     top: 50%;
     left: 50%;
+     width: 400px; /* Ancho del recuadro */
+    height: 500px; /* Altura del recuadro */
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;

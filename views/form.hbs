@@ -133,11 +133,11 @@
           <div class="container">
             <form action="/form/registrarpaciente" method="post">
               <div class="row g-3">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <label class="form-label">Nombre:</label>
                   <input type="text" name="Nombre" id="" class="form-control" required>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                   <label class="form-label">Apellido(s):</label>
                   <input type="text" name="ApellidoPaterno" id="" class="form-control" required>
                 </div>
@@ -147,13 +147,13 @@
                   <input type="text" name="ApellidoMaterno" id="" class="form-control" required>
                 </div>
                 -->
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                   <label class="form-label">Localidad:</label>
                   <input type="text" name="ciudad" id="" class="form-control" required>
                 </div>
-
-                <label>Ocupación:</label>
-                <select name="ocupacion" id="" class="form-select" style="width: 40%;" required>
+                 <div class="col-sm-6">
+                <label class="form-label">Ocupación:</label>
+                <select name="ocupacion" id="" class="form-select  "required>
                   <option for="" class="form-check-label" value="Ama De Casa">Ama de casa</option>
                   <option for="" class="form-check-label" value="Estudiante">Estudiante</option>
                   <option for="" class="form-check-label" value="Administrativo">Administrativo</option>
@@ -169,6 +169,24 @@
                   -->
 
                 </select>
+
+                 </div>
+                <div class="col-sm-6">
+                <label>Sexo:</label>
+
+                <div class="sexou" class="form-check" class="sexou">
+                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="F" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">Femenino</label>
+                </div>
+                <div class="sexou" class="form-check">
+                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
+                  <label class="form-check-label" for="flexRadioDefault1">Masculino</label>
+                </div>
+                </div>
+                  <div class="col-sm-6">
+<label class="form-label">Edad:</label>
+                  <input type="number" name="Edad" id="" class="form-control" class="edad" min="0" max="120"  required> 
+                  </div>
                 <!--
                 <div class="input-group">
 
@@ -182,22 +200,10 @@
 
                 </div>
                 -->
-                <label>Sexo:</label>
-
-                <div class="sexou" class="form-check" class="sexou">
-                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="F" checked>
-                  <label class="form-check-label" for="flexRadioDefault2">Femenino</label>
-                </div>
-                <div class="sexou" class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
-                  <label class="form-check-label" for="flexRadioDefault1">Masculino</label>
-                </div>
+               
                 
 
-                <div class="col-sm-12">
-                  <label class="form-label">Edad:</label>
-                  <input type="number" name="Edad" id="" class="form-control" class="edad" min="0" max="120" style="width: 20%;" required> 
-                </div>
+              
                 {{!-- ESTO SE DEBE VOLVER A AGREGAR CUANDO SOLUCIONEMOS TODO
                 <div class="col-sm-12">
                   <label class="form-label">Razón de la visita</label>
@@ -217,13 +223,13 @@
 <div class="col-sm-12">
 <div class="row">
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block" id="btnSalir">Guardar y salir</button>
+      <button type="submit" class="btn  btn-block text-light" id="btnSalir"  style="background-color: #12372A; ">Guardar y salir</button>
     </div>
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block" id="btnTamizaje">Guardar e ir a Tamizaje</button>
+      <button type="submit" class="btn  btn-block text-light" id="btnTamizaje"  style="background-color: #12372A; "> Guardar e ir a Tamizaje</button>
     </div>
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block" id="btnClinica">Guardar e ir a Clínica</button>
+      <button type="submit" class="btn btn-block text-light" id="btnClinica"   style="background-color: #12372A; ">Guardar e ir a Clínica</button>
     </div>
   </div>
   
