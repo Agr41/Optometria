@@ -11,9 +11,9 @@ def add_name_to_input_tags(html_file):
         input_id = input_tag.get('id')
         input_name = input_tag.get('name')
         if input_id:
-            input_tag['name'] = f'CampoDeFormulario[{input_id}]'
+            input_tag['name'] = f'CamposDeFormulario[{input_id}]'
         elif input_name:
-            input_tag['name'] = f'CampoDeFormulario[{input_name}]'
+            input_tag['name'] = f'CamposDeFormulario[{input_name}]'
 
     with open(html_file, 'w') as file:
         file.write(str(soup))
