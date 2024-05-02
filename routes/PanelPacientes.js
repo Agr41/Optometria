@@ -5,23 +5,7 @@
 const Paciente = require("../models/pacientes.js");
 const Test = require('../models/Tets.js');
 module.exports = async (req, res) => {
-
-  var page = req.query.page || 1; // Si no hay una página especificada, se usará la primera por defecto
-  const limit = 10; // 10 pacientes por página
-  const pacientes = await Paciente.paginate({}, { page, limit });
-
-  // Calcula el número total de páginas
-  const totalPages = pacientes.totalPages;
-
-  // Calcula el rango de páginas que deseas mostrar
-  const currentPage = parseInt(page);
-  const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
-  const endPage = Math.min(startPage + 4, totalPages);
-
-  // Consulta la base de datos para obtener pacientes en la página actual
-
-  // Crea un array con las páginas que deseas mostrar en la paginación
-  const TotalPaginas = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
+  var page = req.query.page;
   var ingles = false
   console.log(Idioma)
   if (Idioma == "en-US"){
@@ -34,7 +18,55 @@ module.exports = async (req, res) => {
     const FiltroPaginado = false;
     const Filtro = "ninguno";
     //console.log(usuarios);
+    var TotalPaginas = [];
+    for (i = 0; i < pacientes.totalPages; i++) {
+      TotalPaginas.push(i + 1);
+    }
+    var PaginaActual= pacientes.page;
+    console.log(PaginaActual)
+ 
+    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, PaginaActual, Filtro, TotalPaginas, ingles });
+  } else if (page != undefined) {
+    // Si se especifica una página, muestra esa página
+    const pacientes = await Paciente.paginate({}, { page, limit: 10 });
+    const FiltroPaginado = false;
+    const Filtro = "ninguno";
+
+    var PaginaActual= pacientes.page;
+
+   
+      var TotalPaginas = [];
+      for (var i = PaginaActual - 1; i < pacientes.totalPages; i++) {
+          TotalPaginas.push(i + 1);
+      }
   
+    
+    
+    
+
+
+    console.log(pacientes)
+
+    res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes,PaginaActual, FiltroPaginado, Filtro, TotalPaginas, ingles });
+  }
+
+
+
+
+}
+
+
+
+/*
+ if(page === 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 ){
+      var TotalPaginas = [];
+      for (i = 0; i < pacientes.totalPages; i++) {
+        TotalPaginas.push(i + 1);
+      }
+    }
+*/
+
+
 /*
     for (let j = 0; j < tests.length; j++) {
       for (let i = 0; i < pacientes.docs.length; i++) {
@@ -50,15 +82,3 @@ module.exports = async (req, res) => {
   
 console.log(pacientes.docs)
 */
-
-    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas, ingles });
-  } else if (page != undefined) {
-    // Si se especifica una página, muestra esa página
-    const pacientes = await Paciente.paginate({}, { page, limit: 10 });
-    const FiltroPaginado = false;
-    const Filtro = "ninguno";
-  
-    
-    res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes, FiltroPaginado, Filtro, TotalPaginas, ingles });
-  }
-}

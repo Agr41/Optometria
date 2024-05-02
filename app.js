@@ -5,6 +5,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
+const exphbs = require('express-handlebars');
+
+
+
+
+
 // const bootstrap = require('bootstrap');
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
@@ -61,6 +67,8 @@ app.use(fileUpload());
 
 // HBS helpers
 hbs.registerPartials(__dirname + "/views/partials");
+hbs.registerHelper('sumar', (value1, value2) => value1 + value2);
+hbs.registerHelper('restar', (value1, value2) => value1 - value2);
 
 hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
@@ -108,7 +116,14 @@ hbs.registerHelper('isChecked', function(value) {
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
+
+hbs.registerHelper('limit', function (arr, limit) {
+  if (!Array.isArray(arr)) { return []; }  // Retorna un arreglo vacío si no es un arreglo
+  return arr.slice(0, limit);
+});
+
 app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', hbs.__express); // Usar hbs como alias para el motor de plantillas
 
 app.set('view engine', 'hbs');
 

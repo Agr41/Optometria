@@ -1,6 +1,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{#if ingles}}
 {{> navbar_en}}
 <section id="PanelPacientes">
@@ -9,25 +10,7 @@
 
   <body class="text-center">
     <br>
-<!--
-    Filtrar por rol:
-    <form method="POST" action="/FiltrosPacientes">
-      <div class="row justify-content-center">
-        <div class="col-2">
-          <select name="role" id="FiltroHistorial" class="form-select">
-            <option value="admin"> Administrador</option>
-            <option value="cliente">Cliente</option>
-            <option value="alumno">Alumno</option>
 
-          </select>
-        </div>
-        <div class="col-2">
-          <button type="submit" class="btn btn-info">Filtrar</button>
-        </div>
-      </div>
-
-    </form>
-    -->
 
     <br>
     <form method="post" action="/FiltrosPacientes">
@@ -73,7 +56,9 @@
             <td>{{this.Nombre}}</td>
             <td>{{this.ApellidoPaterno}}</td>
 
-<td><a href="/BorrarPacientes?id={{this._id}}" class="borrar-link">Delete</a></td>
+<td><td>
+  <a href="#" class="borrar-link" onclick="confirmDeletion('{{this._id}}'); return false;">Borrar</a>
+</td></td>
 
             <td><button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnosis</button></td>
 
@@ -175,7 +160,8 @@
 <div class="container-fluid">
 <section id="PanelPacientes">
 <br>
-  <h1 class="text-center hola">Panel de pacientes</h1>
+  <h1 class="text-center hola">Panel de pacientes</h1> 
+
 
   <body class="text-center">
     <br>
@@ -236,8 +222,9 @@
    {{this.ApellidoPaterno}}
     </div>
      <div class="col-2">
-   <a href="/BorrarPacientes?id={{this._id}}" class="borrar-link">Borrar</a>
-    </div>
+<td>
+  <a href="#" class="borrar-link" onclick="confirmDeletion('{{this._id}}'); return false;">Borrar</a>
+</td>    </div>
      <div class="col-3">
   <button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnóstico</button>
 
@@ -289,23 +276,59 @@
 </div>
 
 <br>
+
+
 {{#unless (Falso FiltroPaginado)}}
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    {{#each TotalPaginas}}
+    <li class="page-item">
+<a href="/PanelPacientes?page={{restar this.pacientes.page 10}}" class="page-link" id="nextPage">
+    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+</a>
+
+</i>
+
+    </li>
+     <li class="page-item">
+      <a  href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link" href="#"  id="nextPage">Back</a>
+    </li>
+    {{#each (limit TotalPaginas 10)}}
     <li class="page-item">
       <a href="/PanelPacientes?page={{this}}" type="submit" id="sendMessageButton" class="page-link">{{this}}</a>
     </li>
     {{/each}}
+      <li class="page-item">
+      <a class="page-link"href="/PanelPacientes?page={{this.pacientes.nextPage}}"  id="nextPage">Next</a>
+    </li>
+
+       <li class="page-item">
+      <a  href="/PanelPacientes?page={{sumar this.pacientes.page 10}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+</i>
+</a>
+    </li>
   </ul>
 </nav>
 {{/unless}}
 
 {{#unless (Verdad FiltroPaginado)}}
 <nav aria-label="Page navigation example">
+    <li class="page-item">
+<a href="/PanelPacientes?page={{restar this.pacientes.page 10}}" class="page-link" id="nextPage">
+    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+</a>
+
+</i>
 
   <ul class="pagination justify-content-center">
-    {{#each TotalPaginas}}
+       <li class="page-item">
+      <a  href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+</i>
+</a>
+    </li>
+     <li class="page-item">
+      <a  href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link" href="#"  id="nextPage">Back</a>
+    </li>
+    {{#each (limit TotalPaginas 10)}}
     {{#if (not (eq ../Filtro "Folio"))}}
     {{#if (not (eq ../Filtro "Nombre"))}}
         {{#if (not (eq ../Filtro "HIPERMETROPIA"))}}
@@ -323,6 +346,15 @@
     {{/if}}
 
     {{/each}}
+      <li class="page-item">
+      <a class="page-link"href="/PanelPacientes?page={{this.pacientes.nextPage}}"  id="nextPage">Next</a>
+    </li>
+
+     <li class="page-item">
+      <a  href="/PanelPacientes?page={{sumar this.pacientes.page 10}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+</i>
+</a>
+    </li>
   </ul>
 </nav>
 {{/unless}}
@@ -332,7 +364,26 @@
 <nav aria-label="Page navigation example">
 
   <ul class="pagination justify-content-center">
-    {{#each TotalPaginas}}
+
+
+        <li class="page-item">
+<a href="/PanelPacientes?page={{restar this.pacientes.page 10}}" class="page-link" id="nextPage">
+    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+</a>
+
+</i>
+
+    </li>
+       <li class="page-item">
+      <a  href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link" href="#"  id="nextPage">Back</a>
+    </li>
+
+        <li class="page-item">
+      <a  href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link" href="#"  id="nextPage"></a>
+    </li>
+   
+
+    {{#each (limit TotalPaginas 10)}}
     {{#if (eq ../Filtro "Nombre")}}
 
     <li class="page-item"><a
@@ -364,8 +415,17 @@
         id="sendMessageButton" class="page-link">{{this}}</a></li>
     {{/if}}
     {{/each}}
+
+
+   
+
     <li class="page-item">
-      <a class="page-link" href="#"  id="nextPage">Next</a>
+      <a class="page-link"href="/PanelPacientes?page={{this.pacientes.nextPage}}"  id="nextPage">Next</a>
+    </li>
+   <li class="page-item">
+      <a  href="/PanelPacientes?page={{sumar this.pacientes.page 10}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+</i>
+</a>
     </li>
   </ul>
 </nav>

@@ -1,68 +1,24 @@
-{{>navbar}}
 
-<link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
-
-<section id="PanelUsuarios">
-
-  <h1 class="text-center hola"></h1>
-
-  <body class="text-center">
-    <br>
-
-
-    <br>
-    <div>
-      <table class="user-table">
-        <thead>
-          <tr>
-            <th></th>
-
-          </tr>
-        </thead>
-        <tbody>
-            <!--
-          {{#each }}
-          <tr>{{this.}}</td>
-
-
-          </tr>
-          {{/each}}
-          -->
-        </tbody>
-      </table>
-
-
-    </div>
-</section>
-
-<style>
-  /* Add this CSS for smaller screens */
-  @media screen and (max-width: 600px) {
-    .table-container {
-      overflow-x: auto;
-      max-width: 100%;
-      padding: 10px;
-    }
-    .user-table {
-      width: 100%;
-      max-width: none;
-    }
-    .user-table th,
-    .user-table td {
-      padding: 5px;
-      font-size: 14px;
-    }
-    #diag{
-      padding: 5px;
-      font-size: 14px;
-    }
-  }
-
-  /* Existing CSS styles */
-  /* ... */
-
-</style>
-
-
-
-{{>footer}}
+{{#unless FiltroPaginado}}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
+      <a href="/PanelPacientes?page={{decrement currentPage 10}}" class="page-link"><<</a>
+    </li>
+    <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
+      <a href="/PanelPacientes?page={{decrement currentPage}}" class="page-link"><</a>
+    </li>
+    {{#paginate}}
+    <li class="page-item {{#if isCurrent}}active{{/if}}">
+      <a href="/PanelPacientes?page={{page}}" class="page-link">{{page}}</a>
+    </li>
+    {{/paginate}}
+    <li class="page-item {{#if isLastPage}}disabled{{/if}}">
+      <a href="/PanelPacientes?page={{increment currentPage}}" class="page-link">></a>
+    </li>
+    <li class="page-item {{#if isLastPage}}disabled{{/if}}">
+      <a href="/PanelPacientes?page={{increment currentPage 10}}" class="page-link">>></a>
+    </li>
+  </ul>
+</nav>
+{{/unless}}
