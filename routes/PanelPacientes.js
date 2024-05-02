@@ -8,6 +8,9 @@ module.exports = async (req, res) => {
   var page = req.query.page;
   var ingles = false
   console.log(Idioma)
+
+
+
   if (Idioma == "en-US"){
     ingles = true;
   }
@@ -23,32 +26,54 @@ module.exports = async (req, res) => {
       TotalPaginas.push(i + 1);
     }
     var PaginaActual= pacientes.page;
-    console.log(PaginaActual)
  
     res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, PaginaActual, Filtro, TotalPaginas, ingles });
-  } else if (page != undefined) {
+  } else if (page != undefined && page >= 1) {
+
+   var pacientes01 = await Paciente.paginate({}, { page, limit: 10 });
+
+
+
+  if( page > pacientes01.totalPages ){
+    page =pacientes01.totalPages
+  
+    
+  }
+
+
     // Si se especifica una página, muestra esa página
     const pacientes = await Paciente.paginate({}, { page, limit: 10 });
     const FiltroPaginado = false;
     const Filtro = "ninguno";
-
+ 
     var PaginaActual= pacientes.page;
 
-   
-      var TotalPaginas = [];
-      for (var i = PaginaActual - 1; i < pacientes.totalPages; i++) {
-          TotalPaginas.push(i + 1);
-      }
-  
-    
-    
+
+    var PaginaActual = pacientes.page;
+    var TotalPaginas = [];
     
 
 
-    console.log(pacientes)
 
-    res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes,PaginaActual, FiltroPaginado, Filtro, TotalPaginas, ingles });
+    if ((pacientes.totalPages - PaginaActual) >= 10) {
+        // Si hay 10 o más páginas después de la página actual, empieza desde la página actual
+        for (var i = PaginaActual - 1; i < PaginaActual - 1 + 10; i++) {
+            TotalPaginas.push(i + 1);
+        }
+    } else {
+        // Si hay menos de 10 páginas después de la página actual, empieza más atrás para asegurar 10 páginas en total
+        var inicio = Math.max(0, pacientes.totalPages - 10); // Asegúrate de no ir a un índice negativo
+        for (var i = inicio; i < pacientes.totalPages; i++) {
+            TotalPaginas.push(i + 1);
+        }
+    }
+    
+        
+
+    
+        res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes,PaginaActual, FiltroPaginado, Filtro, TotalPaginas, ingles });
   }
+
 
 
 

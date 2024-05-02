@@ -57,18 +57,18 @@ router.post('/registrarpaciente', async function (req, res, next) {
       if (error) {
         return res.send(`<script>alert("Error de validación: ${error.details.map(x => x.message).join(', ')}"); window.location.href="/form";</script>`);
       }
-      let contador = await paciente.countDocuments();
+      let contador = await paciente.countDocuments();  // Obtiene el número de documentos y lo almacena en contador
 
       function generarId() {
-        contador++;
+        contador++;  // Incrementa contador en 1
         if (contador > 999999) {
-          contador = 1;
+          contador = 1;  // Restablece contador si supera 999999
         }
-        const idStr = contador.toString().padStart(6, '0');
-        const idReordenado = idStr.replace(/^0+/, '') + idStr.match(/^0+/)[0];
-        const idNum = Number(idReordenado);
-        return idNum;
+        return contador.toString().padStart(6, '0');  // Convierte contador a string y rellena con ceros hasta tener 6 dígitos
       }
+
+      
+      
 
       const nuevoId = generarId();
       console.log(nuevoId);

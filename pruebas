@@ -277,13 +277,10 @@
 
 <br>
 
-
+{{FiltroPaginado}}
 {{#unless (Falso FiltroPaginado)}}
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-
-
-    
     <li class="page-item">
 <a href="/PanelPacientes?page={{restar this.pacientes.page 10}}" class="page-link" id="nextPage">
     <i class="fa fa-angle-double-left" style="font-size:20px"></i>
@@ -301,7 +298,7 @@
     </li>
     {{/each}}
       <li class="page-item">
-      <a class="page-link"href="/PanelPacientes?page={{sumar this.pacientes.page 1}}"  id="nextPage">Next</a>
+      <a class="page-link"href="/PanelPacientes?page={{this.pacientes.nextPage}}"  id="nextPage">Next</a>
     </li>
 
        <li class="page-item">
@@ -316,25 +313,39 @@
 {{#unless (Verdad FiltroPaginado)}}
 <nav aria-label="Page navigation example">
 
+
   <ul class="pagination justify-content-center">
-    {{#each TotalPaginas}}
-    {{#if (not (eq ../Filtro "Folio"))}}
+
+
+
+   
+
+       {{#if (not (eq ../Filtro "Folio"))}}
     {{#if (not (eq ../Filtro "Nombre"))}}
         {{#if (not (eq ../Filtro "HIPERMETROPIA"))}}
     {{#if (not (eq ../Filtro "EMETROPE"))}}
     {{#if (not (eq ../Filtro "MIOPIA"))}}
 
+    {{#each (limit TotalPaginas 10)}}
+ 
+
+
+
+
     <li class="page-item">
       <a href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
         class="page-link">{{this}}</a>
     </li>
-    {{/if}}
+
+
+    {{/each}}
+
+        {{/if}}
     {{/if}}
         {{/if}}
     {{/if}}
     {{/if}}
-
-    {{/each}}
+   
   </ul>
 </nav>
 {{/unless}}
@@ -344,19 +355,7 @@
 <nav aria-label="Page navigation example">
 
   <ul class="pagination justify-content-center">
- 
-    <li class="page-item">
-<a href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{restar this.pacientes.page 10}}&amp;consulta={{this.consulta}}" class="page-link" id="nextPage">
-    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
-</a>
-
-</i>
-
-    </li>
-     <li class="page-item">
-      <a  href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{this.pacientes.prevPage}}&amp;consulta={{this.consulta}}" class="page-link" href="#"  id="nextPage">Back</a>
-    </li>
-
+   
 
     {{#each (limit TotalPaginas 10)}}
     {{#if (eq ../Filtro "Nombre")}}
@@ -390,15 +389,12 @@
         id="sendMessageButton" class="page-link">{{this}}</a></li>
     {{/if}}
     {{/each}}
-     <li class="page-item">
-      <a class="page-link" href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{sumar this.pacientes.page 1}}&amp;consulta={{this.consulta}}"  id="nextPage">Next</a>
-    </li>
 
-       <li class="page-item">
-      <a  href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{sumar this.pacientes.page 10}}&amp;consulta={{this.consulta}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
-</i>
-</a>
-    </li>
+
+   
+
+
+  </ul>
 </nav>
 {{/unless}}
 

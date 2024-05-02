@@ -100,7 +100,7 @@ module.exports = async (req, res) => {
         for (i = 0; i < pacientes.totalPages; i++) {
           TotalPaginas.push(i + 1);
         }
-  console.log(pacientes)
+  //console.log(pacientes)
         res.render('PanelPacientes',{pacientes,Logeado, role, FiltroPaginado,Filtro,consulta,TotalPaginas})
 
     }
@@ -132,13 +132,40 @@ module.exports = async (req, res) => {
 
         if(Filtro ==="Nombre"){
           try {
+            var pacientes01 = await Paciente.paginate({NombreCompleto:{$regex:consulta, $options: 'i' }},{page,limit:10}) 
+
+
+            if( page > pacientes01.totalPages ){
+              page =pacientes01.totalPages
+            
+              
+            }
+          
 
             const pacientes = await Paciente.paginate({NombreCompleto:{$regex:consulta, $options: 'i' }},{page,limit:10}) 
+            //console.log("Pacientes paginado", pacientes)
             const FiltroPaginado = true;
             var TotalPaginas = [];
+            var PaginaActual= pacientes.page;
+
+            /*
             for (i = 0; i < pacientes.totalPages; i++) {
               TotalPaginas.push(i + 1);
             }
+            */
+            if ((pacientes.totalPages - PaginaActual) >= 10) {
+              // Si hay 10 o más páginas después de la página actual, empieza desde la página actual
+              for (var i = PaginaActual - 1; i < PaginaActual - 1 + 10; i++) {
+                  TotalPaginas.push(i + 1);
+              }
+          } else {
+              // Si hay menos de 10 páginas después de la página actual, empieza más atrás para asegurar 10 páginas en total
+              var inicio = Math.max(0, pacientes.totalPages - 10); // Asegúrate de no ir a un índice negativo
+              for (var i = inicio; i < pacientes.totalPages; i++) {
+                  TotalPaginas.push(i + 1);
+              }
+          }
+
             res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
 
           }catch(err){
@@ -149,13 +176,39 @@ module.exports = async (req, res) => {
         }
         if(Filtro ==="Folio"){
           try {
+            var pacientes01 = await Paciente.paginate({NombreCompleto:{$regex:consulta, $options: 'i' }},{page,limit:10}) 
+
+
+
+            if( page > pacientes01.totalPages ){
+              page =pacientes01.totalPages
+            
+              
+            }
+          
 
             const pacientes = await Paciente.paginate({Folio:{$regex:consulta}},{page,limit:10}) 
             const FiltroPaginado = true;
             var TotalPaginas = [];
+            var PaginaActual= pacientes.page;
+
+            /*
             for (i = 0; i < pacientes.totalPages; i++) {
               TotalPaginas.push(i + 1);
             }
+            */
+            if ((pacientes.totalPages - PaginaActual) >= 10) {
+              // Si hay 10 o más páginas después de la página actual, empieza desde la página actual
+              for (var i = PaginaActual - 1; i < PaginaActual - 1 + 10; i++) {
+                  TotalPaginas.push(i + 1);
+              }
+          } else {
+              // Si hay menos de 10 páginas después de la página actual, empieza más atrás para asegurar 10 páginas en total
+              var inicio = Math.max(0, pacientes.totalPages - 10); // Asegúrate de no ir a un índice negativo
+              for (var i = inicio; i < pacientes.totalPages; i++) {
+                  TotalPaginas.push(i + 1);
+              }
+          }
             res.render('PanelPacientes',{pacientes,Logeado, role,FiltroPaginado,Filtro,consulta,TotalPaginas})
 
           }catch(err){

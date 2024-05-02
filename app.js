@@ -68,7 +68,10 @@ app.use(fileUpload());
 // HBS helpers
 hbs.registerPartials(__dirname + "/views/partials");
 hbs.registerHelper('sumar', (value1, value2) => value1 + value2);
-hbs.registerHelper('restar', (value1, value2) => value1 - value2);
+hbs.registerHelper('restar', (value1, value2) => {
+  const resultado = value1 - value2;
+  return resultado > 0 ? resultado : 1;
+});
 
 hbs.registerHelper('admin', function(value) {
   return value !== 'admin';
