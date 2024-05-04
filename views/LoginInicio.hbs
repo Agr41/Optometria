@@ -1,34 +1,24 @@
+
 <style>
     body {
         background-image: url("../images/LogFondo.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .login-container {
-        border: 2px solid #000;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.5); /* Blanco con 80% de opacidad */
-        width: 50%; /* Ajusta este valor para cambiar el tamaño del contenedor */
-        max-width: 800px; /* Ajusta este valor para establecer un ancho máximo */
-    }
 </style>
-<div class="d-flex justify-content-center align-items-center0"> <h1 style="margin-top: 50px;">Inicio de sesion</h1></div>
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <div class="login-container">
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="border border-dark p-4 rounded bg-white bg-opacity-50" style="width: 50%; max-width: 800px;">
+        <h1 class="mb-3">Inicio de sesión</h1>
         <form action="/LoginUsuario" method="POST">
             <div class="mb-3">
-                <input type="email" class="form-control" placeholder="Correo" name="username"
-                    aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                <input type="email" class="form-control" placeholder="Correo" name="username" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Contraseña"
-                    aria-label="Username" aria-describedby="basic-addon1" name="password" required>
+                <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn " style="background-color: #12372A; color: white;">
-                    Iniciar sesión
-                </button>
+                <button type="submit" class="btn btn-primary fs-5" style="background-color: #12372A;">Iniciar sesión</button>
             </div>
             {{#if error}}
             <p class="text-danger">Usuario o contraseña incorrectos</p>
