@@ -75,7 +75,6 @@ try{
 
 
     var usuarios01 = await User.paginate(query,options) 
-console.log(usuarios01.totalPages)
 
 
     if( page >= usuarios01.totalPages ){
