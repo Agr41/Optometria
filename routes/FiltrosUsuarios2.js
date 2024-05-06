@@ -24,8 +24,20 @@ module.exports = async (req, res) => {
                     throw new Error('Caracteres no permitidos');
                   }
       
-           
-            const usuarios = await User.paginate({username:{$regex:req.body.busqueda, $options: 'i' }},{page:1,limit:10}) 
+                  const query = {
+                    $and: [
+                        { username: { $ne: req.session.username } }, // Exclude the current user's username
+                        { username: { $regex: req.body.busqueda, $options: 'i' } } // Search case-insensitively in username
+                    ]
+                };
+        
+                const options = {
+                    page: 1,
+                    limit: 10,
+                };
+        
+                const usuarios = await User.paginate(query, options);
+        
             const FiltroPaginado = true;
             const consulta = req.body.busqueda;
             var TotalPaginas = [];
@@ -49,16 +61,45 @@ module.exports = async (req, res) => {
         if(Filtro ==="Nombre"){
 try{
 
+    const query = {
+        $and: [
+            { username: { $ne: req.session.username } }, // Exclude the current user's username
+            { username: { $regex: consulta, $options: 'i' } } // Search case-insensitively in username
+        ]
+    };
 
-            var usuarios01 = await User.paginate({username:{$regex:consulta, $options: 'i' }},{page,limit:10}) 
-          console.log(usuarios01)
+    const options = {
+        page: page,
+        limit: 10,
+    };
 
-            if( page > usuarios01.totalPages ){
-              page =usuarios01.totalPages
-            
-              
-            }
-            const usuarios = await User.paginate({username:{$regex:consulta}},{page,limit:10}) 
+
+    var usuarios01 = await User.paginate(query,options) 
+console.log(usuarios01.totalPages)
+
+
+    if( page >= usuarios01.totalPages ){
+        page =usuarios01.totalPages
+      
+        
+      }
+   
+
+console.log("page: ",    page)
+
+const query2 = {
+    $and: [
+        { username: { $ne: req.session.username } }, // Exclude the current user's username
+        { username: { $regex: consulta, $options: 'i' } } // Search case-insensitively in username
+    ]
+};
+
+const options2 = {
+    page: page,
+    limit: 10,
+};
+
+            const usuarios = await User.paginate(query2,options2) 
             const FiltroPaginado = true;
 
 

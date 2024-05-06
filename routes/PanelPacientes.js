@@ -82,19 +82,3 @@ module.exports = async (req, res) => {
 
 
 
-
-/*
-    for (let j = 0; j < tests.length; j++) {
-      for (let i = 0; i < pacientes.docs.length; i++) {
-          const pacienteId = pacientes.docs[i]._id.toString(); // Convierte el _id del paciente a una cadena de texto
-          const testId = tests[j].id.toString(); // Convierte el id del test a una cadena de texto
-  console.log(pacienteId,testId)
-          if (pacienteId === testId) {
-              pacientes.docs[i].OD = tests[j].ODReni;
-              pacientes.docs[i].OI = tests[j].OIReni;
-          }
-      }
-  }
-  
-console.log(pacientes.docs)
-*/

@@ -5,6 +5,8 @@
 const User = require("../models/Usuarios.js");
 
 module.exports = async (req, res) => {
+
+  console.log("Username :" , req.session.username)
   var page = req.query.page;
   var ingles = false
   console.log(Idioma)
@@ -13,7 +15,7 @@ module.exports = async (req, res) => {
   }
   if (page === undefined) {
     // Si no se especifica la página, muestra la primera página por defecto
-    const usuarios = await User.paginate({}, { page: 1, limit: 10 });
+    const usuarios = await User.paginate({ username: { $ne: req.session.username }}, { page: 1, limit: 10 });
     const FiltroPaginado = false;
     const Filtro = "ninguno";
     //console.log(usuarios);
@@ -37,7 +39,7 @@ module.exports = async (req, res) => {
     
   }
     // Si se especifica una página, muestra esa página
-    const usuarios = await User.paginate({}, { page, limit: 10 });
+    const usuarios = await User.paginate({ username: { $ne: req.session.username }}, { page, limit: 10 });
     const FiltroPaginado = false;
     const Filtro = "ninguno";
 

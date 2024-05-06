@@ -8,7 +8,7 @@ if(role !== 'admin'){
 res.send(`<script>alert("¡No estas autorizado!"); window.location.href='/PanelUsuarios';</script>`)
 
 }else{
-
+    console.log(req.query)
     await User.deleteOne({username:req.query.Usuario})
     res.redirect('/PanelUsuarios')
 

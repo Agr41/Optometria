@@ -199,7 +199,9 @@
             <td>{{this.Nombre}}</td>
             <td>{{this.ApellidoPaterno}} {{this.ApellidoMaterno}}</td>
             <td>{{this.role}}</td>
-            <td><a href="/Borrar?Usuario={{this.username}}">Borrar</a></td>
+            <td>
+  <a href="#" class="borrar-link" onclick="confirmDeletion('{{this.username}}'); return false;">Borrar</a>
+</td> 
 
             <!--Agregar alerta-->
           </tr>
@@ -306,6 +308,25 @@
 
 {{/if}}
 
+
+<script>
+function confirmDeletion(id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, borrarlo!',
+        cancelButtonText: 'No, cancelar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/Borrar?Usuario=' + id;
+        }
+    });
+}
+</script>
 <script>
   function openPopup(id) {
     fetch(`/popup/${id}`)

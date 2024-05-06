@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
         const userSchemaJoi = Joi.object({
             username: Joi.string().email({ tlds: { allow: false } }).required()
                 .messages({
-                    'string.email': `El campo de correo debe ser un correo electrónico válido.`, // More friendly message
+                    'string.email': `El campo de correo debe ser un correo electrónico válido.`,
                     'string.empty': `El campo de correo no puede estar vacío.`,
                     'any.required': `El campo de correo es un campo obligatorio.`
                 }),
@@ -14,24 +14,24 @@ module.exports = async (req, res) => {
                 .messages({
                     'string.pattern.base': `El campo de contraseña debe tener entre 3 y 30 caracteres y solo puede contener letras y números.`,
                     'string.empty': `El campo de contraseña no puede estar vacío.`,
-                    'any.required': `El campo de  contraseña es un campo obligatorio.`
+                    'any.required': `El campo de contraseña es un campo obligatorio.`
                 }),
             role: Joi.string().required().messages({
                 'string.empty': `"role" no puede estar vacío.`,
                 'any.required': `"role" es un campo obligatorio.`
             }),
-            Nombre: Joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
-                'string.pattern.base': `El "Nombre" solo debe contener letras y espacios.`,
+            Nombre: Joi.string().regex(/^[a-zA-ZñÑ\s]+$/).required().messages({
+                'string.pattern.base': `El "Nombre" solo debe contener letras, espacios y la letra 'ñ'.`,
                 'string.empty': `El campo "Nombre" no debe estar vacío.`,
                 'any.required': `"Nombre" es un campo obligatorio.`
             }),
-            ApellidoPaterno: Joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
-                'string.pattern.base': `El "Apellido Paterno" solo debe contener letras y espacios.`,
+            ApellidoPaterno: Joi.string().regex(/^[a-zA-ZñÑ\s]+$/).required().messages({
+                'string.pattern.base': `El "Apellido Paterno" solo debe contener letras, espacios y la letra 'ñ'.`,
                 'string.empty': `El campo "Apellido Paterno" no debe estar vacío.`,
                 'any.required': `"Apellido Paterno" es un campo obligatorio.`
             }),
-            ApellidoMaterno: Joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
-                'string.pattern.base': `El "Apellido Materno" solo debe contener letras y espacios.`,
+            ApellidoMaterno: Joi.string().regex(/^[a-zA-ZñÑ\s]+$/).required().messages({
+                'string.pattern.base': `El "Apellido Materno" solo debe contener letras, espacios y la letra 'ñ'.`,
                 'string.empty': `El campo "Apellido Materno" no debe estar vacío.`,
                 'any.required': `"Apellido Materno" es un campo obligatorio.`
             }),
