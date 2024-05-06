@@ -1,24 +1,27 @@
+<!--
+     <li class="page-item">
+      <a class="page-link" href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{sumar this.usuarios.page 1}}&amp;consulta={{this.consulta}}"  id="nextPage">Next</a>
+    </li>
 
-{{#unless FiltroPaginado}}
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
-      <a href="/PanelPacientes?page={{decrement currentPage 10}}" class="page-link"><<</a>
+       <li class="page-item">
+      <a  href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{sumar this.usuarios.page 10}}&amp;consulta={{this.consulta}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+</i>
+</a>
     </li>
-    <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
-      <a href="/PanelPacientes?page={{decrement currentPage}}" class="page-link"><</a>
+
+-->
+<!--
+    
+    <li class="page-item">
+<a href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{restar this.usuarios.page 10}}&amp;consulta={{this.consulta}}" class="page-link" id="nextPage">
+    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+</a>
+
+</i>
+
     </li>
-    {{#paginate}}
-    <li class="page-item {{#if isCurrent}}active{{/if}}">
-      <a href="/PanelPacientes?page={{page}}" class="page-link">{{page}}</a>
+     <li class="page-item">
+      <a  href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{this.usuarios.prevPage}}&amp;consulta={{this.consulta}}" class="page-link" href="#"  id="nextPage">Back</a>
     </li>
-    {{/paginate}}
-    <li class="page-item {{#if isLastPage}}disabled{{/if}}">
-      <a href="/PanelPacientes?page={{increment currentPage}}" class="page-link">></a>
-    </li>
-    <li class="page-item {{#if isLastPage}}disabled{{/if}}">
-      <a href="/PanelPacientes?page={{increment currentPage 10}}" class="page-link">>></a>
-    </li>
-  </ul>
-</nav>
-{{/unless}}
+
+-->

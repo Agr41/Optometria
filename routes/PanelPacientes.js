@@ -82,15 +82,6 @@ module.exports = async (req, res) => {
 
 
 
-/*
- if(page === 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 ){
-      var TotalPaginas = [];
-      for (i = 0; i < pacientes.totalPages; i++) {
-        TotalPaginas.push(i + 1);
-      }
-    }
-*/
-
 
 /*
     for (let j = 0; j < tests.length; j++) {
