@@ -20,11 +20,11 @@ const paciente = require('../models/pacientes');
 router.post('/registrarpaciente', async function (req, res, next) {
   console.log(req.body);
   const pacienteValidationSchema = Joi.object({
-    Nombre: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)).messages({
+    Nombre: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜäÄöÖ\s]+$/)).messages({
       "string.empty": "El nombre no puede estar vacío.",
       "string.pattern.base": "El nombre sólo puede contener letras y espacios."
     }),
-    ApellidoPaterno: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)).messages({
+    ApellidoPaterno: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜäÄöÖ\s]+$/)).messages({
       "string.empty": "El apellido no puede estar vacío.",
       "string.pattern.base": "El apellido sólo puede contener letras y espacios."
     }),
@@ -38,7 +38,7 @@ router.post('/registrarpaciente', async function (req, res, next) {
     }),
     sexo: Joi.string().required().valid('M', 'F', 'Otro').messages({
       "string.empty": "El campo sexo no puede estar vacío.",
-      "any.only": "Sexo debe ser 'Masculino', 'Femenino u 'Otro'."
+      "any.only": "Sexo debe ser 'Masculino', 'Femenino' o 'Otro'."
     }),
     Edad: Joi.string().required().pattern(/^\d+$/).messages({
       "string.empty": "La edad no puede estar vacía.",
