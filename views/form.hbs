@@ -1,5 +1,4 @@
 {{#if ingles}}
-{{> navbar_en}}
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
@@ -49,7 +48,7 @@
                   <!--
                   <option for="" class="form-check-label" value="Oficinista">Oficinista</option>-->
                   <option for="" class="form-check-label" value="Otro">Other</option>
-<!--
+                  <!--
                   <option for="" class="form-check-label" value="Industria">Industria</option>
                   -->
 
@@ -82,7 +81,8 @@
                 </div>
                 <div class="col-sm-12">
                   <label class="form-label">Age:</label>
-                  <input type="number" name="Edad" id="" class="form-control" min="0" max="120" style="width: 20%;" required> 
+                  <input type="number" name="Edad" id="" class="form-control" min="0" max="120" style="width: 20%;"
+                    required>
                 </div>
                 {{!-- ESTO SE DEBE VOLVER A AGREGAR CUANDO SOLUCIONEMOS TODO
                 <div class="col-sm-12">
@@ -92,11 +92,11 @@
                 <div class="col-sm-12">
                   <label class="form-label">Uso de lentes</label>
                   <select name="" id="" class="form-select">
-                  <option for="" class="form-check-label" value="Siempre">Siempte</option>
-                  <option for="" class="form-check-label" value="Para ver de lejos">Para ver de lejos</option>
-                  <option for="" class="form-check-label" value="Para ver de cerca">Para ver de cerca</option>
-                  <option for="" class="form-check-label" value="Nunca">Nunca</option>
-                </select>
+                    <option for="" class="form-check-label" value="Siempre">Siempte</option>
+                    <option for="" class="form-check-label" value="Para ver de lejos">Para ver de lejos</option>
+                    <option for="" class="form-check-label" value="Para ver de cerca">Para ver de cerca</option>
+                    <option for="" class="form-check-label" value="Nunca">Nunca</option>
+                  </select>
                 </div>
               </div> --}}
 
@@ -114,14 +114,23 @@
 </div>
 </body>
 {{else}}
-{{> navbar}}
+
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-<div class="col-lg-8 mx-auto p-4 py-md-5">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+      <!-- Sidebar -->
+      {{> sidebar}}
+    </div>
+
+    <div class="col-sm-12 col-md-9   col-lg-10 px-0">
+      <!-- Contenido de la derecha -->
+      <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
     Optometría UAL
   </header>
 
-  <body class="d-flex flex-column min-vh-100">
 
 
     <main>
@@ -151,42 +160,42 @@
                   <label class="form-label">Localidad:</label>
                   <input type="text" name="ciudad" id="" class="form-control" required>
                 </div>
-                 <div class="col-sm-6">
-                <label class="form-label">Ocupación:</label>
-                <select name="ocupacion" id="" class="form-select  "required>
-                  <option for="" class="form-check-label" value="Ama De Casa">Ama de casa</option>
-                  <option for="" class="form-check-label" value="Estudiante">Estudiante</option>
-                  <option for="" class="form-check-label" value="Administrativo">Administrativo</option>
-                  <option for="" class="form-check-label" value="Conductor">Chofer</option>
-                  <option for="" class="form-check-label" value="Agricultura">Agricultor</option>
-                  <option for="" class="form-check-label" value="Jubilado">Jubilado</option>
+                <div class="col-sm-6">
+                  <label class="form-label">Ocupación:</label>
+                  <select name="ocupacion" id="" class="form-select  " required>
+                    <option for="" class="form-check-label" value="Ama De Casa">Ama de casa</option>
+                    <option for="" class="form-check-label" value="Estudiante">Estudiante</option>
+                    <option for="" class="form-check-label" value="Administrativo">Administrativo</option>
+                    <option for="" class="form-check-label" value="Conductor">Chofer</option>
+                    <option for="" class="form-check-label" value="Agricultura">Agricultor</option>
+                    <option for="" class="form-check-label" value="Jubilado">Jubilado</option>
 
-                  <!--
+                    <!--
                   <option for="" class="form-check-label" value="Oficinista">Oficinista</option>-->
-                  <option for="" class="form-check-label" value="Otro">Otro</option>
-<!--
+                    <option for="" class="form-check-label" value="Otro">Otro</option>
+                    <!--
                   <option for="" class="form-check-label" value="Industria">Industria</option>
                   -->
 
-                </select>
+                  </select>
 
-                 </div>
+                </div>
                 <div class="col-sm-6">
-                <label>Sexo:</label>
+                  <label>Sexo:</label>
 
-                <div class="sexou" class="form-check" class="sexou">
-                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="F" checked>
-                  <label class="form-check-label" for="flexRadioDefault2">Femenino</label>
-                </div>
-                <div class="sexou" class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
-                  <label class="form-check-label" for="flexRadioDefault1">Masculino</label>
-                </div>
-                </div>
-                  <div class="col-sm-6">
-<label class="form-label">Edad:</label>
-                  <input type="number" name="Edad" id="" class="form-control" class="edad" min="0" max="120"  required> 
+                  <div class="sexou" class="form-check" class="sexou">
+                    <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="F" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">Femenino</label>
                   </div>
+                  <div class="sexou" class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M">
+                    <label class="form-check-label" for="flexRadioDefault1">Masculino</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Edad:</label>
+                  <input type="number" name="Edad" id="" class="form-control" class="edad" min="0" max="120" required>
+                </div>
                 <!--
                 <div class="input-group">
 
@@ -200,10 +209,10 @@
 
                 </div>
                 -->
-               
-                
 
-              
+
+
+
                 {{!-- ESTO SE DEBE VOLVER A AGREGAR CUANDO SOLUCIONEMOS TODO
                 <div class="col-sm-12">
                   <label class="form-label">Razón de la visita</label>
@@ -212,29 +221,32 @@
                 <div class="col-sm-12">
                   <label class="form-label">Uso de lentes</label>
                   <select name="" id="" class="form-select">
-                  <option for="" class="form-check-label" value="Siempre">Siempte</option>
-                  <option for="" class="form-check-label" value="Para ver de lejos">Para ver de lejos</option>
-                  <option for="" class="form-check-label" value="Para ver de cerca">Para ver de cerca</option>
-                  <option for="" class="form-check-label" value="Nunca">Nunca</option>
-                </select>
+                    <option for="" class="form-check-label" value="Siempre">Siempte</option>
+                    <option for="" class="form-check-label" value="Para ver de lejos">Para ver de lejos</option>
+                    <option for="" class="form-check-label" value="Para ver de cerca">Para ver de cerca</option>
+                    <option for="" class="form-check-label" value="Nunca">Nunca</option>
+                  </select>
                 </div>
               </div> --}}
               <input type="hidden" value="salir" id="selectorPagina" name="selectorPagina">
-<div class="col-sm-12">
-<div class="row">
-    <div class="col-sm-4">
-      <button type="submit" class="btn  btn-block text-light" id="btnSalir"  style="background-color: #12372A; ">Guardar y salir</button>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn  btn-block text-light" id="btnTamizaje"  style="background-color: #12372A; "> Guardar e ir a Tamizaje</button>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-block text-light" id="btnClinica"   style="background-color: #12372A; ">Guardar e ir a Clínica</button>
-    </div>
-  </div>
-  
-  
-</div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn  btn-block text-light" id="btnSalir"
+                      style="background-color: #12372A; ">Guardar y salir</button>
+                  </div>
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn  btn-block text-light" id="btnTamizaje"
+                      style="background-color: #12372A; "> Guardar e ir a Tamizaje</button>
+                  </div>
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn btn-block text-light" id="btnClinica"
+                      style="background-color: #12372A; ">Guardar e ir a Clínica</button>
+                  </div>
+                </div>
+
+
+              </div>
             </form>
 
           </div>
@@ -245,67 +257,84 @@
     </main>
 
 </div>
-</body>
+      <div class="content p-3">
+
+        <body class="d-flex flex-column min-vh-100">
+          <main>
+            <!-- Contenido del main -->
+          </main>
+        </body>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const btnSalir = document.getElementById('btnSalir');
-  const btnTamizaje = document.getElementById('btnTamizaje');
-  const btnClinica = document.getElementById('btnClinica');
-  const selectorPagina = document.getElementById('selectorPagina');
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnSalir = document.getElementById('btnSalir');
+    const btnTamizaje = document.getElementById('btnTamizaje');
+    const btnClinica = document.getElementById('btnClinica');
+    const selectorPagina = document.getElementById('selectorPagina');
 
-  btnSalir.addEventListener('mouseover', function() {
-    selectorPagina.value = 'salir';
-  });
+    btnSalir.addEventListener('mouseover', function () {
+      selectorPagina.value = 'salir';
+    });
 
-  btnTamizaje.addEventListener('mouseover', function() {
-    selectorPagina.value = 'tamizaje';
-  });
+    btnTamizaje.addEventListener('mouseover', function () {
+      selectorPagina.value = 'tamizaje';
+    });
 
-  btnClinica.addEventListener('mouseover', function() {
-    selectorPagina.value = 'clinica';
-  });
-  btnSalir.addEventListener('touchstart', function() {
-    selectorPagina.value = 'salir';
-  });
+    btnClinica.addEventListener('mouseover', function () {
+      selectorPagina.value = 'clinica';
+    });
+    btnSalir.addEventListener('touchstart', function () {
+      selectorPagina.value = 'salir';
+    });
 
-  btnTamizaje.addEventListener('touchstart', function() {
-    selectorPagina.value = 'tamizaje';
-  });
+    btnTamizaje.addEventListener('touchstart', function () {
+      selectorPagina.value = 'tamizaje';
+    });
 
-  btnClinica.addEventListener('touchstart', function() {
-    selectorPagina.value = 'clinica';
+    btnClinica.addEventListener('touchstart', function () {
+      selectorPagina.value = 'clinica';
+    });
   });
-});
 
 </script>
 {{/if}}
- <script>
-    // Obtener una referencia al input ExmVista y al checkbox
-    const inputExmVista = document.getElementById('ExmVista');
-    const checkbox = document.querySelector('.form-check-input');
+<script>
+  // Obtener una referencia al input ExmVista y al checkbox
+  const inputExmVista = document.getElementById('ExmVista');
+  const checkbox = document.querySelector('.form-check-input');
 
-    // Agregar un evento para escuchar cuando se escriba en el input ExmVista
-    inputExmVista.addEventListener('input', function () {
-      // Desmarcar el checkbox cuando se escriba algo en el input
-      checkbox.checked = false;
-    });
-  </script>
-  <style>
-        .sexou {
-          width: auto;
-        }
-        @media (max-width: 575px) {
-  .col-sm-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
+  // Agregar un evento para escuchar cuando se escriba en el input ExmVista
+  inputExmVista.addEventListener('input', function () {
+    // Desmarcar el checkbox cuando se escriba algo en el input
+    checkbox.checked = false;
+  });
+</script>
+<style>
+  .sexou {
+    width: auto;
   }
-  .btn-block {
-    margin-bottom: 10px;
-    width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
+
+  @media (max-width: 575px) {
+    .col-sm-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-block {
+      margin-bottom: 10px;
+      width: 100%;
+      /* Asegura que todos los botones tengan el mismo tamaño */
+    }
   }
-}
-      </style>
-  
+</style>
+
 {{> footer}}
