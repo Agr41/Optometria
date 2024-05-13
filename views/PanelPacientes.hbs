@@ -412,10 +412,13 @@ function confirmDeletion(id) {
         text: "¡No podrás revertir esto!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#28a745',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, borrarlo!',
-        cancelButtonText: 'No, cancelar!'
+        confirmButtonText: 'Borrar',
+        cancelButtonText: 'Cancelar',
+         customClass: {
+            confirmButton: 'green-text'  // Aplica la clase al texto del botón
+        }
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "/BorrarPacientes?id=" + id;
@@ -609,6 +612,9 @@ function confirmDeletion(id) {
     .borrar-link:hover {
         background-color: #e35151; /* Cambia el color de fondo en hover (tono más claro) */
     }
+    .green-text {
+    color: #0BE02A;  /* Verde */
+}
 </style>
 
 <style>
