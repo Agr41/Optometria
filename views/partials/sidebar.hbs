@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
 <style>
   .mb-1:hover{
 
@@ -19,7 +19,7 @@
   </a>
   <ul class="list-unstyled ps-0">
     <li>
-      <a class="nav-link active fs-3 fw-bold" aria-current="page" href="/HomeSessions">
+      <a class="nav-link active fw-bold" aria-current="page" href="/HomeSessions">
           <span class="material-symbols-outlined">
                                                 Home
                                             </span>
@@ -41,14 +41,14 @@
                                             Ver Paciente
       </button>
     </li>
-    <li class="mb-1">
+{{!--     <li class="mb-1">
     
       <button onclick="window.location.href = '/test'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
         
    <i class="bi bi-1-circle"></i>
                                            Tamizaje
       </button>
-    </li>
+    </li> --}}
     <li class="mb-1">
       <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
        
@@ -89,14 +89,24 @@ manage_accounts
         </ul>
       </div>
     </li>
-    <li>
+  <i class="bi bi-1-circle"></i>
+  <li>
+    <!-- Botón de cierre de sesión -->
+      <a class="nav-link active fw-bold ms-3" aria-current="page" href="/logout">
+        <span class="material-symbols-outlined">logout</span>Cerrar Sesión
+      </a>
+  </li>
+
+  <li class="border-top my-3"></li>
+
+      <li>
       <div class="d-flex align-items-center ms-auto">
       <!-- Formulario de cambio de idioma -->
      <form id="languageForm" method="POST" action="/cambiarIdioma" class="d-flex">
         <div class="row g-3 align-items-center">
           <input type="hidden" name="username" value="{{user}}">
           <div class="col-auto">
-            <span class="material-symbols-outlined d-flex text-light">Language</span>
+            <span class="material-symbols-outlined d-flex">Language</span>
           </div>
           <div class="col-auto">
             <select name="language" id="role" class="form-select" onchange="this.form.submit()">
@@ -108,11 +118,5 @@ manage_accounts
       </form>
     </div>
     </li>
-  <li>
-    <!-- Botón de cierre de sesión -->
-      <a class="nav-link active fs-3 fw-bold ms-3" aria-current="page" href="/logout">
-        <span class="material-symbols-outlined">logout</span>Cerrar Sesión
-      </a>
-  </li>
   </ul>
 </div>
