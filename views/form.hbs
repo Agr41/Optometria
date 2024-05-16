@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+
+
     UAL Optometry
   </header>
 
@@ -128,6 +130,15 @@
       <!-- Contenido de la derecha -->
       <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+
+        <title>Place Autocomplete</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGpTVUMA4JGezn2nRijhpg1hr6H25DH18&libraries=places&callback=initAutocomplete" async defer></script>
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('ciudad');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+    </script>
     Optometría UAL
   </header>
 
@@ -156,10 +167,10 @@
                   <input type="text" name="ApellidoMaterno" id="" class="form-control" required>
                 </div>
                 -->
-                <div class="col-sm-6">
-                  <label class="form-label">Localidad:</label>
-                  <input type="text" name="ciudad" id="" class="form-control" required>
-                </div>
+             <div class="col-sm-12">
+        <label class="form-label">Localidad:</label>
+        <input type="text" name="ciudad" id="ciudad" class="form-control" required>
+    </div>
                 <div class="col-sm-6">
                   <label class="form-label">Ocupación:</label>
                   <select name="ocupacion" id="" class="form-select  " required>

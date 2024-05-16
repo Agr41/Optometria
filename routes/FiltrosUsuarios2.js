@@ -15,9 +15,9 @@ module.exports = async (req, res) => {
 
 
                 const schema = Joi.object({
-                    busqueda: Joi.string().regex(/^[a-zA-Z0-9\s]*$/).required()
+                    busqueda: Joi.string().regex(/^[a-zA-Z0-9@\s]*$/).required()
                   });
-              
+                  
                   // Paso 3: Validar
                   const { error, value } = schema.validate({ busqueda: req.body.busqueda });
                   if (error) {

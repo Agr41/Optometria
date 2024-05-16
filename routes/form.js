@@ -20,18 +20,21 @@ const paciente = require('../models/pacientes');
 router.post('/registrarpaciente', async function (req, res, next) {
   console.log(req.body);
   const pacienteValidationSchema = Joi.object({
-    Nombre: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜäÄöÖ\s]+$/)).messages({
+    Nombre: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜäÄöÖ\-.\s]+$/)).messages({
       "string.empty": "El nombre no puede estar vacío.",
-      "string.pattern.base": "El nombre sólo puede contener letras y espacios."
+      "string.pattern.base": "El nombre sólo puede contener letras, espacios, guiones y puntos."
     }),
+    
     ApellidoPaterno: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜäÄöÖ\s]+$/)).messages({
       "string.empty": "El apellido no puede estar vacío.",
       "string.pattern.base": "El apellido sólo puede contener letras y espacios."
     }),
-    ciudad: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)).messages({
+    ciudad: Joi.string().required().pattern(new RegExp(/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑü,.\-\s]+$/)).messages({
       "string.empty": "La ciudad no puede estar vacía.",
-      "string.pattern.base": "La ciudad sólo puede contener letras y espacios."
+      "string.pattern.base": "La ciudad sólo puede contener letras, números, espacios, comas, puntos, guiones y diéresis."
     }),
+    
+    
     ocupacion: Joi.string().required().pattern(new RegExp(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)).messages({
       "string.empty": "La ocupación no puede estar vacía.",
       "string.pattern.base": "La ocupación sólo puede contener letras y espacios."
