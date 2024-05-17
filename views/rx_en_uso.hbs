@@ -70,33 +70,33 @@
                       </tr>
                       <td>Esfera</td>
 
-                      <td> <input type="number" name="CamposDeFormulario[esferaOD]" class="form-control" min="-1" max="1"
+                      <td> <input type="number" name="CamposDeFormulario[esferaOD]" class="form-control" min="-30" max="20"
                           step="0.25"></td>
 
 
 
 
                       <td>
-                        <input type="number" name="CamposDeFormulario[esferaOI]" class="form-control" min="-1" max="1"
+                        <input type="number" name="CamposDeFormulario[esferaOI]" class="form-control" min="-30" max="20"
                           step="0.25">
                       </td>
                       <tr></tr>
                       <td>Cilindro</td>
                       <td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
-                        <input type="number" name="CamposDeFormulario[cilindroOD]" class="form-control" min="-1" max="1"
+                        <input type="number" name="CamposDeFormulario[cilindroOD]" class="form-control" min="-10" max="0"
                           step="0.25">
                       </td>
                       <td>
-                        <input type="number" name="CamposDeFormulario[cilindroOI]" class="form-control" min="-1" max="1"
+                        <input type="number" name="CamposDeFormulario[cilindroOI]" class="form-control" min="-10" max="0"
                           step="0.25">
                       </td>
                       <tr></tr>
                       <td>Eje</td>
                       <td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
-                        <input type="number" name="CamposDeFormulario[ejeOD]" class="form-control" min="0" step="1">
+                        <input type="number" name="CamposDeFormulario[ejeOD]" class="form-control" min="0" step="180">
                       </td>
                       <td>
-                        <input type="number" name="CamposDeFormulario[ejeOI]" class="form-control" min="0" step="1">
+                        <input type="number" name="CamposDeFormulario[ejeOI]" class="form-control" min="0" step="180">
                       </td>
                       <tr></tr>
                       <td>Base</td>
@@ -128,17 +128,17 @@
                     <div class="container">
                       <div class="row">
                         <div class="col">
-                          <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[dip]" id="dip">
+                          <input type="number" min="20" step="75" class="form-control" name="CamposDeFormulario[dip]" id="dip">
                         </div>
                         /
                         <div class="col">
-                          <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[dip-2]" readonly id="dip-2">
+                          <input type="number" min="20" step="75" class="form-control" name="CamposDeFormulario[dip-2]" readonly id="dip-2">
                         </div>
                       </div>
                     </div>
                     <br>
                     <label for="">ADICION </label>
-                    <input type="number" class="form-control" name="CamposDeFormulario[adicion]" min="1" max="3" step="0.25">
+                    <input type="number" class="form-control" name="CamposDeFormulario[adicion]" min=".5" max="3.5" step="0.25">
 
                     <script>
                       // Assuming you have a variable or element with the ID "dip"
@@ -184,7 +184,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="CamposDeFormulario[Hipertension]"> Sí/No
+                                aria-label="Checkbox for following text input" name="CamposDeFormulario[Hipertension]"> Sí
                             </div>
 
                           </div>
@@ -219,7 +219,7 @@
                           <div class="input-group mb-3">
                             <div class="input-group-text">
                               <input class="form-check-input mt-0" type="checkbox" value="true"
-                                aria-label="Checkbox for following text input" name="CamposDeFormulario[Glucosa]"> Sí/No
+                                aria-label="Checkbox for following text input" name="CamposDeFormulario[Glucosa]"> Sí
                             </div>
 
                           </div>
@@ -227,7 +227,7 @@
 
                         <div class="col-md-9">
                           <label for="">Medición de la glucosa</label>
-                          <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[medGlucosa]">
+                          <input type="number" min="0" step="1000" class="form-control" name="CamposDeFormulario[medGlucosa]">
                         </div>
                       </div>
                     </div>
