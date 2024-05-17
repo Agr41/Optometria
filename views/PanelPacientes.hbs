@@ -157,7 +157,16 @@
 
 {{else}}
 
+
+{{!-- Español --}}
 <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+            <!-- Sidebar -->
+            {{> sidebar}}
+        </div>
+
+<div class="col-sm-12 col-md-9   col-lg-10 px-0">
 <section id="PanelPacientes">
 <br>
   <h1 class="text-center hola">Panel de pacientes</h1> 
@@ -403,7 +412,8 @@
 {{/unless}}
 
 {{/if}}
-
+{{>footer}}
+</div>
 
 <script>
 function confirmDeletion(id) {
@@ -645,4 +655,3 @@ function confirmDeletion(id) {
 
 </style>
 
-{{>footer}}

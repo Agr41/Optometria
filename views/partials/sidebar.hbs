@@ -1,122 +1,137 @@
+<html lang="es">
 
+<head>
+  <!-- Add Bootstrap 5 and Handlebars libraries to your project -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add your custom styles -->
+  <style>
+    /* Add hover effect for mb-1 class */
+    .mb-1:hover {
+      background-color: #f0f0f0;
+    }
 
-<style>
-  .mb-1:hover{
+    /* Add hover effect for btn-toggle-nav li */
+    .btn-toggle-nav li:hover {
+      background-color: #ffffff;
+      /* Change background color on hover */
+    }
+  </style>
+</head>
 
-  background-color: #f0f0f0; 
+<body>
+  <!-- HTML body -->
+  <div class="p-3 bg-light h-100 min-vh-100  d-flex flex-column" style="border-right: 1px solid #dee2e6;">
+    <!-- Logo and link to home -->
+    <a href="/" class="justify-content-center d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+      <img src="../images/logoUAL-removebg-preview.png" alt="Logo" width="140" height="70">
+      <span class="fs-5 fw-semibold"></span>
+    </a>
 
-  }
-.btn-toggle-nav li:hover {
-  background-color: #ffffff; /* Cambia el color de fondo al pasar el ratón por encima */
-}
-
-</style>
-
-<div class=" p-3 bg-light min-vh-100" style=" border-right: 1px solid #dee2e6;">
-  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-    <img src="../images/logoUAL-removebg-preview.png" alt="Logo" width="100" height="51">
-    <span class="fs-5 fw-semibold"></span>
-  </a>
-  <ul class="list-unstyled ps-0">
-    <li>
-      <a class="nav-link active fw-bold" aria-current="page" href="/HomeSessions">
-          <span class="material-symbols-outlined">
-                                                Home
-                                            </span>
-          Inicio</a>
-    </li>
+    <!-- Main navigation menu -->
+    <ul class="list-unstyled ps-0 flex-grow-1">
+      <li>
+        <a class="nav-link active fw-bold" aria-current="page" href="/HomeSessions">
+          <span class="material-symbols-outlined">Home</span>
+          Inicio
+        </a>
+      </li>
+      <li class="mb-1">
+        <button onclick="window.location.href = '/form'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          <i class="bi bi-1-circle"></i>
+          Nuevo Paciente
+        </button>
+      </li>
+      <li class="mb-1">
+        <button onclick="window.location.href = '/PanelPacientes'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          <i class="bi bi-1-circle"></i>
+          Ver Paciente
+        </button>
+      </li>
+      <!-- Uncomment the following block if needed -->
+      <!-- 
     <li class="mb-1">
-    
-      <button onclick="window.location.href = '/form'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-        
-   <i class="bi bi-1-circle"></i>
-                                            Nuevo Paciente
-      </button>
-    </li>
-     <li class="mb-1">
-    
-      <button onclick="window.location.href = '/PanelPacientes'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-        
-   <i class="bi bi-1-circle"></i>
-                                            Ver Paciente
-      </button>
-    </li>
-{{!--     <li class="mb-1">
-    
       <button onclick="window.location.href = '/test'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-        
-   <i class="bi bi-1-circle"></i>
-                                           Tamizaje
-      </button>
-    </li> --}}
-    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-       
-        Clínica
-      </button>
-      <div class="collapse" id="dashboard-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li class="hover"><a href="/rx_en_uso" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">Eyeglasses </span> Rx en uso</a></li>
-          <li><a href="/preeliminares" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">Quiz </span>Preliminares</a></li>
-          <li><a href="/SaludOcular" class="link-body-emphasis d-inline-flex text-decoration-none rounded">   <span class="material-symbols-outlined">Visibility</span>Salud Ocular</a></li>
-          <li><a href="/pruebas_f" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">Mystery</span> Pruebas Funcionales</a></li>
-             <li><a href="/pruebas_complementarias" class="link-body-emphasis d-inline-flex text-decoration-none rounded">     <span class="material-symbols-outlined"> Rule </span>Pruebas Complementarias</a></li>
-               <li><a href="/rx_final" class="link-body-emphasis d-inline-flex text-decoration-none rounded">   <span class="material-symbols-outlined">Prescriptions</span>Rx Final</a></li>
-        </ul>
-      </div>
-    </li>
-       <li class="mb-1">
-    
-      <button onclick="window.location.href = '/graficas'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-        
-   <i class="bi bi-1-circle"></i>
-                                           Gráficas
+        <i class="bi bi-1-circle"></i>
+        Tamizaje
       </button>
     </li>
-    <li class="border-top my-3"></li>
-    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-        <i class="bi bi-person me-2"></i> <!-- Icono de persona -->
-        Administración
-      </button>
-      <div class="collapse" id="account-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-             <li class="hover"><a href="/registrarse" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">person_add</span>Registrar Usuario</a></li>
-          <li><a href="/panelusuarios" class="link-body-emphasis d-inline-flex text-decoration-none rounded">  <span class="material-symbols-outlined">
-manage_accounts
-</span>Panel de Usuarios</a></li>
-       
-        </ul>
-      </div>
-    </li>
-  <i class="bi bi-1-circle"></i>
-  <li>
-    <!-- Botón de cierre de sesión -->
-      <a class="nav-link active fw-bold ms-3" aria-current="page" href="/logout">
-        <span class="material-symbols-outlined">logout</span>Cerrar Sesión
-      </a>
-  </li>
+    -->
 
-  <li class="border-top my-3"></li>
+      <!-- Dropdown menu -->
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          Clínica
+        </button>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="hover"><a href="/rx_en_uso" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Eyeglasses</span> Rx en uso</a></li>
+            <li><a href="/preeliminares" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Quiz</span> Preliminares</a></li>
+            <li><a href="/SaludOcular" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Visibility</span> Salud Ocular</a></li>
+            <li><a href="/pruebas_f" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Mystery</span> Pruebas Funcionales</a></li>
+            <li><a href="/pruebas_complementarias" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Rule</span> Pruebas Complementarias</a></li>
+            <li><a href="/rx_final" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Prescriptions</span> Rx Final</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button onclick="window.location.href = '/graficas'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          <i class="bi bi-1-circle"></i>
+          Gráficas
+        </button>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          <i class="bi bi-person me-2"></i>
+          Administración
+        </button>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="hover"><a href="/registrarse" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">person_add</span> Registrar Usuario</a></li>
+            <li><a href="/panelusuarios" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">manage_accounts</span> Panel de Usuarios</a></li>
+          </ul>
+        </div>
+
+
+      <li class="border-top my-3"></li>
 
       <li>
-      <div class="d-flex align-items-center ms-auto">
-      <!-- Formulario de cambio de idioma -->
-     <form id="languageForm" method="POST" action="/cambiarIdioma" class="d-flex">
-        <div class="row g-3 align-items-center">
-          <input type="hidden" name="username" value="{{user}}">
-          <div class="col-auto">
-            <span class="material-symbols-outlined d-flex">Language</span>
-          </div>
-          <div class="col-auto">
-            <select name="language" id="role" class="form-select" onchange="this.form.submit()">
-              <option value="es-MX">Español</option>
-              <option value="en-US">English</option>
-            </select>
-          </div>
+
+        
+        <!-- Logout link -->
+        <a class="nav-link active fw-bold ms-3" aria-current="page" href="/logout">
+          <span class="material-symbols-outlined">logout</span> Cerrar Sesión
+        </a>
+      </li>
+      <li class="border-top my-3"></li>
+
+            </li>
+      <li>
+        
+        <!-- Language selection form -->
+        <div class="d-flex align-items-center justify-content-center">
+          <form id="languageForm" method="POST" action="/cambiarIdioma" class="d-flex">
+            <div class="row g-3 align-items-center">
+              <input type="hidden" name="username" value="{{user}}">
+              <div class="col-auto">
+                <span class="material-symbols-outlined d-flex">Language</span>
+              </div>
+              <div class="col-auto">
+                <select name="language" id="role" class="form-select" onchange="this.form.submit()">
+                  <option value="es-MX">Español</option>
+                  <option value="en-US">English</option>
+                </select>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-    </li>
-  </ul>
-</div>
+      </div>
+      </li>
+    </ul>
+
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
