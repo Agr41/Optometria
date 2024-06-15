@@ -367,7 +367,6 @@
                   <!-- Sección 3: Refracción -->
                   <div class="carousel-item" id="itemsave">
                     <h2>Finalizar</h2>
-                    <form id="myForm" action="tu_script.php" method="POST">
 
                       <div class="container text-start">
                         <div class="row align-items-start">
@@ -375,8 +374,10 @@
 
                             <div class="contenedor2">
                               <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
+                              <!--
                               <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
                               <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
+                              -->
                             </div>
                           </div>
                         </div>
@@ -385,6 +386,7 @@
 
                 </div>
               </div>
+</form>
 
 
             </div>
@@ -411,15 +413,9 @@
 
 
 
-</form>
 </div>
 
 
-</ul>
-</div>
-</div>
-</main>
-</div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const btnSalir = document.getElementById('btnSalir');

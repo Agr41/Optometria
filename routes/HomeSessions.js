@@ -2,14 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/',(req, res, next) => {
-  var ingles= false
-  console.log(Idioma)
-  if(Idioma == "en-US"){
-    ingles= true
-  }
-  console.log("ing "+ingles)
+ 
+  var idioma= req.session.language
   if (req.session.userId!=null) {
-    res.render('HomeSessions', { title: 'Menú',Logeado,role, nombre, ingles });
+    res.render('HomeSessions', { title: 'Menú',Logeado,role, nombre,idioma });
   } else {
       res.redirect('/LoginInicio')
   }

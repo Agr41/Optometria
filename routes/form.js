@@ -4,12 +4,10 @@ const Joi = require('joi');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  var ingles = false
-  if (Idioma == "en-US") {
-    ingles = true;
-  }
+  var idioma= req.session.language
+
   if (req.session.userId != null) {
-    res.render('form', { title: 'Form', Logeado, role, ingles });
+    res.render('form', { title: 'Form', Logeado, role, idioma });
   } else {
     res.redirect('/LoginInicio');
   }

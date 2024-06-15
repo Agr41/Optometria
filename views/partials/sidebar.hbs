@@ -19,6 +19,7 @@
 </head>
 
 <body>
+  
   <!-- HTML body -->
   <div class="p-3 bg-light h-100 min-vh-100  d-flex flex-column" style="border-right: 1px solid #dee2e6;">
     <!-- Logo and link to home -->
@@ -107,20 +108,22 @@
 
             </li>
       <li>
-        
+        {{idioma}}
         <!-- Language selection form -->
         <div class="d-flex align-items-center justify-content-center">
-          <form id="languageForm" method="POST" action="/cambiarIdioma" class="d-flex">
+          <form id="changeLanguageForm" method="POST" action="/idioma" class="d-flex">
             <div class="row g-3 align-items-center">
               <input type="hidden" name="username" value="{{user}}">
               <div class="col-auto">
                 <span class="material-symbols-outlined d-flex">Language</span>
               </div>
               <div class="col-auto">
-                <select name="language" id="role" class="form-select" onchange="this.form.submit()">
-                  <option value="es-MX">Español</option>
-                  <option value="en-US">English</option>
+                <select id="languageSelect" name="language" id="role" class="form-select" onchange="this.form.submit()">
+<option value="es" {{#if (eq idioma 'es')}} selected {{/if}}>Español</option>
+<option value="en" {{#if (eq idioma 'en')}} selected {{/if}}>English</option>
+
                 </select>
+                
               </div>
             </div>
           </form>
@@ -135,3 +138,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
+
+

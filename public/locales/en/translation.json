@@ -1,0 +1,47 @@
+{
+    "Paginahome":"ricky joto",
+    "title": "Your Page Title",
+    "welcome": "Welcome {{nombre}}",
+    "previous": "Previous",
+    "next": "Next",
+    
+    "PaginaNuevoPaciente":"ricky joto",
+
+    "place_autocomplete_title": "Place Autocomplete",
+    "patient_registration": "Patient Registration",
+    "name": "Name",
+    "surname": "Surname",
+    "locality": "Locality",
+    "occupation": "Occupation",
+    "occupation_office_worker": "Office Worker",
+    "occupation_construction": "Construction",
+    "occupation_education": "Education",
+    "occupation_other": "Other",
+    "sex": "Sex",
+    "female": "Female",
+    "male": "Male",
+    "age": "Age",
+    "save_exit": "Save and Exit",
+    "save_screening": "Save and Go to Screening",
+    "save_clinic": "Save and Go to Clinic",
+
+    "PaginaVerPaciente":"ricky joto",
+
+    "patient_panel": "Patient Panel",
+    "folio": "Folio",
+    "username": "Username",
+    "hypermetropia": "Hypermetropia",
+    "emetrope": "Emetrope",
+    "myopia": "Myopia",
+    "filter_placeholder": "Enter the data you want to filter",
+    "clear": "Clear",
+    "search": "Search",
+
+    "delete": "Delete",
+    "tests": "Tests",
+    "diagnosis": "Diagnosis"
+
+
+
+
+}

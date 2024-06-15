@@ -15,7 +15,7 @@
 <div class="col-sm-12 col-md-9   col-lg-10 px-0">
 <section id="PanelPacientes">
 <br>
-  <h1 class="text-center hola">Panel de pacientes</h1> 
+                    <h1 class="text-center">{{t 'patient_panel'}}</h1>
 
 
   <body class="text-center">
@@ -93,39 +93,7 @@
     
      
 
-    {{!-- <div>
-      <table class="user-table">
-        <thead>
-          <tr>
-            <th>Folio</th>
-            <th>Nombre</th>
-            <th>Apellido(s)</th>
-            <th>Borrar</th>
-            <th>Tests</th>
-
-
-          </tr>
-        </thead>
-        <tbody>
-          {{#each pacientes.docs}}
-          <tr>
-            <td>{{this.Folio}}</td>
-            <td>{{this.Nombre}}</td>
-            <td>{{this.ApellidoPaterno}}</td>
-
- <td><a href="#" class="borrar-link" onclick="confirmDeletion('{{this._id}}'); return false;">Borrar</a></td> 
-
-            <td><button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnóstico</button></td>
-
-
-            <!--Agregar alerta-->
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-
-
-    </div> --}}
+   
           </body>
 </section>
 </div>

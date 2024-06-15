@@ -1,0 +1,41 @@
+{
+    "title": "Título de tu página",
+    "welcome": "Bienvenido/a {{nombre}}",
+    "previous": "Anterior",
+    "next": "Siguiente",
+
+
+    
+    "place_autocomplete_title": "Autocompletar Lugar",
+    "patient_registration": "Registro de pacientes",
+    "name": "Nombre",
+    "surname": "Apellido(s)",
+    "locality": "Localidad",
+    "occupation": "Área",
+    "occupation_office_worker": "Oficinista",
+    "occupation_construction": "Construcción",
+    "occupation_education": "Educación",
+    "occupation_other": "Otro",
+    "sex": "Sexo",
+    "female": "Femenino",
+    "male": "Masculino",
+    "age": "Edad",
+    "save_exit": "Guardar y salir",
+    "save_screening": "Guardar e ir a Tamizaje",
+    "save_clinic": "Guardar e ir a Clínica",
+
+
+    "patient_panel": "Panel de pacientes",
+    "folio": "Folio",
+    "username": "Nombre de usuario",
+    "hypermetropia": "HIPERMETROPÍA",
+    "emetrope": "EMÉTROPE",
+    "myopia": "MIOPÍA",
+    "filter_placeholder": "Inserte los datos que desea filtrar",
+    "clear": "Limpiar",
+    "search": "Buscar",
+  
+    "delete": "Borrar",
+    "tests": "Tests",
+    "diagnosis": "Diagnóstico"
+}

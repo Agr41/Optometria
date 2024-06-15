@@ -50,7 +50,9 @@ const idiomaRouter= require('./routes/idioma')
 const cambiarIdiomaRouter= require('./routes/cambiarIdioma')
 const preeliminaresRouter= require('./routes/preeliminares')
 const pruebas_complementarias =require('./routes/pruebas_complementarias')
-
+const i18next = require('i18next');
+const i18nextMiddleware = require('i18next-http-middleware');
+const i18nextFsBackend = require('i18next-fs-backend');
 const rx_final= require('./routes/rx_final')
 const pruebas_f= require('./routes/pruebas_f')
 const TestGeneral = require('./routes/TestsGeneral')
@@ -92,6 +94,9 @@ hbs.registerHelper('Verdad', function(value3) {
 hbs.registerHelper('eq', function(a, b) {
   return a === b;
 });
+hbs.registerHelper('isEqual', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 hbs.registerHelper('or', function() {
   for (var i=0; i<arguments.length-1; i++) {
     if (arguments[i]) {
@@ -124,6 +129,7 @@ hbs.registerHelper('limit', function (arr, limit) {
   if (!Array.isArray(arr)) { return []; }  // Retorna un arreglo vacío si no es un arreglo
   return arr.slice(0, limit);
 });
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('hbs', hbs.__express); // Usar hbs como alias para el motor de plantillas
@@ -161,9 +167,24 @@ mongoose.connect(
     { useNewUrlParser: true }
 );
 
+i18next
+    .use(i18nextFsBackend)
+    .use(i18nextMiddleware.LanguageDetector)
+    .init({
+        fallbackLng: 'en',
+        backend: {
+            loadPath: __dirname + '/public/locales/{{lng}}/{{ns}}.json'
+        },
+        detection: {
+            order: ['session', 'querystring', 'cookie', 'header'],
+            caches: ['session']
+        },
+        preload: ['en', 'es'], // Idiomas pre-cargados
+    });
 
+    app.use(i18nextMiddleware.handle(i18next));
 
-
+ 
 app.post('/Formulario', Formulario);
 app.use('/', indexRouter);
 app.use('/LoginInicio', LoginInicioRouter);
@@ -201,6 +222,7 @@ app.use('/pruebas_complementarias', pruebas_complementarias)
 app.use('/rx_final', rx_final)
 app.use('/pruebas_f', pruebas_f)
 app.get('/TestGeneral/:id',TestGeneral)
+
 /*
 app.get('/popup/:id',async (req, res) => {
       const Paciente = require('./models/pacientes')

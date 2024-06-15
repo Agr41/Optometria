@@ -12,16 +12,24 @@ const userSchema = new Schema({
     Nombre: String,
     ApellidoPaterno:String,
     ApellidoMaterno:String,
-    language:String
+    language:String,
+    sessionToken: String
+
 
 });
-userSchema.pre('save', function(next){
-    const user = this
-    bcrypt.hash(user.password, 10, (error, hash) => {
-    user.password = hash
-    next()
-    })
-    })
+userSchema.pre('save', function(next) {
+    const user = this;
+    if (user.isModified('password')) {
+        bcrypt.hash(user.password, 10, (error, hash) => {
+            if (error) return next(error);
+            user.password = hash;
+            next();
+        });
+    } else {
+        next();
+    }
+});
+
 
 userSchema.plugin(mongoosePaginate);
 
