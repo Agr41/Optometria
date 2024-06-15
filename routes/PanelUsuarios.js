@@ -5,14 +5,10 @@
 const User = require("../models/Usuarios.js");
 
 module.exports = async (req, res) => {
-
-  console.log("Username :" , req.session.username)
+  var idioma = req.session.language;
+ 
   var page = req.query.page;
-  var ingles = false
-  console.log(Idioma)
-  if (Idioma == "en-US"){
-    ingles = true;
-  }
+
   if (page === undefined) {
     // Si no se especifica la página, muestra la primera página por defecto
     const usuarios = await User.paginate({ username: { $ne: req.session.username }}, { page: 1, limit: 10 });
@@ -26,7 +22,7 @@ module.exports = async (req, res) => {
     var PaginaActual= usuarios.page;
 
     //console.log(TotalPaginas);
-    res.render('PanelUsuarios', {title:"Usuarios", Logeado, role, usuarios, FiltroPaginado, Filtro, PaginaActual, TotalPaginas, ingles });
+    res.render('PanelUsuarios', {title:"Usuarios", Logeado, role, usuarios, FiltroPaginado, Filtro, PaginaActual, TotalPaginas, idioma , lng: req.session.language});
   } else if (page != undefined) {
 
     var usuarioss01 = await User.paginate({}, { page, limit: 10 });
@@ -64,6 +60,6 @@ module.exports = async (req, res) => {
   }
 
 
-    res.render('PanelUsuarios', { Logeado, role, usuarios, PaginaActual, FiltroPaginado, Filtro, TotalPaginas, ingles });
+    res.render('PanelUsuarios', { Logeado, role, usuarios, PaginaActual, FiltroPaginado, Filtro, TotalPaginas, idioma, lng: req.session.language });
   }
 }

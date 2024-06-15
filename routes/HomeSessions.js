@@ -5,7 +5,7 @@ router.get('/',(req, res, next) => {
  
   var idioma= req.session.language
   if (req.session.userId!=null) {
-    res.render('HomeSessions', { title: 'Menú',Logeado,role, nombre,idioma });
+    res.render('HomeSessions', { title: 'Menú',Logeado,role, nombre,idioma , lng: req.session.language});
   } else {
       res.redirect('/LoginInicio')
   }

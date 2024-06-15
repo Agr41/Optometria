@@ -1,6 +1,6 @@
 {
     "title": "Título de tu página",
-    "welcome": "Bienvenido/a {{nombre}}",
+    "welcome": "Bienvenido/a",
     "previous": "Anterior",
     "next": "Siguiente",
 
@@ -37,5 +37,129 @@
   
     "delete": "Borrar",
     "tests": "Tests",
-    "diagnosis": "Diagnóstico"
+    "diagnosis": "Diagnóstico",
+
+
+
+
+    
+        "charts_title": "Gráficas",
+        "charts_header": "Gráficas",
+        "filters": "Filtros",
+   
+        "age_kids": "6-12 años",
+        "age_teens": "13-17 años",
+        "age_adults": "18 años o más",
+     
+        "search_button": "Buscar en base a filtros",
+        "conditions": "Padecimientos",
+        "ages": "Edades",
+        "city": "Ciudad",
+        "emetropia": "Emetropía",
+        "hipermetropia": "Hipermetropía",
+        "miopia": "Miopía",
+        "astigmatismo": "Astigmatismo",
+        "ah": "AH",
+        "am": "AM",
+        "percentage": "Porcentaje",
+        "torreon": "Torreón",
+        "gomez": "Gómez",
+        "lerdo": "Lerdo",
+        "otros": "Otros",
+        "print_button": "Imprimir datos",
+    
+    
+
+
+        
+            "register_user": "Registrar Usuario",
+            "enter_user_data": "Ingresa los datos del usuario",
+            "institutional_email": "Correo institucional",
+            "password": "Contraseña",
+            "first_name": "Nombre(s)",
+            "last_name_father": "Apellido paterno",
+            "last_name_mother": "Apellido materno",
+            "role": "Rol",
+            "admin": "Administrador",
+            "student": "Alumno",
+            "client": "Cliente",
+            "register_user_button": "Registrar usuario",
+
+
+   
+            "user_panel": "Panel de usuarios",
+            "filter_by_role": "Filtrar por rol",
+         
+            "filter": "Filtrar",
+            "insert_filter_data": "Inserte los datos que desea filtrar",
+ 
+            "email": "Correo",
+            "last_names": "Apellidos",
+            "back": "Atrás",
+            "are_you_sure": "¿Estás seguro?",
+            "no_revert": "¡No podrás revertir esto!",
+            "yes_delete": "Sí, borrarlo!",
+            "no_cancel": "No, cancelar!",
+          
+        
+
+"header": {
+    "title": "Optometría UAL"
+  },
+  "section": {
+    "patient": {
+      "title": "Paciente",
+      "nameButton": "Nombre del paciente:",
+      "searchPlaceholder": "Buscar...",
+      "addButton": "Agregar",
+      "cancelButton": "Cancelar"
+    },
+    "preTest": {
+      "title": "Pre-test",
+      "dipLabel": "DIP",
+      "additionLabel": "Adición"
+    },
+    "reasonForConsultation": {
+      "title": "Motivo de la consulta",
+      "howStartedLabel": "¿Cómo empezó a presentarse?",
+      "durationLabel": "Antigüedad de la molestia"
+    },
+    "background": {
+      "title": "Antecedentes",
+      "bloodPressureLabel": "Presión arterial",
+      "yes": "Sí",
+      "bloodPressureMeasurementLabel": "Medición de la presión arterial",
+      "observationsLabel": "Observaciones",
+      "familyHistoryLabel": "Antecedentes familiares",
+      "glucoseLabel": "Glucosa",
+      "glucoseMeasurementLabel": "Medición de la glucosa",
+      "optometricTreatmentsLabel": "Tratamientos optométricos y oftalmológicos"
+    },
+    "symptoms": {
+      "title": "Síntomas",
+      "burning": "Ardor",
+      "fatigue": "Cansancio",
+      "headache": "Cefalea",
+      "confusion": "Confusión al leer",
+      "drowsiness": "Somnolencia",
+      "itching": "Prurito",
+      "tearing": "Lagrimeo",
+      "photophobia": "Fotofobia",
+      "hyperemia": "Hiperemia",
+      "doubleVision": "Visión doble",
+      "blurredVision": "Visión borrosa",
+      "eyePain": "Dolor ocular",
+      "floaters": "Miodesopsias",
+      "letterJumping": "Salto de letras",
+      "discharge": "Secreciones",
+      "attentionConcentration": "Atención y concentración",
+      "lowUnderstanding": "Baja comprensión",
+      "dizziness": "Mareo"
+    },
+    "refraction": {
+      "title": "Refracción",
+      "saveAndExit": "Guardar y salir"
+    }
+  }
+            
 }

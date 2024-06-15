@@ -4,10 +4,12 @@ const Paciente = require('../models/pacientes')
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
+  var idioma = req.session.language;
+
   if (req.session.userId!=null) {
     const pacientes = await Paciente.find({})
   //console.log(usuarios)
-  res.render('rx_en_uso', { title: 'Rx en uso',Logeado,role,pacientes, usuario });
+  res.render('rx_en_uso', { title: 'Rx en uso',Logeado,role,pacientes, usuario, idioma, lng: req.session.language });
   } else {
       res.redirect('/LoginInicio')
   }

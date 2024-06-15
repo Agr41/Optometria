@@ -1,7 +1,7 @@
 {
     "Paginahome":"ricky joto",
     "title": "Your Page Title",
-    "welcome": "Welcome {{nombre}}",
+    "welcome": "Welcome",
     "previous": "Previous",
     "next": "Next",
     
@@ -39,9 +39,186 @@
 
     "delete": "Delete",
     "tests": "Tests",
-    "diagnosis": "Diagnosis"
+    "diagnosis": "Diagnosis",
 
 
+    "Graficas":"ricky joto",
 
+
+      "charts_title": "Charts",
+        "charts_header": "Charts",
+        "filters": "Filters",
+
+        "age_kids": "6-12 years",
+        "age_teens": "13-17 years",
+        "age_adults": "18 years and older",
+   
+        "search_button": "Search based on filters",
+        "conditions": "Conditions",
+        "ages": "Ages",
+        "city": "City",
+        "emetropia": "Emmetropia",
+        "hipermetropia": "Hypermetropia",
+        "miopia": "Myopia",
+        "astigmatismo": "Astigmatism",
+        "ah": "AH",
+        "am": "AM",
+        "percentage": "Percentage",
+        "torreon": "Torreon",
+        "gomez": "Gomez",
+        "lerdo": "Lerdo",
+        "otros": "Others",
+        "print_button": "Print data",
+
+
+        "RegistrarUsuario":"ricky joto",
+
+
+        
+          "register_user": "Register User",
+          "enter_user_data": "Enter User Data",
+          "institutional_email": "Institutional Email",
+          "password": "Password",
+          "first_name": "First Name",
+          "last_name_father": "Last Name (Father)",
+          "last_name_mother": "Last Name (Mother)",
+          "role": "Role",
+          "admin": "Administrator",
+          "student": "Student",
+          "client": "Client",
+          "register_user_button": "Register User",
+      
+    
+          
+          
+            "user_panel": "User Panel",
+            "filter_by_role": "Filter by role",
+
+            "filter": "Filter",
+            "insert_filter_data": "Insert the data to filter",
+ 
+            "email": "Email",
+            "last_names": "Last Names",
+            "back": "Back",
+            "are_you_sure": "Are you sure?",
+            "no_revert": "You won't be able to revert this!",
+            "yes_delete": "Yes, delete it!",
+            "no_cancel": "No, cancel!",
+        
+        
+        
+        
+            
+              "optometry_ual": "Optometry UAL",
+              "patient": "Patient",
+              "patient_name": "Patient's name:",
+              "add": "Add",
+              "cancel": "Cancel",
+              "pre_test": "Pre-test",
+              "od": "OD",
+              "oi": "OI",
+              "sphere": "Sphere",
+              "cylinder": "Cylinder",
+              "axis": "Axis",
+              "base": "Base",
+              "dnp": "DNP",
+              "dip": "DIP",
+              "addition": "ADDITION",
+              "reason_for_consultation": "Reason for Consultation",
+              "how_it_started": "How did it start?",
+              "symptom_duration": "Symptom Duration",
+              "medical_history": "Medical History",
+              "blood_pressure": "Blood Pressure",
+              "yes": "Yes",
+              "blood_pressure_measurement": "Blood Pressure Measurement",
+              "observations": "Observations",
+              "family_history": "Family History",
+              "glucose": "Glucose",
+              "glucose_measurement": "Glucose Measurement",
+              "optometric_and_ophthalmic_treatments": "Optometric and Ophthalmic Treatments",
+              "symptoms": "Symptoms",
+              "burning": "Burning",
+              "tiredness": "Tiredness",
+              "headache": "Headache",
+              "confusion_reading": "Confusion Reading",
+              "drowsiness": "Drowsiness",
+              "itching": "Itching",
+              "tearing": "Tearing",
+              "photophobia": "Photophobia",
+              "hyperemia": "Hyperemia",
+              "double_vision": "Double Vision",
+              "blurred_vision": "Blurred Vision",
+              "eye_pain": "Eye Pain",
+              "floaters": "Floaters",
+              "letter_jump": "Letter Jump",
+              "discharge": "Discharge",
+              "attention_concentration": "Attention and Concentration",
+              "low_comprehension": "Low Comprehension",
+              "dizziness": "Dizziness",
+              "finish": "Finish",
+              "save_and_exit": "Save and Exit",
+
+
+              
+              
+              "header": {
+                "title": "Optometry UAL"
+              },
+              "section": {
+                "patient": {
+                  "title": "Patient",
+                  "nameButton": "Patient's name:",
+                  "searchPlaceholder": "Search...",
+                  "addButton": "Add",
+                  "cancelButton": "Cancel"
+                },
+                "preTest": {
+                  "title": "Pre-test",
+                  "dipLabel": "DIP",
+                  "additionLabel": "Addition"
+                },
+                "reasonForConsultation": {
+                  "title": "Reason for Consultation",
+                  "howStartedLabel": "How did it start?",
+                  "durationLabel": "Duration of the issue"
+                },
+                "background": {
+                  "title": "Background",
+                  "bloodPressureLabel": "Blood pressure",
+                  "yes": "Yes",
+                  "bloodPressureMeasurementLabel": "Blood pressure measurement",
+                  "observationsLabel": "Observations",
+                  "familyHistoryLabel": "Family history",
+                  "glucoseLabel": "Glucose",
+                  "glucoseMeasurementLabel": "Glucose measurement",
+                  "optometricTreatmentsLabel": "Optometric and ophthalmological treatments"
+                },
+                "symptoms": {
+                  "title": "Symptoms",
+                  "burning": "Burning",
+                  "fatigue": "Fatigue",
+                  "headache": "Headache",
+                  "confusion": "Confusion while reading",
+                  "drowsiness": "Drowsiness",
+                  "itching": "Itching",
+                  "tearing": "Tearing",
+                  "photophobia": "Photophobia",
+                  "hyperemia": "Hyperemia",
+                  "doubleVision": "Double vision",
+                  "blurredVision": "Blurred vision",
+                  "eyePain": "Eye pain",
+                  "floaters": "Floaters",
+                  "letterJumping": "Letter jumping",
+                  "discharge": "Discharge",
+                  "attentionConcentration": "Attention and concentration",
+                  "lowUnderstanding": "Low understanding",
+                  "dizziness": "Dizziness"
+                },
+                "refraction": {
+                  "title": "Refraction",
+                  "saveAndExit": "Save and exit"
+                }
+              }     
+          
 
 }

@@ -1,261 +1,190 @@
-<link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!DOCTYPE html>
+<html lang="{{lng}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t 'user_panel'}}</title>
+    <link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-{{!-- Español --}}
-
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-2 px-0">
                 <!-- Sidebar -->
                 {{> sidebar}} 
-    </div>
-
+            </div>
             <div class="col-sm-12 col-md-9 col-lg-10 px-0">
-<link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
-
-<section id="PanelUsuarios">
-
-  <h1 class="text-center hola">Panel de usuarios</h1>
-
-  <body class="text-center">
-    <br>
-
-    Filtrar por rol:
-    <form method="POST" action="/FiltrosUsuarios">
-      <div class="row justify-content-center">
-        <div class="col-2">
-          <select name="role" id="FiltroHistorial" class="form-select">
-            <option value="admin"> Administrador</option>
-            <option value="cliente">Cliente</option>
-            <option value="alumno">Alumno</option>
-
-          </select>
+                <section id="PanelUsuarios">
+                    <h1 class="text-center hola">{{t 'user_panel'}}</h1>
+                    <body class="text-center">
+                        <br>
+                        {{t 'filter_by_role'}}:
+                        <form method="POST" action="/FiltrosUsuarios">
+                            <div class="row justify-content-center">
+                                <div class="col-2">
+                                    <select name="role" id="FiltroHistorial" class="form-select">
+                                        <option value="admin">{{t 'admin'}}</option>
+                                        <option value="cliente">{{t 'client'}}</option>
+                                        <option value="alumno">{{t 'student'}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-info">{{t 'filter'}}</button>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <form method="post" action="/FiltrosUsuarios2">
+                            <div class="row justify-content-center">
+                                <div class="col-3">
+                                    <select name="Tipo" id="FiltroHistorial2" class="form-select">
+                                        <option value="Nombre">{{t 'institutional_email'}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" name="busqueda" class="form-control" placeholder="{{t 'insert_filter_data'}}">
+                                </div>
+                            </div>
+                            <br>
+                            <button class="btn btn-outline-danger" type="reset">{{t 'clear'}}</button>
+                            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">{{t 'search'}}</i></button>
+                        </form>
+                        <div>
+                            <table class="user-table">
+                                <thead>
+                                    <tr>
+                                        <th>{{t 'email'}}</th>
+                                        <th>{{t 'first_name'}}</th>
+                                        <th>{{t 'last_names'}}</th>
+                                        <th>{{t 'role'}}</th>
+                                        <th>{{t 'delete'}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each usuarios.docs}}
+                                    <tr>
+                                        <td class="correos">{{this.username}}</td>
+                                        <td>{{this.Nombre}}</td>
+                                        <td>{{this.ApellidoPaterno}} {{this.ApellidoMaterno}}</td>
+                                        <td>{{this.role}}</td>
+                                        <td>
+                                            <a href="#" class="borrar-link" onclick="confirmDeletion('{{this.username}}'); return false;">{{t 'delete'}}</a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </body>
+                </section>
+                {{#unless (Falso FiltroPaginado)}}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a href="/PanelUsuarios?page={{restar this.usuarios.page 10}}" class="page-link" id="prevPage10">
+                                <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a href="/PanelUsuarios?page={{this.usuarios.prevPage}}" class="page-link" id="prevPage">{{t 'back'}}</a>
+                        </li>
+                        {{#each (limit TotalPaginas 10)}}
+                        <li class="page-item">
+                            <a href="/PanelUsuarios?page={{this}}" class="page-link" id="page{{this}}">{{this}}</a>
+                        </li>
+                        {{/each}}
+                        <li class="page-item">
+                            <a href="/PanelUsuarios?page={{sumar this.usuarios.page 1}}" class="page-link" id="nextPage">{{t 'next'}}</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="/PanelUsuarios?page={{sumar this.usuarios.page 10}}" class="page-link" id="nextPage10">
+                                <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                {{/unless}}
+                {{#unless (Verdad FiltroPaginado)}}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {{#each TotalPaginas}}
+                        {{#if (eq ../Filtro "Nombre")}}
+                        <li class="page-item"><a href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit" id="sendMessageButton" class="page-link">{{this}}</a></li>
+                        {{/if}}
+                        {{/each}}
+                        <li class="page-item">
+                            <a class="page-link" href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{sumar this.usuarios.page 1}}&amp;consulta={{this.consulta}}" id="nextPage">{{t 'next'}}</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{sumar this.usuarios.page 10}}&amp;consulta={{this.consulta}}" class="page-link" id="nextPage10">
+                                <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                {{/unless}}
+                <script>
+                function confirmDeletion(id) {
+                    Swal.fire({
+                        title: '{{t 'are_you_sure'}}',
+                        text: "{{t 'no_revert'}}",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '{{t 'yes_delete'}}',
+                        cancelButtonText: '{{t 'no_cancel'}}'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/Borrar?Usuario=' + id;
+                        }
+                    });
+                }
+                </script>
+                <script>
+                function openPopup(id) {
+                    fetch(`/popup/${id}`)
+                        .then(response => response.text())
+                        .then(html => {
+                            const popup = document.createElement('div');
+                            popup.innerHTML = html;
+                            document.body.appendChild(popup);
+                            const closeBtn = popup.querySelector('.close-btn');
+                            closeBtn.addEventListener('click', () => {
+                                popup.remove();
+                            });
+                        });
+                }
+                </script>
+                <style>
+                @media screen and (max-width: 600px) {
+                    .table-container {
+                        overflow-x: auto;
+                        max-width: 100%;
+                        padding: 10px;
+                    }
+                    .user-table {
+                        width: 100%;
+                        max-width: none;
+                    }
+                    .user-table th,
+                    .user-table td {
+                        padding: 5px;
+                        font-size: 14px;
+                    }
+                    #diag {
+                        padding: 5px;
+                        font-size: 14px;
+                    }
+                }
+                </style>
+            </div>
         </div>
-        <div class="col-2">
-          <button type="submit" class="btn btn-info">FILTRAR</button>
-        </div>
-      </div>
-
-    </form>
-
-    <br>
-
-    <form method="post" action="/FiltrosUsuarios2">
-      <div class="row justify-content-center">
-        <div class="col-3">
-          <select name="Tipo" id="FiltroHistorial2" class="form-select">
-            <option value="Nombre">Correo institucional</option>
-
-          </select>
-        </div>
-
-        <div class="col-4">
-          <input type="text" name="busqueda" class="form-control" placeholder="Inserte los datos que desea filtrar">
-        </div>
-      </div>
-      <br>
-
-
-      <button class="btn btn-outline-danger" type="reset">Limpiar</button>
-      <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">Buscar</i></button>
-    </form>
-
-    <div>
-      <table class="user-table">
-        <thead>
-          <tr>
-            <th>Correo</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Rol</th>
-            <th>Borrar</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          {{#each usuarios.docs}}
-          <tr>
-            <td class="correos">{{this.username}}</td>
-            <td>{{this.Nombre}}</td>
-            <td>{{this.ApellidoPaterno}} {{this.ApellidoMaterno}}</td>
-            <td>{{this.role}}</td>
-            <td>
-  <a href="#" class="borrar-link" onclick="confirmDeletion('{{this.username}}'); return false;">Borrar</a>
-</td> 
-
-            <!--Agregar alerta-->
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-
-
     </div>
-</section>
-
-{{#unless (Falso FiltroPaginado)}}
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a href="/PanelUsuarios?page={{restar this.usuarios.page 10}}" class="page-link" id="prevPage10">
-        <i class="fa fa-angle-double-left" style="font-size:20px"></i>
-      </a>
-    </li>
-    <li class="page-item">
-      <a href="/PanelUsuarios?page={{this.usuarios.prevPage}}" class="page-link" id="prevPage">Back</a>
-    </li>
-    {{#each (limit TotalPaginas 10)}}
-    <li class="page-item">
-      <a href="/PanelUsuarios?page={{this}}" class="page-link" id="page{{this}}">{{this}}</a>
-    </li>
-    {{/each}}
-    <li class="page-item">
-      <a href="/PanelUsuarios?page={{sumar this.usuarios.page 1}}" class="page-link" id="nextPage">Next</a>
-    </li>
-    <li class="page-item">
-      <a href="/PanelUsuarios?page={{sumar this.usuarios.page 10}}" class="page-link" id="nextPage10">
-        <i class="fa fa-angle-double-right" style="font-size:20px"></i>
-      </a>
-    </li>
-  </ul>
-</nav>
-{{/unless}}
-
-<!--
-{{#unless (Verdad FiltroPaginado)}}
-<nav aria-label="Page navigation example">
-
-  <ul class="pagination justify-content-center">
-    {{#each TotalPaginas}}
-    {{#if (not (eq ../Filtro "Id"))}}
-    {{#if (not (eq ../Filtro "Nombre"))}}
-    <li class="page-item">
-      <a href="/FiltrosUsuarios?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
-        class="page-link">{{this}}</a>
-    </li>
-    {{/if}}
-    {{/if}}
-    {{/each}}
-  </ul>
-</nav>
-{{/unless}}
-
--->
-{{#unless (Verdad FiltroPaginado)}}
-
-<nav aria-label="Page navigation example">
-
-  <ul class="pagination justify-content-center">
-
-
- <li class="page-item">
-<a href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{restar this.usuarios.page 10}}&amp;consulta={{this.consulta}}" class="page-link" id="nextPage">
-    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
-</a>
-
-</i>
-
-    </li>
-     <li class="page-item">
-      <a  href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{this.usuarios.prevPage}}&amp;consulta={{this.consulta}}" class="page-link" href="#"  id="nextPage">Back</a>
-    </li>
-
-
-  
-
-
-    {{#each TotalPaginas}}
-    {{#if (eq ../Filtro "Nombre")}}
-
-    <li class="page-item"><a
-        href="/FiltrosUsuarios2?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-        id="sendMessageButton" class="page-link">{{this}}</a></li>
-    {{/if}}
-    {{/each}}
-<li class="page-item">
-      <a class="page-link" href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{sumar this.usuarios.page 1}}&amp;consulta={{this.consulta}}"  id="nextPage">Next</a>
-    </li>
-
-       <li class="page-item">
-      <a  href="/FiltrosUsuarios2?Filtro={{this.Filtro}}&amp;page={{sumar this.usuarios.page 10}}&amp;consulta={{this.consulta}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
-</i>
-</a>
-    </li>
-  </ul>
-
-</nav>
-{{/unless}}
-
-
-
-<script>
-function confirmDeletion(id) {
-    Swal.fire({
-        title: '¿Estás seguro?',
-        text: "¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, borrarlo!',
-        cancelButtonText: 'No, cancelar!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '/Borrar?Usuario=' + id;
-        }
-    });
-}
-</script>
-<script>
-  function openPopup(id) {
-    fetch(`/popup/${id}`)
-      .then(response => response.text())
-      .then(html => {
-        const popup = document.createElement('div');
-        popup.innerHTML = html;
-        document.body.appendChild(popup);
-        const closeBtn = popup.querySelector('.close-btn');
-        closeBtn.addEventListener('click', () => {
-          popup.remove();
-        });
-      });
-  }
-</script>
-
-
-<style>
-  /* Add this CSS for smaller screens */
-  @media screen and (max-width: 600px) {
-    .table-container {
-      overflow-x: auto;
-      max-width: 100%;
-      padding: 10px;
-    }
-    .user-table {
-      width: 100%;
-      max-width: none;
-    }
-    .user-table th,
-    .user-table td {
-      padding: 5px;
-      font-size: 14px;
-    }
-    #diag{
-      padding: 5px;
-      font-size: 14px;
-    }
-  }
-
-  /* Existing CSS styles */
-  /* ... */
-
-</style>
-
-</div>
-
-{{>footer}}
+    {{>footer}}
+</body>
+</html>

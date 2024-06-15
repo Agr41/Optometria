@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
   var idioma= req.session.language
 
   if (req.session.userId != null) {
-    res.render('form', { title: 'Form', Logeado, role, idioma });
+    res.render('form', { title: 'Form', Logeado, role, idioma, lng: req.session.language });
   } else {
     res.redirect('/LoginInicio');
   }

@@ -1,314 +1,243 @@
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet" href="/public/stylesheets/style.css">
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
-
-<div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 col-md-3 col-lg-2 px-0">
-            <!-- Sidebar -->
-            {{> sidebar}}
-        </div>
-
-       <div class="col-sm-12 col-md-9   col-lg-10 px-0">
-<div class="col-lg-10 mx-auto p-4 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 fs-1 border-bottom ">
-        Gráficas
-    </header>
-    <h3>FILTROS</h3>
-    <form action="/graficas" method="get">
-    <input type="hidden" name="filtered" value=true>
-     <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Edad</th>
-          <th>Sexo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> <div class="input-group mb-3">
-            <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" value="true"
-                    aria-label="Checkbox for following text input" name="kids"> 6-12 años
-            </div>   
-        </div>
-         <div class="input-group mb-3">
-            <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" value="true"
-                    aria-label="Checkbox for following text input" name="teens"> 13-17 años
-            </div>   
-        </div>
-         <div class="input-group mb-3">
-            <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" value="true"
-                    aria-label="Checkbox for following text input" name="adults"> 18 años o más
-            </div>   
-        </div>
-        </td>
-          <td>
-            <div class="input-group mb-3">
-            <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" value="true"
-                    aria-label="Checkbox for following text input" name="hombres"> Masculino
-            </div>   
-        </div>
-         <div class="input-group mb-3">
-            <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" value="true"
-                    aria-label="Checkbox for following text input" name="mujeres"> Femenino
-            </div>   
-        </div>
-        
-        </td>
-        </tr>
-        <!-- Add more rows as needed -->
-      </tbody>
-    </table>
-       
-        <button class="form-control btn btn-outline-success text-center align-content-center" type="submit">Buscar en base a filtros <span class="material-symbols-outlined">search</span></button>
-    </form>
-<br>
-    <body class="d-flex flex-column min-vh-100">
-        <main>
-            <div class="container text-center">
-
-                <div class="row">
-                    <div class="col-sm fw-bold">
-                            Padecimientos
-                        <div class="container">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    
-                    </div>
-                    <div class="col-sm fw-bold">
-                          Edades 
-                        <div class="container">
-                            <canvas id="myChartEdades"></canvas>
-                        </div>
-                     
-                    </div>
-                </div>
-                <br>
-                 <br>
-                  <br>
-                <div class="row">
-                    <div class="col-sm fw-bold">
-                          Sexo
-                        <div class="container">
-                            <canvas id="myChartSexo"></canvas>
-                        </div>
-                        <br>
-                      
-                    </div>
-                    <div class="col-sm fw-bold">
-                           Ciudad
-                        <div class="container">
-                            <canvas id="myChartCiudad"></canvas>
-                        </div>
-                     
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="{{lng}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t 'charts_title'}}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+                <!-- Sidebar -->
+                {{> sidebar}}
             </div>
 
+            <div class="col-sm-12 col-md-9 col-lg-10 px-0">
+                <div class="col-lg-10 mx-auto p-4 py-md-5">
+                    <header class="d-flex align-items-center pb-3 mb-5 fs-1 border-bottom ">
+                        {{t 'charts_header'}}
+                    </header>
+                    <h3>{{t 'filters'}}</h3>
+                    <form action="/graficas" method="get">
+                        <input type="hidden" name="filtered" value="true">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>{{t 'age'}}</th>
+                                    <th>{{t 'sex'}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="kids"> {{t 'age_kids'}}
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="teens"> {{t 'age_teens'}}
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="adults"> {{t 'age_adults'}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="hombres"> {{t 'male'}}
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="mujeres"> {{t 'female'}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                        <button class="form-control btn btn-outline-success text-center align-content-center" type="submit">{{t 'search_button'}} <span class="material-symbols-outlined">search</span></button>
+                    </form>
+                    <br>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-sm fw-bold">
+                                {{t 'conditions'}}
+                                <div class="container">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-sm fw-bold">
+                                {{t 'ages'}}
+                                <div class="container">
+                                    <canvas id="myChartEdades"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                        <div class="row">
+                            <div class="col-sm fw-bold">
+                                {{t 'sex'}}
+                                <div class="container">
+                                    <canvas id="myChartSexo"></canvas>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="col-sm fw-bold">
+                                {{t 'city'}}
+                                <div class="container">
+                                    <canvas id="myChartCiudad"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const ctx = document.getElementById('myChart').getContext('2d');
+                            const ctx2 = document.getElementById('myChartCiudad').getContext('2d');
+                            const ctx3 = document.getElementById('myChartSexo').getContext('2d');
+                            const ctx4 = document.getElementById('myChartEdades').getContext('2d');
 
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            const personasData = {
+                                emetropes: parseInt('{{ PersonasEmetropes }}'),
+                                miopes: parseInt('{{ PersonasMiopes }}'),
+                                hipermetropes: parseInt('{{ PersonasHipermetropes }}'),
+                                astigmatismo: parseInt('{{ Astigmatismo }}'),
+                                ah: parseInt('{{ HA }}'),
+                                am: parseInt('{{ MA }}')
+                            };
 
-            <script>
-                console.log([parseInt({{ PersonasEmetropes }}), parseInt({{ PersonasHipermetropes }}), parseInt({{ PersonasMiopes }}), parseInt({{ Astigmatismo }}), parseInt({{ AH }}), parseInt({{ AM }})])
-                const ctx = document.getElementById('myChart');
+                            const totalPersonas = Object.values(personasData).reduce((sum, value) => sum + (isNaN(value) ? 0 : value), 0);
 
+                            const personasPercentages = {
+                                emetropes: (personasData.emetropes / totalPersonas) * 100,
+                                miopes: (personasData.miopes / totalPersonas) * 100,
+                                hipermetropes: (personasData.hipermetropes / totalPersonas) * 100,
+                                astigmatismo: (personasData.astigmatismo / totalPersonas) * 100,
+                                ah: (personasData.ah / totalPersonas) * 100,
+                                am: (personasData.am / totalPersonas) * 100
+                            };
 
-                var total = 0; // Initialize total to 0
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['{{t "emetropia"}}', '{{t "hipermetropia"}}', '{{t "miopia"}}', '{{t "astigmatismo"}}', '{{t "ah"}}', '{{t "am"}}'],
+                                    datasets: [{
+                                        label: '{{t "percentage"}}',
+                                        data: Object.values(personasPercentages),
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
 
-                var personasEmetropes = parseInt({{ PersonasEmetropes }});
-                var personasHipermetropes = parseInt({{ PersonasHipermetropes }});
-                var personasMiopes = parseInt({{ PersonasMiopes }});
-                var astigmatismo = parseInt({{ Astigmatismo }});
-                var ah = parseInt({{ HA }});
-                var am = parseInt({{ MA }});
+                            const ciudadData = {
+                                torreon: parseInt('{{ torreon }}'),
+                                gomez: parseInt('{{ gomez }}'),
+                                lerdo: parseInt('{{ lerdo }}'),
+                                otros: parseInt('{{ otros }}')
+                            };
 
-                // Check if each element is not null and add it to the total
-                if (!isNaN(personasEmetropes)) {
-                    total += personasEmetropes;
-                }
+                            const totalCiudad = Object.values(ciudadData).reduce((sum, value) => sum + (isNaN(value) ? 0 : value), 0);
 
-                if (!isNaN(personasHipermetropes)) {
-                    total += personasHipermetropes;
-                }
+                            const ciudadPercentages = {
+                                torreon: (ciudadData.torreon / totalCiudad) * 100,
+                                gomez: (ciudadData.gomez / totalCiudad) * 100,
+                                lerdo: (ciudadData.lerdo / totalCiudad) * 100,
+                                otros: (ciudadData.otros / totalCiudad) * 100
+                            };
 
-                if (!isNaN(personasMiopes)) {
-                    total += personasMiopes;
-                }
+                            new Chart(ctx2, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['{{t "torreon"}}', '{{t "gomez"}}', '{{t "lerdo"}}', '{{t "otros"}}'],
+                                    datasets: [{
+                                        label: '{{t "percentage"}}',
+                                        data: Object.values(ciudadPercentages),
+                                        borderWidth: 1
+                                    }]
+                                }
+                            });
 
-                if (!isNaN(astigmatismo)) {
-                    total += astigmatismo;
-                }
+                            const genderData = {
+                                masculino: parseInt('{{ masculino }}'),
+                                femenino: parseInt('{{ femenino }}')
+                            };
 
-                if (!isNaN(ah)) {
-                    total += ah;
-                }
+                            const totalGender = Object.values(genderData).reduce((sum, value) => sum + (isNaN(value) ? 0 : value), 0);
 
-                if (!isNaN(am)) {
-                    total += am;
-                }
-                var eme = (personasEmetropes / total) * 100
-                var hipermetropes = (personasHipermetropes / total) * 100;
-                var miopes = (personasMiopes / total) * 100;
-                var astigmatismo = (astigmatismo / total) * 100;
-                var ah = (ah / total) * 100;
-                var am = (am / total) * 100;
+                            const genderPercentages = {
+                                masculino: (genderData.masculino / totalGender) * 100,
+                                femenino: (genderData.femenino / totalGender) * 100
+                            };
 
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Emetropía', 'Hipermetropía', 'Miopía', "Astigmatismo", "AH", "AM"],
-                        datasets: [{
-                            label: 'Porcentaje',
-                            data: [eme, hipermetropes, miopes, astigmatismo, ah, am],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                const ctx2 = document.getElementById('myChartCiudad');
+                            new Chart(ctx3, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['{{t "male"}}', '{{t "female"}}'],
+                                    datasets: [{
+                                        label: '{{t "percentage"}}',
+                                        data: Object.values(genderPercentages),
+                                        borderWidth: 1
+                                    }]
+                                }
+                            });
 
-                var totalCd = 0; // Initialize total to 0
+                            const ageData = {
+                                kids: parseInt('{{ kids }}'),
+                                teens: parseInt('{{ teens }}'),
+                                adults: parseInt('{{ adults }}')
+                            };
 
-                var torreon = parseInt({{ torreon }});
-                var gomez = parseInt({{ gomez }});
-                var lerdo = parseInt({{ lerdo }});
-                var otros = parseInt({{ otros }});
+                            const totalAgeGroups = Object.values(ageData).reduce((sum, value) => sum + (isNaN(value) ? 0 : value), 0);
 
-                // Check if each element is not null and add it to the total
-                if (!isNaN(torreon)) {
-                    totalCd += torreon;
-                }
+                            const agePercentages = {
+                                kids: (ageData.kids / totalAgeGroups) * 100,
+                                teens: (ageData.teens / totalAgeGroups) * 100,
+                                adults: (ageData.adults / totalAgeGroups) * 100
+                            };
 
-                if (!isNaN(gomez)) {
-                    totalCd += gomez;
-                }
-
-                if (!isNaN(lerdo)) {
-                    totalCd += lerdo;
-                }
-
-                if (!isNaN(otros)) {
-                    totalCd += otros;
-                }
-                // Calculate the percentages
-                var torreonPercentage = (torreon / totalCd) * 100;
-                var gomezPercentage = (gomez / totalCd) * 100;
-                var lerdoPercentage = (lerdo / totalCd) * 100;
-                var otrosPercentage = (otros / totalCd) * 100;
-
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Torreón', 'Gómez', 'Lerdo', "Otros"],
-                        datasets: [{
-                            label: 'Porcentaje',
-                            data: [torreonPercentage, gomezPercentage, lerdoPercentage, otrosPercentage],
-                            borderWidth: 1
-                        }]
-                    }
-                });
-
-                var totalGender = 0; // Initialize totalGender to 0
-
-                var masculino = parseInt({{masculino}});
-                var femenino = parseInt({{femenino}});
-
-                // Check if each element is not null and add it to the totalGender
-                if (!isNaN(masculino)) {
-                    totalGender += masculino;
-                }
-
-                if (!isNaN(femenino)) {
-                    totalGender += femenino;
-                }
-
-                // Calculate the percentages
-                var masculinoPercentage = (masculino / totalGender) * 100;
-                var femeninoPercentage = (femenino / totalGender) * 100;
-
-                const ctx3 = document.getElementById('myChartSexo');
-
-
-
-                new Chart(ctx3, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Masculino', 'Femenino'],
-                        datasets: [{
-                            label: 'Porcentaje',
-                            data: [masculinoPercentage, femeninoPercentage],
-                            borderWidth: 1
-                        }]
-                    }
-                });
-                const ctx4 = document.getElementById('myChartEdades');
-                var totalAgeGroups = 0; // Initialize totalAgeGroups to 0
-
-                var kids = parseInt({{ kids }});
-                var teens = parseInt({{ teens }});
-                var adults = parseInt({{ adults }});
-
-                // Check if each element is not null and add it to the totalAgeGroups
-                if (!isNaN(kids)) {
-                    totalAgeGroups += kids;
-                }
-
-                if (!isNaN(teens)) {
-                    totalAgeGroups += teens;
-                }
-
-                if (!isNaN(adults)) {
-                    totalAgeGroups += adults;
-                }
-
-                // Calculate the percentages
-                var kidsPercentage = (kids / totalAgeGroups) * 100;
-                var teensPercentage = (teens / totalAgeGroups) * 100;
-                var adultsPercentage = (adults / totalAgeGroups) * 100;
-                new Chart(ctx4, {
-                    type: 'bar',
-                    data: {
-                        labels: ['6-12 años', '13-17 años', '18 en adelante'],
-                        datasets: [{
-                            label: 'Porcentaje',
-                            data: [kidsPercentage, teensPercentage, adultsPercentage],
-                            borderWidth: 1
-                        }]
-                    }
-                });
-            </script>
-            <br>
-            <button class="btn btn-primary" onclick="printPage()">Imprimir datos</button>
-
-        </main>
-
-
-    </body>
-
-
-</div>
-
- </div>
-
- {{> footer}}
-<script>
-    function printPage() {
-        window.print();
-    }
-</script>
+                            new Chart(ctx4, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['{{t "age_kids"}}', '{{t "age_teens"}}', '{{t "age_adults"}}'],
+                                    datasets: [{
+                                        label: '{{t "percentage"}}',
+                                        data: Object.values(agePercentages),
+                                        borderWidth: 1
+                                    }]
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> footer}}
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

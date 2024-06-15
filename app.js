@@ -183,7 +183,11 @@ i18next
     });
 
     app.use(i18nextMiddleware.handle(i18next));
-
+    hbs.registerHelper('t', function (key, options) {
+      const opts = options.hash || {};
+      return i18next.t(key, { lng: this.lng, ...opts });
+  });
+  
  
 app.post('/Formulario', Formulario);
 app.use('/', indexRouter);
