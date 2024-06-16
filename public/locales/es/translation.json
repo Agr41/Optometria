@@ -164,7 +164,6 @@
         ,
   
 
-    "Optometría UAL": "Optometría UAL",
     "Paciente": "Paciente",
     "Nombre del paciente:": "Nombre del paciente:",
     "Agregar": "Agregar",
@@ -279,6 +278,17 @@
         "Limbo": "Limbo",
         "C.A.": "C.A.",
         "Iris y pupila": "Iris y pupila",
-        "Cristalina": "Cristalina"
+        "Cristalina": "Cristalina",
+
+
+        "Validaciones":"ricky joto",
+
+        "validation": {
+    "required": "Este campo es requerido.",
+    "range": "El valor debe estar entre",
+    "and": "y",
+    "multiple": "El valor debe ser un múltiplo de"
+  }
+
     
 }

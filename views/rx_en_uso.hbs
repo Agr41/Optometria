@@ -1,417 +1,374 @@
-
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="/stylesheets/Test.css">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-2 px-0">
-                <!-- Sidebar -->
-                {{> sidebar}} 
-    </div>
-<div class="col-sm-12 col-md-9 col-lg-10 px-0">
-  <div class="col-lg-8 mx-auto p-2 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
-      {{t 'header.title'}}
-    </header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+            <!-- Sidebar -->
+            {{> sidebar}} 
+        </div>
+        <div class="col-sm-12 col-md-9 col-lg-10 px-0">
+            <div class="col-lg-8 mx-auto p-2 py-md-5">
+                <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
+                    {{t 'header.title'}}
+                </header>
 
-    <main>
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
-          <div class="container">
-            <form action="/Formulario" method="POST" id="formulario">
-              <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-              <div class="container" id="formcont">
-                <div id="carouselExample" class="carousel slide" data-wrap="false">
-                  <div class="carousel-inner">
+                <main>
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+                            <div class="container">
+                                <form action="/Formulario" method="POST" id="formulario">
+                                    <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
+                                    <div class="container" id="formcont">
+                                        <div id="carouselExample" class="carousel slide" data-wrap="false">
+                                            <div class="carousel-inner">
 
-                    <!-- Sección 1: Paciente -->
-                    <div class="carousel-item active" id="inicio">
-                      <h2>{{t 'section.patient.title'}}</h2>
-                      <button type="button" class="form-control" onclick="openPopup()">{{t 'section.patient.nameButton'}}</button>
+                                                <!-- Sección 1: Paciente -->
+                                                <div class="carousel-item active" id="inicio">
+                                                    <h2>{{t 'section.patient.title'}}</h2>
+                                                    <button type="button" class="form-control" onclick="openPopup()">{{t 'section.patient.nameButton'}}</button>
 
-                      <div id="popup" class="popup" style="z-index: +1000;">
-                        <div class="popup-content">
-                          <span class="close" onclick="closePopup()">&times;</span>
-                          <input type="text" id="searchInput" placeholder="{{t 'section.patient.searchPlaceholder'}}">
-                          {{#each pacientes}}
-                          <div class="row " style="z-index: 999;">
-                            <div class="col-auto me-auto" id="" style="width: 100%;">
-                              <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                                <button type="button" class="btn btn-dark" style="float:right;"
-                                  onclick="displayUsername(this)" value="{{this._id}}">{{t 'section.patient.addButton'}}</button>
-                              </p>
+                                                    <div id="popup" class="popup" style="z-index: +1000;">
+                                                        <div class="popup-content">
+                                                            <span class="close" onclick="closePopup()">&times;</span>
+                                                            <input type="text" id="searchInput" placeholder="{{t 'section.patient.searchPlaceholder'}}">
+                                                            {{#each pacientes}}
+                                                            <div class="row " style="z-index: 999;">
+                                                                <div class="col-auto me-auto" id="" style="width: 100%;">
+                                                                    <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
+                                                                        <button type="button" class="btn btn-dark" style="float:right;" onclick="displayUsername(this)" value="{{this._id}}">{{t 'section.patient.addButton'}}</button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {{/each}}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
+                                                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
+
+                                                    <button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">{{t 'section.patient.cancelButton'}}</button>
+
+                                                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
+                                                </div>
+
+                                                <!-- Sección 2: Pre-test -->
+                                                <div class="carousel-item">
+                                                    <h2></h2>
+                                                    <br>
+                                                    <label for=""></label>
+                                                    <table class="table table-striped-columns">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>{{t "od"}}</th>
+                                                            <th>{{t "oi"}}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t "sphere"}}</td>
+                                                            <td>
+                                                                <input type="number" name="CamposDeFormulario[esferaOD]" class="form-control" min="-30" max="20" step="0.25" required tabindex="1">
+                                                                <div class="invalid-feedback" id="esferaODFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" name="CamposDeFormulario[esferaOI]" class="form-control" min="-30" max="20" step="0.25" required tabindex="2">
+                                                                <div class="invalid-feedback" id="esferaOIFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t "cylinder"}}</td>
+                                                            <td>
+                                                                <input type="number" name="CamposDeFormulario[cilindroOD]" class="form-control" min="-10" max="0" step="0.25" required tabindex="3">
+                                                                <div class="invalid-feedback" id="cilindroODFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" name="CamposDeFormulario[cilindroOI]" class="form-control" min="-10" max="0" step="0.25" required tabindex="4">
+                                                                <div class="invalid-feedback" id="cilindroOIFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t "axis"}}</td>
+                                                            <td>
+                                                                <input type="number" name="CamposDeFormulario[ejeOD]" class="form-control" min="0" max="180" step="1" required tabindex="5">
+                                                                <div class="invalid-feedback" id="ejeODFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" name="CamposDeFormulario[ejeOI]" class="form-control" min="0" max="180" step="1" required tabindex="6">
+                                                                <div class="invalid-feedback" id="ejeOIFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t "base"}}</td>
+                                                            <td>
+                                                                <input type="text" name="CamposDeFormulario[baseOD]" class="form-control" required tabindex="7">
+                                                                <div class="invalid-feedback" id="baseODFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="CamposDeFormulario[baseOI]" class="form-control" required tabindex="8">
+                                                                <div class="invalid-feedback" id="baseOIFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t "dnp"}}</td>
+                                                            <td>
+                                                                <input type="text" name="CamposDeFormulario[DNPOD]" class="form-control" required tabindex="9">
+                                                                <div class="invalid-feedback" id="DNPODFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="CamposDeFormulario[DNPOI]" class="form-control" required tabindex="10">
+                                                                <div class="invalid-feedback" id="DNPOIFeedback">{{t 'validation.required'}}</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'section.preTest.title'}}</h2>
+                                                    <br>
+                                                    <label for="dip">{{t 'section.preTest.dipLabel'}}</label>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <input type="number" min="20" max="75" class="form-control" name="CamposDeFormulario[dip]" id="dip" required>
+                                                                <div class="invalid-feedback" id="dipFeedback">{{t 'validation.required'}}</div>
+                                                            </div>
+                                                            /
+                                                            <div class="col">
+                                                                <input type="number" min="20" max="75" class="form-control" name="CamposDeFormulario[dip-2]" readonly id="dip-2">
+                                                                <div class="invalid-feedback" id="dip2Feedback">{{t 'validation.required'}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <label for="adicion">{{t 'section.preTest.additionLabel'}}</label>
+                                                    <input type="number" class="form-control" name="CamposDeFormulario[adicion]" min=".5" max="3.5" step="0.25" required>
+                                                    <div class="invalid-feedback" id="adicionFeedback">{{t 'validation.required'}}</div>
+                                                    <script>
+                                                        var dipInput = document.getElementById("dip");
+                                                        function updateDipMinus2() {
+                                                            var dipValue = parseFloat(dipInput.value);
+                                                            var dipMinus2 = dipValue - 2;
+                                                            document.getElementById("dip-2").value = dipMinus2;
+                                                        }
+                                                        dipInput.addEventListener("input", updateDipMinus2);
+                                                    </script>
+                                                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'section.reasonForConsultation.title'}}</h2>
+                                                    <br>
+                                                    <label for="molestiaComo">{{t 'section.reasonForConsultation.howStartedLabel'}}</label>
+                                                    <input type="text" class="form-control" name="CamposDeFormulario[molestiaComo]" required>
+                                                    <div class="invalid-feedback" id="molestiaComoFeedback">{{t 'validation.required'}}</div>
+                                                    <label for="molestiaAntiguedad">{{t 'section.reasonForConsultation.durationLabel'}}</label>
+                                                    <input type="text" class="form-control" name="CamposDeFormulario[molestiaAntiguedad]" required>
+                                                    <div class="invalid-feedback" id="molestiaAntiguedadFeedback">{{t 'validation.required'}}</div>
+                                                    <br>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'section.background.title'}}</h2>
+                                                    <br>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label for="Hipertension">{{t 'section.background.bloodPressureLabel'}}</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-text">
+                                                                        <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Hipertension]"> {{t 'section.background.yes'}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <label for="pa1">{{t 'section.background.bloodPressureMeasurementLabel'}}</label>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa1]" required>
+                                                                        <div class="invalid-feedback" id="pa1Feedback">{{t 'validation.required'}}</div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa2]" required>
+                                                                        <div class="invalid-feedback" id="pa2Feedback">{{t 'validation.required'}}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <label for="observaciones">{{t 'section.background.observationsLabel'}}</label>
+                                                    <input type="text" class="form-control" name="CamposDeFormulario[observaciones]" required>
+                                                    <div class="invalid-feedback" id="observacionesFeedback">{{t 'validation.required'}}</div>
+                                                    <label for="antecendentes">{{t 'section.background.familyHistoryLabel'}}</label>
+                                                    <input type="text" class="form-control" name="CamposDeFormulario[antecendentes]" required>
+                                                    <div class="invalid-feedback" id="antecendentesFeedback">{{t 'validation.required'}}</div>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label for="Glucosa">{{t 'section.background.glucoseLabel'}}</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-text">
+                                                                        <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Glucosa]"> {{t 'section.background.yes'}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <label for="medGlucosa">{{t 'section.background.glucoseMeasurementLabel'}}</label>
+                                                                <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[medGlucosa]" required>
+                                                                <div class="invalid-feedback" id="medGlucosaFeedback">{{t 'validation.required'}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <label for="tratamientos">{{t 'section.background.optometricTreatmentsLabel'}}</label>
+                                                    <input type="text" class="form-control" name="CamposDeFormulario[tratamientos]" required>
+                                                    <div class="invalid-feedback" id="tratamientosFeedback">{{t 'validation.required'}}</div>
+                                                    <br>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'section.symptoms.title'}}</h2>
+                                                    <div class="container text-center">
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Ardor]"> {{t 'section.symptoms.burning'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Cansancio]"> {{t 'section.symptoms.fatigue'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Cefalea]"> {{t 'section.symptoms.headache'}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Confusion]"> {{t 'section.symptoms.confusion'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Somnolencia]"> {{t 'section.symptoms.drowsiness'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Prurito]"> {{t 'section.symptoms.itching'}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Lagrimeo]"> {{t 'section.symptoms.tearing'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Fotofobia]"> {{t 'section.symptoms.photophobia'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Hiperemia]"> {{t 'section.symptoms.hyperemia'}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionDoble]"> {{t 'section.symptoms.doubleVision'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionBorrosa]"> {{t 'section.symptoms.blurredVision'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[DolorOcular]"> {{t 'section.symptoms.eyePain'}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Miodesopsias]"> {{t 'section.symptoms.floaters'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[SaltoLetras]"> {{t 'section.symptoms.letterJumping'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Secreciones]"> {{t 'section.symptoms.discharge'}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[AtencionConcentracion]"> {{t 'section.symptoms.attentionConcentration'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[BajaComprension]"> {{t 'section.symptoms.lowUnderstanding'}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="input-group-text">
+                                                                    <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Mareo]"> {{t 'section.symptoms.dizziness'}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+                                                </div>
+                                                <!-- Sección 3: Refracción -->
+                                                <div class="carousel-item" id="itemsave">
+                                                    <h2>{{t 'section.refraction.title'}}</h2>
+                                                    <div class="container text-start">
+                                                        <div class="row align-items-start">
+                                                            <div class="col col-5">
+                                                                <div class="contenedor2">
+                                                                    <button type="submit" class="btn btn-primary" id="btnSalir">{{t 'section.refraction.saveAndExit'}}</button>
+                                                                    <!--
+                                                                        <button type="submit" class="btn btn-primary" id="btnSiguiente">{{t 'Guardar e ir al siguiente'}}</button>
+                                                                        <button type="submit" class="btn btn-primary" id="btnClinica">{{t 'Guardar y regresar a Clínica'}}</button>
+                                                                        -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row " style="z-index: 999;">
+                                        <div class="col-auto me-auto" id="" style="width: 40%;">
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="ocultarBoton()" id="btnprev" hidden="true">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="ocultarBoton();" id="btnnext">
+                                                <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                          </div>
-                          {{/each}}
                         </div>
-                      </div>
-                      <br>
-                      <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                      <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
-
-                      <button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">{{t 'section.patient.cancelButton'}}</button>
-
-                      <!-- Resto de tu contenido de la sección "Paciente" aquí -->
                     </div>
-
-
-
-
-                  <!-- Sección 2: Pre-test -->
-                  <div class="carousel-item">
-                    <h2></h2>
-
-                    <br>
-                    <label for=""></label>
-<table class="table table-striped-columns">
-  <tr>
-    <th></th>
-    <th>{{t "od"}}</th>
-    <th>{{t "oi"}}</th>
-  </tr>
-  <tr>
-    <td>{{t "sphere"}}</td>
-    <td>
-      <input type="number" name="CamposDeFormulario[esferaOD]" class="form-control" min="-30" max="20" step="0.25" required tabindex="1">
-      <div class="invalid-feedback" id="esferaODFeedback"></div>
-    </td>
-    <td>
-      <input type="number" name="CamposDeFormulario[esferaOI]" class="form-control" min="-30" max="20" step="0.25" required tabindex="2">
-      <div class="invalid-feedback" id="esferaOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "cylinder"}}</td>
-    <td>
-      <input type="number" name="CamposDeFormulario[cilindroOD]" class="form-control" min="-10" max="0" step="0.25" required tabindex="3">
-      <div class="invalid-feedback" id="cilindroODFeedback"></div>
-    </td>
-    <td>
-      <input type="number" name="CamposDeFormulario[cilindroOI]" class="form-control" min="-10" max="0" step="0.25" required tabindex="4">
-      <div class="invalid-feedback" id="cilindroOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "axis"}}</td>
-    <td>
-      <input type="number" name="CamposDeFormulario[ejeOD]" class="form-control" min="0" max="180" step="1" required tabindex="5">
-      <div class="invalid-feedback" id="ejeODFeedback"></div>
-    </td>
-    <td>
-      <input type="number" name="CamposDeFormulario[ejeOI]" class="form-control" min="0" max="180" step="1" required tabindex="6">
-      <div class="invalid-feedback" id="ejeOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "base"}}</td>
-    <td>
-      <input type="text" name="CamposDeFormulario[baseOD]" class="form-control" required tabindex="7">
-      <div class="invalid-feedback" id="baseODFeedback"></div>
-    </td>
-    <td>
-      <input type="text" name="CamposDeFormulario[baseOI]" class="form-control" required tabindex="8">
-      <div class="invalid-feedback" id="baseOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-<td>{{t "dnp"}}</td>
-<td>
-  <input type="text" name="CamposDeFormulario[DNPOD]" class="form-control" required tabindex="9">
-  <div class="invalid-feedback" id="DNPODFeedback"></div>
-</td>
-<td>
-  <input type="text" name="CamposDeFormulario[DNPOI]" class="form-control" required tabindex="10">
-  <div class="invalid-feedback" id="DNPOIFeedback"></div>
-</td>
-
-  </tr>
-</table>
-
-<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-</div>
-<div class="carousel-item">
-  <h2>{{t 'section.preTest.title'}}</h2>
-
-  <br>
-  <label for="dip">{{t 'section.preTest.dipLabel'}}</label>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <input type="number" min="20" max="75" class="form-control" name="CamposDeFormulario[dip]" id="dip" required>
-        <div class="invalid-feedback" id="dipFeedback"></div>
-      </div>
-      /
-      <div class="col">
-        <input type="number" min="20" max="75" class="form-control" name="CamposDeFormulario[dip-2]" readonly id="dip-2">
-        <div class="invalid-feedback" id="dip2Feedback"></div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <label for="adicion">{{t 'section.preTest.additionLabel'}}</label>
-  <input type="number" class="form-control" name="CamposDeFormulario[adicion]" min=".5" max="3.5" step="0.25" required>
-  <div class="invalid-feedback" id="adicionFeedback"></div>
-
-  <script>
-    var dipInput = document.getElementById("dip");
-    function updateDipMinus2() {
-      var dipValue = parseFloat(dipInput.value);
-      var dipMinus2 = dipValue - 2;
-      document.getElementById("dip-2").value = dipMinus2;
-    }
-    dipInput.addEventListener("input", updateDipMinus2);
-  </script>
-
-  <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-</div>
-<div class="carousel-item">
-  <h2>{{t 'section.reasonForConsultation.title'}}</h2>
-
-  <br>
-  <label for="molestiaComo">{{t 'section.reasonForConsultation.howStartedLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[molestiaComo]" required>
-  <div class="invalid-feedback" id="molestiaComoFeedback"></div>
-
-  <label for="molestiaAntiguedad">{{t 'section.reasonForConsultation.durationLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[molestiaAntiguedad]" required>
-  <div class="invalid-feedback" id="molestiaAntiguedadFeedback"></div>
-  <br>
-</div>
-<div class="carousel-item">
-  <h2>{{t 'section.background.title'}}</h2>
-
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <label for="Hipertension">{{t 'section.background.bloodPressureLabel'}}</label>
-        <div class="input-group mb-3">
-          <div class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Hipertension]"> {{t 'section.background.yes'}}
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <label for="pa1">{{t 'section.background.bloodPressureMeasurementLabel'}}</label>
-        <div class="row">
-          <div class="col">
-            <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa1]" required>
-            <div class="invalid-feedback" id="pa1Feedback"></div>
-          </div>
-          <div class="col">
-            <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa2]" required>
-            <div class="invalid-feedback" id="pa2Feedback"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <label for="observaciones">{{t 'section.background.observationsLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[observaciones]" required>
-  <div class="invalid-feedback" id="observacionesFeedback"></div>
-  <label for="antecendentes">{{t 'section.background.familyHistoryLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[antecendentes]" required>
-  <div class="invalid-feedback" id="antecendentesFeedback"></div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <label for="Glucosa">{{t 'section.background.glucoseLabel'}}</label>
-        <div class="input-group mb-3">
-          <div class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Glucosa]"> {{t 'section.background.yes'}}
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
-  <label for="medGlucosa">{{t 'section.background.glucoseMeasurementLabel'}}</label>
-  <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[medGlucosa]" required>
-  <div class="invalid-feedback" id="medGlucosaFeedback"></div>
-</div>
-
-    </div>
-  </div>
-  <label for="tratamientos">{{t 'section.background.optometricTreatmentsLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[tratamientos]" required>
-  <div class="invalid-feedback" id="tratamientosFeedback"></div>
-  <br>
-</div>
-
-            <div class="carousel-item">
-  <h2>{{t 'section.symptoms.title'}}</h2>
-  <div class="container text-center">
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Ardor]"> {{t 'section.symptoms.burning'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Cansancio]"> {{t 'section.symptoms.fatigue'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Cefalea]"> {{t 'section.symptoms.headache'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Confusion]"> {{t 'section.symptoms.confusion'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Somnolencia]"> {{t 'section.symptoms.drowsiness'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Prurito]"> {{t 'section.symptoms.itching'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Lagrimeo]"> {{t 'section.symptoms.tearing'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Fotofobia]"> {{t 'section.symptoms.photophobia'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Hiperemia]"> {{t 'section.symptoms.hyperemia'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionDoble]"> {{t 'section.symptoms.doubleVision'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionBorrosa]"> {{t 'section.symptoms.blurredVision'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[DolorOcular]"> {{t 'section.symptoms.eyePain'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Miodesopsias]"> {{t 'section.symptoms.floaters'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[SaltoLetras]"> {{t 'section.symptoms.letterJumping'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Secreciones]"> {{t 'section.symptoms.discharge'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[AtencionConcentracion]"> {{t 'section.symptoms.attentionConcentration'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[BajaComprension]"> {{t 'section.symptoms.lowUnderstanding'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Mareo]"> {{t 'section.symptoms.dizziness'}}
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-</div>
-<!-- Sección 3: Refracción -->
-<div class="carousel-item" id="itemsave">
-  <h2>{{t 'section.refraction.title'}}</h2>
-  <div class="container text-start">
-    <div class="row align-items-start">
-      <div class="col col-5">
-        <div class="contenedor2">
-          <button type="submit" class="btn btn-primary" id="btnSalir">{{t 'section.refraction.saveAndExit'}}</button>
-
-                              <!--
-                              <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
-                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
-                              -->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-
-                </div>
-              </div>
-</form>
-
-
+                </main>
             </div>
         </div>
-        <div class="row " style="z-index: 999;">
-          <div class="col-auto me-auto" id="" style="width: 40%;">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="ocultarBoton()" id="btnprev" hidden="true">
-              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-          <div class="col-auto">
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="ocultarBoton();" id="btnnext">
-              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-        </div>
-  </main>
-</div>
-
-</div>
-</div>
-
-
-
+    </div>
 </div>
 
 
@@ -558,13 +515,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const value = parseFloat(input.value);
       if (input.required && !input.value) {
         input.classList.add('is-invalid');
-        feedback.textContent = 'Este campo es requerido.';
+        feedback.textContent = '{{t "validation.required"}}';
       } else if (isNaN(value) || value < min || (max !== Infinity && value > max)) {
         input.classList.add('is-invalid');
-        feedback.textContent = `El valor debe estar entre ${min} y ${max}.`;
+        feedback.textContent = `{{t "validation.range"}} ${min} {{t "validation.and"}} ${max}.`;
       } else if ((value - min) % step !== 0) {
         input.classList.add('is-invalid');
-        feedback.textContent = `El valor debe ser un múltiplo de ${step}.`;
+        feedback.textContent = `{{t "validation.multiple"}} ${step}.`;
       } else {
         input.classList.remove('is-invalid');
         feedback.textContent = '';
@@ -572,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (input.type === 'text') {
       if (input.required && !input.value) {
         input.classList.add('is-invalid');
-        feedback.textContent = 'Este campo es requerido.';
+        feedback.textContent = '{{t "validation.required"}}';
       } else {
         input.classList.remove('is-invalid');
         feedback.textContent = '';
@@ -626,8 +583,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
 </script>
+
 
 
 

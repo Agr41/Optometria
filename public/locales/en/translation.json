@@ -89,7 +89,8 @@
           "register_user_button": "Register User",
       
     
-          
+          "Panel de usuario":"ricky joto",
+
           
             "user_panel": "User Panel",
             "filter_by_role": "Filter by role",
@@ -106,7 +107,8 @@
             "no_cancel": "No, cancel!",
         
         
-        
+            "Panel de paciente":"ricky joto",
+
         
             
               "optometry_ual": "Optometry UAL",
@@ -332,11 +334,21 @@
                 "Limbo": "Limbus",
                 "C.A.": "A.C.",
                 "Iris y pupila": "Iris and Pupil",
-                "Cristalina": "Lens"
+                "Cristalina": "Lens",
     
             
             
-              
+                "Validaciones":"ricky joto",
+                
+                  "validation": {
+                    "required": "This field is required.",
+                    "range": "The value must be between",
+                    "and": "and",
+                    "multiple": "The value must be a multiple of"
+                  }
+                
+                
+
             
             
 
