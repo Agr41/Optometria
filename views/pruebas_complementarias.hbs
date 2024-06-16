@@ -16,216 +16,214 @@
                     <div class="modal-content rounded-4 shadow">
                         <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
                             <div class="container">
-                                <form action="/Formulario" method="POST" id="formulario">
-                                    <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-                                    <div class="container" id="formcont">
-                                        <div id="carouselExample" class="carousel slide" data-wrap="false">
-                                            <div class="carousel-inner">
+                   <form action="/Formulario" method="POST" id="formulario">
+    <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
+    <div class="container" id="formcont">
+        <div id="carouselExample" class="carousel slide" data-wrap="false">
+            <div class="carousel-inner">
 
-                                                <!-- Sección 1: Paciente -->
-                                                <div class="carousel-item active" id="inicio">
-                                                    <h2>{{t 'Paciente'}}</h2>
-                                                    <button type="button" class="form-control" onclick="openPopup()">{{t 'Nombre del paciente:'}}</button>
+                <!-- Sección 1: Paciente -->
+                <div class="carousel-item active" id="inicio">
+                    <h2>{{t 'Paciente'}}</h2>
+                    <button type="button" class="form-control" onclick="openPopup()">{{t 'Nombre del paciente:'}}</button>
 
-                                                    <div id="popup" class="popup" style="z-index: +1000;">
-                                                        <div class="popup-content">
-                                                            <span class="close" onclick="closePopup()">&times;</span>
-                                                            <input type="text" id="searchInput" placeholder="{{t 'Search...'}}">
-                                                            {{#each pacientes}}
-                                                            <div class="row " style="z-index: 999;">
-                                                                <div class="col-auto me-auto" id="" style="width: 100%;">
-                                                                    <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                                                                        <button type="button" class="btn btn-dark" style="float:right;" onclick="displayUsername(this)" value="{{this._id}}">{{t 'Agregar'}}</button>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            {{/each}}
-                                                        </div>
-                                                    </div>
-                                                    <br>
-                                                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                                                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
-
-                                                    <button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">{{t 'Cancelar'}}</button>
-
-                                                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-                                                </div>
-
-                                       <!-- Sección 2: Pre-test -->
-<div class="carousel-item">
-    <h2>{{t 'Pruebas complementarias'}}</h2>
-    <br>
-    <label for=""></label>
-    <table class="table table-striped-columns">
-        <tr>
-            <th></th>
-            <th>{{t 'Pruebas complementarias'}}</th>
-        </tr>
-        <tr>
-            <td>{{t 'Ishihara'}}</td>
-            <td>
-                <input type="text" id="Ishihara" name="CamposDeFormulario[Ishihara]" class="form-control" min="-1" max="1" step="0.25" required>
-                <div class="invalid-feedback" id="IshiharaFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Amsler'}}</td>
-            <td>
-                <input type="text" id="Amsler" name="CamposDeFormulario[Amsler]" class="form-control" min="-1" max="1" step="0.25" required>
-                <div class="invalid-feedback" id="AmslerFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Maddox'}}</td>
-            <td>
-                <input type="text" id="Maddox" name="CamposDeFormulario[Maddox]" class="form-control" min="0" step="1" required>
-                <div class="invalid-feedback" id="MaddoxFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Campos visuales'}}</td>
-            <td>
-                <input type="text" id="Campos visuales" name="CamposDeFormulario[Camposvisuales]" class="form-control" required>
-                <div class="invalid-feedback" id="CamposvisualesFeedback"></div>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div class="carousel-item">
-    <h2>{{t 'Biomicroscopía'}}</h2>
-    <br>
-    <table class="table table-striped-columns">
-        <tr>
-            <th></th>
-            <th>{{t 'Biomicroscopía'}}</th>
-        </tr>
-        <tr>
-            <td>{{t 'Párpados'}}</td>
-            <td>
-                <input type="text" id="Parpados" name="CamposDeFormulario[Parpados]" class="form-control" min="-1" max="1" step="0.25" required>
-                <div class="invalid-feedback" id="ParpadosFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Puntos y vías lagrimales'}}</td>
-            <td>
-                <input type="text" id="Puntos y vias lagrimales" name="CamposDeFormulario[PuntosViasLagrimales]" class="form-control" min="-1" max="1" step="0.25" required>
-                <div class="invalid-feedback" id="PuntosViasLagrimalesFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Fondo de saco'}}</td>
-            <td>
-                <input type="text" id="Fondo de saco" name="CamposDeFormulario[FondoDeSaco]" class="form-control" min="0" step="1" required>
-                <div class="invalid-feedback" id="FondoDeSacoFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Conjuntiva'}}</td>
-            <td>
-                <input type="text" id="Conjuntiva" name="CamposDeFormulario[Conjuntiva]" class="form-control" required>
-                <div class="invalid-feedback" id="ConjuntivaFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Esclera'}}</td>
-            <td>
-                <input type="text" id="Esclera" name="CamposDeFormulario[Esclera]" class="form-control" required>
-                <div class="invalid-feedback" id="EscleraFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Córnea'}}</td>
-            <td>
-                <input type="text" id="Cornea" name="CamposDeFormulario[Cornea]" class="form-control" required>
-                <div class="invalid-feedback" id="CorneaFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Limbo'}}</td>
-            <td>
-                <input type="text" id="Limbo" name="CamposDeFormulario[Limbo]" class="form-control" required>
-                <div class="invalid-feedback" id="LimboFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'C.A.'}}</td>
-            <td>
-                <input type="text" id="C.A." name="CamposDeFormulario[CA]" class="form-control" required>
-                <div class="invalid-feedback" id="CAFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Iris y pupila'}}</td>
-            <td>
-                <input type="text" id="Iris y pupila" name="CamposDeFormulario[IrisYPupila]" class="form-control" required>
-                <div class="invalid-feedback" id="IrisYPupilaFeedback"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>{{t 'Cristalina'}}</td>
-            <td>
-                <input type="text" id="Cristalina" name="CamposDeFormulario[Cristalina]" class="form-control" required>
-                <div class="invalid-feedback" id="CristalinaFeedback"></div>
-            </td>
-        </tr>
-    </table>
-</div>
-
-                                                <script>
-    var dipInput = document.getElementById("dip");
-
-    function updateDipMinus2() {
-        var dipValue = parseFloat(dipInput.value);
-        var dipMinus2 = dipValue - 2;
-        document.getElementById("dip-2").value = dipMinus2;
-    }
-
-    dipInput.addEventListener("input", updateDipMinus2);
-</script>
-
-<!-- Sección 3: Refracción -->
-<div class="carousel-item" id="itemsave">
-    <h2>{{t 'Finalizar'}}</h2>
-    <form id="myForm" action="tu_script.php" method="POST">
-
-        <div class="container text-start">
-            <div class="row align-items-start">
-                <div class="col col-5">
-                    <div class="contenedor2">
-                        <button type="submit" class="btn btn-primary" id="btnSalir">{{t 'Guardar y salir'}}</button>
-                        <!--
-                        <button type="submit" class="btn btn-primary" id="btnSiguiente">{{t 'Guardar e ir al siguiente'}}</button>
-                        <button type="submit" class="btn btn-primary" id="btnClinica">{{t 'Guardar y regresar a Clínica'}}</button>
-                        -->
+                    <div id="popup" class="popup" style="z-index: +1000;">
+                        <div class="popup-content">
+                            <span class="close" onclick="closePopup()">&times;</span>
+                            <input type="text" id="searchInput" placeholder="{{t 'Search...'}}">
+                            {{#each pacientes}}
+                            <div class="row " style="z-index: 999;">
+                                <div class="col-auto me-auto" id="" style="width: 100%;">
+                                    <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
+                                        <button type="button" class="btn btn-dark" style="float:right;" onclick="displayUsername(this)" value="{{this._id}}">{{t 'Agregar'}}</button>
+                                    </p>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
                     </div>
+                    <br>
+                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
+                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
+
+                    <button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">{{t 'Cancelar'}}</button>
+
+                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
+                </div>
+
+                <!-- Sección 2: Pruebas complementarias -->
+                <div class="carousel-item">
+                    <h2>{{t 'Pruebas complementarias'}}</h2>
+                    <br>
+                    <label for=""></label>
+                    <table class="table table-striped-columns">
+                        <tr>
+                            <th></th>
+                            <th>{{t 'Pruebas complementarias'}}</th>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Ishihara'}}</td>
+                            <td>
+                                <input type="text" id="Ishihara" name="CamposDeFormulario[Ishihara]" class="form-control" min="-1" max="1" step="0.25" required>
+                                <div class="invalid-feedback" id="IshiharaFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Amsler'}}</td>
+                            <td>
+                                <input type="text" id="Amsler" name="CamposDeFormulario[Amsler]" class="form-control" min="-1" max="1" step="0.25" required>
+                                <div class="invalid-feedback" id="AmslerFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Maddox'}}</td>
+                            <td>
+                                <input type="text" id="Maddox" name="CamposDeFormulario[Maddox]" class="form-control" min="0" step="1" required>
+                                <div class="invalid-feedback" id="MaddoxFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Campos visuales'}}</td>
+                            <td>
+                                <input type="text" id="Campos visuales" name="CamposDeFormulario[Camposvisuales]" class="form-control" required>
+                                <div class="invalid-feedback" id="CamposvisualesFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Sección 2: Biomicroscopía -->
+                <div class="carousel-item">
+                    <h2>{{t 'Biomicroscopía'}}</h2>
+                    <br>
+                    <table class="table table-striped-columns">
+                        <tr>
+                            <th></th>
+                            <th>{{t 'Biomicroscopía'}}</th>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Párpados'}}</td>
+                            <td>
+                                <input type="text" id="Parpados" name="CamposDeFormulario[Parpados]" class="form-control" min="-1" max="1" step="0.25" required>
+                                <div class="invalid-feedback" id="ParpadosFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Puntos y vías lagrimales'}}</td>
+                            <td>
+                                <input type="text" id="Puntos y vias lagrimales" name="CamposDeFormulario[PuntosViasLagrimales]" class="form-control" min="-1" max="1" step="0.25" required>
+                                <div class="invalid-feedback" id="PuntosViasLagrimalesFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Fondo de saco'}}</td>
+                            <td>
+                                <input type="text" id="Fondo de saco" name="CamposDeFormulario[FondoDeSaco]" class="form-control" min="0" step="1" required>
+                                <div class="invalid-feedback" id="FondoDeSacoFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Conjuntiva'}}</td>
+                            <td>
+                                <input type="text" id="Conjuntiva" name="CamposDeFormulario[Conjuntiva]" class="form-control" required>
+                                <div class="invalid-feedback" id="ConjuntivaFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Esclera'}}</td>
+                            <td>
+                                <input type="text" id="Esclera" name="CamposDeFormulario[Esclera]" class="form-control" required>
+                                <div class="invalid-feedback" id="EscleraFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Córnea'}}</td>
+                            <td>
+                                <input type="text" id="Cornea" name="CamposDeFormulario[Cornea]" class="form-control" required>
+                                <div class="invalid-feedback" id="CorneaFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Limbo'}}</td>
+                            <td>
+                                <input type="text" id="Limbo" name="CamposDeFormulario[Limbo]" class="form-control" required>
+                                <div class="invalid-feedback" id="LimboFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'C.A.'}}</td>
+                            <td>
+                                <input type="text" id="C.A." name="CamposDeFormulario[CA]" class="form-control" required>
+                                <div class="invalid-feedback" id="CAFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Iris y pupila'}}</td>
+                            <td>
+                                <input type="text" id="Iris y pupila" name="CamposDeFormulario[IrisYPupila]" class="form-control" required>
+                                <div class="invalid-feedback" id="IrisYPupilaFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{t 'Cristalina'}}</td>
+                            <td>
+                                <input type="text" id="Cristalina" name="CamposDeFormulario[Cristalina]" class="form-control" required>
+                                <div class="invalid-feedback" id="CristalinaFeedback">{{t 'validation.required'}}</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <script>
+                    var dipInput = document.getElementById("dip");
+
+                    function updateDipMinus2() {
+                        var dipValue = parseFloat(dipInput.value);
+                        var dipMinus2 = dipValue - 2;
+                        document.getElementById("dip-2").value = dipMinus2;
+                    }
+
+                    dipInput.addEventListener("input", updateDipMinus2);
+                </script>
+
+                <!-- Sección 3: Refracción -->
+                <div class="carousel-item" id="itemsave">
+                    <h2>{{t 'Finalizar'}}</h2>
+                    <form id="myForm" action="tu_script.php" method="POST">
+
+                        <div class="container text-start">
+                            <div class="row align-items-start">
+                                <div class="col col-5">
+                                    <div class="contenedor2">
+                                        <button type="submit" class="btn btn-primary" id="btnSalir">{{t 'Guardar y salir'}}</button>
+                                        <!--
+                                        <button type="submit" class="btn btn-primary" id="btnSiguiente">{{t 'Guardar e ir al siguiente'}}</button>
+                                        <button type="submit" class="btn btn-primary" id="btnClinica">{{t 'Guardar y regresar a Clínica'}}</button>
+                                        -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
                 </div>
             </div>
         </div>
-        <br>
-    </form>
-</div>
+    </div>
+    <div class="row" style="z-index: 999;">
+        <div class="col-auto me-auto" id="" style="width: 40%;">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="ocultarBoton()" id="btnprev" hidden="true">
+                <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="ocultarBoton();" id="btnnext">
+                <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
+            </button>
+        </div>
+    </div>
+</form>
 
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row " style="z-index: 999;">
-                                        <div class="col-auto me-auto" id="" style="width: 40%;">
-                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="ocultarBoton()" id="btnprev" hidden="true">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-                                            </button>
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="ocultarBoton();" id="btnnext">
-                                                <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -354,13 +352,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const value = parseFloat(input.value);
     if (input.required && !input.value) {
       input.classList.add('is-invalid');
-      feedback.textContent = 'Este campo es requerido.';
+      feedback.textContent = '{{t "validation.required"}}';
     } else if (isNaN(value) || value < min || value > max) {
       input.classList.add('is-invalid');
-      feedback.textContent = `El valor debe estar entre ${min} y ${max}.`;
+      feedback.textContent = `{{t "validation.range"}} ${min} {{t "and"}} ${max}.`;
     } else if ((value - min) % step !== 0) {
       input.classList.add('is-invalid');
-      feedback.textContent = `El valor debe ser un múltiplo de ${step}.`;
+      feedback.textContent = `{{t "validation.multiple"}} ${step}.`;
     } else {
       input.classList.remove('is-invalid');
       feedback.textContent = '';
@@ -410,5 +408,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 {{> footer}}
