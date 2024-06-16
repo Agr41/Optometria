@@ -1,418 +1,336 @@
 
-<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-<link rel="stylesheet" href="/stylesheets/Test.css">
-
-    <div class="container-fluid">
+<link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="/stylesheets/Test.css" rel="stylesheet"/>
+ <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-2 px-0">
                 <!-- Sidebar -->
                 {{> sidebar}} 
     </div>
-<div class="col-sm-12 col-md-9 col-lg-10 px-0">
-  <div class="col-lg-8 mx-auto p-2 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
-      {{t 'header.title'}}
-    </header>
+    <div class="col-sm-12 col-md-9 col-lg-10 px-0">
 
-    <main>
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
-          <div class="container">
-            <form action="/Formulario" method="POST" id="formulario">
-              <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-              <div class="container" id="formcont">
-                <div id="carouselExample" class="carousel slide" data-wrap="false">
-                  <div class="carousel-inner">
 
-                    <!-- Sección 1: Paciente -->
-                    <div class="carousel-item active" id="inicio">
-                      <h2>{{t 'section.patient.title'}}</h2>
-                      <button type="button" class="form-control" onclick="openPopup()">{{t 'section.patient.nameButton'}}</button>
-
-                      <div id="popup" class="popup" style="z-index: +1000;">
-                        <div class="popup-content">
-                          <span class="close" onclick="closePopup()">&times;</span>
-                          <input type="text" id="searchInput" placeholder="{{t 'section.patient.searchPlaceholder'}}">
-                          {{#each pacientes}}
-                          <div class="row " style="z-index: 999;">
-                            <div class="col-auto me-auto" id="" style="width: 100%;">
-                              <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                                <button type="button" class="btn btn-dark" style="float:right;"
-                                  onclick="displayUsername(this)" value="{{this._id}}">{{t 'section.patient.addButton'}}</button>
-                              </p>
-                            </div>
-                          </div>
-                          {{/each}}
-                        </div>
+<div class="col-lg-8 mx-auto p-2 py-md-5">
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    Optometría UAL
+  </header>
+<main>
+<div class="modal-content rounded-4 shadow">
+<div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+<div class="container">
+<form action="/Formulario" id="formulario" method="POST">
+<input id="Optometrista" name="Optometrista" type="hidden" value="{{usuario}}"/>
+<div class="container" id="formcont">
+<div class="carousel slide" data-wrap="false" id="carouselExample">
+<div class="carousel-inner">
+<!-- Sección 1: Paciente -->
+<div class="carousel-item active" id="inicio">
+<h2>Paciente</h2>
+<button class="form-control" onclick="openPopup()" type="button">Nombre del paciente:</button>
+<div class="popup" id="popup" style="z-index: +1000;">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">�</span>
+<input id="searchInput" name="searchInput" placeholder="Search..." type="text"/>
+                        {{#each pacientes}}
+                        <div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 100%;">
+<p>{{this.NombreCompleto}}<input id="id"  type="hidden" value="{{this._id}}"/>
+<button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">Agregar</button>
+</p>
+</div>
+</div>
+                        {{/each}}
                       </div>
-                      <br>
-                      <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                      <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
-
-                      <button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">{{t 'section.patient.cancelButton'}}</button>
-
-                      <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-                    </div>
-
-
-
-
-                  <!-- Sección 2: Pre-test -->
-                  <div class="carousel-item">
-                    <h2></h2>
-
-                    <br>
-                    <label for=""></label>
-<table class="table table-striped-columns">
-  <tr>
-    <th></th>
-    <th>{{t "od"}}</th>
-    <th>{{t "oi"}}</th>
-  </tr>
-  <tr>
-    <td>{{t "sphere"}}</td>
-    <td>
-      <input type="number" name="CamposDeFormulario[esferaOD]" class="form-control" min="-30" max="20" step="0.25" required tabindex="1">
-      <div class="invalid-feedback" id="esferaODFeedback"></div>
-    </td>
-    <td>
-      <input type="number" name="CamposDeFormulario[esferaOI]" class="form-control" min="-30" max="20" step="0.25" required tabindex="2">
-      <div class="invalid-feedback" id="esferaOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "cylinder"}}</td>
-    <td>
-      <input type="number" name="CamposDeFormulario[cilindroOD]" class="form-control" min="-10" max="0" step="0.25" required tabindex="3">
-      <div class="invalid-feedback" id="cilindroODFeedback"></div>
-    </td>
-    <td>
-      <input type="number" name="CamposDeFormulario[cilindroOI]" class="form-control" min="-10" max="0" step="0.25" required tabindex="4">
-      <div class="invalid-feedback" id="cilindroOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "axis"}}</td>
-    <td>
-      <input type="number" name="CamposDeFormulario[ejeOD]" class="form-control" min="0" max="180" step="1" required tabindex="5">
-      <div class="invalid-feedback" id="ejeODFeedback"></div>
-    </td>
-    <td>
-      <input type="number" name="CamposDeFormulario[ejeOI]" class="form-control" min="0" max="180" step="1" required tabindex="6">
-      <div class="invalid-feedback" id="ejeOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "base"}}</td>
-    <td>
-      <input type="text" name="CamposDeFormulario[baseOD]" class="form-control" required tabindex="7">
-      <div class="invalid-feedback" id="baseODFeedback"></div>
-    </td>
-    <td>
-      <input type="text" name="CamposDeFormulario[baseOI]" class="form-control" required tabindex="8">
-      <div class="invalid-feedback" id="baseOIFeedback"></div>
-    </td>
-  </tr>
-  <tr>
-    <td>{{t "dnp"}}</td>
-    <td>
-      <input type="text" name="CamposDeFormulario[DNPOD]" class="form-control" required tabindex="9">
-      <div class="invalid-feedback" id="DNPODFeedback"></div>
-    </td>
-    <td>
-      <input type="text" name="CamposDeFormulario[DNPOI]" class="form-control" required tabindex="10">
-      <div class="invalid-feedback" id="DNPOIFeedback"></div>
-    </td>
-  </tr>
+</div>
+<br/>
+<p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
+<input id="usernameValueDisplay" name="id" style="display:none;" type="hidden"/>
+<button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">Cancelar</button>
+<!-- Resto de tu contenido de la sección "Paciente" aquí -->
+</div>
+<!-- Sección 2: Pre-test -->
+<div class="carousel-item">
+<h2></h2>
+<br/>
+<div class="container text-center">
+  <div class="row align-items-start">
+    <div class="col">
+      <table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OFTALMOSCOPÍA  OD</th>
+</tr>
+<td>COLOR DE RETINA</td>
+<td> <input class="form-control" max="1" min="-1" name="CamposDeFormulario[ColorDeRetina]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>EXCAVACIÓN</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" max="1" min="-1" name="CamposDeFormulario[EXCAVACIÓN]" step="0.25" type="text"/>
+</td>
+<tr></tr>
+<td>RELACIÓN A/V</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" min="0" name="CamposDeFormulario[RELACIÓN]" step="1" type="text"/>
+</td>
+<tr></tr>
+<td>ISNT</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CamposDeFormulario[ISNT]" type="text"/>
+</td>
+<tr></tr>
+<td>REFLEJO FOVEAL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CamposDeFormulario[REFLEJO FOVEAL]" type="text"/>
+</td>
+<tr></tr>
+<td>DIÁMETRO</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CamposDeFormulario[DIAMETRO]" type="text"/>
+</td>
 </table>
+    </div>
+    <div class="col">
+     <table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OFTALMOSCOPÍA  OI</th>
+</tr>
+<td>COLOR DE RETINA</td>
+<td> <input class="form-control" max="1" min="-1" name="CamposDeFormulario[COLOR DE RETINA]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>EXCAVACIÓN</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" max="1" min="-1" name="CamposDeFormulario[EXCAVACIÓN]" step="0.25" type="text"/>
+</td>
+<tr></tr>
+<td>RELACIÓN A/V</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" min="0" name="CamposDeFormulario[SinLentesDistancia]" step="1" type="text"/>
+</td>
+<tr></tr>
+<td>ISNT</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CamposDeFormulario[ISNT]" type="text"/>
+</td>
+<tr></tr>
+<td>REFLEJO FOVEAL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CamposDeFormulario[REFLEJO FOVEAL]" type="text"/>
+</td>
+<tr></tr>
+<td>DIÁMETRO</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" name="CamposDeFormulario[DIAMETRO]" type="text"/>
+</td>
+</table>
+    </div> 
+  </div>
+</div>
 
+
+<script>
+                      // Assuming you have a variable or element with the ID "dip"
+                      var dipInput = document.getElementById("dip");
+
+                      // Function to update #dip-2 whenever #dip changes
+                      function updateDipMinus2() {
+                        var dipValue = parseFloat(dipInput.value);
+                        var dipMinus2 = dipValue - 2;
+                        document.getElementById("dip-2").value = dipMinus2; // Assuming it's an input element
+                      }
+
+                      // Adding an event listener to trigger the updateDipMinus2 function whenever #dip changes
+                      dipInput.addEventListener("input", updateDipMinus2);
+
+                    </script>
 <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
 </div>
 <div class="carousel-item">
-  <h2>{{t 'section.preTest.title'}}</h2>
-
-  <br>
-  <label for="dip">{{t 'section.preTest.dipLabel'}}</label>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <input type="number" min="20" max="75" class="form-control" name="CamposDeFormulario[dip]" id="dip" required>
-        <div class="invalid-feedback" id="dipFeedback"></div>
-      </div>
-      /
-      <div class="col">
-        <input type="number" min="20" max="75" class="form-control" name="CamposDeFormulario[dip-2]" readonly id="dip-2">
-        <div class="invalid-feedback" id="dip2Feedback"></div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <label for="adicion">{{t 'section.preTest.additionLabel'}}</label>
-  <input type="number" class="form-control" name="CamposDeFormulario[adicion]" min=".5" max="3.5" step="0.25" required>
-  <div class="invalid-feedback" id="adicionFeedback"></div>
-
-  <script>
-    var dipInput = document.getElementById("dip");
-    function updateDipMinus2() {
-      var dipValue = parseFloat(dipInput.value);
-      var dipMinus2 = dipValue - 2;
-      document.getElementById("dip-2").value = dipMinus2;
-    }
-    dipInput.addEventListener("input", updateDipMinus2);
-  </script>
-
-  <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>QUERATOMETRÍAS</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="QUERATOMETRIASOD" max="30" min="50" name="CamposDeFormulario[QUERATOMETRIASOD]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="QUERATOMETRIASOI" max="30" min="50" name="CamposDeFormulario[QUERATOMETRIASOI]" step="0.25" type="text"/>
+</td>
+</table>
 </div>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
 <div class="carousel-item">
-  <h2>{{t 'section.reasonForConsultation.title'}}</h2>
-
-  <br>
-  <label for="molestiaComo">{{t 'section.reasonForConsultation.howStartedLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[molestiaComo]" required>
-  <div class="invalid-feedback" id="molestiaComoFeedback"></div>
-
-  <label for="molestiaAntiguedad">{{t 'section.reasonForConsultation.durationLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[molestiaAntiguedad]" required>
-  <div class="invalid-feedback" id="molestiaAntiguedadFeedback"></div>
-  <br>
-</div>
-<div class="carousel-item">
-  <h2>{{t 'section.background.title'}}</h2>
-
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <label for="Hipertension">{{t 'section.background.bloodPressureLabel'}}</label>
-        <div class="input-group mb-3">
-          <div class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Hipertension]"> {{t 'section.background.yes'}}
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <label for="pa1">{{t 'section.background.bloodPressureMeasurementLabel'}}</label>
-        <div class="row">
-          <div class="col">
-            <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa1]" required>
-            <div class="invalid-feedback" id="pa1Feedback"></div>
-          </div>
-          <div class="col">
-            <input type="number" min="0" step="1" class="form-control" name="CamposDeFormulario[pa2]" required>
-            <div class="invalid-feedback" id="pa2Feedback"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <label for="observaciones">{{t 'section.background.observationsLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[observaciones]" required>
-  <div class="invalid-feedback" id="observacionesFeedback"></div>
-  <label for="antecendentes">{{t 'section.background.familyHistoryLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[antecendentes]" required>
-  <div class="invalid-feedback" id="antecendentesFeedback"></div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <label for="Glucosa">{{t 'section.background.glucoseLabel'}}</label>
-        <div class="input-group mb-3">
-          <div class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input" name="CamposDeFormulario[Glucosa]"> {{t 'section.background.yes'}}
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <label for="medGlucosa">{{t 'section.background.glucoseMeasurementLabel'}}</label>
-        <input type="number" min="0" step="1000" class="form-control" name="CamposDeFormulario[medGlucosa]" required>
-        <div class="invalid-feedback" id="medGlucosaFeedback"></div>
-      </div>
-    </div>
-  </div>
-  <label for="tratamientos">{{t 'section.background.optometricTreatmentsLabel'}}</label>
-  <input type="text" class="form-control" name="CamposDeFormulario[tratamientos]" required>
-  <div class="invalid-feedback" id="tratamientosFeedback"></div>
-  <br>
-</div>
-
-            <div class="carousel-item">
-  <h2>{{t 'section.symptoms.title'}}</h2>
   <div class="container text-center">
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Ardor]"> {{t 'section.symptoms.burning'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Cansancio]"> {{t 'section.symptoms.fatigue'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Cefalea]"> {{t 'section.symptoms.headache'}}
-        </div>
-      </div>
+  <div class="row align-items-start">
+    <div class="col">
+     <table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>RETINOSCOPÍA ESTÁTICA</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="REOD" name="CamposDeFormulario[REOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="REODAV" name="CamposDeFormulario[REODAV]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="REOI" name="CamposDeFormulario[REOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="REOIAV" name="CamposDeFormulario[REOIAV]" type="text"/></td>
+</table>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>DINÁMICA &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="DINAMICAOD" name="CamposDeFormulario[DINAMICAOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="DINAMICAAVOD" name="CamposDeFormulario[DINAMICAAVOD]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="DINAMICAOI" name="CamposDeFormulario[DINAMICAOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="DINAMICAAVOI" name="CamposDeFormulario[DINAMICAAVOI]" type="text"/></td>
+</table>
     </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Confusion]"> {{t 'section.symptoms.confusion'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Somnolencia]"> {{t 'section.symptoms.drowsiness'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Prurito]"> {{t 'section.symptoms.itching'}}
-        </div>
-      </div>
+    <div class="col">
+      <table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>MOHINDRA &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="MOHINDRAOD" name="CamposDeFormulario[MOHINDRAOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="MOHINDRAAVOD" name="CamposDeFormulario[MOHINDRAAVOD]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="MOHINDRAOI" name="CamposDeFormulario[MOHINDRAOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="MOHINDRAAVOI" name="CamposDeFormulario[MOHINDRAAVOI]" type="text"/></td>
+</table>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>EXÁMEN SUBJETIVO</th>
+</tr>
+<td>OD: </td>
+<td> <input class="form-control" id="EXAMENSUBJETIVOOD" name="CamposDeFormulario[EXAMENSUBJETIVOOD]" type="text"/></td>
+<td>AV: </td>
+<td> <input class="form-control" id="EXAMENSUBJETIVOAVOD" name="CamposDeFormulario[EXAMENSUBJETIVOAVOD]" type="text"/></td>
+<tr></tr>
+<td>OI: </td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="EXAMENSUBJETIVOOI" name="CamposDeFormulario[EXAMENSUBJETIVOOI]" type="text"/>
+</td>
+<td>AV: </td>
+<td> <input class="form-control" id="EXAMENSUBJETIVOAVOI" name="CamposDeFormulario[EXAMENSUBJETIVOAVOI]" type="text"/></td>
+</table>
     </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Lagrimeo]"> {{t 'section.symptoms.tearing'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Fotofobia]"> {{t 'section.symptoms.photophobia'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Hiperemia]"> {{t 'section.symptoms.hyperemia'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionDoble]"> {{t 'section.symptoms.doubleVision'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[VisionBorrosa]"> {{t 'section.symptoms.blurredVision'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[DolorOcular]"> {{t 'section.symptoms.eyePain'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Miodesopsias]"> {{t 'section.symptoms.floaters'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[SaltoLetras]"> {{t 'section.symptoms.letterJumping'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Secreciones]"> {{t 'section.symptoms.discharge'}}
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[AtencionConcentracion]"> {{t 'section.symptoms.attentionConcentration'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[BajaComprension]"> {{t 'section.symptoms.lowUnderstanding'}}
-        </div>
-      </div>
-      <div class="col">
-        <div class="input-group-text">
-          <input class="form-check-input mt-0" type="checkbox" value="true"
-            aria-label="Checkbox for following text input" name="CamposDeFormulario[Mareo]"> {{t 'section.symptoms.dizziness'}}
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+ </div>
+</div>
+
+
+</div>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+<div class="carousel-item">
+<tr>
+<th>AFINACIONES</th>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="AFINACIONES" name="CamposDeFormulario[AFINACIONES]" type="text"/>
+</td>
+</tr>
+<tr>
+<th>TIPO DE TEST</th>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="TIPODETEST" name="CamposDeFormulario[TIPODETEST]" type="text"/>
+</td>
+</tr>
 </div>
 <!-- Sección 3: Refracción -->
 <div class="carousel-item" id="itemsave">
-  <h2>{{t 'section.refraction.title'}}</h2>
-  <div class="container text-start">
-    <div class="row align-items-start">
-      <div class="col col-5">
-        <div class="contenedor2">
-          <button type="submit" class="btn btn-primary" id="btnSalir">{{t 'section.refraction.saveAndExit'}}</button>
-
-                              <!--
-                              <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
-                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
-                              -->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-
-                </div>
-              </div>
-</form>
-
-
-            </div>
-        </div>
-        <div class="row " style="z-index: 999;">
-          <div class="col-auto me-auto" id="" style="width: 40%;">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="ocultarBoton()" id="btnprev" hidden="true">
-              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-          <div class="col-auto">
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="ocultarBoton();" id="btnnext">
-              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-        </div>
-  </main>
-</div>
-
+<h2>Finalizar</h2>
+<form action="tu_script.php" id="myForm" method="POST">
+<div class="container text-start">
+<div class="row align-items-start">
+<div class="col col-5">
+<div class="contenedor2">
+<button class="btn btn-primary" id="btnSalir" type="submit">Guardar y salir</button>
+<button class="btn btn-primary" id="btnSiguiente" type="submit">Guardar e ir al siguiente</button>
+<button class="btn btn-primary" id="btnClinica" type="submit">Guardar y regresar a Clínica</button>
 </div>
 </div>
-
-
-
+</div>
+</div>
+<br/>
+</form></div>
+</div>
+</div>
+</div>
+<div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 40%;">
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" hidden="true" id="btnprev" onclick="ocultarBoton()" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon" id="icono"></span>
+</button>
+</div>
+<div class="col-auto">
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" id="btnnext" onclick="ocultarBoton();" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon" id="icono"></span>
+</button>
+</div>
+</div>
+</form></div></div></div></main>
 </div>
 
+    </div>
 
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btnSalir = document.getElementById('btnSalir');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const btnClinica = document.getElementById('btnClinica');
+  const selectorPagina = document.getElementById('selectorPagina');
+
+  btnSalir.addEventListener('mouseover', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('mouseover', function() {
+    selectorPagina.value = 'pruebas_f';
+  });
+
+  btnClinica.addEventListener('mouseover', function() {
+    selectorPagina.value = 'clinica';
+  });
+  btnSalir.addEventListener('touchstart', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('touchstart', function() {
+    selectorPagina.value = 'pruebas_f';
+  });
+
+  btnClinica.addEventListener('touchstart', function() {
+    selectorPagina.value = 'clinica';
+  });
+});
+
+</script>
 <script>
   function ocultarBoton() {
     var slideGuardar = document.getElementById("itemsave").className;
@@ -533,7 +451,6 @@
 
 
 </script>
-
 <script>
   /*document.getElementById('formulario').addEventListener('submit', function(event) {
     // Prevent form submission
@@ -547,86 +464,901 @@
     }
   });
 </script>
-<!-- JavaScript -->
+{{> footer}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salud
+
+<link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="/stylesheets/Test.css" rel="stylesheet"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+            <!-- Sidebar -->
+            {{> sidebar}} 
+        </div>
+        <div class="col-sm-12 col-md-9 col-lg-10 px-0">
+            <div class="col-lg-8 mx-auto p-2 py-md-5">
+                <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+                    {{t 'Optometría UAL'}}
+                </header>
+                <main>
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+                            <div class="container">
+                                <form action="/Formulario" id="formulario" method="POST">
+                                    <input id="Optometrista" name="Optometrista" type="hidden" value="{{usuario}}"/>
+                                    <div class="container" id="formcont">
+                                        <div class="carousel slide" data-wrap="false" id="carouselExample">
+                                            <div class="carousel-inner">
+                                                <!-- Sección 1: Paciente -->
+                                                <div class="carousel-item active" id="inicio">
+                                                    <h2>{{t 'Paciente'}}</h2>
+                                                    <button class="form-control" onclick="openPopup()" type="button">{{t 'Nombre del paciente:'}}</button>
+                                                    <div class="popup" id="popup" style="z-index: +1000;">
+                                                        <div class="popup-content">
+                                                            <span class="close" onclick="closePopup()">×</span>
+                                                            <input id="searchInput" name="searchInput" placeholder="{{t 'Search...'}}" type="text"/>
+                                                            {{#each pacientes}}
+                                                            <div class="row" style="z-index: 999;">
+                                                                <div class="col-auto me-auto" id="" style="width: 100%;">
+                                                                    <p>{{this.NombreCompleto}}<input id="id" type="hidden" value="{{this._id}}"/>
+                                                                        <button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">{{t 'Agregar'}}</button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {{/each}}
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
+                                                    <input id="usernameValueDisplay" name="id" style="display:none;" type="hidden"/>
+                                                    <button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">{{t 'Cancelar'}}</button>
+                                                </div>
+                                                <!-- Sección 2: Pre-test -->
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'Pre-test'}}</h2>
+                                                    <br/>
+                                                    <div class="container text-center">
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <table class="table table-striped-columns">
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>{{t 'OFTALMOSCOPÍA OD'}}</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'COLOR DE RETINA'}}</td>
+                                                                        <td><input class="form-control" max="1" min="-1" name="CamposDeFormulario[ColorDeRetina]" step="0.25" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'EXCAVACIÓN'}}</td>
+                                                                        <td><input class="form-control" max="1" min="-1" name="CamposDeFormulario[EXCAVACIÓN]" step="0.25" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'RELACIÓN A/V'}}</td>
+                                                                        <td><input class="form-control" min="0" name="CamposDeFormulario[RELACIÓN]" step="1" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'ISNT'}}</td>
+                                                                        <td><input class="form-control" name="CamposDeFormulario[ISNT]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'REFLEJO FOVEAL'}}</td>
+                                                                        <td><input class="form-control" name="CamposDeFormulario[REFLEJO FOVEAL]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'DIÁMETRO'}}</td>
+                                                                        <td><input class="form-control" name="CamposDeFormulario[DIAMETRO]" type="text"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class="col">
+                                                                <table class="table table-striped-columns">
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>{{t 'OFTALMOSCOPÍA OI'}}</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'COLOR DE RETINA'}}</td>
+                                                                        <td><input class="form-control" max="1" min="-1" name="CamposDeFormulario[COLOR DE RETINA]" step="0.25" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'EXCAVACIÓN'}}</td>
+                                                                        <td><input class="form-control" max="1" min="-1" name="CamposDeFormulario[EXCAVACIÓN]" step="0.25" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'RELACIÓN A/V'}}</td>
+                                                                        <td><input class="form-control" min="0" name="CamposDeFormulario[SinLentesDistancia]" step="1" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'ISNT'}}</td>
+                                                                        <td><input class="form-control" name="CamposDeFormulario[ISNT]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'REFLEJO FOVEAL'}}</td>
+                                                                        <td><input class="form-control" name="CamposDeFormulario[REFLEJO FOVEAL]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'DIÁMETRO'}}</td>
+                                                                        <td><input class="form-control" name="CamposDeFormulario[DIAMETRO]" type="text"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        var dipInput = document.getElementById("dip");
+
+                                                        function updateDipMinus2() {
+                                                            var dipValue = parseFloat(dipInput.value);
+                                                            var dipMinus2 = dipValue - 2;
+                                                            document.getElementById("dip-2").value = dipMinus2;
+                                                        }
+
+                                                        dipInput.addEventListener("input", updateDipMinus2);
+                                                    </script>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <table class="table table-striped-columns">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>{{t 'QUERATOMETRÍAS'}}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'OD:'}}</td>
+                                                            <td><input class="form-control" id="QUERATOMETRIASOD" max="30" min="50" name="CamposDeFormulario[QUERATOMETRIASOD]" step="0.25" type="text"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'OI:'}}</td>
+                                                            <td><input class="form-control" id="QUERATOMETRIASOI" max="30" min="50" name="CamposDeFormulario[QUERATOMETRIASOI]" step="0.25" type="text"/></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="container text-center">
+                                                        <div class="row align-items-start">
+                                                            <div class="col">
+                                                                <table class="table table-striped-columns">
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>{{t 'RETINOSCOPÍA ESTÁTICA'}}</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OD:'}}</td>
+                                                                        <td><input class="form-control" id="REOD" name="CamposDeFormulario[REOD]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="REODAV" name="CamposDeFormulario[REODAV]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OI:'}}</td>
+                                                                        <td><input class="form-control" id="REOI" name="CamposDeFormulario[REOI]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="REOIAV" name="CamposDeFormulario[REOIAV]" type="text"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <table class="table table-striped-columns">
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>{{t 'DINÁMICA'}}</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OD:'}}</td>
+                                                                        <td><input class="form-control" id="DINAMICAOD" name="CamposDeFormulario[DINAMICAOD]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="DINAMICAAVOD" name="CamposDeFormulario[DINAMICAAVOD]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OI:'}}</td>
+                                                                        <td><input class="form-control" id="DINAMICAOI" name="CamposDeFormulario[DINAMICAOI]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="DINAMICAAVOI" name="CamposDeFormulario[DINAMICAAVOI]" type="text"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class="col">
+                                                                <table class="table table-striped-columns">
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>{{t 'MOHINDRA'}}</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OD:'}}</td>
+                                                                        <td><input class="form-control" id="MOHINDRAOD" name="CamposDeFormulario[MOHINDRAOD]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="MOHINDRAAVOD" name="CamposDeFormulario[MOHINDRAAVOD]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OI:'}}</td>
+                                                                        <td><input class="form-control" id="MOHINDRAOI" name="CamposDeFormulario[MOHINDRAOI]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="MOHINDRAAVOI" name="CamposDeFormulario[MOHINDRAAVOI]" type="text"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <table class="table table-striped-columns">
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>{{t 'EXÁMEN SUBJETIVO'}}</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OD:'}}</td>
+                                                                        <td><input class="form-control" id="EXAMENSUBJETIVOOD" name="CamposDeFormulario[EXAMENSUBJETIVOOD]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="EXAMENSUBJETIVOAVOD" name="CamposDeFormulario[EXAMENSUBJETIVOAVOD]" type="text"/></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{t 'OI:'}}</td>
+                                                                        <td><input class="form-control" id="EXAMENSUBJETIVOOI" name="CamposDeFormulario[EXAMENSUBJETIVOOI]" type="text"/></td>
+                                                                        <td>{{t 'AV:'}}</td>
+                                                                        <td><input class="form-control" id="EXAMENSUBJETIVOAVOI" name="CamposDeFormulario[EXAMENSUBJETIVOAVOI]" type="text"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <tr>
+                                                        <th>{{t 'AFINACIONES'}}</th>
+                                                        <td><input class="form-control" id="AFINACIONES" name="CamposDeFormulario[AFINACIONES]" type="text"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{t 'TIPO DE TEST'}}</th>
+                                                        <td><input class="form-control" id="TIPODETEST" name="CamposDeFormulario[TIPODETEST]" type="text"/></td>
+                                                    </tr>
+                                                </div>
+                                                <!-- Sección 3: Refracción -->
+                                                <div class="carousel-item" id="itemsave">
+                                                    <h2>{{t 'Finalizar'}}</h2>
+                                                    <form action="tu_script.php" id="myForm" method="POST">
+                                                        <div class="container text-start">
+                                                            <div class="row align-items-start">
+                                                                <div class="col col-5">
+                                                                    <div class="contenedor2">
+                                                                        <button class="btn btn-primary" id="btnSalir" type="submit">{{t 'Guardar y salir'}}</button>
+                                                                        <button class="btn btn-primary" id="btnSiguiente" type="submit">{{t 'Guardar e ir al siguiente'}}</button>
+                                                                        <button class="btn btn-primary" id="btnClinica" type="submit">{{t 'Guardar y regresar a Clínica'}}</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="z-index: 999;">
+                                        <div class="col-auto me-auto" id="" style="width: 40%;">
+                                            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" hidden="true" id="btnprev" onclick="ocultarBoton()" type="button">
+                                                <span aria-hidden="true" class="carousel-control-prev-icon" id="icono"></span>
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" id="btnnext" onclick="ocultarBoton();" type="button">
+                                                <span aria-hidden="true" class="carousel-control-next-icon" id="icono"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const validateInput = (input, min, max, feedbackId) => {
-      const feedback = document.getElementById(feedbackId);
-      if (input.type === 'number') {
-        const value = parseFloat(input.value);
-        if (input.required && !input.value) {
-          input.classList.add('is-invalid');
-          feedback.textContent = 'Este campo es requerido.';
-        } else if (isNaN(value) || value < min || (max !== Infinity && value > max)) {
-          input.classList.add('is-invalid');
-          if (min === 0 && max === Infinity) {
-            feedback.textContent = `El valor debe ser mayor o igual a ${min}.`;
-          } else {
-            feedback.textContent = `El valor debe estar entre ${min} y ${max}.`;
-          }
-        } else {
-          input.classList.remove('is-invalid');
-          feedback.textContent = '';
-        }
-      } else if (input.type === 'text') {
-        if (input.required && !input.value) {
-          input.classList.add('is-invalid');
-          feedback.textContent = 'Este campo es requerido.';
-        } else {
-          input.classList.remove('is-invalid');
-          feedback.textContent = '';
-        }
-      }
-    };
+document.addEventListener("DOMContentLoaded", function() {
+  const btnSalir = document.getElementById('btnSalir');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const btnClinica = document.getElementById('btnClinica');
+  const selectorPagina = document.getElementById('selectorPagina');
 
-    const inputs = [
-      // Existing inputs
-      { id: 'esferaOD', min: -30, max: 20 },
-      { id: 'esferaOI', min: -30, max: 20 },
-      { id: 'cilindroOD', min: -10, max: 0 },
-      { id: 'cilindroOI', min: -10, max: 0 },
-      { id: 'ejeOD', min: 0, max: 180 },
-      { id: 'ejeOI', min: 0, max: 180 },
-      { id: 'dip', min: 20, max: Infinity },
-      { id: 'adicion', min: 0.5, max: 3.5 },
-      { id: 'pa1', min: 0, max: Infinity },
-      { id: 'pa2', min: 0, max: Infinity },
-      { id: 'medGlucosa', min: 0, max: Infinity },
-      // Text inputs without min/max
-      { id: 'molestiaComo' },
-      { id: 'molestiaAntiguedad' },
-      { id: 'observaciones' },
-      { id: 'antecendentes' },
-      { id: 'tratamientos' }
-    ];
+  btnSalir.addEventListener('mouseover', function() {
+    selectorPagina.value = 'salir';
+  });
 
-    inputs.forEach(input => {
-      const element = document.querySelector(`input[name="CamposDeFormulario[${input.id}]"]`);
-      element.addEventListener('input', () => validateInput(element, input.min, input.max, `${input.id}Feedback`));
-      element.addEventListener('blur', () => validateInput(element, input.min, input.max, `${input.id}Feedback`));
-    });
+  btnSiguiente.addEventListener('mouseover', function() {
+    selectorPagina.value = 'pruebas_f';
+  });
 
-    // Prevent form submission if there are invalid inputs
-    document.getElementById('formulario').addEventListener('submit', function(event) {
-      let isValid = true;
-      inputs.forEach(input => {
-        const element = document.querySelector(`input[name="CamposDeFormulario[${input.id}]"]`);
-        validateInput(element, input.min, input.max, `${input.id}Feedback`);
-        if (element.classList.contains('is-invalid')) {
-          isValid = false;
-        }
-      });
-      if (!isValid) {
-        event.preventDefault();
-        document.querySelector('.is-invalid').focus();
+  btnClinica.addEventListener('mouseover', function() {
+    selectorPagina.value = 'clinica';
+  });
+  btnSalir.addEventListener('touchstart', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('touchstart', function() {
+    selectorPagina.value = 'pruebas_f';
+  });
+
+  btnClinica.addEventListener('touchstart', function() {
+    selectorPagina.value = 'clinica';
+  });
+});
+
+</script>
+<script>
+  function ocultarBoton() {
+    var slideGuardar = document.getElementById("itemsave").className;
+    var btnSiguiente = document.getElementById("btnnext");
+    var slideInicial = document.getElementById("inicio").className;
+    var btnAtras = document.getElementById("btnprev");
+    console.log(slideGuardar)
+    if (slideGuardar === "carousel-item carousel-item-next carousel-item-start") {
+      btnSiguiente.setAttribute("hidden", true);
+    } else {
+      btnSiguiente.removeAttribute("hidden", false);
+    }
+    console.log("Slide inicial " + slideInicial)
+    if (slideInicial === "carousel-item carousel-item-prev carousel-item-end") {
+      btnAtras.setAttribute("hidden", true);
+    } else {
+      btnAtras.removeAttribute("hidden", false);
+    }
+  }
+
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+  function filterResults() {
+    let inputValue = document.getElementById("searchInput").value.toLowerCase();
+    let results = document.querySelectorAll(".popup-content p");
+    results.forEach(result => {
+      if (result.textContent.toLowerCase().includes(inputValue)) {
+        result.style.display = "block";
+      } else {
+        result.style.display = "none";
       }
     });
+  }
+
+  document.getElementById("searchInput").addEventListener("input", filterResults);
+
+  function displayUsername(button) {
+    let usernameValue = button.value;
+    let nombreValue = button.parentNode.childNodes[0].textContent
+    let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+    let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.value = `${nombreValue}`;
+    usernameDisplayElement.textContent = `${nombreValue}`
+    usernameValueDisplayElement.value = usernameValue;
+    usernameDisplayElement.style.display = "block";
+    usernameValueDisplayElement.style.display = "block";
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "block";
+    closePopup()
+  }
+
+  function hideUsernameDisplay() {
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.style.display = "none";
+    usernameValueDisplayElement.style.display = "none";
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "none";
+  }
+
+  var odreni = ""; 
+
+  function actualizarOdreni(checkbox) {
+    if (checkbox.checked) {
+      odreni = checkbox.value; 
+    } else {
+      odreni = ""; 
+    }
+    document.getElementById("odreniInput").value = odreni; 
+  }
+
+  function mostrarOpciones(checkbox) {
+    const opcionesPlus2 = document.getElementById("opcionesPlus2");
+    const opcionesPlus1 = document.getElementById("opcionesPlus1");
+
+    if (checkbox === opcionPlus2) {
+      opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus1.style.display = "none";
+      opcionPlus1.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
+      }
+    } else if (checkbox === opcionPlus1) {
+      opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus2.style.display = "none";
+      opcionPlus2.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
+      }
+    }
+  }
+
+</script>
+<script>
+  document.getElementById('searchInput').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
   });
 </script>
+{{> footer}}
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="/stylesheets/Test.css" rel="stylesheet"/>
+ <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+                <!-- Sidebar -->
+                {{> sidebar}} 
+    </div>
+
+            <div class="col-sm-12 col-md-9 col-lg-10 px-0">
+<div class="col-lg-8 mx-auto p-2 py-md-5">
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    Optometría UAL
+  </header>
+<main>
+<div class="modal-content rounded-4 shadow">
+<div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+<div class="container">
+<form action="/Formulario" id="formulario" method="POST">
+<input id="Optometrista" name="Optometrista" type="hidden" value="{{usuario}}"/>
+<div class="container" id="formcont">
+<div class="carousel slide" data-wrap="false" id="carouselExample">
+<div class="carousel-inner">
+<!-- Sección 1: Paciente -->
+<div class="carousel-item active" id="inicio">
+<h2>Paciente</h2>
+<button class="form-control" onclick="openPopup()" type="button">Nombre del paciente:</button>
+<div class="popup" id="popup" style="z-index: +1000;">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">�</span>
+<input id="searchInput" name="searchInput" placeholder="Search..." type="text"/>
+                        {{#each pacientes}}
+                        <div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 100%;">
+<p>{{this.NombreCompleto}}<input id="id" type="hidden" value="{{this._id}}"/>
+<button class="btn btn-dark" onclick="displayUsername(this)" style="float:right;" type="button" value="{{this._id}}">Agregar</button>
+</p>
+</div>
+</div>
+                        {{/each}}
+                      </div>
+</div>
+<br/>
+<p id="usernameDisplay" name="NombrePaciente" style="display:none;"></p>
+<input id="usernameValueDisplay" name="id" style="display:none;" type="hidden"/>
+<button id="hideUsernameButton" onclick="hideUsernameDisplay()" style="display:none;" type="button">Cancelar</button>
+<!-- Resto de tu contenido de la sección "Paciente" aquí -->
+</div>
+<!-- Sección 2: Pre-test -->
+<div class="carousel-item">
+<h2></h2>
+<br/>
+<label for=""></label>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>Pruebas funcionales</th>
+</tr>
+<td>FLL</td>
+<td> <input class="form-control" id="FLL" max="1" min="-1" name="CamposDeFormulario[FLL]" step="0.25" type="text"/></td>
+<tr></tr>
+<td>FVL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="FVL" max="1" min="-1" name="CamposDeFormulario[FVL]" step="0.25" type="text"/>
+</td>
+<tr></tr>
+<td>VVL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="VVL" min="0" name="CamposDeFormulario[VVL]" step="1" type="text"/>
+</td>
+<tr></tr>
+<td>BNL</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="BNL" name="CamposDeFormulario[BNL]" type="text"/>
+</td>
+<tr></tr>
+<td>CCF</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="CCF" name="CamposDeFormulario[CCF]" type="text"/>
+</td>
+<tr></tr>
+<td>ARN</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="ARN" name="CamposDeFormulario[ARN]" type="text"/>
+</td>
+<tr></tr>
+<td>ARP</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="ARP" name="CamposDeFormulario[ARP]" type="text"/>
+</td>
+<tr></tr>
+<td>ADD</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="ADD" name="CamposDeFormulario[ADD]" type="text"/>
+</td>
+<tr></tr>
+<td>FLC</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="FLC" name="CamposDeFormulario[FLC]" type="text"/>
+</td>
+<tr></tr>
+<td>FLC+1</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="FLC+1" name="CamposDeFormulario[FLC+1]" type="text"/>
+</td>
+<tr></tr>
+<td>AC/A</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="AC/A" name="CamposDeFormulario[AC/A]" type="text"/>
+</td>
+<tr></tr>
+<td>FVC</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="FVC" name="CamposDeFormulario[FVC]" type="text"/>
+</td>
+<tr></tr>
+<td>VVC</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="VVC" name="CamposDeFormulario[VVC]" type="text"/>
+</td>
+<tr></tr>
+<td>BNC</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="BNC" name="CamposDeFormulario[BNC]" type="text"/>
+</td>
+<tr></tr>
+<td>BTC</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="BTC" name="CamposDeFormulario[BTC]" type="text"/>
+</td>
+<tr></tr>
+<td>PPCNA</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="PPCNA" name="CamposDeFormulario[PPCNA]" type="text"/>
+</td>
+<tr></tr>
+<td>PPCA</td>
+<td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
+<input class="form-control" id="PPCA" name="CamposDeFormulario[PPCA]" type="text"/>
+</td>
+</table>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+</div>
+<div class="carousel-item">
+<h2></h2>
+<br/>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>OD</th>
+<th>OI</th>
+</tr>
+<td>FLEX. ACOM</td>
+<td><input class="form-control" id="FLEXOD" name="CamposDeFormulario[FLEXOD]" type="text"/> </td>
+<td>
+<input class="form-control" id="FLEXOI" name="CamposDeFormulario[FLEXOI]" type="text"/>
+</td>
+<tr></tr>
+<td>-AA(-)</td>
+<td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
+<input class="form-control" id="AAOD" name="CamposDeFormulario[AAOD]" type="text"/>
+</td>
+<td>
+<input class="form-control" id="AAOI" name="CamposDeFormulario[AAOI]" type="text"/>
+</td>
+<tr></tr>
+<td>HIRSCHBERG:</td>
+<td><!--20/ <input type="text" class="form-control" name="CamposDeFormulario[SinLentesDistancia" required>-->
+<input class="form-control" id="HIRSCHBERGOD" min="0" name="CamposDeFormulario[HIRSCHBERGOD]" step="1" type="text"/>
+</td>
+<td>
+<input class="form-control" id="HIRSCHBERGOI" min="0" name="CamposDeFormulario[HIRSCHBERGOI]" step="1" type="text"/>
+</td>
+</table>
+<br/>
+<table class="table table-striped-columns">
+<tr>
+<th></th>
+<th>LEJOS</th>
+<th>CERCA</th>
+</tr>
+<td>COVER TEST</td>
+<td> <input class="form-control" id="COVERLejos" name="CamposDeFormulario[COVERLejos]" type="text"/> </td>
+<td>
+<input class="form-control" id="COVERCerca" name="CamposDeFormulario[COVERCerca]" type="text"/>
+</td>
+</table>
+<script>
+                      // Assuming you have a variable or element with the ID "dip"
+                      var dipInput = document.getElementById("dip");
+
+                      // Function to update #dip-2 whenever #dip changes
+                      function updateDipMinus2() {
+                        var dipValue = parseFloat(dipInput.value);
+                        var dipMinus2 = dipValue - 2;
+                        document.getElementById("dip-2").value = dipMinus2; // Assuming it's an input element
+                      }
+
+                      // Adding an event listener to trigger the updateDipMinus2 function whenever #dip changes
+                      dipInput.addEventListener("input", updateDipMinus2);
+
+                    </script>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+</div>
+<!-- Resto de tu contenido de la sección "Pre-test" aquí -->
+<!-- Sección 3: Refracción -->
+<div class="carousel-item" id="itemsave">
+<h2>Finalizar</h2>
+<form action="tu_script.php" id="myForm" method="POST">
+<div class="container text-start">
+<div class="row align-items-start">
+<div class="col col-5">
+<div class="contenedor2">
+<button class="btn btn-primary" id="btnSalir" type="submit">Guardar y salir</button>
+<!--
+<button class="btn btn-primary" id="btnSiguiente" type="submit">Guardar e ir al siguiente</button>
+<button class="btn btn-primary" id="btnClinica" type="submit">Guardar y regresar a Clínica</button>-->
+</div>
+</div>
+</div>
+</div>
+<br/>
+
+</form></div>
 
 </div>
+</div>
+</div>
+</form></div>
+<div class="row" style="z-index: 999;">
+<div class="col-auto me-auto" id="" style="width: 40%;">
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" hidden="true" id="btnprev" onclick="ocultarBoton()" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon" id="icono"></span>
+</button>
+</div>
+<div class="col-auto">
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" id="btnnext" onclick="ocultarBoton();" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon" id="icono"></span>
+</button>
+</div>
+</div>
+</div></div></main>
+</div>
+
+
+
+
+  </div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btnSalir = document.getElementById('btnSalir');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const btnClinica = document.getElementById('btnClinica');
+  const selectorPagina = document.getElementById('selectorPagina');
+
+  btnSalir.addEventListener('mouseover', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('mouseover', function() {
+    selectorPagina.value = 'pruebas_c';
+  });
+
+  btnClinica.addEventListener('mouseover', function() {
+    selectorPagina.value = 'clinica';
+  });
+  btnSalir.addEventListener('touchstart', function() {
+    selectorPagina.value = 'salir';
+  });
+
+  btnSiguiente.addEventListener('touchstart', function() {
+    selectorPagina.value = 'pruebas_c';
+  });
+
+  btnClinica.addEventListener('touchstart', function() {
+    selectorPagina.value = 'clinica';
+  });
+});
+
+</script>
+<script>
+  function ocultarBoton() {
+    var slideGuardar = document.getElementById("itemsave").className;
+    var btnSiguiente = document.getElementById("btnnext");
+    var slideInicial = document.getElementById("inicio").className;
+    var btnAtras = document.getElementById("btnprev");
+    console.log(slideGuardar)
+    if (slideGuardar === "carousel-item carousel-item-next carousel-item-start") {
+      btnSiguiente.setAttribute("hidden", true);
+    } else {
+      btnSiguiente.removeAttribute("hidden", false);
+    }
+    console.log("Slide inicial " + slideInicial)
+    if (slideInicial === "carousel-item carousel-item-prev carousel-item-end") {
+      btnAtras.setAttribute("hidden", true);
+    } else {
+      btnAtras.removeAttribute("hidden", false);
+    }
+  }
+
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+  function filterResults() {
+    // Get input value
+    let inputValue = document.getElementById("searchInput").value.toLowerCase();
+    // Get all the p tags inside the popup-content div
+    let results = document.querySelectorAll(".popup-content p");
+    // Loop through each result and hide/show based on the input value
+    results.forEach(result => {
+      if (result.textContent.toLowerCase().includes(inputValue)) {
+        result.style.display = "block";
+      } else {
+        result.style.display = "none";
+      }
+    });
+  }
+
+  // Attach an event listener to the search input
+  document.getElementById("searchInput").addEventListener("input", filterResults);
+
+  function displayUsername(button) {
+    // Get the value of the hidden input related to the clicked button
+    let usernameValue = button.value;
+    console.log(usernameValue)
+    // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
+    let nombreValue = button.parentNode.childNodes[0].textContent
+    let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+    let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+    // Display the values inside the popup div
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.value = `${nombreValue}`;
+    usernameDisplayElement.textContent = `${nombreValue}`
+    usernameValueDisplayElement.value = usernameValue;
+    usernameDisplayElement.style.display = "block";
+    usernameValueDisplayElement.style.display = "block";
+    // Show the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "block";
+    closePopup()
+  }
+
+  function hideUsernameDisplay() {
+    // Hide the username display
+    let usernameDisplayElement = document.getElementById("usernameDisplay");
+    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+    usernameDisplayElement.style.display = "none";
+    usernameValueDisplayElement.style.display = "none";
+    // Hide the hide button
+    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+    hideUsernameButtonElement.style.display = "none";
+  }
+
+
+
+  var odreni = ""; // Variable para almacenar el valor de odreni
+
+  // Función para actualizar el valor de odreni en función de la selección del usuario
+  function actualizarOdreni(checkbox) {
+    if (checkbox.checked) {
+      odreni = checkbox.value; // Asignar el valor del checkbox seleccionado a odreni
+    } else {
+      odreni = ""; // Si el checkbox se desmarca, eliminar el valor de odreni
+    }
+    document.getElementById("odreniInput").value = odreni; // Actualizar el campo oculto
+  }
+
+  // Función para mostrar u ocultar las secciones de opciones en función del checkbox seleccionado
+  function mostrarOpciones(checkbox) {
+    const opcionesPlus2 = document.getElementById("opcionesPlus2");
+    const opcionesPlus1 = document.getElementById("opcionesPlus1");
+
+    if (checkbox === opcionPlus2) {
+      opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus1.style.display = "none";
+      opcionPlus1.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
+      }
+    } else if (checkbox === opcionPlus1) {
+      opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
+      opcionesPlus2.style.display = "none";
+      opcionPlus2.checked = false;
+      if (checkbox.checked) {
+        document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
+      } else {
+        document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
+      }
+    }
+  }
+
+
+</script>
+<script>
+  /*document.getElementById('formulario').addEventListener('submit', function(event) {
+    // Prevent form submission
+    event.preventDefault();
+  });*/
+
+  document.getElementById('searchInput').addEventListener('keydown', function (event) {
+    // Prevent form submission on Enter key press
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  });
+</script>
 {{> footer}}

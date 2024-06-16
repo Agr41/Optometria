@@ -1,418 +1,307 @@
-
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="/stylesheets/Test.css">
- <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-2 px-0">
-                <!-- Sidebar -->
-                {{> sidebar}} 
-    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+            <!-- Sidebar -->
+            {{> sidebar}}
+        </div>
+        <div class="col-sm-12 col-md-9 col-lg-10 px-0">
+            <div class="col-lg-8 mx-auto p-2 py-md-5">
+                <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+                    {{t 'Optometría UAL'}}
+                </header>
+                <!--CamposDeFormulario-->
+                <main>
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
+                            <div class="container">
+                                <form action="/Formulario" method="POST" id="formulario">
+                                    <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
+                                    <div class="container" id="formcont">
+                                        <div id="carouselExample" class="carousel slide" data-wrap="false">
+                                            <div class="carousel-inner">
 
-            <div class="col-sm-12 col-md-9 col-lg-10 px-0">
-<div class="col-lg-8 mx-auto p-2 py-md-5">
-  <header class="d-flex align-items-center pb-3 mb-5 border-bottom ">
-    Optometría UAL
-  </header>
-<!--CamposDeFormulario-->
-  <main>
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-body border border-2 border-dark rounded" id="CuadroG">
-        <div class="container">
-          <form action="/Formulario" method="POST" id="formulario">
-            <input type="hidden" id="Optometrista" name="Optometrista" value="{{usuario}}">
-            <div class="container" id="formcont">
-              <div id="carouselExample" class="carousel slide" data-wrap="false">
-                <div class="carousel-inner">
+                                                <!-- Sección 1: Paciente -->
+                                                <div class="carousel-item active" id="inicio">
+                                                    <h2>{{t 'Paciente'}}</h2>
+                                                    <button type="button" class="form-control" onclick="openPopup()">{{t 'Nombre del paciente:'}}</button>
 
-                  <!-- Sección 1: Paciente -->
-                  <div class="carousel-item active" id="inicio">
-                    <h2>Paciente</h2>
-                    <button type="button" class="form-control" onclick="openPopup()">Nombre del paciente:</button>
+                                                    <div id="popup" class="popup" style="z-index: +1000;">
+                                                        <div class="popup-content">
+                                                            <span class="close" onclick="closePopup()">&times;</span>
+                                                            <input type="text" id="searchInput" placeholder="{{t 'Search...'}}">
+                                                            {{#each pacientes}}
+                                                            <div class="row " style="z-index: 999;">
+                                                                <div class="col-auto me-auto" id="" style="width: 100%;">
+                                                                    <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
+                                                                        <button type="button" class="btn btn-dark" style="float:right;" onclick="displayUsername(this)" value="{{this._id}}">{{t 'Agregar'}}</button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {{/each}}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
+                                                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
 
-                    <div id="popup" class="popup" style="z-index: +1000;">
-                      <div class="popup-content">
-                        <span class="close" onclick="closePopup()">&times;</span>
-                        <input type="text" id="searchInput" placeholder="Search...">
-                        {{#each pacientes}}
-                        <div class="row " style="z-index: 999;">
-                          <div class="col-auto me-auto" id="" style="width: 100%;">
-                            <p>{{this.NombreCompleto}}<input type="hidden" value="{{this._id}}" id="id">
-                              <button type="button" class="btn btn-dark" style="float:right;"
-                                onclick="displayUsername(this)" value="{{this._id}}">Agregar</button>
-                            </p>
-                          </div>
-                        </div>
-                        {{/each}}
-                      </div>
-                    </div>
-                    <br>
-                    <p id="usernameDisplay" style="display:none;" name="NombrePaciente"></p>
-                    <input type="hidden" id="usernameValueDisplay" style="display:none;" name="id">
+                                                    <button type="button" id="hideUsernameButton" style="display:none;" onclick="hideUsernameDisplay()">{{t 'Cancelar'}}</button>
 
-                    <button type="button" id="hideUsernameButton" style="display:none;"
-                      onclick="hideUsernameDisplay()">Cancelar</button>
+                                                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
+                                                </div>
 
-                    <!-- Resto de tu contenido de la sección "Paciente" aquí -->
-                  </div>
+                                                <!-- Sección 2: Pre-test -->
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'Pruebas complementarias'}}</h2>
 
-                  <!-- Sección 2: Pre-test -->
-                  <div class="carousel-item">
-                    <h2></h2>
+                                                    <br>
+                                                    <label for=""></label>
+                                                    <table class="table table-striped-columns">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>{{t 'Pruebas complementarias'}}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Ishihara'}}</td>
+                                                            <td><input type="text" id="" name="CamposDeFormulario[Ishihara]" class="form-control" min="-1" max="1" step="0.25"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Amsler'}}</td>
+                                                            <td><input type="text" id="Amsler" name="CamposDeFormulario[Amsler]" class="form-control" min="-1" max="1" step="0.25"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Maddox'}}</td>
+                                                            <td><input type="text" id="Maddox" name="CamposDeFormulario[Maddox]" class="form-control" min="0" step="1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Campos visuales'}}</td>
+                                                            <td><input type="text" id="Campos visuales" name="CamposDeFormulario[Camposvisuales]" class="form-control"></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
 
-                    <br>
-                    <label for=""></label>
-                    <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>Pruebas complementarias</th>
-                      </tr>
-                      <td>Ishihara</td>
+                                                <div class="carousel-item">
+                                                    <h2>{{t 'Biomicroscopía'}}</h2>
 
-                      <td> <input type="text" id:"" name="CamposDeFormulario[Ishihara]" class="form-control" min="-1" max="1"
-                          step="0.25"></td>
-                      <tr></tr>
-                      <td>Amsler</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id:"Amsler" name="CamposDeFormulario[Amsler]" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                   
-                      <tr></tr>
-                      <td>Maddox</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id:"Maddox" name="CamposDeFormulario[Maddox]" class="form-control" min="0" step="1">
-                      </td>
-                 
-                      <tr></tr>
-                      <td>Campos visuales</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id:"Campos visuales" name="CamposDeFormulario[Camposvisuales]" class="form-control">
-                      </td>
-                    
-                    
-                    
-                    </table>
+                                                    <br>
+                                                    <table class="table table-striped-columns">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>{{t 'Biomicroscopía'}}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Párpados'}}</td>
+                                                            <td><input type="text" id="Parpados" name="CamposDeFormulario[Parpados]" class="form-control" min="-1" max="1" step="0.25"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Puntos y vías lagrimales'}}</td>
+                                                            <td><input type="text" id="Puntos y vias lagrimales" name="CamposDeFormulario[PuntosViasLagrimales]" class="form-control" min="-1" max="1" step="0.25"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Fondo de saco'}}</td>
+                                                            <td><input type="text" id="Fondo de saco" name="CamposDeFormulario[FondoDeSaco]" class="form-control" min="0" step="1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Conjuntiva'}}</td>
+                                                            <td><input type="text" id="Conjuntiva" name="CamposDeFormulario[Conjuntiva]" class="form-control"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Esclera'}}</td>
+                                                            <td><input type="text" id="Esclera" name="CamposDeFormulario[Esclera]" class="form-control"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Córnea'}}</td>
+                                                            <td><input type="text" id="Cornea" name="CamposDeFormulario[Cornea]" class="form-control"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Limbo'}}</td>
+                                                            <td><input type="text" id="Limbo" name="CamposDeFormulario[Limbo]" class="form-control"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'C.A.'}}</td>
+                                                            <td><input type="text" id="C.A." name="CamposDeFormulario[CA]" class="form-control"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Iris y pupila'}}</td>
+                                                            <td><input type="text" id="Iris y pupila" name="CamposDeFormulario[IrisYPupila]" class="form-control"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{{t 'Cristalina'}}</td>
+                                                            <td><input type="text" id="Cristalina" name="CamposDeFormulario[Cristalina]" class="form-control"></td>
+                                                        </tr>
+                                                    </table>
+                                                    <script>
+                                                        var dipInput = document.getElementById("dip");
 
+                                                        function updateDipMinus2() {
+                                                            var dipValue = parseFloat(dipInput.value);
+                                                            var dipMinus2 = dipValue - 2;
+                                                            document.getElementById("dip-2").value = dipMinus2;
+                                                        }
 
+                                                        dipInput.addEventListener("input", updateDipMinus2);
+                                                    </script>
+                                                </div>
 
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                  <div class="carousel-item">
-                    <h2></h2>
+                                                <!-- Sección 3: Refracción -->
+                                                <div class="carousel-item" id="itemsave">
+                                                    <h2>{{t 'Finalizar'}}</h2>
+                                                    <form id="myForm" action="tu_script.php" method="POST">
 
-                    <br>
-                   <table class="table table-striped-columns">
-                      <tr>
-                        <th></th>
-                        <th>Biomicroscopía</th>
-                      </tr>
-                      <td>Párpados</td>
+                                                        <div class="container text-start">
+                                                            <div class="row align-items-start">
+                                                                <div class="col col-5">
 
-                      <td> <input type="text" id:"Parpados" name="CamposDeFormulario[Parpados]" class="form-control" min="-1" max="1"
-                          step="0.25"></td>
-                      <tr></tr>
-                      <td>Puntos y vías lagrimales</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Puntos y vias lagrimales" name="CamposDeFormulario[PuntosViasLagrimales]" class="form-control" min="-1" max="1"
-                          step="0.25">
-                      </td>
-                   
-                      <tr></tr>
-                      <td>Fondo de saco</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Fondo de saco" name="CamposDeFormulario[FondoDeSaco]" class="form-control" min="0" step="1">
-                      </td>
-                 
-                      <tr></tr>
-                      <td>Conjuntiva</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Conjuntiva" name="CamposDeFormulario[Conjuntiva]" class="form-control">
-                      </td>
+                                                                    <div class="contenedor2">
+                                                                        <button type="submit" class="btn btn-primary" id="btnSalir">{{t 'Guardar y salir'}}</button>
+                                                                        <!--
+                                                                        <button type="submit" class="btn btn-primary" id="btnSiguiente">{{t 'Guardar e ir al siguiente'}}</button>
+                                                                        <button type="submit" class="btn btn-primary" id="btnClinica">{{t 'Guardar y regresar a Clínica'}}</button>
+                                                                        -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
 
-                       <tr></tr>
-                      <td>Esclera</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Esclera" name="CamposDeFormulario[Esclera]" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>Córnea</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Cornea" name="CamposDeFormulario[Cornea]" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>Limbo</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Limbo" name="CamposDeFormulario[Limbo]" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>C.A.</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="C.A." name="CamposDeFormulario[CA]" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>Iris y pupila</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Iris y pupila" name="CamposDeFormulario[IrisYPupila]" class="form-control">
-                      </td>
-
-                       <tr></tr>
-                      <td>Cristalina</td>
-                      <td><!--20/ <input type="text" class="form-control" name="SinLentesDistancia" required>-->
-                        <input type="text" id="Cristalina" name="CamposDeFormulario[Cristalina]" class="form-control">
-                      </td>
-                    
-                    
-                    
-                    </table>
-                    <script>
-                      // Assuming you have a variable or element with the ID "dip"
-                      var dipInput = document.getElementById("dip");
-
-                      // Function to update #dip-2 whenever #dip changes
-                      function updateDipMinus2() {
-                        var dipValue = parseFloat(dipInput.value);
-                        var dipMinus2 = dipValue - 2;
-                        document.getElementById("dip-2").value = dipMinus2; // Assuming it's an input element
-                      }
-
-                      // Adding an event listener to trigger the updateDipMinus2 function whenever #dip changes
-                      dipInput.addEventListener("input", updateDipMinus2);
-
-                    </script>
-
-
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-                  </div>
-                 
-            
-            
-                    <!-- Resto de tu contenido de la sección "Pre-test" aquí -->
-               
-                  <!-- Sección 3: Refracción -->
-                  <div class="carousel-item" id="itemsave">
-                    <h2>Finalizar</h2>
-                    <form id="myForm" action="tu_script.php" method="POST">
-
-                      <div class="container text-start">
-                        <div class="row align-items-start">
-                          <div class="col col-5">
-
-                            <div class="contenedor2">
-                              <button type="submit" class="btn btn-primary" id="btnSalir">Guardar y salir</button>
-                              <button type="submit" class="btn btn-primary" id="btnSiguiente">Guardar e ir al siguiente</button>
-                              <button type="submit" class="btn btn-primary" id="btnClinica">Guardar y regresar a Clínica</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row " style="z-index: 999;">
+                                        <div class="col-auto me-auto" id="" style="width: 40%;">
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" onclick="ocultarBoton()" id="btnprev" hidden="true">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" onclick="ocultarBoton();" id="btnnext">
+                                                <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      <br>
-
-                </div>
-              </div>
-
-
+                    </div>
+                </main>
             </div>
         </div>
-        <div class="row " style="z-index: 999;">
-          <div class="col-auto me-auto" id="" style="width: 40%;">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-              onclick="ocultarBoton()" id="btnprev" hidden="true">
-              <span class="carousel-control-prev-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-          <div class="col-auto">
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-              onclick="ocultarBoton();" id="btnnext">
-              <span class="carousel-control-next-icon" aria-hidden="true" id="icono"></span>
-            </button>
-          </div>
-        </div>
-  </main>
-</div>
-
-</div>
-</div>
-
-
-
-</form>
-</div>
-
-
-</ul>
-</div>
-</div>
-</main>
-</div>
     </div>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const btnSalir = document.getElementById('btnSalir');
-  const btnSiguiente = document.getElementById('btnSiguiente');
-  const btnClinica = document.getElementById('btnClinica');
-  const selectorPagina = document.getElementById('selectorPagina');
+    function ocultarBoton() {
+        var slideGuardar = document.getElementById("itemsave").className;
+        var btnSiguiente = document.getElementById("btnnext");
+        var slideInicial = document.getElementById("inicio").className;
+        var btnAtras = document.getElementById("btnprev");
+        console.log(slideGuardar)
+        if (slideGuardar === "carousel-item carousel-item-next carousel-item-start") {
+            btnSiguiente.setAttribute("hidden", true);
+        } else {
+            btnSiguiente.removeAttribute("hidden", false);
+        }
+        console.log("Slide inicial " + slideInicial)
+        if (slideInicial === "carousel-item carousel-item-prev carousel-item-end") {
+            btnAtras.setAttribute("hidden", true);
+        } else {
+            btnAtras.removeAttribute("hidden", false);
+        }
+    }
 
-  btnSalir.addEventListener('mouseover', function() {
-    selectorPagina.value = 'salir';
-  });
+    function openPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
 
-  btnSiguiente.addEventListener('mouseover', function() {
-    selectorPagina.value = 'rx_final';
-  });
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
 
-  btnClinica.addEventListener('mouseover', function() {
-    selectorPagina.value = 'clinica';
-  });
-  btnSalir.addEventListener('touchstart', function() {
-    selectorPagina.value = 'salir';
-  });
+    function filterResults() {
+        let inputValue = document.getElementById("searchInput").value.toLowerCase();
+        let results = document.querySelectorAll(".popup-content p");
+        results.forEach(result => {
+            if (result.textContent.toLowerCase().includes(inputValue)) {
+                result.style.display = "block";
+            } else {
+                result.style.display = "none";
+            }
+        });
+    }
 
-  btnSiguiente.addEventListener('touchstart', function() {
-    selectorPagina.value = 'rx_final';
-  });
+    document.getElementById("searchInput").addEventListener("input", filterResults);
 
-  btnClinica.addEventListener('touchstart', function() {
-    selectorPagina.value = 'clinica';
-  });
-});
+    function displayUsername(button) {
+        let usernameValue = button.value;
+        let nombreValue = button.parentNode.childNodes[0].textContent;
+        let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
+        let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
+        let usernameDisplayElement = document.getElementById("usernameDisplay");
+        let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+        usernameDisplayElement.value = `${nombreValue}`;
+        usernameDisplayElement.textContent = `${nombreValue}`;
+        usernameValueDisplayElement.value = usernameValue;
+        usernameDisplayElement.style.display = "block";
+        usernameValueDisplayElement.style.display = "block";
+        let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+        hideUsernameButtonElement.style.display = "block";
+        closePopup();
+    }
 
+    function hideUsernameDisplay() {
+        let usernameDisplayElement = document.getElementById("usernameDisplay");
+        let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
+        usernameDisplayElement.style.display = "none";
+        usernameValueDisplayElement.style.display = "none";
+        let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
+        hideUsernameButtonElement.style.display = "none";
+    }
+
+    var odreni = "";
+
+    function actualizarOdreni(checkbox) {
+        if (checkbox.checked) {
+            odreni = checkbox.value;
+        } else {
+            odreni = "";
+        }
+        document.getElementById("odreniInput").value = odreni;
+    }
+
+    function mostrarOpciones(checkbox) {
+        const opcionesPlus2 = document.getElementById("opcionesPlus2");
+        const opcionesPlus1 = document.getElementById("opcionesPlus1");
+
+        if (checkbox === opcionPlus2) {
+            opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
+            opcionesPlus1.style.display = "none";
+            opcionPlus1.checked = false;
+            if (checkbox.checked) {
+                document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
+            } else {
+                document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
+            }
+        } else if (checkbox === opcionPlus1) {
+            opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
+            opcionesPlus2.style.display = "none";
+            opcionPlus2.checked = false;
+            if (checkbox.checked) {
+                document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
+            } else {
+                document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
+            }
+        }
+    }
 </script>
+
 <script>
-  function ocultarBoton() {
-    var slideGuardar = document.getElementById("itemsave").className;
-    var btnSiguiente = document.getElementById("btnnext");
-    var slideInicial = document.getElementById("inicio").className;
-    var btnAtras = document.getElementById("btnprev");
-    console.log(slideGuardar)
-    if (slideGuardar === "carousel-item carousel-item-next carousel-item-start") {
-      btnSiguiente.setAttribute("hidden", true);
-    } else {
-      btnSiguiente.removeAttribute("hidden", false);
-    }
-    console.log("Slide inicial " + slideInicial)
-    if (slideInicial === "carousel-item carousel-item-prev carousel-item-end") {
-      btnAtras.setAttribute("hidden", true);
-    } else {
-      btnAtras.removeAttribute("hidden", false);
-    }
-  }
-
-  function openPopup() {
-    document.getElementById("popup").style.display = "block";
-  }
-
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
-  }
-  function filterResults() {
-    // Get input value
-    let inputValue = document.getElementById("searchInput").value.toLowerCase();
-    // Get all the p tags inside the popup-content div
-    let results = document.querySelectorAll(".popup-content p");
-    // Loop through each result and hide/show based on the input value
-    results.forEach(result => {
-      if (result.textContent.toLowerCase().includes(inputValue)) {
-        result.style.display = "block";
-      } else {
-        result.style.display = "none";
-      }
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
     });
-  }
-
-  // Attach an event listener to the search input
-  document.getElementById("searchInput").addEventListener("input", filterResults);
-
-  function displayUsername(button) {
-    // Get the value of the hidden input related to the clicked button
-    let usernameValue = button.value;
-    console.log(usernameValue)
-    // Get the values of the Nombre, ApellidoPaterno, and ApellidoMaterno elements
-    let nombreValue = button.parentNode.childNodes[0].textContent
-    let apellidoPaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[1];
-    let apellidoMaternoValue = button.parentNode.childNodes[0].textContent.split(" ")[2];
-    // Display the values inside the popup div
-    let usernameDisplayElement = document.getElementById("usernameDisplay");
-    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
-    usernameDisplayElement.value = `${nombreValue}`;
-    usernameDisplayElement.textContent = `${nombreValue}`
-    usernameValueDisplayElement.value = usernameValue;
-    usernameDisplayElement.style.display = "block";
-    usernameValueDisplayElement.style.display = "block";
-    // Show the hide button
-    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
-    hideUsernameButtonElement.style.display = "block";
-    closePopup()
-  }
-
-  function hideUsernameDisplay() {
-    // Hide the username display
-    let usernameDisplayElement = document.getElementById("usernameDisplay");
-    let usernameValueDisplayElement = document.getElementById("usernameValueDisplay");
-    usernameDisplayElement.style.display = "none";
-    usernameValueDisplayElement.style.display = "none";
-    // Hide the hide button
-    let hideUsernameButtonElement = document.getElementById("hideUsernameButton");
-    hideUsernameButtonElement.style.display = "none";
-  }
-
-
-
-  var odreni = ""; // Variable para almacenar el valor de odreni
-
-  // Función para actualizar el valor de odreni en función de la selección del usuario
-  function actualizarOdreni(checkbox) {
-    if (checkbox.checked) {
-      odreni = checkbox.value; // Asignar el valor del checkbox seleccionado a odreni
-    } else {
-      odreni = ""; // Si el checkbox se desmarca, eliminar el valor de odreni
-    }
-    document.getElementById("odreniInput").value = odreni; // Actualizar el campo oculto
-  }
-
-  // Función para mostrar u ocultar las secciones de opciones en función del checkbox seleccionado
-  function mostrarOpciones(checkbox) {
-    const opcionesPlus2 = document.getElementById("opcionesPlus2");
-    const opcionesPlus1 = document.getElementById("opcionesPlus1");
-
-    if (checkbox === opcionPlus2) {
-      opcionesPlus2.style.display = checkbox.checked ? "block" : "none";
-      opcionesPlus1.style.display = "none";
-      opcionPlus1.checked = false;
-      if (checkbox.checked) {
-        document.querySelector("#opcionesPlus2 select").removeAttribute("disabled");
-      } else {
-        document.querySelector("#opcionesPlus2 select").setAttribute("disabled", "disabled");
-      }
-    } else if (checkbox === opcionPlus1) {
-      opcionesPlus1.style.display = checkbox.checked ? "block" : "none";
-      opcionesPlus2.style.display = "none";
-      opcionPlus2.checked = false;
-      if (checkbox.checked) {
-        document.querySelector("#opcionesPlus1 select").removeAttribute("disabled");
-      } else {
-        document.querySelector("#opcionesPlus1 select").setAttribute("disabled", "disabled");
-      }
-    }
-  }
-
-
-</script>
-
-<script>
-  /*document.getElementById('formulario').addEventListener('submit', function(event) {
-    // Prevent form submission
-    event.preventDefault();
-  });*/
-
-  document.getElementById('searchInput').addEventListener('keydown', function (event) {
-    // Prevent form submission on Enter key press
-    if (event.key === 'Enter') {
-      event.preventDefault();
-    }
-  });
 </script>
 {{> footer}}
