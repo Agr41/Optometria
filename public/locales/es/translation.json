@@ -163,7 +163,13 @@
   }
         ,
   
+        "buscar": "Buscar",
+        "limpiar":"Limpiar",
+        "nombre_usuario":"Nombre de usuario",
 
+        "nombre":"Nombre",
+        "apellidos":"Apellidos",
+        "borrar":"Borrar",
     "Paciente": "Paciente",
     "Nombre del paciente:": "Nombre del paciente:",
     "Agregar": "Agregar",
@@ -289,6 +295,18 @@
     "and": "y",
     "multiple": "El valor debe ser un múltiplo de"
   }
+,
+
+
+
+ 
+  "inserte_datos_filtrar": "Inserte los datos que desea filtrar",
+
+  "diagnostico": "Diagnóstico",
+ 
+  "cancel": "Cancelar"
+
 
     
-}
+}    
+

@@ -9,6 +9,109 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container-fluid {
+            padding: 20px;
+        }
+        header {
+            border-bottom: 2px solid #dee2e6;
+        }
+        main {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-control, .form-select {
+            border-radius: 5px;
+        }
+        .btn-info {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-info:hover {
+            background-color: #218838;
+        }
+        .btn-outline-danger, .btn-outline-success {
+            margin-right: 5px;
+        }
+        .user-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .user-table th, .user-table td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+        .user-table th {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .user-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .page-link {
+            color: #28a745;
+            border-radius: 5px;
+        }
+        .page-link:hover {
+            color: #218838;
+        }
+        .page-item.active .page-link {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+        @media screen and (max-width: 600px) {
+            .table-container {
+                overflow-x: auto;
+                max-width: 100%;
+                padding: 10px;
+            }
+            .user-table {
+                width: 100%;
+                max-width: none;
+            }
+            .user-table th, .user-table td {
+                padding: 5px;
+                font-size: 14px;
+            }
+            #diag {
+                padding: 5px;
+                font-size: 14px;
+            }
+        }      /* Estilo para el enlace de "Borrar" */
+.borrar-link {
+    color: #e35151; /* Color del icono */
+    padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
+    border-radius: 5px; /* Borde redondeado */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    display: inline-flex; /* Para alinear el icono correctamente */
+    align-items: center; /* Para centrar el icono verticalmente */
+}
+
+.borrar-link i.fa-trash {
+    font-size: 1.5em; /* Ajusta el tamaño del icono */
+}
+
+.borrar-link:hover {
+    color: #d43f3a; /* Cambia el color del icono en hover (tono más claro) */
+}
+
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div class="container-fluid">
@@ -20,8 +123,9 @@
             <div class="col-sm-12 col-md-9 col-lg-10 px-0">
                 <section id="PanelUsuarios">
                     <h1 class="text-center hola">{{t 'user_panel'}}</h1>
-                    <body class="text-center">
+                    <div class="text-center">
                         <br>
+                        <!--
                         {{t 'filter_by_role'}}:
                         <form method="POST" action="/FiltrosUsuarios">
                             <div class="row justify-content-center">
@@ -37,7 +141,7 @@
                                 </div>
                             </div>
                         </form>
-                        <br>
+                        -->
                         <form method="post" action="/FiltrosUsuarios2">
                             <div class="row justify-content-center">
                                 <div class="col-3">
@@ -71,15 +175,18 @@
                                         <td>{{this.Nombre}}</td>
                                         <td>{{this.ApellidoPaterno}} {{this.ApellidoMaterno}}</td>
                                         <td>{{this.role}}</td>
-                                        <td>
-                                            <a href="#" class="borrar-link" onclick="confirmDeletion('{{this.username}}'); return false;">{{t 'delete'}}</a>
-                                        </td>
+                                    <td>
+    <a href="#" class="borrar-link" onclick="confirmDeletion('{{this.username}}'); return false;">
+        <i class="fa fa-trash" style="color: #e35151;"></i>
+    </a>
+</td>
+
                                     </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
                         </div>
-                    </body>
+                    </div>
                 </section>
                 {{#unless (Falso FiltroPaginado)}}
                 <nav aria-label="Page navigation example">
@@ -134,7 +241,7 @@
                         text: "{{t 'no_revert'}}",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
+                        confirmButtonColor: '#28a745',
                         cancelButtonColor: '#d33',
                         confirmButtonText: '{{t 'yes_delete'}}',
                         cancelButtonText: '{{t 'no_cancel'}}'
@@ -160,28 +267,6 @@
                         });
                 }
                 </script>
-                <style>
-                @media screen and (max-width: 600px) {
-                    .table-container {
-                        overflow-x: auto;
-                        max-width: 100%;
-                        padding: 10px;
-                    }
-                    .user-table {
-                        width: 100%;
-                        max-width: none;
-                    }
-                    .user-table th,
-                    .user-table td {
-                        padding: 5px;
-                        font-size: 14px;
-                    }
-                    #diag {
-                        padding: 5px;
-                        font-size: 14px;
-                    }
-                }
-                </style>
             </div>
         </div>
     </div>

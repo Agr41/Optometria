@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     }
     var PaginaActual= pacientes.page;
  
-    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, PaginaActual, Filtro, TotalPaginas, idioma });
+    res.render('PanelPacientes', {title:"Pacientes", Logeado, role, pacientes, FiltroPaginado, PaginaActual, Filtro, TotalPaginas, idioma, lng: req.session.language });
   } else if (page != undefined && page >= 1) {
 
    var pacientes01 = await Paciente.paginate({}, { page, limit: 10 });
@@ -69,7 +69,7 @@ module.exports = async (req, res) => {
         
 
     
-        res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes,PaginaActual, FiltroPaginado, Filtro, TotalPaginas, idioma });
+        res.render('PanelPacientes', {title:"Lista de pacientes", Logeado, role, pacientes,PaginaActual, FiltroPaginado, Filtro, TotalPaginas, idioma,lng: req.session.language });
   }
 
 

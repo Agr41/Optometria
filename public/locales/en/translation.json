@@ -102,14 +102,20 @@
             "last_names": "Last Names",
             "back": "Back",
             "are_you_sure": "Are you sure?",
-            "no_revert": "You won't be able to revert this!",
+            "no_revert": "You will not be able to revert this!",
             "yes_delete": "Yes, delete it!",
             "no_cancel": "No, cancel!",
         
         
             "Panel de paciente":"ricky joto",
 
-        
+            "buscar": "Search",
+            "limpiar":"Clean",
+            "nombre_usuario":"Username",
+            "nombre":"Name",
+            "apellidos":"Surnames",
+            "borrar":"Delete",
+            
             
               "optometry_ual": "Optometry UAL",
               "patient": "Patient",
@@ -347,7 +353,14 @@
                     "multiple": "The value must be a multiple of"
                   }
                 
-                
+                ,
+
+                  "inserte_datos_filtrar": "Insert the data you want to filter",
+ 
+                  "diagnostico": "Diagnosis"
+    
+              
+              
 
             
             

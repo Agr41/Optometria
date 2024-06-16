@@ -1,254 +1,184 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!DOCTYPE html>
+<html lang="{{lng}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t 'patient_panel'}}</title>
+    <link rel="stylesheet" href="./stylesheets/PanelUsuarios.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .borrar-link {
+            color: #e35151; /* Color del icono */
+            padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
+            border-radius: 5px; /* Borde redondeado */
+            text-decoration: none; /* Eliminar subrayado del enlace */
+            display: inline-flex; /* Para alinear el icono correctamente */
+            align-items: center; /* Para centrar el icono verticalmente */
+        }
 
+        .borrar-link i.fa-trash {
+            font-size: 1.5em; /* Ajusta el tamaño del icono */
+        }
 
-{{!-- Español --}}
-<div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 col-md-3 col-lg-2 px-0">
-            <!-- Sidebar -->
-            {{> sidebar}}
-        </div>
-
-<div class="col-sm-12 col-md-9   col-lg-10 px-0">
-<section id="PanelPacientes">
-<br>
+        .borrar-link:hover {
+            color: #d43f3a; /* Cambia el color del icono en hover (tono más claro) */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-2 px-0">
+                <!-- Sidebar -->
+                {{> sidebar}}
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-10 px-0">
+                <section id="PanelPacientes">
+                    <br>
                     <h1 class="text-center">{{t 'patient_panel'}}</h1>
-
-
-  <body class="text-center">
-    <br>
-
-
-    <br>
-    <form method="post" action="/FiltrosPacientes">
-      <div class="row justify-content-center">
-        <div class="col-3">
-          <select name="Tipo" id="FiltroHistorial2" class="form-select">
-            <option value="Folio" {{#if (eq Filtro "Folio")}} selected {{/if}}>Folio</option>
-            <option value="Nombre" {{#if (eq Filtro "Nombre")}} selected {{/if}}>Nombre de usuario</option>
-            <option value="HIPERMETROPIA"{{#if (eq Filtro "HIPERMETROPIA")}} selected {{/if}}>HIPERMETROPÍA</option>
-            <option value="EMETROPE" {{#if (eq Filtro "EMETROPE")}} selected {{/if}}>EMÉTROPE</option>
-            <option value="MIOPIA" {{#if (eq Filtro "MIOPIA")}} selected {{/if}}>MIOPÍA</option>
-          </select>
+                    <body class="text-center">
+                        <br>
+                        <form method="post" action="/FiltrosPacientes">
+                            <div class="row justify-content-center">
+                                <div class="col-3">
+                                    <select name="Tipo" id="FiltroHistorial2" class="form-select">
+                                        <option value="Folio" {{#if (eq Filtro "Folio")}} selected {{/if}}>{{t 'folio'}}</option>
+                                        <option value="Nombre" {{#if (eq Filtro "Nombre")}} selected {{/if}}>{{t 'nombre_usuario'}}</option>
+                                        <option value="HIPERMETROPIA" {{#if (eq Filtro "HIPERMETROPIA")}} selected {{/if}}>{{t 'hipermetropia'}}</option>
+                                        <option value="EMETROPE" {{#if (eq Filtro "EMETROPE")}} selected {{/if}}>{{t 'emetrope'}}</option>
+                                        <option value="MIOPIA" {{#if (eq Filtro "MIOPIA")}} selected {{/if}}>{{t 'miopia'}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" name="busqueda" class="form-control" placeholder="{{t 'inserte_datos_filtrar'}}">
+                                </div>
+                            </div>
+                            <br>
+                            <a class="btn btn-outline-danger" href="/PanelPacientes" onclick="">{{t 'limpiar'}}</a>
+                            <button type="submit" class="btn btn-outline-success">
+                                <i class="fa-solid fa-magnifying-glass">{{t 'buscar'}}</i>
+                            </button>
+                        </form>
+                        <br>
+                        <div class="container-xl text-center">
+                            <div class="row text-light align-items-start mb-2 rounded-top" style="background-color: #12372A;">
+                                <div class="col-1">
+                                    {{t 'folio'}}
+                                </div>
+                                <div class="col-2">
+                                    {{t 'nombre'}}
+                                </div>
+                                <div class="col-3">
+                                    {{t 'apellidos'}}
+                                </div>
+                                <div class="col-2">
+                                    {{t 'borrar'}}
+                                </div>
+                                <div class="col-3">
+                                    {{t 'tests'}}
+                                </div>
+                            </div>
+                            <div class="row align-items-start p-1 mb-1">
+                                {{#each pacientes.docs}}
+                                <div class="col-1">
+                                    {{this.Folio}}
+                                </div>
+                                <div class="col-2">
+                                    {{this.Nombre}}
+                                </div>
+                                <div class="col-3">
+                                    {{this.ApellidoPaterno}}
+                                </div>
+                                <div class="col-2">
+                                    <a href="#" class="borrar-link" onclick="confirmDeletion('{{this._id}}'); return false;">
+                                        <i class="fa fa-trash" style="color: #e35151;"></i>
+                                    </a>
+                                </div>
+                                <div class="col-3">
+                                    <button id="diag" class="form-control" onclick="openPopup('{{this._id}}')">{{t 'diagnostico'}}</button>
+                                </div>
+                                <div class="w-100"></div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </body>
+                </section>
+            </div>
         </div>
-        <div class="col-4">
-          <input type="text" name="busqueda" class="form-control" placeholder="Inserte los datos que desea filtrar">
-        </div>
-      </div>
-      <br>
-
-      <a class="btn btn-outline-danger" href="/PanelPacientes" onclick="">Limpiar</a>
-      <!--      <button class="btn btn-outline-danger" type="reset" Limpiar</button>
--->
-      <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass">Buscar</i></button>
-    </form>
-<br>
-<div class="container-xl text-center">
-  <div class="row  text-light align-items-start mb-2 rounded-top" style="background-color: #12372A  ;">
-    <div class="col-1">
-     Folio
     </div>
-    <div class="col-2">
-     Nombre
-    </div>
-    <div class="col-3">
-     Apellido(s)
-    </div>
-     <div class="col-2">
-      Borrar
-    </div>
-     <div class="col-3 ">
-     Tests
-    </div>
-    </div>
-    
-    <div class="row align-items-start p-1 mb-1">
- {{#each pacientes.docs}}
-<div class="col-1">
-    {{this.Folio}}
-    </div>
-    <div class="col-2">
-    {{this.Nombre}}
-    </div>
-    <div class="col-3">
-   {{this.ApellidoPaterno}}
-    </div>
-     <div class="col-2">
-<td>
-  <a href="#" class="borrar-link" onclick="confirmDeletion('{{this._id}}'); return false;">Borrar</a>
-</td>    </div>
-     <div class="col-3">
-  <button id="diag" class="form-control" onclick="openPopup(`{{this._id}}`)">Diagnóstico</button>
+    {{#unless (Falso FiltroPaginado)}}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a href="/PanelPacientes?page={{restar this.pacientes.page 10}}" class="page-link" id="nextPage">
+                    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link" id="nextPage">{{t 'back'}}</a>
+            </li>
+            {{#each (limit TotalPaginas 10)}}
+            <li class="page-item">
+                <a href="/PanelPacientes?page={{this}}" type="submit" id="sendMessageButton" class="page-link">{{this}}</a>
+            </li>
+            {{/each}}
+            <li class="page-item">
+                <a class="page-link" href="/PanelPacientes?page={{sumar this.pacientes.page 1}}" id="nextPage">{{t 'next'}}</a>
+            </li>
+            <li class="page-item">
+                <a href="/PanelPacientes?page={{sumar this.pacientes.page 10}}" class="page-link" id="nextPage">
+                    <i class="fa fa-angle-double-right" style="font-size:20px"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    {{/unless}}
+    {{#unless (Verdad FiltroPaginado)}}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {{#each TotalPaginas}}
+            <li class="page-item">
+                <a href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton" class="page-link">{{this}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </nav>
+    {{/unless}}
+    <script>
+        var translations = {
+            are_you_sure: "{{t 'are_you_sure'}}",
+            no_revert: "{{t 'no_revert'}}",
+            yes_delete: "{{t 'yes_delete'}}",
+            cancel: "{{t 'cancel'}}"
+        };
 
-    </div>
-       <div class="w-100"></div>
-        {{/each}}
-        
-  </div>
-</div>
-    </div>
-    
-     
-
-   
-          </body>
-</section>
-</div>
-
-<br>
-
-
-{{#unless (Falso FiltroPaginado)}}
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-
-
-    
-    <li class="page-item">
-<a href="/PanelPacientes?page={{restar this.pacientes.page 10}}" class="page-link" id="nextPage">
-    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
-</a>
-
-</i>
-
-    </li>
-     <li class="page-item">
-      <a  href="/PanelPacientes?page={{this.pacientes.prevPage}}" class="page-link" href="#"  id="nextPage">Back</a>
-    </li>
-    {{#each (limit TotalPaginas 10)}}
-    <li class="page-item">
-      <a href="/PanelPacientes?page={{this}}" type="submit" id="sendMessageButton" class="page-link">{{this}}</a>
-    </li>
-    {{/each}}
-      <li class="page-item">
-      <a class="page-link"href="/PanelPacientes?page={{sumar this.pacientes.page 1}}"  id="nextPage">Next</a>
-    </li>
-
-       <li class="page-item">
-      <a  href="/PanelPacientes?page={{sumar this.pacientes.page 10}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
-</i>
-</a>
-    </li>
-  </ul>
-</nav>
-{{/unless}}
-
-{{#unless (Verdad FiltroPaginado)}}
-<nav aria-label="Page navigation example">
-
-  <ul class="pagination justify-content-center">
-    {{#each TotalPaginas}}
-    {{#if (not (eq ../Filtro "Folio"))}}
-    {{#if (not (eq ../Filtro "Nombre"))}}
-        {{#if (not (eq ../Filtro "HIPERMETROPIA"))}}
-    {{#if (not (eq ../Filtro "EMETROPE"))}}
-    {{#if (not (eq ../Filtro "MIOPIA"))}}
-
-    <li class="page-item">
-      <a href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}" type="submit" id="sendMessageButton"
-        class="page-link">{{this}}</a>
-    </li>
-    {{/if}}
-    {{/if}}
-        {{/if}}
-    {{/if}}
-    {{/if}}
-
-    {{/each}}
-  </ul>
-</nav>
-{{/unless}}
-
-
-{{#unless (Verdad FiltroPaginado)}}
-<nav aria-label="Page navigation example">
-
-  <ul class="pagination justify-content-center">
- 
-    <li class="page-item">
-<a href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{restar this.pacientes.page 10}}&amp;consulta={{this.consulta}}" class="page-link" id="nextPage">
-    <i class="fa fa-angle-double-left" style="font-size:20px"></i>
-</a>
-
-</i>
-
-    </li>
-     <li class="page-item">
-      <a  href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{this.pacientes.prevPage}}&amp;consulta={{this.consulta}}" class="page-link" href="#"  id="nextPage">Back</a>
-    </li>
-
-
-    {{#each (limit TotalPaginas 10)}}
-    {{#if (eq ../Filtro "Nombre")}}
-
-    <li class="page-item"><a
-        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-        id="sendMessageButton" class="page-link">{{this}}</a></li>
-    {{/if}}
-        {{#if (eq ../Filtro "Folio")}}
-
-    <li class="page-item"><a
-        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-        id="sendMessageButton" class="page-link">{{this}}</a></li>
-    {{/if}}
-        {{#if (eq ../Filtro "HIPERMETROPIA")}}
-
-    <li class="page-item"><a
-        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-        id="sendMessageButton" class="page-link">{{this}}</a></li>
-    {{/if}}
-            {{#if (eq ../Filtro "EMETROPE")}}
-
-    <li class="page-item"><a
-        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-        id="sendMessageButton" class="page-link">{{this}}</a></li>
-    {{/if}}
-            {{#if (eq ../Filtro "MIOPIA")}}
-
-    <li class="page-item"><a
-        href="/FiltrosPacientes?Filtro={{../Filtro}}&amp;page={{this}}&amp;consulta={{../consulta}}" type="submit"
-        id="sendMessageButton" class="page-link">{{this}}</a></li>
-    {{/if}}
-    {{/each}}
-     <li class="page-item">
-      <a class="page-link" href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{sumar this.pacientes.page 1}}&amp;consulta={{this.consulta}}"  id="nextPage">Next</a>
-    </li>
-
-       <li class="page-item">
-      <a  href="/FiltrosPacientes?Filtro={{this.Filtro}}&amp;page={{sumar this.pacientes.page 10}}&amp;consulta={{this.consulta}}" class="page-link " href="#"  id="nextPage"><i class="" aria-hidden="true"> <i class="fa fa-angle-double-right" style="font-size:20px"></i>
-</i>
-</a>
-    </li>
-</nav>
-{{/unless}}
-
-{{>footer}}
-</div>
-
-<script>
-function confirmDeletion(id) {
-    Swal.fire({
-        title: '¿Estás seguro?',
-        text: "¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#28a745',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Borrar',
-        cancelButtonText: 'Cancelar',
-         customClass: {
-            confirmButton: 'green-text'  // Aplica la clase al texto del botón
+        function confirmDeletion(id) {
+            Swal.fire({
+                title: translations.are_you_sure,
+                text: translations.no_revert,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#d33',
+                confirmButtonText: translations.yes_delete,
+                cancelButtonText: translations.cancel,
+                customClass: {
+                    confirmButton: 'green-text'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/BorrarPacientes?id=" + id;
+                }
+            });
         }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "/BorrarPacientes?id=" + id;
-        }
-    });
-}
-</script>
+    </script>
+    {{>footer}}
+</body>
+</html>
+
 <script>
   function openPopup(id) {
     fetch(`/popup/${id}`)
@@ -422,19 +352,22 @@ function confirmDeletion(id) {
     background-color: #f2f2f2;
   }
 
-      /* Estilo para el enlace de "Borrar" */
-    .borrar-link {
-        color: white; /* Color del texto */
-        background-color: #e35151; /* Color de fondo rojo */
-        padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
-        border-radius: 5px; /* Borde redondeado */
-        text-decoration: none; /* Eliminar subrayado del enlace */
-    }
+.borrar-link {
+    color: #e35151; /* Color del icono */
+    padding: 5px 10px; /* Espacio interno (ajusta según sea necesario) */
+    border-radius: 5px; /* Borde redondeado */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    display: inline-flex; /* Para alinear el icono correctamente */
+    align-items: center; /* Para centrar el icono verticalmente */
+}
 
-    /* Cambiar el color del enlace al pasar el mouse por encima */
-    .borrar-link:hover {
-        background-color: #e35151; /* Cambia el color de fondo en hover (tono más claro) */
-    }
+.borrar-link i.fa-trash {
+    font-size: 1.5em; /* Ajusta el tamaño del icono */
+}
+
+.borrar-link:hover {
+    color: #d43f3a; /* Cambia el color del icono en hover (tono más claro) */
+}
     .green-text {
     color: #0BE02A;  /* Verde */
 }

@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     var PaginaActual= usuarios.page;
 
     //console.log(TotalPaginas);
-    res.render('PanelUsuarios', {title:"Usuarios", Logeado, role, usuarios, FiltroPaginado, Filtro, PaginaActual, TotalPaginas, idioma , lng: req.session.language});
+    res.render('PanelUsuarios', {title:"Usuarios", Logeado, role, usuarios, FiltroPaginado, Filtro, PaginaActual, TotalPaginas, idioma, lng: req.session.language});
   } else if (page != undefined) {
 
     var usuarioss01 = await User.paginate({}, { page, limit: 10 });
