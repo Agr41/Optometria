@@ -49,119 +49,196 @@
                                                     <h2>{{t 'Pruebas funcionales'}}</h2>
                                                     <br/>
                                                     <label for=""></label>
-                                                    <table class="table table-striped-columns">
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>{{t 'Pruebas funcionales'}}</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'FLL'}}</td>
-                                                            <td><input class="form-control" id="FLL" max="1" min="-1" name="CamposDeFormulario[FLL]" step="0.25" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'FVL'}}</td>
-                                                            <td><input class="form-control" id="FVL" max="1" min="-1" name="CamposDeFormulario[FVL]" step="0.25" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'VVL'}}</td>
-                                                            <td><input class="form-control" id="VVL" min="0" name="CamposDeFormulario[VVL]" step="1" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'BNL'}}</td>
-                                                            <td><input class="form-control" id="BNL" name="CamposDeFormulario[BNL]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'CCF'}}</td>
-                                                            <td><input class="form-control" id="CCF" name="CamposDeFormulario[CCF]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'ARN'}}</td>
-                                                            <td><input class="form-control" id="ARN" name="CamposDeFormulario[ARN]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'ARP'}}</td>
-                                                            <td><input class="form-control" id="ARP" name="CamposDeFormulario[ARP]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'ADD'}}</td>
-                                                            <td><input class="form-control" id="ADD" name="CamposDeFormulario[ADD]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'FLC'}}</td>
-                                                            <td><input class="form-control" id="FLC" name="CamposDeFormulario[FLC]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'FLC+1'}}</td>
-                                                            <td><input class="form-control" id="FLC+1" name="CamposDeFormulario[FLC+1]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'AC/A'}}</td>
-                                                            <td><input class="form-control" id="AC/A" name="CamposDeFormulario[AC/A]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'FVC'}}</td>
-                                                            <td><input class="form-control" id="FVC" name="CamposDeFormulario[FVC]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'VVC'}}</td>
-                                                            <td><input class="form-control" id="VVC" name="CamposDeFormulario[VVC]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'BNC'}}</td>
-                                                            <td><input class="form-control" id="BNC" name="CamposDeFormulario[BNC]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'BTC'}}</td>
-                                                            <td><input class="form-control" id="BTC" name="CamposDeFormulario[BTC]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'PPCNA'}}</td>
-                                                            <td><input class="form-control" id="PPCNA" name="CamposDeFormulario[PPCNA]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'PPCA'}}</td>
-                                                            <td><input class="form-control" id="PPCA" name="CamposDeFormulario[PPCA]" type="text"/></td>
-                                                        </tr>
-                                                    </table>
+                                         <table class="table table-striped-columns">
+    <tr>
+        <th></th>
+        <th>{{t 'Pruebas funcionales'}}</th>
+    </tr>
+    <tr>
+        <td>{{t 'FLL'}}</td>
+        <td>
+            <input class="form-control" id="FLL" max="1" min="-1" name="CamposDeFormulario[FLL]" step="0.25" type="text" required>
+            <div class="invalid-feedback" id="FLLFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'FVL'}}</td>
+        <td>
+            <input class="form-control" id="FVL" max="1" min="-1" name="CamposDeFormulario[FVL]" step="0.25" type="text" required>
+            <div class="invalid-feedback" id="FVLFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'VVL'}}</td>
+        <td>
+            <input class="form-control" id="VVL" min="0" name="CamposDeFormulario[VVL]" step="1" type="text" required>
+            <div class="invalid-feedback" id="VVLFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'BNL'}}</td>
+        <td>
+            <input class="form-control" id="BNL" name="CamposDeFormulario[BNL]" type="text" required>
+            <div class="invalid-feedback" id="BNLFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'CCF'}}</td>
+        <td>
+            <input class="form-control" id="CCF" name="CamposDeFormulario[CCF]" type="text" required>
+            <div class="invalid-feedback" id="CCFFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'ARN'}}</td>
+        <td>
+            <input class="form-control" id="ARN" name="CamposDeFormulario[ARN]" type="text" required>
+            <div class="invalid-feedback" id="ARNFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'ARP'}}</td>
+        <td>
+            <input class="form-control" id="ARP" name="CamposDeFormulario[ARP]" type="text" required>
+            <div class="invalid-feedback" id="ARPFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'ADD'}}</td>
+        <td>
+            <input class="form-control" id="ADD" name="CamposDeFormulario[ADD]" type="text" required>
+            <div class="invalid-feedback" id="ADDFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'FLC'}}</td>
+        <td>
+            <input class="form-control" id="FLC" name="CamposDeFormulario[FLC]" type="text" required>
+            <div class="invalid-feedback" id="FLCFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'FLC+1'}}</td>
+        <td>
+            <input class="form-control" id="FLC+1" name="CamposDeFormulario[FLC+1]" type="text" required>
+            <div class="invalid-feedback" id="FLC+1Feedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'AC/A'}}</td>
+        <td>
+            <input class="form-control" id="AC/A" name="CamposDeFormulario[AC/A]" type="text" required>
+            <div class="invalid-feedback" id="AC/AFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'FVC'}}</td>
+        <td>
+            <input class="form-control" id="FVC" name="CamposDeFormulario[FVC]" type="text" required>
+            <div class="invalid-feedback" id="FVCFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'VVC'}}</td>
+        <td>
+            <input class="form-control" id="VVC" name="CamposDeFormulario[VVC]" type="text" required>
+            <div class="invalid-feedback" id="VVCFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'BNC'}}</td>
+        <td>
+            <input class="form-control" id="BNC" name="CamposDeFormulario[BNC]" type="text" required>
+            <div class="invalid-feedback" id="BNCFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'BTC'}}</td>
+        <td>
+            <input class="form-control" id="BTC" name="CamposDeFormulario[BTC]" type="text" required>
+            <div class="invalid-feedback" id="BTCFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'PPCNA'}}</td>
+        <td>
+            <input class="form-control" id="PPCNA" name="CamposDeFormulario[PPCNA]" type="text" required>
+            <div class="invalid-feedback" id="PPCNAFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'PPCA'}}</td>
+        <td>
+            <input class="form-control" id="PPCA" name="CamposDeFormulario[PPCA]" type="text" required>
+            <div class="invalid-feedback" id="PPCAFeedback"></div>
+        </td>
+    </tr>
+</table>
+
                                                 </div>
                                                 <div class="carousel-item">
                                                     <h2>{{t 'OD y OI'}}</h2>
                                                     <br/>
-                                                    <table class="table table-striped-columns">
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>{{t 'OD'}}</th>
-                                                            <th>{{t 'OI'}}</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'FLEX. ACOM'}}:</td>
-                                                            <td><input class="form-control" id="FLEXOD" name="CamposDeFormulario[FLEXOD]" type="text"/></td>
-                                                            <td><input class="form-control" id="FLEXOI" name="CamposDeFormulario[FLEXOI]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'AA(-)'}}:</td>
-                                                            <td><input class="form-control" id="AAOD" name="CamposDeFormulario[AAOD]" type="text"/></td>
-                                                            <td><input class="form-control" id="AAOI" name="CamposDeFormulario[AAOI]" type="text"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'HIRSCHBERG'}}:</td>
-                                                            <td><input class="form-control" id="HIRSCHBERGOD" min="0" name="CamposDeFormulario[HIRSCHBERGOD]" step="1" type="text"/></td>
-                                                            <td><input class="form-control" id="HIRSCHBERGOI" min="0" name="CamposDeFormulario[HIRSCHBERGOI]" step="1" type="text"/></td>
-                                                        </tr>
-                                                    </table>
-                                                    <br/>
-                                                    <table class="table table-striped-columns">
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>{{t 'LEJOS'}}</th>
-                                                            <th>{{t 'CERCA'}}</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{t 'COVER TEST'}}</td>
-                                                            <td><input class="form-control" id="COVERLejos" name="CamposDeFormulario[COVERLejos]" type="text"/></td>
-                                                            <td><input class="form-control" id="COVERCerca" name="CamposDeFormulario[COVERCerca]" type="text"/></td>
-                                                        </tr>
-                                                    </table>
+                                             <table class="table table-striped-columns">
+    <tr>
+        <th></th>
+        <th>{{t 'OD'}}</th>
+        <th>{{t 'OI'}}</th>
+    </tr>
+    <tr>
+        <td>{{t 'FLEX. ACOM'}}:</td>
+        <td>
+            <input class="form-control" id="FLEXOD" name="CamposDeFormulario[FLEXOD]" type="text" required>
+            <div class="invalid-feedback" id="FLEXODFeedback"></div>
+        </td>
+        <td>
+            <input class="form-control" id="FLEXOI" name="CamposDeFormulario[FLEXOI]" type="text" required>
+            <div class="invalid-feedback" id="FLEXOIFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'AA(-)'}}:</td>
+        <td>
+            <input class="form-control" id="AAOD" name="CamposDeFormulario[AAOD]" type="text" required>
+            <div class="invalid-feedback" id="AAODFeedback"></div>
+        </td>
+        <td>
+            <input class="form-control" id="AAOI" name="CamposDeFormulario[AAOI]" type="text" required>
+            <div class="invalid-feedback" id="AAOIFeedback"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>{{t 'HIRSCHBERG'}}:</td>
+        <td>
+            <input class="form-control" id="HIRSCHBERGOD" min="0" name="CamposDeFormulario[HIRSCHBERGOD]" step="1" type="text" required>
+            <div class="invalid-feedback" id="HIRSCHBERGODFeedback"></div>
+        </td>
+        <td>
+            <input class="form-control" id="HIRSCHBERGOI" min="0" name="CamposDeFormulario[HIRSCHBERGOI]" step="1" type="text" required>
+            <div class="invalid-feedback" id="HIRSCHBERGOIFeedback"></div>
+        </td>
+    </tr>
+</table>
+<br/>
+<table class="table table-striped-columns">
+    <tr>
+        <th></th>
+        <th>{{t 'LEJOS'}}</th>
+        <th>{{t 'CERCA'}}</th>
+    </tr>
+    <tr>
+        <td>{{t 'COVER TEST'}}</td>
+        <td>
+            <input class="form-control" id="COVERLejos" name="CamposDeFormulario[COVERLejos]" type="text" required>
+            <div class="invalid-feedback" id="COVERLejosFeedback"></div>
+        </td>
+        <td>
+            <input class="form-control" id="COVERCerca" name="CamposDeFormulario[COVERCerca]" type="text" required>
+            <div class="invalid-feedback" id="COVERCercaFeedback"></div>
+        </td>
+    </tr>
+</table>
+
                                                     <script>
                                                         var dipInput = document.getElementById("dip");
 
@@ -218,39 +295,6 @@
     </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const btnSalir = document.getElementById('btnSalir');
-  const btnSiguiente = document.getElementById('btnSiguiente');
-  const btnClinica = document.getElementById('btnClinica');
-  const selectorPagina = document.getElementById('selectorPagina');
-
-  btnSalir.addEventListener('mouseover', function() {
-    selectorPagina.value = 'salir';
-  });
-
-  btnSiguiente.addEventListener('mouseover', function() {
-    selectorPagina.value = 'pruebas_c';
-  });
-
-  btnClinica.addEventListener('mouseover', function() {
-    selectorPagina.value = 'clinica';
-  });
-
-  btnSalir.addEventListener('touchstart', function() {
-    selectorPagina.value = 'salir';
-  });
-
-  btnSiguiente.addEventListener('touchstart', function() {
-    selectorPagina.value = 'pruebas_c';
-  });
-
-  btnClinica.addEventListener('touchstart', function() {
-    selectorPagina.value = 'clinica';
-  });
-});
-
-</script>
 <script>
   function ocultarBoton() {
     var slideGuardar = document.getElementById("itemsave").className;
@@ -363,4 +407,82 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const validateInput = (input, min, max, step, feedbackId) => {
+    const feedback = document.getElementById(feedbackId);
+    const value = parseFloat(input.value);
+    if (input.required && !input.value) {
+      input.classList.add('is-invalid');
+      feedback.textContent = 'Este campo es requerido.';
+    } else if (isNaN(value) || value < min || value > max) {
+      input.classList.add('is-invalid');
+      feedback.textContent = `El valor debe estar entre ${min} y ${max}.`;
+    } else if ((value - min) % step !== 0) {
+      input.classList.add('is-invalid');
+      feedback.textContent = `El valor debe ser un múltiplo de ${step}.`;
+    } else {
+      input.classList.remove('is-invalid');
+      feedback.textContent = '';
+    }
+  };
+
+  const inputs = [
+    // Pruebas funcionales
+    { id: 'FLL', min: -1, max: 1, step: 0.25 },
+    { id: 'FVL', min: -1, max: 1, step: 0.25 },
+    { id: 'VVL', min: 0, max: 100, step: 1 },
+    { id: 'BNL', min: 0, max: 100, step: 1 },
+    { id: 'CCF', min: 0, max: 100, step: 1 },
+    { id: 'ARN', min: 0, max: 100, step: 1 },
+    { id: 'ARP', min: 0, max: 100, step: 1 },
+    { id: 'ADD', min: 0, max: 100, step: 1 },
+    { id: 'FLC', min: 0, max: 100, step: 1 },
+    { id: 'FLC+1', min: 0, max: 100, step: 1 },
+    { id: 'AC/A', min: 0, max: 100, step: 1 },
+    { id: 'FVC', min: 0, max: 100, step: 1 },
+    { id: 'VVC', min: 0, max: 100, step: 1 },
+    { id: 'BNC', min: 0, max: 100, step: 1 },
+    { id: 'BTC', min: 0, max: 100, step: 1 },
+    { id: 'PPCNA', min: 0, max: 100, step: 1 },
+    { id: 'PPCA', min: 0, max: 100, step: 1 },
+
+    // OD y OI
+    { id: 'FLEXOD', min: 0, max: 100, step: 1 },
+    { id: 'FLEXOI', min: 0, max: 100, step: 1 },
+    { id: 'AAOD', min: 0, max: 100, step: 1 },
+    { id: 'AAOI', min: 0, max: 100, step: 1 },
+    { id: 'HIRSCHBERGOD', min: 0, max: 100, step: 1 },
+    { id: 'HIRSCHBERGOI', min: 0, max: 100, step: 1 },
+
+    // Lejos y Cerca
+    { id: 'COVERLejos', min: 0, max: 100, step: 1 },
+    { id: 'COVERCerca', min: 0, max: 100, step: 1 }
+  ];
+
+  inputs.forEach(input => {
+    const element = document.querySelector(`input[name="CamposDeFormulario[${input.id}]"]`);
+    element.addEventListener('input', () => validateInput(element, input.min, input.max, input.step, `${input.id}Feedback`));
+    element.addEventListener('blur', () => validateInput(element, input.min, input.max, input.step, `${input.id}Feedback`));
+  });
+
+  document.getElementById('formulario').addEventListener('submit', function(event) {
+    let isValid = true;
+    inputs.forEach(input => {
+      const element = document.querySelector(`input[name="CamposDeFormulario[${input.id}]"]`);
+      validateInput(element, input.min, input.max, input.step, `${input.id}Feedback`);
+      if (element.classList.contains('is-invalid')) {
+        isValid = false;
+        element.scrollIntoView({ behavior: "smooth" });
+        element.focus();
+      }
+    });
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+});
+</script>
+
 {{> footer}}
