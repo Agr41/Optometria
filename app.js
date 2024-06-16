@@ -56,6 +56,12 @@ const i18nextFsBackend = require('i18next-fs-backend');
 const rx_final= require('./routes/rx_final')
 const pruebas_f= require('./routes/pruebas_f')
 const TestGeneral = require('./routes/TestsGeneral')
+const gestionar_roles = require('./routes/gestionar_roles')
+const cambiar_contrasena = require('./routes/cambiar_contrasena.js')
+const cambiar_contrasenaPOST = require('./routes/cambiar_contrasenaPOST')
+const actualizar_correo = require('./routes/actualizar_correo')
+const actualizar_correoPOST = require('./routes/actualizar_correoPOST')
+
 // Importa moment.js y el idioma español
 const moment = require('moment');
 require('moment/locale/es');
@@ -226,6 +232,11 @@ app.use('/pruebas_complementarias', pruebas_complementarias)
 app.use('/rx_final', rx_final)
 app.use('/pruebas_f', pruebas_f)
 app.get('/TestGeneral/:id',TestGeneral)
+app.get('/gestionar_roles',gestionar_roles)
+app.get('/cambiar_contrasena',cambiar_contrasena)
+app.post('/cambiar_contrasenaPOST',cambiar_contrasenaPOST)
+app.get('/actualizar_correo',actualizar_correo)
+app.post('/actualizar_correoPOST',actualizar_correoPOST)
 
 /*
 app.get('/popup/:id',async (req, res) => {
