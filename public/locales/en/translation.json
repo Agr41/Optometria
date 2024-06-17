@@ -357,12 +357,34 @@
 
                   "inserte_datos_filtrar": "Insert the data you want to filter",
  
-                  "diagnostico": "Diagnosis"
+                  "diagnostico": "Diagnosis",
     
               
               
 
-            
+                  
+                    "inicio": "Home",
+                    "nuevo_paciente": "New Patient",
+                    "ver_paciente": "View Patient",
+                    "clinica": "Clinic",
+                    "rx_en_uso": "Rx in Use",
+                    "preliminares": "Preliminary",
+                    "salud_ocular": "Eye Health",
+                    "pruebas_funcionales": "Functional Tests",
+                    "pruebas_complementarias": "Complementary Tests",
+                    "rx_final": "Final Rx",
+                    "graficas": "Charts",
+                    "administracion": "Administration",
+                    "registrar_usuario": "Register User",
+                    "panel_usuarios": "User Panel",
+                    "gestionar_roles": "Manage Roles",
+                    "configuracion": "Settings",
+                    "cambiar_contrasena": "Change Password",
+                    "actualizar_correo": "Update Email",
+                    "preferencias": "Preferences",
+                    "cerrar_sesion": "Log Out"
+                
+                
             
 
 }

@@ -304,7 +304,32 @@
 
   "diagnostico": "Diagnóstico",
  
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+
+
+
+    "inicio": "Inicio",
+    "nuevo_paciente": "Nuevo Paciente",
+    "ver_paciente": "Ver Paciente",
+    "clinica": "Clínica",
+    "rx_en_uso": "Rx en uso",
+    "preliminares": "Preliminares",
+    "salud_ocular": "Salud Ocular",
+    "pruebas_funcionales": "Pruebas Funcionales",
+    "pruebas_complementarias": "Pruebas Complementarias",
+    "rx_final": "Rx Final",
+    "graficas": "Gráficas",
+    "administracion": "Administración",
+    "registrar_usuario": "Registrar Usuario",
+    "panel_usuarios": "Panel de Usuarios",
+    "gestionar_roles": "Gestionar Roles",
+    "configuracion": "Configuración",
+    "cambiar_contrasena": "Cambiar Contraseña",
+    "actualizar_correo": "Actualizar Correo",
+    "preferencias": "Preferencias",
+    "cerrar_sesion": "Cerrar Sesión"
+
+
 
 
     

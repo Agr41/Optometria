@@ -1,5 +1,5 @@
-<html lang="es">
-
+<!DOCTYPE html>
+<html lang="{{lng}}">
 <head>
   <!-- Add Bootstrap 5 and Handlebars libraries to your project -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -17,11 +17,9 @@
     }
   </style>
 </head>
-
 <body>
-  
   <!-- HTML body -->
-  <div class="p-3 bg-light h-100 min-vh-100  d-flex flex-column" style="border-right: 1px solid #dee2e6;">
+  <div class="p-3 bg-light h-100 min-vh-100 d-flex flex-column" style="border-right: 1px solid #dee2e6;">
     <!-- Logo and link to home -->
     <a href="/" class="justify-content-center d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
       <img src="../images/logoUAL-removebg-preview.png" alt="Logo" width="140" height="70">
@@ -32,94 +30,80 @@
     <ul class="list-unstyled ps-0 flex-grow-1">
       <li>
         <a class="nav-link active fw-bold" aria-current="page" href="/HomeSessions">
-          <span class="material-symbols-outlined">Home</span>
-          Inicio
+          <span class="material-symbols-outlined">home</span>
+          {{t 'inicio'}}
         </a>
       </li>
       <li class="mb-1">
         <button onclick="window.location.href = '/form'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
           <i class="bi bi-1-circle"></i>
-          Nuevo Paciente
+          {{t 'nuevo_paciente'}}
         </button>
       </li>
       <li class="mb-1">
         <button onclick="window.location.href = '/PanelPacientes'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
           <i class="bi bi-1-circle"></i>
-          Ver Paciente
+          {{t 'ver_paciente'}}
         </button>
       </li>
-      <!-- Uncomment the following block if needed -->
-      <!-- 
-    <li class="mb-1">
-      <button onclick="window.location.href = '/test'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-        <i class="bi bi-1-circle"></i>
-        Tamizaje
-      </button>
-    </li>
-    -->
 
       <!-- Dropdown menu -->
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Clínica
+          {{t 'clinica'}}
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="hover"><a href="/rx_en_uso" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Eyeglasses</span> Rx en uso</a></li>
-            <li><a href="/preeliminares" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Quiz</span> Preliminares</a></li>
-            <li><a href="/SaludOcular" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Visibility</span> Salud Ocular</a></li>
-            <li><a href="/pruebas_f" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Mystery</span> Pruebas Funcionales</a></li>
-            <li><a href="/pruebas_complementarias" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Rule</span> Pruebas Complementarias</a></li>
-            <li><a href="/rx_final" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">Prescriptions</span> Rx Final</a></li>
+            <li class="hover"><a href="/rx_en_uso" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">eyeglasses</span>{{t 'rx_en_uso'}}</a></li>
+            <li><a href="/preeliminares" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">quiz</span>{{t 'preliminares'}}</a></li>
+            <li><a href="/SaludOcular" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">visibility</span>{{t 'salud_ocular'}}</a></li>
+            <li><a href="/pruebas_f" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">mystery</span>{{t 'pruebas_funcionales'}}</a></li>
+            <li><a href="/pruebas_complementarias" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">rule</span>{{t 'pruebas_complementarias'}}</a></li>
+            <li><a href="/rx_final" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">prescriptions</span>{{t 'rx_final'}}</a></li>
           </ul>
         </div>
       </li>
       <li class="mb-1">
         <button onclick="window.location.href = '/graficas'" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
           <i class="bi bi-1-circle"></i>
-          Gráficas
+          {{t 'graficas'}}
         </button>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
           <i class="bi bi-person me-2"></i>
-          Administración
+          {{t 'administracion'}}
         </button>
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="hover"><a href="/registrarse" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">person_add</span> Registrar Usuario</a></li>
-            <li><a href="/panelusuarios" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">manage_accounts</span> Panel de Usuarios</a></li>
-            <li><a href="/gestionar_roles" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">admin_panel_settings</span> Gestionar Roles</a></li>
-
+            <li class="hover"><a href="/registrarse" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">person_add</span>{{t 'registrar_usuario'}}</a></li>
+            <li><a href="/panelusuarios" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">manage_accounts</span>{{t 'panel_usuarios'}}</a></li>
+            <li><a href="/gestionar_roles" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">admin_panel_settings</span>{{t 'gestionar_roles'}}</a></li>
           </ul>
         </div>
-    <li class="border-top my-3"></li>
+      <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#config-collapse" aria-expanded="false">
           <i class="bi bi-gear me-2"></i>
-          Configuración
+          {{t 'configuracion'}}
         </button>
         <div class="collapse" id="config-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/cambiar_contrasena" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">password</span> Cambiar Contraseña</a></li>
-            <li><a href="/actualizar_correo" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">email</span> Actualizar Correo</a></li>
-            <li><a href="/preferencias" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">settings</span> Preferencias</a></li>
+            <li><a href="/cambiar_contrasena" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">password</span>{{t 'cambiar_contrasena'}}</a></li>
+            <li><a href="/actualizar_correo" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">email</span>{{t 'actualizar_correo'}}</a></li>
+            <li><a href="/preferencias" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><span class="material-symbols-outlined">settings</span>{{t 'preferencias'}}</a></li>
           </ul>
         </div>
       </li>
-
-
-
         
         <!-- Logout link -->
         <a class="nav-link active fw-bold ms-3" aria-current="page" href="/logout">
-          <span class="material-symbols-outlined">logout</span> Cerrar Sesión
+          <span class="material-symbols-outlined">logout</span> {{t 'cerrar_sesion'}}
         </a>
       </li>
       <li class="border-top my-3"></li>
 
-            </li>
       <li>
         <!-- Language selection form -->
         <div class="d-flex align-items-center justify-content-center">
@@ -127,28 +111,24 @@
             <div class="row g-3 align-items-center">
               <input type="hidden" name="username" value="{{user}}">
               <div class="col-auto">
-                <span class="material-symbols-outlined d-flex">Language</span>
+                <span class="material-symbols-outlined d-flex">language</span>
               </div>
               <div class="col-auto">
-                <select id="languageSelect" name="language" id="role" class="form-select" onchange="this.form.submit()">
-<option value="es" {{#if (eq idioma 'es')}} selected {{/if}}>Español</option>
-<option value="en" {{#if (eq idioma 'en')}} selected {{/if}}>English</option>
-
+                <select id="languageSelect" name="language" class="form-select" onchange="this.form.submit()">
+                  <option value="es" {{#if (eq idioma 'es')}} selected {{/if}}>Español</option>
+                  <option value="en" {{#if (eq idioma 'en')}} selected {{/if}}>English</option>
                 </select>
-                
               </div>
             </div>
           </form>
         </div>
-      </div>
       </li>
     </ul>
-
+  </div>
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
-
-
+</html>
